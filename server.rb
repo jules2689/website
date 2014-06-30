@@ -8,8 +8,6 @@ class JuliansSite < Sinatra::Base
 
   set :root, File.dirname(__FILE__)
 
-  enable :sessions
-
   assets {
     css :app , ['/css/*.css']
     js :app , ['/js/**/*.js']

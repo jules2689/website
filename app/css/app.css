@@ -26,24 +26,38 @@ body { background: rgba(236, 236, 236, 0.15); }
   padding: 50px;
 }
 
-/*** Cards ***/
-
 .card {
-  box-shadow:0 1px 2px #aaa;
-  background:white;
-  border-radius:3px;
-
-  width: 21%;
-  height: 180px;
-  margin: 1%;
-  padding:1%;
-  overflow: hidden;
-  text-align: center;
+  width:33%;
+  border: 1px solid #fff;
+  min-width: 300px;
 }
-.card.w2 { width: 48%; min-width: 250px; }
-.card.w3 { width: 63%; }
-.card.w4 { width: 95%; }
-.card img { min-width: 200px; }
+
+.card a {
+   position: relative;
+}
+
+.card a h2 {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 67%;
+  background: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  padding-left:10px;
+  display: none;
+}
+
+.hover {
+  display:block !important;
+}
+
+.card img {
+  width:100%;
+  opacity: 0.6;
+}
+.card img:hover {
+  opacity: 1;
+}
 
 /*** Mobile ***/
 
@@ -64,8 +78,5 @@ body { background: rgba(236, 236, 236, 0.15); }
 @media screen and (max-width: 768px) {
   .sidebar .image {
     display: none;
-  }
-  .card {
-    padding:2%;
   }
 }
