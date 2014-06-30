@@ -1,5 +1,5 @@
 body { background: rgba(236, 236, 236, 0.15); }
-.name { text-transform: uppercase; }
+#name { text-transform: uppercase; }
 .profile { border-radius: 100px; }
 
 /*** SIDEBAR ***/
