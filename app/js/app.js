@@ -1,8 +1,9 @@
 $(document).on( "ready page:change", function(){
-  var container = document.querySelector('.card-container');
-  var msnry = new Masonry( container, {
-    itemSelector: '.card'
+
+  $('img').load(function(){
+    $(".card-container").masonry({itemSelector: '.card'});
   });
+  $(".card-container").masonry({itemSelector: '.card'});
 
   $(".card a").hover(
     function() {
