@@ -12,7 +12,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['JULIAN_DB'] %>
+  database: <%= ENV['POSTGRESQL_DATABASE'] %>
   pool: 25
-  username: <%= ENV['JULIAN_USER'] %>
-  password: <%= ENV['JULIAN_PASS'] %>
+  username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
