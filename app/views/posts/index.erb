@@ -15,4 +15,8 @@
     </div>
   <% end %>
 
+  <% if Post.count > 10 %>
+    <%= will_paginate @posts, renderer: BootstrapPagination::Sinatra %>
+  <% end %>
+
 </div>

@@ -8,6 +8,7 @@ gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
 gem 'json'
 gem 'oauth2'
+gem 'will_paginate-bootstrap'
 gem 'sinatra-assetpack', require: 'sinatra/assetpack'
 gem 'sinatra-contrib'
 

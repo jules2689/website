@@ -88,6 +88,9 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
+    will_paginate (3.0.5)
+    will_paginate-bootstrap (1.0.0)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -107,3 +110,4 @@ DEPENDENCIES
   sqlite3
   thin
   tux
+  will_paginate-bootstrap

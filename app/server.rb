@@ -6,6 +6,10 @@ require 'sinatra/assetpack'
 require 'sinatra/activerecord'
 require './environment'
 
+require 'will_paginate'
+require 'will_paginate/active_record'
+require "will_paginate-bootstrap"
+
 require 'oauth2'
 require 'json'
 
@@ -20,6 +24,7 @@ class Post < ActiveRecord::Base
 end
 
 class JuliansSite < Sinatra::Base
+  include WillPaginate::Sinatra::Helpers
   register Sinatra::AssetPack
   use Rack::MethodOverride
 
@@ -40,7 +45,7 @@ class JuliansSite < Sinatra::Base
   # ============= Posts =============
 
   get "/posts" do
-    @posts = Post.all
+    @posts = Post.paginate(:page => params[:page], :per_page => 10)
     erb :"posts/index"
   end
 
