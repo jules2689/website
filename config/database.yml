@@ -1,0 +1,18 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: julian
+  pool: 5
+
+test:
+  adapter: sqlite3
+  database: "db/test.sqlite3"
+  pool: 8
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['JULIAN_DB'] %>
+  pool: 25
+  username: <%= ENV['JULIAN_USER'] %>
+  password: <%= ENV['JULIAN_PASS'] %>
