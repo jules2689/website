@@ -10,6 +10,7 @@ require 'oauth2'
 require 'json'
 
 class Post < ActiveRecord::Base
+  default_scope { order(updated_at: :desc) }
   validates_presence_of :title, :body
   before_validation :set_handle
   private
