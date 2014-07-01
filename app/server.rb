@@ -36,7 +36,7 @@ class JuliansSite < Sinatra::Base
     erb :index
   end
 
-  # Posts
+  # ============= Posts =============
 
   get "/posts" do
     @posts = Post.all
@@ -89,15 +89,15 @@ class JuliansSite < Sinatra::Base
     redirect "/posts"
   end
 
-  get '/logout' do
-    session["access_token"] = nil
-    redirect "/"
-  end
-
-  # Authentication
+  # ============= Authentication =============
 
   def authenticate
     redirect "/" if session["access_token"].nil?
+  end
+
+  get '/logout' do
+    session["access_token"] = nil
+    redirect "/"
   end
 
   get "/auth" do
