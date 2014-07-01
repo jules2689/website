@@ -44,8 +44,10 @@ body { background: rgba(236, 236, 236, 0.15); }
   width: 67%;
   background: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
+  padding: 5px;
   padding-left:10px;
   display: none;
+  line-height: 28px;
 }
 
 .hover {
@@ -66,15 +68,13 @@ body { background: rgba(236, 236, 236, 0.15); }
   .sidebar {
     height: 300px;
     background: rgba(70, 154, 208, 0.61);
+    position: relative;
   }
   .sidebar #container {
     margin-top: -142px !important;
   }
   .sidebar img {
     float: left;
-  }
-  .content {
-    margin-top: 300px;
   }
 }
 @media screen and (max-width: 768px) {
