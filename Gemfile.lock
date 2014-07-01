@@ -20,28 +20,24 @@ GEM
     builder (3.2.2)
     daemons (1.1.9)
     eventmachine (1.0.3)
-    hashie (2.1.2)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     i18n (0.6.9)
     jsmin (1.0.1)
     json (1.8.1)
+    jwt (1.0.0)
     minitest (5.3.5)
     multi_json (1.10.1)
-    omniauth (1.2.1)
-      hashie (>= 1.2, < 3)
-      rack (~> 1.0)
-    omniauth-google-apps (0.1.0)
-      omniauth (~> 1.0)
-      omniauth-openid (~> 1.0)
-      ruby-openid (~> 2.3.0)
-      ruby-openid-apps-discovery (~> 1.2.0)
-    omniauth-openid (1.0.1)
-      omniauth (~> 1.0)
-      rack-openid (~> 1.3.1)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
+    oauth2 (0.9.4)
+      faraday (>= 0.8, < 0.10)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
     pg (0.17.1)
     rack (1.5.2)
-    rack-openid (1.3.1)
-      rack (>= 1.1.0)
-      ruby-openid (>= 2.1.8)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.2)
@@ -54,9 +50,6 @@ GEM
       rack (>= 1.0)
       rack-test (~> 0.6.2)
       ripl (>= 0.7.0)
-    ruby-openid (2.3.0)
-    ruby-openid-apps-discovery (1.2.0)
-      ruby-openid (>= 2.1.7)
     sass (3.3.9)
     sinatra (1.4.5)
       rack (~> 1.4)
@@ -79,9 +72,6 @@ GEM
       tilt (~> 1.3)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
-    sinatra-google-auth (1.3.0)
-      omniauth-google-apps
-      ruby-openid
     sinatra-redirect-with-flash (0.2.1)
       sinatra (>= 1.0.0)
     sqlite3 (1.3.9)
@@ -104,6 +94,8 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  json
+  oauth2
   pg
   sass
   sinatra
@@ -111,7 +103,6 @@ DEPENDENCIES
   sinatra-assetpack
   sinatra-contrib
   sinatra-flash
-  sinatra-google-auth
   sinatra-redirect-with-flash
   sqlite3
   thin

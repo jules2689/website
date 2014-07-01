@@ -6,7 +6,8 @@ gem "activerecord"
 gem "sinatra-activerecord"
 gem 'sinatra-flash'
 gem 'sinatra-redirect-with-flash'
-gem 'sinatra-google-auth'
+gem 'json'
+gem 'oauth2'
 gem 'sinatra-assetpack', require: 'sinatra/assetpack'
 gem 'sinatra-contrib'
 

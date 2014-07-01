@@ -39,7 +39,7 @@
   </div>
 
   <div class="content col-md-9 col-md-offset-3 col-xs-12">
-    <% if session["user"] %>
+    <% if session["access_token"] %>
       <ul class="admin">
         <li><a href="/posts/new">New Post</a></li>
         <% if @post && !@post.new_record? %>
