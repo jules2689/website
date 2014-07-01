@@ -9,6 +9,7 @@
       <%= css :app %>
 
       <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       <%= js :app %>
 
       <meta name="description" content="Developer,Educator,Hacker">
@@ -31,12 +32,29 @@
           <a href="https://twitter.com/jules2689"><i class="fa fa-twitter-square fa-4x"></i></a>
           <a href="http://www.linkedin.com/pub/julian-nadeau/49/1b0/721"><i class="fa fa-linkedin-square fa-4x"></i></a>
           <a href="mailto:julian@jnadeau.ca"><i class="fa fa-envelope-square fa-4x"></i></a>
+          <h5><a href="/posts">Check out my thoughts</a></h5>
         </div>
       </div>
     </div>
   </div>
 
-  <%= yield %>
+  <div class="content col-md-9 col-md-offset-3 col-xs-12">
+    <% if session["user"] %>
+      <ul class="admin">
+        <li><a href="/posts/new">New Post</a></li>
+        <% if @post && !@post.new_record? %>
+          <li><a href="/posts/<%= @post.handle %>/edit">Edit Post</a></li>
+          <li>
+            <form action="/posts/<%= @post.id %>" method="post">
+              <input type="hidden" name="_method" value="delete" />
+              <input type="submit" value="Delete Post" />
+            </form>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= yield %>
+  </div>
 
   </body>
 </html>

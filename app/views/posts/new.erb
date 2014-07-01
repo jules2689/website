@@ -1,0 +1,17 @@
+<h1>New Post</h1>
+<form action="/posts" method="post" class="posts-form">
+  <label for="post_title">Title:</label><br />
+  <input id="post_title" class="form-control" name="post[title]" type="text" value="<%= @post.title %>" />
+  <br />
+
+  <label for="post_body">Body:</label><br />
+  <%= erb(:"posts/editor", locals: { :content => @post.body }, :layout => false) %>
+  <input id="post_body" class="form-control" name="post[body]" type="hidden" />
+  <br />
+
+  <label for="post_tags">Tags:</label><br />
+  <input id="post_tags" class="form-control" name="post[tags]" type="text" value="<%= @post.tags %>" />
+  <br />
+
+  <input type="submit" value="Create Post" class="btn btn-primary" />
+</form>

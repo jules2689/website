@@ -13,4 +13,8 @@ $(document).on( "ready page:change", function(){
     }
   );
 
+  $('.posts-form').submit(function(e){
+    $('#post_body').val($('#editor').html());
+  });
+
 });
