@@ -100,7 +100,7 @@ class JuliansSite < Sinatra::Base
   end
 
   get "/auth" do
-    redirect client.auth_code.authorize_url(:redirect_uri => redirect_uri,:scope => 'https://www.googleapis.com/auth/userinfo.email', :access_type => "offline")
+    redirect client.auth_code.authorize_url(:redirect_uri => redirect_uri,:scope => 'https://www.googleapis.com/auth/userinfo.email', :access_type => "offline", :hd => "jnadeau.ca")
   end
 
   get '/oauth2callback' do
