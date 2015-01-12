@@ -11,6 +11,7 @@ gem 'oauth2'
 gem 'will_paginate-bootstrap'
 gem 'sinatra-assetpack', require: 'sinatra/assetpack'
 gem 'sinatra-contrib'
+gem 'nokogiri'
 
 gem 'sass'
 gem 'thin'

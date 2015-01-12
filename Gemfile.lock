@@ -26,10 +26,13 @@ GEM
     jsmin (1.0.1)
     json (1.8.1)
     jwt (1.0.0)
+    mini_portile (0.6.1)
     minitest (5.3.5)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    nokogiri (1.6.4.1)
+      mini_portile (~> 0.6.0)
     oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -98,6 +101,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   json
+  nokogiri
   oauth2
   pg
   sass
