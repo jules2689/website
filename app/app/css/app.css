@@ -1,7 +1,6 @@
 body { background: rgba(236, 236, 236, 0.15); }
 #name { text-transform: uppercase; }
 .profile { border-radius: 100px; }
-hr { margin: 0; }
 
 /*** ADMIN BAR ****/
 
