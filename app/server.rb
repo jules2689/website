@@ -22,6 +22,10 @@ class Post < ActiveRecord::Base
     self.tags ? "Tagged #{self.tags} / " : ""
   end
 
+  def est_created_at
+    self.created_at + Time.zone_offset('EST')
+  end
+
   private
   def set_handle
     self.handle = self.title.downcase.parameterize

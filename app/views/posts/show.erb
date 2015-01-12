@@ -2,7 +2,7 @@
 
 <p><small>
   <%= @post.list_tags %>
-  Posted on <%= @post.updated_at.to_formatted_s(:long) %>
+  Posted on <%= @post.est_created_at.to_formatted_s(:long) %>
 </small></p>
 
 <div class="post-body"><%= @post.body %></div>
