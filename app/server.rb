@@ -26,6 +26,10 @@ class Post < ActiveRecord::Base
     self.created_at + Time.zone_offset('EST')
   end
 
+  def est_updated_at
+    self.updated_at + Time.zone_offset('EST')
+  end
+
   private
   def set_handle
     self.handle = self.title.downcase.parameterize

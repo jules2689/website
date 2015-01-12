@@ -9,7 +9,7 @@
       <p><%= post.body.truncate(1000) %>&nbsp; <br><a href="/posts/<%= post.handle %>">Read More</a></p>
       <hr>
       <small>
-        <% if post.tags %>Tagged <%= post.tags %> | <% end %>Posted on <%= post.est_created_at.to_formatted_s(:long) %> | <a href="http://jnadeau.ca/posts/<%=post.handle%>#disqus_thread">Link</a>
+        <% if post.tags %>Tagged <%= post.tags %> | <% end %>Posted on <%= post.est_created_at.to_formatted_s(:long) %>  | Last Edited <%= post.est_updated_at.to_formatted_s(:long) %> | <a href="http://jnadeau.ca/posts/<%=post.handle%>#disqus_thread">Link</a>
       </small>
       <hr>
     </div>
