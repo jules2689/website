@@ -33,7 +33,7 @@ class Post < ActiveRecord::Base
   end
 
   def trancated_body
-    html_truncate(body, 350)
+    html_truncate(body, 200)
   end
 
   private
