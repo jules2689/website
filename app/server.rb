@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sass'
 require "rubygems"
 
+require 'builder'
+
 require 'sinatra/assetpack'
 require 'sinatra/activerecord'
 require './environment'
@@ -148,6 +150,11 @@ class JuliansSite < Sinatra::Base
   end
 
   # ============= Posts =============
+
+  get '/rss' do
+    @posts = Post.all.order("created_at desc").limit(5)
+    builder :"posts/feed"
+  end
 
   get "/posts" do
     @posts = Post.paginate(:page => params[:page], :per_page => 10)

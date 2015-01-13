@@ -15,6 +15,7 @@ gem 'nokogiri'
 
 gem 'sass'
 gem 'thin'
+gem 'builder'
 
 group :development do
  gem 'sqlite3'
