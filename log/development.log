@@ -1,0 +1,1636 @@
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-26 12:43:09 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApplicationController#index as HTML
+  Rendered application/index.html.erb within layouts/application (10.2ms)
+  Rendered layouts/_sidebar.html.erb (0.7ms)
+Completed 200 OK in 372ms (Views: 363.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+Processing by ApplicationController#index as HTML
+  Rendered application/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 179ms (Views: 178.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:10 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/shopify-bag.png" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/blog.png" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/cfk.png" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/time.png" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/bootstrapwidgets.png" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/wiki.png" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/assets/quizzer.png" for 127.0.0.1 at 2015-01-26 12:43:11 -0500
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-01-26 12:43:12 -0500
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts"   ORDER BY "posts"."updated_at" DESC
+  [1m[36mActsAsTaggableOn::Tag Load (1.0ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 2], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (26.1ms)
+  [1m[35mActsAsTaggableOn::Tag Load (0.7ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (5.5ms)
+  Rendered posts/index.html.erb within layouts/application (49.0ms)
+  Rendered layouts/_sidebar.html.erb (0.5ms)
+Completed 200 OK in 245ms (Views: 216.5ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:43:16 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:43:16 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:43:16 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:43:16 -0500
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-01-26 12:45:10 -0500
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts"   ORDER BY "posts"."updated_at" DESC[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.7ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 2], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (3.3ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.9ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.6ms)
+  Rendered posts/index.html.erb within layouts/application (11.0ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 192ms (Views: 189.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:11 -0500
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"   ORDER BY "posts"."updated_at" DESC
+  [1m[36mActsAsTaggableOn::Tag Load (0.7ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 2], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (3.9ms)
+  [1m[35mActsAsTaggableOn::Tag Load (0.9ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (3.6ms)
+  Rendered posts/index.html.erb within layouts/application (12.9ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 200ms (Views: 196.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:26 -0500
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts"   ORDER BY "posts"."updated_at" DESC[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 2], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.0ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (1.7ms)
+  Rendered posts/index.html.erb within layouts/application (7.6ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 181ms (Views: 179.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:38 -0500
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts"   ORDER BY "posts"."updated_at" DESC
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 2], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.1ms)
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.1ms)
+  Rendered posts/index.html.erb within layouts/application (15.9ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 190ms (Views: 187.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:45:46 -0500
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts"   ORDER BY "posts"."updated_at" DESC[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 2], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.0ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (1.4ms)
+  Rendered posts/index.html.erb within layouts/application (7.6ms)
+  Rendered layouts/_sidebar.html.erb (0.4ms)
+Completed 200 OK in 185ms (Views: 183.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:04 -0500
+
+
+Started GET "/posts/test" for 127.0.0.1 at 2015-01-26 12:46:29 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"handle"=>"test"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'test'  ORDER BY "posts"."updated_at" DESC LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.5ms)
+  Rendered posts/_disqus.html.erb (0.4ms)
+  Rendered posts/show.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_sidebar.html.erb (0.3ms)
+Completed 200 OK in 187ms (Views: 180.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/test/edit" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+Processing by PostsController#edit as HTML
+  Parameters: {"handle"=>"test"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'test'  ORDER BY "posts"."updated_at" DESC LIMIT 1
+  Rendered layouts/forms/_errors.html.erb (2.9ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_form.html.erb (24.1ms)
+  Rendered posts/edit.html.erb within layouts/application (25.7ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 204ms (Views: 201.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:35 -0500
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular.woff2" for 127.0.0.1 at 2015-01-26 12:46:36 -0500
+
+
+Started PATCH "/posts/test" for 127.0.0.1 at 2015-01-26 12:46:51 -0500
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jfBEyBj62ctSbo/v3pEs4h0DSxIwr9Jo5+FXuu8G3Qc=", "commit"=>"Save", "post"=>{"title"=>"What I learned the week of January 18th", "tag_list"=>"test", "body"=>"<p class=\"p1\">I've been learning, although sometimes a little bit randomly, over the past few weeks. I'm curious if the course content in class, which is largely obvious or review, is taking a lot of my \"thought time\" (how much I'm able to mentally process in a day before becoming tired). I find my yearning for more, wanting to improve, but sometimes its as if I'm too tired to make that jump. Let's see if I can work on that for next week's post.</p><p class=\"p1\"><b><br></b></p><p class=\"p1\"><b>Jan 18</b></p> <p class=\"p1\">There’s a second smaller canyon in the area of the Grand Canyon, as well as a cool ghost town. (I’m being liberal and saying 4 hour driving radius is within the area).</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 19</b></p> <p class=\"p1\">You can get all basic regex operators through the use of + (or), * (0 or more) and parentheses.&nbsp;</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 20</b></p> <p class=\"p1\">We can start AI systems with simple decision trees.</p> <p class=\"p1\">I had something else here, but I forgot to write it down, so I suppose today’s thing I learned is to write stuff down, damnit.</p> <p class=\"p2\"><b></b><br></p> <p class=\"p1\"><b>Jan 21</b></p> <p class=\"p1\">Linear algebra can be used for indexing and searching, actually that is what is used. Linear Algebra will come in handy (finally).</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 22</b></p> <p class=\"p1\">Sentiment Analysis is a type of machine learning / AI that can analyze a text and “assign” an emotion to it (think happy, sad etc). By analyzing the content, especially in the context of the other words (intratexuality if you will), we can easily determine the meaning behind words.</p> <p class=\"p2\"><b></b><br></p> <p class=\"p1\"><b>Jan 23</b></p> <p class=\"p1\">Quick conversations can often lead you down a completely different path in whatever you are working on, sometimes for the better and sometimes for worse. If you are researching, remember that risk aversion may negatively affect you.</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 24</b></p> <p class=\"p1\">Reorganizing and cleaning can be a good stress reliever and really help you later on.&nbsp;</p> <p class=\"p1\">Random days at the theatres are the best.</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 25</b></p> <p class=\"p1\">When purchasing from an online store, make sure you check how they handle in-store exchanges and replacements.</p>"}, "handle"=>"test"}
+  [1m[35mPost Load (0.7ms)[0m  SELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'test'  ORDER BY "posts"."updated_at" DESC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 1], ["taggable_type", "Post"]]
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "posts" SET "handle" = $1, "title" = $2, "updated_at" = $3 WHERE "posts"."id" = 1[0m  [["handle", "what-i-learned-the-week-of-january-18th"], ["title", "What I learned the week of January 18th"], ["updated_at", "2015-01-26 17:46:51.634732"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.8ms)[0m  SELECT "tags".* FROM "tags"  WHERE (LOWER(name) = LOWER('test'))
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  [1m[35m (3.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/posts/what-i-learned-the-week-of-january-18th
+Completed 302 Found in 107ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/posts/what-i-learned-the-week-of-january-18th" for 127.0.0.1 at 2015-01-26 12:46:51 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"handle"=>"what-i-learned-the-week-of-january-18th"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'what-i-learned-the-week-of-january-18th'  ORDER BY "posts"."updated_at" DESC LIMIT 1[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.4ms)
+  Rendered posts/_disqus.html.erb (0.3ms)
+  Rendered posts/show.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 186ms (Views: 184.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:46:52 -0500
+
+
+Started GET "/posts/what-i-learned-the-week-of-january-18th/edit" for 127.0.0.1 at 2015-01-26 12:47:32 -0500
+Processing by PostsController#edit as HTML
+  Parameters: {"handle"=>"what-i-learned-the-week-of-january-18th"}
+  [1m[36mPost Load (1.6ms)[0m  [1mSELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'what-i-learned-the-week-of-january-18th'  ORDER BY "posts"."updated_at" DESC LIMIT 1[0m
+  Rendered layouts/forms/_errors.html.erb (0.1ms)
+  [1m[35mActsAsTaggableOn::Tag Load (1.0ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_form.html.erb (17.3ms)
+  Rendered posts/edit.html.erb within layouts/application (20.1ms)
+  Rendered layouts/_sidebar.html.erb (0.6ms)
+Completed 200 OK in 791ms (Views: 784.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:34 -0500
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular.woff2" for 127.0.0.1 at 2015-01-26 12:47:37 -0500
+
+
+Started PATCH "/posts/what-i-learned-the-week-of-january-18th" for 127.0.0.1 at 2015-01-26 12:47:40 -0500
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jfBEyBj62ctSbo/v3pEs4h0DSxIwr9Jo5+FXuu8G3Qc=", "commit"=>"Save", "post"=>{"title"=>"This is what I learned the week of January 12", "tag_list"=>"test", "body"=>"<p class=\"p1\">I've been learning, although sometimes a little bit randomly, over the past few weeks. I'm curious if the course content in class, which is largely obvious or review, is taking a lot of my \"thought time\" (how much I'm able to mentally process in a day before becoming tired). I find my yearning for more, wanting to improve, but sometimes its as if I'm too tired to make that jump. Let's see if I can work on that for next week's post.</p><p class=\"p1\"><b><br></b></p><p class=\"p1\"><b>Jan 18</b></p> <p class=\"p1\">There’s a second smaller canyon in the area of the Grand Canyon, as well as a cool ghost town. (I’m being liberal and saying 4 hour driving radius is within the area).</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 19</b></p> <p class=\"p1\">You can get all basic regex operators through the use of + (or), * (0 or more) and parentheses.&nbsp;</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 20</b></p> <p class=\"p1\">We can start AI systems with simple decision trees.</p> <p class=\"p1\">I had something else here, but I forgot to write it down, so I suppose today’s thing I learned is to write stuff down, damnit.</p> <p class=\"p2\"><b></b><br></p> <p class=\"p1\"><b>Jan 21</b></p> <p class=\"p1\">Linear algebra can be used for indexing and searching, actually that is what is used. Linear Algebra will come in handy (finally).</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 22</b></p> <p class=\"p1\">Sentiment Analysis is a type of machine learning / AI that can analyze a text and “assign” an emotion to it (think happy, sad etc). By analyzing the content, especially in the context of the other words (intratexuality if you will), we can easily determine the meaning behind words.</p> <p class=\"p2\"><b></b><br></p> <p class=\"p1\"><b>Jan 23</b></p> <p class=\"p1\">Quick conversations can often lead you down a completely different path in whatever you are working on, sometimes for the better and sometimes for worse. If you are researching, remember that risk aversion may negatively affect you.</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 24</b></p> <p class=\"p1\">Reorganizing and cleaning can be a good stress reliever and really help you later on.&nbsp;</p> <p class=\"p1\">Random days at the theatres are the best.</p> <p class=\"p2\"><br></p> <p class=\"p1\"><b>Jan 25</b></p> <p class=\"p1\">When purchasing from an online store, make sure you check how they handle in-store exchanges and replacements.</p>"}, "handle"=>"what-i-learned-the-week-of-january-18th"}
+  [1m[36mPost Load (1.9ms)[0m  [1mSELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'what-i-learned-the-week-of-january-18th'  ORDER BY "posts"."updated_at" DESC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mActsAsTaggableOn::Tag Load (1.0ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  [1m[35mSQL (1.5ms)[0m  UPDATE "posts" SET "handle" = $1, "title" = $2, "updated_at" = $3 WHERE "posts"."id" = 1  [["handle", "this-is-what-i-learned-the-week-of-january-12"], ["title", "This is what I learned the week of January 12"], ["updated_at", "2015-01-26 17:47:40.499218"]]
+  [1m[36mActsAsTaggableOn::Tag Load (1.2ms)[0m  [1mSELECT "tags".* FROM "tags"  WHERE (LOWER(name) = LOWER('test'))[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.8ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 1], ["taggable_type", "Post"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/posts/this-is-what-i-learned-the-week-of-january-12
+Completed 302 Found in 36ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/posts/this-is-what-i-learned-the-week-of-january-12" for 127.0.0.1 at 2015-01-26 12:47:40 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"handle"=>"this-is-what-i-learned-the-week-of-january-12"}
+  [1m[35mPost Load (1.5ms)[0m  SELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'this-is-what-i-learned-the-week-of-january-12'  ORDER BY "posts"."updated_at" DESC LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.9ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (8.3ms)
+  Rendered posts/_disqus.html.erb (0.1ms)
+  Rendered posts/show.html.erb within layouts/application (12.5ms)
+  Rendered layouts/_sidebar.html.erb (0.7ms)
+Completed 200 OK in 746ms (Views: 740.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:42 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:43 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:47:43 -0500
+
+
+Started GET "/posts/this-is-what-i-learned-the-week-of-january-12" for 127.0.0.1 at 2015-01-26 12:47:59 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"handle"=>"this-is-what-i-learned-the-week-of-january-12"}
+  [1m[35mPost Load (2.4ms)[0m  SELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'this-is-what-i-learned-the-week-of-january-12'  ORDER BY "posts"."updated_at" DESC LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.9ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (6.8ms)
+  Rendered posts/_disqus.html.erb (0.1ms)
+  Rendered posts/show.html.erb within layouts/application (11.3ms)
+  Rendered layouts/_sidebar.html.erb (0.6ms)
+Completed 200 OK in 824ms (Views: 816.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 12:48:01 -0500
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 12:48:02 -0500
+
+
+Started GET "/posts/this-is-what-i-learned-the-week-of-january-12" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"handle"=>"this-is-what-i-learned-the-week-of-january-12"}
+  [1m[35mPost Load (0.7ms)[0m  SELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'this-is-what-i-learned-the-week-of-january-12'  ORDER BY "posts"."updated_at" DESC LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (5.1ms)
+  Rendered posts/_disqus.html.erb (0.1ms)
+  Rendered posts/show.html.erb within layouts/application (7.4ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 184ms (Views: 180.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 13:09:47 -0500
+
+
+Started GET "/posts/this-is-what-i-learned-the-week-of-january-12" for 127.0.0.1 at 2015-01-26 13:13:21 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"handle"=>"this-is-what-i-learned-the-week-of-january-12"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'this-is-what-i-learned-the-week-of-january-12'  ORDER BY "posts"."updated_at" DESC LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.6ms)
+  Rendered posts/_disqus.html.erb (0.0ms)
+  Rendered posts/show.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 167ms (Views: 164.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:22 -0500
+
+
+Started GET "/posts/this-is-what-i-learned-the-week-of-january-12" for 127.0.0.1 at 2015-01-26 13:13:32 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"handle"=>"this-is-what-i-learned-the-week-of-january-12"}
+  [1m[35mPost Load (0.7ms)[0m  SELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'this-is-what-i-learned-the-week-of-january-12'  ORDER BY "posts"."updated_at" DESC LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.2ms)
+  Rendered posts/_disqus.html.erb (0.0ms)
+  Rendered posts/show.html.erb within layouts/application (9.3ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 194ms (Views: 191.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 13:13:33 -0500
+
+
+Started GET "/posts/this-is-what-i-learned-the-week-of-january-12" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+Processing by PostsController#show as HTML
+  Parameters: {"handle"=>"this-is-what-i-learned-the-week-of-january-12"}
+  [1m[35mPost Load (0.6ms)[0m  SELECT  "posts".* FROM "posts"  WHERE "posts"."handle" = 'this-is-what-i-learned-the-week-of-january-12'  ORDER BY "posts"."updated_at" DESC LIMIT 1
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (3.4ms)
+  Rendered posts/_disqus.html.erb (0.0ms)
+  Rendered posts/show.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 193ms (Views: 189.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/construction.css?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/sidebar.css?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:34 -0500
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/bootstrap-sprockets.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/markdown.converter.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/markdown.editor.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/markdown.sanitizer.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/markdown.extra.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/pagedown_bootstrap.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/pagedown_init.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/masonry.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/disqus.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-26 13:14:35 -0500
+
+
+Started GET "/posts" for 127.0.0.1 at 2015-01-26 13:14:59 -0500
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"   ORDER BY "posts"."updated_at" DESC
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id[0m  [["taggable_id", 1], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (2.4ms)
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = $1 AND "taggings"."taggable_type" = $2 AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  ORDER BY taggings.id  [["taggable_id", 2], ["taggable_type", "Post"]]
+  Rendered posts/_metadata.html.erb (1.5ms)
+  Rendered posts/index.html.erb within layouts/application (8.1ms)
+  Rendered layouts/_sidebar.html.erb (0.2ms)
+Completed 200 OK in 182ms (Views: 180.1ms | ActiveRecord: 1.0ms)
