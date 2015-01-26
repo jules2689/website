@@ -124,6 +124,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   bootstrap-sass (~> 3.3.3)
+  builder
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails

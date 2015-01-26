@@ -1,6 +1,9 @@
 <div class="page-header post-header">
   <h1>
     Random Thoughts
+    <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
+      <small><i class="fa fa-rss"></i></small>
+    <% end %>
     <% if params[:tagged] %><small>/ Viewing posts tagged with <%= params[:tagged] %></small><% end %>
   </h1>
 </div>
