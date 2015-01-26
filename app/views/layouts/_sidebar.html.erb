@@ -17,14 +17,4 @@
     <li><%= link_to "Blog", posts_url %></li>
     <li><%= link_to "Who am I?", me_path %></li>
   </ul>
-
-  <div class="blog-sidebar-content">
-    <h3>Recent Posts</h3>
-    <ul class="sidebar-content text-center">
-      <% @recents.each do |recent_page| %>
-        <li><%= link_to truncate(recent_page.title, length: 40), recent_page %></li>
-      <% end %>
-    </ul>
-  </div>
-
 </div>

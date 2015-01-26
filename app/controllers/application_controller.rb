@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_sidebar_content
-    @tags = ActsAsTaggableOn::Tag.most_used(8)
-    @recents = Post.limit(5)
+    # @tags = ActsAsTaggableOn::Tag.most_used(8)
+    # @recents = Post.limit(5)
   end
 end
