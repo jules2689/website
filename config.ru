@@ -1,9 +1,4 @@
-#config.ru
-require 'rubygems'
-require 'bundler'
-Bundler.setup(:default)
-require 'sinatra'
-require './app/server.rb'
+# This file is used by Rack-based servers to start the application.
 
-use Rack::Deflater
-run JuliansSite
+require ::File.expand_path('../config/environment',  __FILE__)
+run Rails.application

@@ -1,0 +1,37 @@
+<div id="sidebar-wrapper">
+
+  <div class="text-center profile">
+    <a href="/">
+      <img class="avatar" src="https://secure.gravatar.com/avatar/bccdd41945f78d7cb7c2f64275efa100.png?r=PG&s=100" width="100" alt="Julian Nadeau">
+    </a>
+    <h1>Julian Nadeau</h1>
+    <a href="https://github.com/jules2689"><i class="fa fa-github-square fa-2x"></i></a>
+    <a href="https://twitter.com/jules2689"><i class="fa fa-twitter-square fa-2x"></i></a>
+    <a href="http://www.linkedin.com/pub/julian-nadeau/49/1b0/721"><i class="fa fa-linkedin-square fa-2x"></i></a>
+    <a href="mailto:julian@jnadeau.ca"><i class="fa fa-envelope-square fa-2x"></i></a>
+  </div>
+
+  <br>
+
+  <ul class="sidebar-nav sidebar-content text-center">
+    <li><%= link_to "Blog", posts_url %></li>
+    <li><%= link_to "Who am I?", me_path %></li>
+  </ul>
+
+  <div class="blog-sidebar-content">
+    <h3>Recent Posts</h3>
+    <ul class="sidebar-content text-center">
+      <% @recents.each do |recent_page| %>
+        <li><%= link_to truncate(recent_page.title, length: 40), recent_page %></li>
+      <% end %>
+    </ul>
+
+    <h3>Categories</h3>
+    <ul class="sidebar-content text-center">
+      <% @tags.each do |tag| %>
+        <li><%= link_to tag, posts_path(tagged: tag.name) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

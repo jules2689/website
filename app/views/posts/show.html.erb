@@ -1,0 +1,8 @@
+<div class="page-header post-header">
+  <h1><%= @post.title %></h1>
+  <%= render "metadata", post: @post %>
+</div>
+
+<div id="post-body"><%= @post.body %></div>
+
+<%= render "disqus" %>

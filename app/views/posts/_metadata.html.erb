@@ -1,0 +1,6 @@
+<div class="metadata">
+  <span><i class="fa fa-clock-o"></i> <%= post.est_created_at.to_formatted_s(:long) %></span>
+  <span><i class="fa fa-bookmark"></i> <%= post.tag_list %></span>
+  <span><i class="fa fa-comments"></i> <a href="http://jnadeau.ca/posts/<%= post.handle %>#disqus_thread">Link</a></span>
+  <span id="read-more"><i class="fa fa-file-o"> <%= link_to "Read More", post %></i></span>
+</div>

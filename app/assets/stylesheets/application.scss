@@ -1,0 +1,49 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "pagedown_bootstrap";
+
+html,body {  height: 100%; }
+h1 { font-family: 'Alegreya Sans SC', sans-serif; color: #fff; small { color: #fff; } }
+h2 { font-family: 'Alegreya Sans SC', sans-serif; }
+
+/* Front Page Card Styles */
+
+.card {
+  width:33%;
+  border: 1px solid #fff;
+  min-width: 300px;
+}
+
+.card a {
+   position: relative;
+}
+
+.card a h2 {
+  position: absolute;
+  top: -67px;
+  left: 0;
+  width: 67%;
+  background: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  padding: 5px;
+  padding-left:10px;
+  display: none;
+  line-height: 28px;
+}
+
+.hover {
+  display:block !important;
+}
+
+.card img {
+  width:100%;
+  opacity: 0.6;
+}
+.card img:hover {
+  opacity: 1;
+}

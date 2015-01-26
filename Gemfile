@@ -1,27 +1,17 @@
-ruby '2.1.1'
 source 'https://rubygems.org'
 
-gem "sinatra"
-gem "activerecord"
-gem "sinatra-activerecord"
-gem 'sinatra-flash'
-gem 'sinatra-redirect-with-flash'
-gem 'json'
-gem 'oauth2'
-gem 'will_paginate-bootstrap'
-gem 'sinatra-assetpack', require: 'sinatra/assetpack'
-gem 'sinatra-contrib'
+gem 'rails', '4.1.8'
+gem 'pg'
+gem 'sass-rails', '~> 4.0.3'
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'spring',        group: :development
+
+gem 'acts-as-taggable-on', '~> 3.4'
 gem 'nokogiri'
-
-gem 'sass'
-gem 'thin'
-gem 'builder'
-
-group :development do
- gem 'sqlite3'
- gem "tux"
-end
-
-group :production do
- gem 'pg'
-end
+gem 'pagedown-bootstrap-rails'
