@@ -5,9 +5,10 @@ development:
   pool: 5
 
 test:
-  adapter: sqlite3
-  database: "db/test.sqlite3"
-  pool: 8
+  adapter: postgresql
+  encoding: unicode
+  database: julian_test
+  pool: 5
 
 production:
   adapter: postgresql

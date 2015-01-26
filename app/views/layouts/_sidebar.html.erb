@@ -25,13 +25,6 @@
         <li><%= link_to truncate(recent_page.title, length: 40), recent_page %></li>
       <% end %>
     </ul>
-
-    <h3>Categories</h3>
-    <ul class="sidebar-content text-center">
-      <% @tags.each do |tag| %>
-        <li><%= link_to tag, posts_path(tagged: tag.name) %></li>
-      <% end %>
-    </ul>
   </div>
 
 </div>

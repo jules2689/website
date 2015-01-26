@@ -3,6 +3,6 @@
   <%= render "metadata", post: @post %>
 </div>
 
-<div id="post-body"><%= @post.body %></div>
+<div id="post-body"><%= @post.html_body %></div>
 
 <%= render "disqus" %>

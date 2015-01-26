@@ -15,3 +15,4 @@ gem 'spring',        group: :development
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'nokogiri'
 gem 'pagedown-bootstrap-rails'
+gem 'redcarpet'

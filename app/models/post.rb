@@ -14,7 +14,12 @@ class Post < ActiveRecord::Base
   end
 
   def trancated_body
-    body.html_truncate(200)
+    html_body.html_truncate(200)
+  end
+
+  def html_body
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+    markdown.render(body).html_safe
   end
 
   def to_param
@@ -26,4 +31,5 @@ class Post < ActiveRecord::Base
   def set_handle
     self.handle = self.title.downcase.parameterize
   end
+
 end
