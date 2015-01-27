@@ -19,7 +19,8 @@
       <%= render "metadata", post: post %>
       <div class="post-body">
         <%= post.trancated_body %>
-        <h4><%= link_to "Read More", post, class: "read-more btn btn-default" %></h4>
+        <br>
+        <h4><%= link_to post, class: "read-more btn btn-default" do %><i class="fa fa-file-o"></i> Read More<% end %></h4>
       </div>
     </div>
   <% end %>
