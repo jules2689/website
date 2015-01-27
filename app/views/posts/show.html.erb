@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= @post.title %>
+<% end %>
+
 <div class="page-header post-header">
   <h1><%= @post.title %></h1>
   <%= render "metadata", post: @post %>

@@ -1,3 +1,9 @@
+<% content_for :title do %>
+  Editing Page
+<% end %>
+
 <%= render 'form' %>
 
-<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+<div class="container col-md-12">
+  <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+</div>
