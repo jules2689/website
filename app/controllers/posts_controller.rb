@@ -4,8 +4,7 @@ class PostsController < ApplicationController
 
   def index
     if params[:tagged]
-      tags = params[:tagged].split(',')
-      @posts = Post.tagged_with(tags, :match_all => true).paginate(page: params[:page])
+      @posts = Post.tagged_with(params[:tagged]).paginate(page: params[:page])
     else
       @posts = Post.paginate(page: params[:page])
     end
