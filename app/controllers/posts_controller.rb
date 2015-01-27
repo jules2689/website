@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  http_basic_authenticate_with name: ENV["POST_USER"], password: ENV["POST_PASSWORD"], except: [:index, :show]
+  http_basic_authenticate_with name: Julianssite::Username, password: Julianssite::Password, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
