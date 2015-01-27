@@ -58,6 +58,10 @@
 }
 
 @media(max-width:991px) {
+  #posts {
+    padding-left: 0px;
+  }
+
   .page-header.post-header {
     height: auto;
 
