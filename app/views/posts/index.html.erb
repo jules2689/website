@@ -17,10 +17,9 @@
     <div class="col-md-12 post">
       <h2><%= post.title %></h2>
       <%= render "metadata", post: post %>
-      <hr>
       <div class="post-body">
         <%= post.trancated_body %>
-        <h4><%= link_to "Read More", post %></h4>
+        <h4><%= link_to "Read More", post, class: "read-more btn btn-default" %></h4>
       </div>
     </div>
   <% end %>

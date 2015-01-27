@@ -3,7 +3,7 @@
   margin: 0;
   margin-top: -20px;
   padding-left: 30px;
-  height: 100px;
+  min-height: 100px;
 
   h1 {
     line-height: 100px;
@@ -20,6 +20,10 @@
 
 #posts {
   padding-left: 20px;
+
+  .read-more {
+    font-family: 'Roboto Slab', serif;
+  }
 }
 
 #post-body, #disqus_thread {
@@ -28,6 +32,11 @@
 
 .post {
   padding-bottom: 15px;
+  .post-body {
+    padding: 20px;
+    border: 1px solid rgba(163, 163, 163, 0.21);
+    border-radius: 5px;
+  }
 }
 
 .metadata {
@@ -62,16 +71,19 @@
     padding-left: 0px;
   }
 
+  .metadata span { display: block; }
+
   .page-header.post-header {
     height: auto;
 
     h1 {
       line-height: inherit;
-      padding-top: 10px;
+      padding: 10px 30px;
     }
 
     .metadata {
       margin-top: 0px;
+      padding: 0px 30px;
     }
   }
 }
