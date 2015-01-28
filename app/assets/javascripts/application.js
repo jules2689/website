@@ -14,7 +14,7 @@ $(document).on("page:change", function(){
       $("#wrapper").toggleClass("toggled");
   });
 
-  $('.datetimepicker').datetimepicker();
+  $('.datetimepicker').datetimepicker({ format: "Y-m-d H:i +0500", validateOnBlur: false });
 
   $('img').load(function(){
     $(".card-container").masonry({itemSelector: '.card'});
