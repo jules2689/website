@@ -11,12 +11,21 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
+gem 'pry-byebug', group: :development
 
+# Tagging
 gem 'acts-as-taggable-on', '~> 3.4'
+
+# Mark down and HTML
 gem 'nokogiri'
 gem 'pagedown-bootstrap-rails'
 gem 'redcarpet'
 gem 'builder'
 
+# User Auth
+gem 'devise'
+gem 'devise-bootstrap-views'
+
+# Pagination
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

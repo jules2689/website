@@ -5,6 +5,13 @@ class PostTest < ActiveSupport::TestCase
     @post = posts(:one)
   end
 
+  test "published" do
+    @post.published_date = 1.day.ago
+    assert @post.published?, "Post was not published"
+    @post.published_date = 1.day.from_now
+    refute @post.published?, "Post was published"
+  end
+
   test "handle changes on save" do
     handle = @post.handle
     @post.title = "This is a brand new title"

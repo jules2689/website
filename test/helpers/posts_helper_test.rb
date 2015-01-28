@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class PostsHelperTest < ActionView::TestCase
-
-
   test "linked_tag_list" do
     post = posts(:one)
     post.tag_list = "test, test1"

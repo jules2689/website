@@ -1,15 +1,22 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @post = posts(:one)
-    basic = ActionController::HttpAuthentication::Basic
-    @credentials = basic.encode_credentials(Julianssite::Username, Julianssite::Password)
-    request.headers['Authorization'] = @credentials
+    @user = users(:one)
+    sign_in(@user)
   end
 
   test "should get index" do
     get :index
+    assert_response :success
+    assert_not_nil assigns(:posts)
+  end
+
+  test "should not get all posts" do
+    get :all_posts
     assert_response :success
     assert_not_nil assigns(:posts)
   end
@@ -53,51 +60,57 @@ class PostsControllerTest < ActionController::TestCase
   # Unauthenticated
 
   test "should get index while unauthorized" do
-    request.headers['Authorization'] = nil
+    sign_out(@user)
     get :index
     assert_response :success
     assert_not_nil assigns(:posts)
   end
 
+  test "should not get all_posts while unauthorized" do
+    sign_out(@user)
+    get :all_posts
+    assert_redirected_to new_user_session_path
+  end
+
   test "should not get new while unauthorized" do
-    request.headers['Authorization'] = nil
+    sign_out(@user)
     get :new
-    assert_response :unauthorized
+    assert_redirected_to new_user_session_path
   end
 
   test "should not create post while unauthorized" do
-    request.headers['Authorization'] = nil
+    sign_out(@user)
     assert_no_difference('Post.count') do
       post :create, post: { body: @post.body, handle: @post.handle, title: @post.title }
     end
 
-    assert_response :unauthorized
+    assert_redirected_to new_user_session_path
   end
 
   test "should show post while unauthorized" do
-    request.headers['Authorization'] = nil
+    sign_out(@user)
     get :show, handle: @post
     assert_response :success
   end
 
   test "should not get edit while unauthorized" do
-    request.headers['Authorization'] = nil
+    sign_out(@user)
     get :edit, handle: @post
-    assert_response :unauthorized
+    assert_redirected_to new_user_session_path
   end
 
   test "should not update post while unauthorized" do
-    request.headers['Authorization'] = nil
+    sign_out(@user)
     patch :update, handle: @post, post: { body: @post.body, handle: @post.handle, title: @post.title }
-    assert_response :unauthorized
+    assert_redirected_to new_user_session_path
   end
 
   test "should not destroy post while unauthorized" do
-    request.headers['Authorization'] = nil
+   sign_out(@user)
     assert_no_difference('Post.count', -1) do
       delete :destroy, handle: @post
     end
 
-    assert_response :unauthorized
+    assert_redirected_to new_user_session_path
   end
 end

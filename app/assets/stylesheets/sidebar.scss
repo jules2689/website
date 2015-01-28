@@ -96,6 +96,13 @@ $hr-color: rgba(255, 255, 255, 0.41);
       margin-top: 10px;
     }
   }
+
+  .login {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    font-size: 14px;
+  }
 }
 
 #wrapper.toggled #sidebar-wrapper {

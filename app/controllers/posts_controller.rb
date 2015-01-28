@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  http_basic_authenticate_with name: Julianssite::Username, password: Julianssite::Password, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,7 +10,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def all_posts
+    @posts = Post.unscoped.order(updated_at: :desc).paginate(page: params[:page])
+    render "index"
+  end
+
   def show
+    redirect_to posts_path unless @post.published?
   end
 
   def new
@@ -57,10 +63,10 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find_by(handle: params[:handle])
+    @post = Post.unscoped.find_by(handle: params[:handle])
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :tag_list)
+    params.require(:post).permit(:title, :body, :tag_list, :published_date)
   end
 end

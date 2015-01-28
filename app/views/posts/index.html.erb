@@ -9,15 +9,20 @@
       <small><i class="fa fa-rss"></i></small>
     <% end %>
     <% if params[:tagged] %><small>Viewing posts tagged with <%= params[:tagged] %></small><% end %>
+    <% if current_user %><%= link_to "New Post", new_post_path, class: "btn btn-default" %><% end %>
   </h1>
 </div>
 
 <div id="posts">
   <% @posts.each do |post| %>
     <div class="col-md-12 post">
-      <h2><%= post.title %></h2>
+      <h2>
+        <% unless post.published? %> <small><span class="label label-info">Unpublished</span></small><% end %>
+        <%= post.title %>
+      </h2>
       <%= render "metadata", post: post %>
       <div class="post-body">
+        <% if current_user %><%= link_to "Edit Post", edit_post_path(post), class: "btn btn-default pull-right" %><% end %>
         <%= post.trancated_body %>
         <br>
         <h4><%= link_to post, class: "read-more btn btn-default" do %><i class="fa fa-file-o"></i> Read More<% end %></h4>

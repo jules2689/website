@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  default_scope { order(updated_at: :desc) }
+  default_scope { where('published_date <= ?', DateTime.now).order(updated_at: :desc) }
   acts_as_ordered_taggable
 
   validates_presence_of :title, :body
@@ -20,6 +20,10 @@ class Post < ActiveRecord::Base
   def html_body
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
     markdown.render(body).html_safe
+  end
+
+  def published?
+    published_date <= DateTime.now
   end
 
   def to_param

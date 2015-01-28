@@ -14,7 +14,19 @@
   <br>
 
   <ul class="sidebar-nav sidebar-content text-center">
+    <li><%= link_to "Projects", root_url %></li>
     <li><%= link_to "Blog", posts_url %></li>
     <li><%= link_to "Who am I?", me_path %></li>
+    <% if current_user %>
+      <li><h3>Admin Actions</h3></li>
+      <li><%= link_to "All Posts", all_posts_posts_path %></li>
+      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+    <% end %>
   </ul>
+
+  <% if current_user %>
+    <span class="login label label-info">
+      Logged in as <%= current_user.email %>
+    </span>
+  <% end %>
 </div>
