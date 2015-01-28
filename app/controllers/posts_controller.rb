@@ -4,15 +4,10 @@ class PostsController < ApplicationController
 
   def index
     if params[:tagged]
-      @posts = Post.tagged_with(params[:tagged]).paginate(page: params[:page])
+      @posts = Post.scoped_posts(signed_in?).tagged_with(params[:tagged]).paginate(page: params[:page])
     else
-      @posts = Post.paginate(page: params[:page])
+      @posts ||= Post.scoped_posts(signed_in?).paginate(page: params[:page])
     end
-  end
-
-  def all_posts
-    @posts = Post.unscoped.order(updated_at: :desc).paginate(page: params[:page])
-    render "index"
   end
 
   def show

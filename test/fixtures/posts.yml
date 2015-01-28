@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   title: MyString
   body: |
       <div id="post-body"><p class="p1">I've been learning, although sometimes a little bit randomly, over the past few weeks. I'm curious if the course content in class, which is largely obvious or review, is taking a lot of my "thought time" (how much I'm able to mentally process in a day before becoming tired). I find my yearning for more, wanting to improve, but sometimes its as if I'm too tired to make that jump. Let's see if I can work on that for next week's post.</p><p class="p1"><b><br></b></p><p class="p1"><b>Jan 18</b></p>
@@ -27,8 +28,10 @@ one:
   updated_at: 2015-01-28
 
 two:
+  id: 2
   title: MyString
   body: MyText
   handle: MyString
   created_at: 2015-01-28
   updated_at: 2015-01-28
+  published_date: <%= 5.days.from_now %>

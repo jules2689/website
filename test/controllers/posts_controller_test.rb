@@ -5,6 +5,7 @@ class PostsControllerTest < ActionController::TestCase
 
   setup do
     @post = posts(:one)
+    @post2 = Post.unscoped.find(2)
     @user = users(:one)
     sign_in(@user)
   end
@@ -13,12 +14,7 @@ class PostsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:posts)
-  end
-
-  test "should not get all posts" do
-    get :all_posts
-    assert_response :success
-    assert_not_nil assigns(:posts)
+    assert assigns(:posts).include?(@post2)
   end
 
   test "should get new" do
@@ -72,12 +68,7 @@ class PostsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:posts)
-  end
-
-  test "should not get all_posts while unauthorized" do
-    sign_out(@user)
-    get :all_posts
-    assert_redirected_to new_user_session_path
+    refute assigns(:posts).include?(@post2)
   end
 
   test "should not get new while unauthorized" do

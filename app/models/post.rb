@@ -30,6 +30,14 @@ class Post < ActiveRecord::Base
     handle
   end
 
+  def self.scoped_posts(signed_in)
+    if signed_in
+      Post.unscoped.all
+    else
+      Post.all
+    end
+  end
+
   private
 
   def set_handle
