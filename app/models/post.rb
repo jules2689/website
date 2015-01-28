@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
   end
 
   def published?
-    published_date <= DateTime.now
+    published_date.present? && published_date <= DateTime.now
   end
 
   def to_param
