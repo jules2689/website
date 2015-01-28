@@ -39,6 +39,14 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should not show unpublished post" do
+    @post.published_date = 10.days.from_now
+    @post.save
+
+    get :show, handle: @post
+    assert_redirected_to posts_path
+  end
+
   test "should get edit" do
     get :edit, handle: @post
     assert_response :success

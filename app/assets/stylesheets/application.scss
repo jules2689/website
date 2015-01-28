@@ -2,6 +2,7 @@
  *= require_tree .
  *= require_self
  *= require devise_bootstrap_views
+ *= require jquery.datetimepicker
  */
 
 @import "bootstrap-sprockets";

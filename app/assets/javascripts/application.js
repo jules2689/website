@@ -1,6 +1,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery.datetimepicker
 //= require turbolinks
 //= require pagedown_bootstrap
 //= require pagedown_init
@@ -12,6 +13,8 @@ $(document).on("page:change", function(){
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
   });
+
+  $('.datetimepicker').datetimepicker();
 
   $('img').load(function(){
     $(".card-container").masonry({itemSelector: '.card'});
