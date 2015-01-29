@@ -19,7 +19,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 
 # Mark down and HTML
 gem 'nokogiri'
-gem 'pagedown-bootstrap-rails'
+gem 'pagedown-bootstrap-rails', git: "https://github.com/jules2689/pagedown-bootstrap-rails.git"
 gem 'redcarpet'
 gem 'builder'
 
