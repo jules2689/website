@@ -29,6 +29,13 @@
       <%= f.file_field :header_image %>
     </div>
 
+    <% if @post.header_image_stored? %>
+      <div class="field">
+        <%= f.label :remove_header_image %>
+        <%= f.check_box :remove_header_image %>
+      </div>
+    <% end %>
+
     <div class="field">
       <%= f.label :body %><br>
       <%= f.markdown_input :body, { preview: true } %>
