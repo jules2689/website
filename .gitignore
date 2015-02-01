@@ -9,6 +9,7 @@
 /test/version_tmp/
 /tmp/
 /log/
+/public/system/dragonfly/development
 
 ## Specific to RubyMotion:
 .dat*

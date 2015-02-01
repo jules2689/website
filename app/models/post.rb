@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   default_scope { where('published_date <= ?', DateTime.now).order(updated_at: :desc) }
   acts_as_ordered_taggable
+  dragonfly_accessor :header_image
 
   validates_presence_of :title, :body
   before_validation :set_handle

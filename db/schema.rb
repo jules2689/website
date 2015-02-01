@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128002119) do
+ActiveRecord::Schema.define(version: 20150201061554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 20150128002119) do
     t.string   "handle"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "published_date", default: '2015-01-26 23:35:21', null: false
+    t.datetime "published_date",    default: '2015-01-31 06:19:36', null: false
+    t.string   "header_image_uid"
+    t.string   "header_image_name"
   end
 
   create_table "taggings", force: true do |t|

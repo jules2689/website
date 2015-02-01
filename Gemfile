@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.8'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
-gem 'bootstrap-sass', '~> 3.3.3'
-gem 'jquery-datetimepicker-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -13,6 +11,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pry-byebug', group: :development
+
+# Design Controls
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'jquery-datetimepicker-rails'
 
 # Tagging
 gem 'acts-as-taggable-on', '~> 3.4'
@@ -30,3 +32,7 @@ gem 'devise-bootstrap-views'
 # Pagination
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+
+# Image Uploading
+gem 'dragonfly', '~> 1.0.7'
+gem 'rack-cache', :require => 'rack/cache'

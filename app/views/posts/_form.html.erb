@@ -25,6 +25,11 @@
     </div>
 
     <div class="field">
+      <%= f.label :header_image %>
+      <%= f.file_field :header_image %>
+    </div>
+
+    <div class="field">
       <%= f.label :body %><br>
       <%= f.markdown_input :body, { preview: true } %>
     </div>
