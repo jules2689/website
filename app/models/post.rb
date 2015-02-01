@@ -33,7 +33,7 @@ class Post < ActiveRecord::Base
 
   def self.scoped_posts(signed_in)
     if signed_in
-      Post.unscoped.all
+      Post.unscoped.all.order(updated_at: :desc)
     else
       Post.all
     end
