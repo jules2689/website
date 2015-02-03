@@ -6,6 +6,7 @@
   min-height: 100px;
 
   &.background-image {
+    background-size: cover !important;
     height: 300px;
     -webkit-box-shadow: inset 0px -85px 78px 16px rgba(0,0,0,0.75);
     -moz-box-shadow: inset 0px -85px 78px 16px rgba(0,0,0,0.75);
