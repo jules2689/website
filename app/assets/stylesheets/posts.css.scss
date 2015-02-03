@@ -7,6 +7,8 @@
 
   &.background-image {
     background-size: cover !important;
+    background-repeat:no-repeat !important;
+    background-position:center center !important;
     height: 300px;
     -webkit-box-shadow: inset 0px -85px 78px 16px rgba(0,0,0,0.75);
     -moz-box-shadow: inset 0px -85px 78px 16px rgba(0,0,0,0.75);
@@ -94,7 +96,7 @@
       box-shadow: inset 0px -125px 78px 16px rgba(0,0,0,0.75);
 
       .data {
-        padding-top: 90px;
+        padding-top: 0px;
       }
     }
 
