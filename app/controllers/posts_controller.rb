@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    redirect_to posts_path unless @post.published?
+    redirect_to posts_path unless signed_in? || @post.published?
   end
 
   def new
