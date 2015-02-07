@@ -2,7 +2,13 @@
   <%= @post.title %>
 <% end %>
 
-<div class="page-header post-header <% if @post.header_image_stored? %>background-image" style="background: url(<%=@post.header_image.url %>);<% end %>">
+<div class="page-header post-header 
+  <% if @post.header_image_stored? %>
+    background-image" style="background: url(<%=@post.header_image.url %>);
+                            -webkit-box-shadow: inset 0px -85px 78px 16px #<%= @post.dominant_header_colour %>;
+                            -moz-box-shadow: inset 0px -85px 78px 16px #<%= @post.dominant_header_colour %>;
+                            box-shadow: inset 0px -85px 78px 16px #<%= @post.dominant_header_colour %>;
+  <% end %>">
   <div class="data">
     <h1><%= @post.title %></h1>
     <%= render "metadata", post: @post %>

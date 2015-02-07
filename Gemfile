@@ -36,3 +36,4 @@ gem 'will_paginate-bootstrap'
 # Image Uploading
 gem 'dragonfly', '~> 1.0.7'
 gem 'rack-cache', :require => 'rack/cache'
+gem 'colorscore'

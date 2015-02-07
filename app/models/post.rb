@@ -1,7 +1,11 @@
+include Colorscore
+
 class Post < ActiveRecord::Base
   default_scope { where('published_date <= ?', DateTime.now).order(updated_at: :desc) }
   acts_as_ordered_taggable
-  dragonfly_accessor :header_image
+  dragonfly_accessor :header_image do
+    after_assign :set_dominant_color
+  end
 
   validates_presence_of :title, :body
   before_validation :set_handle
@@ -43,6 +47,11 @@ class Post < ActiveRecord::Base
 
   def set_handle
     self.handle = self.title.downcase.parameterize
+  end
+
+  def set_dominant_color
+    histogram = Histogram.new(header_image.path)
+    self.dominant_header_colour = histogram.scores.first.last.hex
   end
 
 end
