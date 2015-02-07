@@ -1,0 +1,26 @@
+<div class="modal fade" id="imageModal">
+  <div class="modal-dialog formWrapper">
+
+    <%= form_for [@post, Image.new], authenticity_token: true, remote: true do |f| %>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Image Upload</h4>
+          <p>Inserts at the current cursor position</p>
+        </div>
+
+        <div class="modal-body">
+          <%= f.text_field :title, placeholder: "Image Title", class: "form-control" %>
+          <%= f.number_field :width, placeholder: "Custom Width (optional)", class: "form-control" %>
+          <%= f.file_field :image %>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit "Upload Image", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

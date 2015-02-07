@@ -1,6 +1,7 @@
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery.remotipart
+//= require bootstrap-sprockets
 //= require jquery.datetimepicker
 //= require turbolinks
 //= require pagedown_bootstrap

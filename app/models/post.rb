@@ -3,9 +3,14 @@ include Colorscore
 class Post < ActiveRecord::Base
   default_scope { where('published_date <= ?', DateTime.now).order(updated_at: :desc) }
   acts_as_ordered_taggable
+
   dragonfly_accessor :header_image do
     after_assign :set_dominant_color
   end
+  validates_property :format, of: :header_image, in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false, message: "should be either .jpeg, .jpg, .png, .bmp", if: :header_image_changed?
+
+  has_many :images
+  accepts_nested_attributes_for :images
 
   validates_presence_of :title, :body
   before_validation :set_handle
@@ -53,5 +58,4 @@ class Post < ActiveRecord::Base
     histogram = Histogram.new(header_image.path)
     self.dominant_header_colour = histogram.scores.first.last.hex
   end
-
 end
