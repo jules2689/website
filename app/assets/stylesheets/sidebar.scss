@@ -63,6 +63,9 @@ $hr-color: rgba(255, 255, 255, 0.41);
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
   left: 250px;
   width: 0;
   height: 100%;
@@ -103,6 +106,7 @@ $hr-color: rgba(255, 255, 255, 0.41);
     position: absolute;
     width: 100%;
     font-size: 14px;
+    border-radius: 0;
   }
 }
 
