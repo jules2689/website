@@ -40,9 +40,11 @@
   }
 }
 
-#post-body img {
+#post-body img, #wmd-preview-body img {
   float: left;
-  margin: 20px;
+  margin: 15px;
+  padding: 15px;
+  max-width:100%;
 }
 
 #post-body, #disqus_thread {
