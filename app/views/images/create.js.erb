@@ -8,5 +8,11 @@ var newVal = textBefore + img + textAfter;
 $('#wmd-input-body').val(newVal);
 $('#imageModal').modal('hide');
 
+var currentIDs = $("#image-ids").val().split(",");
+currentIDs.push(<%= @image.id %>)
+currentIDs = currentIDs.filter(function(n){ return n != undefined && n != ""; });
+var idsList = currentIDs.join(",")
+$("#image-ids").val(idsList)
+
 var event = new CustomEvent("editor:refresh");
 document.dispatchEvent(event);

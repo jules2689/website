@@ -26,6 +26,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        process_images if params[:post][:image_ids]
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -56,6 +57,14 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def process_images
+    params[:post][:image_ids].split(",").each do |id|
+      image = Image.find(id)
+      image.post = @post
+      image.save
+    end
+  end
 
   def set_post
     @post = Post.unscoped.find_by(handle: params[:handle])

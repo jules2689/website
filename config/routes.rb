@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users, :skip => [:registrations]
-  resources :posts, param: :handle do
-    resources :images
-  end
+  resources :posts, param: :handle
+  resources :images, only: :create
 
   controller :application do
     get "/me", to: :me, as: :me

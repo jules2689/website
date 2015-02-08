@@ -2,15 +2,10 @@ class ImagesController < ApplicationController
   before_action :set_post
 
   def create
-    @image = @post.images.create(image_params)
+    @image = Image.create(image_params)
     respond_to do |format|
       format.js
     end  
-  end
-
-  def destroy
-    @image.destroy
-    respond_with(@image)
   end
 
   private
@@ -19,6 +14,6 @@ class ImagesController < ApplicationController
     end
 
     def image_params
-      params.require(:image).permit(:image, :title, :width)
+      params.require(:image).permit(:image, :title, :width, :post_id)
     end
 end

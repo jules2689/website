@@ -1,14 +1,16 @@
 <%= form_for @post do |f| %>
-  <%= render "layouts/forms/errors", object: @post %>
-
   <div class="page-header post-header">
     <h1>
       <%= @post.new_record? ? "New" : "Editing" %> Page
+      <%= f.hidden_field :image_ids, value: params[:post].present? ? params[:post][:image_ids] : "", id: "image-ids" %>
       <%= f.submit "Save", class: "btn btn-primary" %>
     </h1>
   </div>
 
   <div class="form">
+
+    <%= render "layouts/forms/errors", object: @post %>
+
     <div class="field">
       <%= f.label :title %><br>
       <%= f.text_field :title, class: "form-control" %>
