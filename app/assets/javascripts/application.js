@@ -16,17 +16,4 @@ $(document).on("page:change", function(){
   });
 
   $('.datetimepicker').datetimepicker({ format: "Y-m-d H:i +0500", validateOnBlur: false });
-
-  $('img').load(function(){
-    $(".card-container").masonry({itemSelector: '.card'});
-  });
-  $(".card-container").masonry({itemSelector: '.card'});
-
-  $(".card a").hover(
-    function() {
-      $( this ).find("h2").addClass( "hover" );
-    }, function() {
-      $( this ).find("h2").removeClass( "hover" );
-    }
-  );
 });
