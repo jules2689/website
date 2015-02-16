@@ -90,8 +90,10 @@
 }
 
 @media(max-width:991px) {
+  .pagination { padding: 0 15px !important; }
+
   #posts {
-    padding-left: 0px;
+    padding: 0px;
   }
 
   .metadata span { display: block; }
