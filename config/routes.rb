@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :skip => [:registrations]
   resources :posts, param: :handle
+  resources :front_page_widgets, except: :show
   resources :images, only: :create
 
   controller :application do
@@ -14,5 +15,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root "application#index"
+  root "front_page_widgets#index"
 end

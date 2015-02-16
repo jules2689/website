@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @front_page_widget.title %>
+</p>
+
+<p>
+  <strong>Subtext:</strong>
+  <%= @front_page_widget.subtext %>
+</p>
+
+<p>
+  <strong>Image uid:</strong>
+  <%= @front_page_widget.image_uid %>
+</p>
+
+<p>
+  <strong>Image name:</strong>
+  <%= @front_page_widget.image_name %>
+</p>
+
+<%= link_to 'Edit', edit_front_page_widget_path(@front_page_widget) %> |
+<%= link_to 'Back', front_page_widgets_path %>

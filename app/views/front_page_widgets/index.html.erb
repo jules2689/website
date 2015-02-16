@@ -1,0 +1,24 @@
+<% if current_user %>
+  <div class="page-header">
+    <%= link_to "New Widget", new_front_page_widget_path, class: "btn btn-default" %>
+  </div>
+<% end %>
+
+<div class="card-container">
+
+<% @front_page_widgets.each do |widget| %>
+  <div class="card">
+    <a href="<%= widget.url %>">
+      <img src="<%= widget.image.url %>" alt="<%= widget.title %>" />
+      <h2><%= widget.title %> <% if widget.subtext %><small><%= widget.subtext%></small><% end %></h2>
+    </a>
+    <% if current_user %>
+      <div class="widget-button-container">
+        <%= link_to "Edit Widget", edit_front_page_widget_path(widget), class: "btn btn-default" %>
+        <%= link_to "Delete Widget", widget, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+</div>
