@@ -9,6 +9,21 @@ class FrontPageWidgetsController < ApplicationController
     respond_with(@front_page_widgets)
   end
 
+  def positions
+    @front_page_widgets = FrontPageWidget.all
+    respond_with(@front_page_widgets)
+  end
+
+  def save_positions
+    params["positions"].each do |position|
+      data = position.split(",")
+      widget = FrontPageWidget.find(data.first)
+      widget.position = data.last
+      widget.save
+    end
+    redirect_to root_url
+  end
+
   def new
     @front_page_widget = FrontPageWidget.new
     respond_with(@front_page_widget)
@@ -19,6 +34,7 @@ class FrontPageWidgetsController < ApplicationController
 
   def create
     @front_page_widget = FrontPageWidget.new(front_page_widget_params)
+    @front_page_widget.position = FrontPageWidget.maximum(:position) + 1
     @front_page_widget.save
     redirect_to root_url
   end

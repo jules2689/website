@@ -1,0 +1,15 @@
+<div class="page-header">
+  <%= button_tag "Save Positions", class: "btn btn-default", id: "save-positions" %>
+  <p id="status"></p>
+</div>
+
+<ul id="sortable">
+  <% @front_page_widgets.each_with_index do |widget, index| %>
+    <li class="card" position="<%= index %>" id="<%= widget.id %>">
+      <a href="#">
+        <img src="<%= widget.image.url %>" alt="<%= widget.title %>" />
+        <h2><%= widget.title %> <% if widget.subtext %><small><%= widget.subtext%></small><% end %></h2>
+      </a>
+    </li>
+  <% end %>
+</ul>
