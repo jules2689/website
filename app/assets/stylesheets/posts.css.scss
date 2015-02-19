@@ -50,12 +50,16 @@
 }
 
 #post-body, #disqus_thread {
+  font-family: "Source Sans Pro", "Open Sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Tahoma", sans-serif;
+  line-height: 25px;
   padding: 30px;
 }
 
 .post {
   padding-bottom: 15px;
   .post-body {
+    font-family: "Source Sans Pro", "Open Sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Tahoma", sans-serif;
+    line-height: 25px;
     padding: 20px;
     border: 1px solid rgba(163, 163, 163, 0.21);
     border-radius: 5px;
