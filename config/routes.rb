@@ -10,10 +10,6 @@ Rails.application.routes.draw do
   end
   resources :images, only: :create
 
-  controller :application do
-    get "/me", to: :me, as: :me
-  end
-
   resources :users do
     collection do
       resource :sessions, only: [:new, :create, :destroy]

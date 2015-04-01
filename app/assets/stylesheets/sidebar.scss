@@ -126,11 +126,11 @@ $hr-color: rgba(255, 255, 255, 0.41);
 
 /* Responsive Wrapper Code */
 
-@media(min-width:991px) {
-    #wrapper {
-        padding-left: 250px;
-    }
+@media(max-width:991px) {
+  .avatar { width: 60px; }
+}
 
+@media(min-width:991px) {
     #wrapper.toggled {
         padding-left: 0;
     }

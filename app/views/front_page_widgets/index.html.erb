@@ -1,11 +1,25 @@
-<% if current_user %>
-  <div class="page-header">
-    <%= link_to "New Widget", new_front_page_widget_path, class: "btn btn-default" %>
-    <%= link_to "Reposition Widgets", save_positions_front_page_widgets_path, class: "btn btn-default" %>
+<div class="col-md-8 col-md-offset-2 front-page-header">
+  <h1>Julian Nadeau</h1>
+  <div class="pull-left">
+    <a href="https://github.com/jules2689"><i class="fa fa-github-square fa-2x"></i></a>
+    <a href="https://twitter.com/jules2689"><i class="fa fa-twitter-square fa-2x"></i></a>
+    <a href="http://www.linkedin.com/pub/julian-nadeau/49/1b0/721"><i class="fa fa-linkedin-square fa-2x"></i></a>
+    <a href="mailto:julian@jnadeau.ca"><i class="fa fa-envelope-square fa-2x"></i></a>
   </div>
-<% end %>
 
-<div class="card-container">
+  <% if current_user %>
+    <div class="pull-right">
+      <%= link_to "New Widget", new_front_page_widget_path, class: "btn btn-default" %>
+      <%= link_to "Reposition Widgets", save_positions_front_page_widgets_path, class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="col-md-8 col-md-offset-2 front-page-content">
+  <p>I am a software developer at <a href="http://shopify.com">Shopify.</a> I work on the iOS and Ruby on Rails frameworks.</a></p>
+</div>
+
+<div class="card-container col-md-8 col-md-offset-2">
 
 <% @front_page_widgets.each do |widget| %>
   <div class="card">

@@ -36,6 +36,7 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should not show unpublished post" do
+    sign_out :user
     @post.published_date = 10.days.from_now
     @post.save
 

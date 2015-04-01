@@ -2,26 +2,24 @@
   Random Thoughts
 <% end %>
 
-<div class="page-header post-header">
-  <h1>
-    Random Thoughts
+<%= render layout: "post_header" do %>
+    <h1>Random Thoughts
     <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
       <small><i class="fa fa-rss"></i></small>
-    <% end %>
+    <% end %></h1>
     <% if params[:tagged] %><small>Viewing posts tagged with <%= params[:tagged] %></small><% end %>
     <% if current_user %><%= link_to "New Post", new_post_path, class: "btn btn-default" %><% end %>
-  </h1>
-</div>
+<% end %>
 
 <div id="posts">
   <% @posts.each do |post| %>
-    <div class="col-md-12 post">
+    <div class="col-md-8 col-md-offset-2 post">
       <h2>
         <% unless post.published? %> <small><span class="label label-info">Unpublished</span></small><% end %>
         <%= post.title %>
       </h2>
       <%= render "metadata", post: post %>
-      <div class="post-body">
+      <div class="post-body clearfix">
         <% if current_user %><%= link_to "Edit Post", edit_post_path(post), class: "btn btn-default pull-right" %><% end %>
         <%= post.trancated_body %>
         <br>
@@ -29,6 +27,6 @@
       </div>
     </div>
   <% end %>
-</div>
 
-<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+  <div class="col-md-8 col-md-offset-2"><%= will_paginate @posts, renderer: BootstrapPagination::Rails %></div>
+</div>

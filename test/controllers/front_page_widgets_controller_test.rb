@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class FrontPageWidgetsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @front_page_widget = front_page_widgets(:one)
+    sign_in(users(:one))
   end
 
   test "should get index" do
@@ -18,15 +21,10 @@ class FrontPageWidgetsControllerTest < ActionController::TestCase
 
   test "should create front_page_widget" do
     assert_difference('FrontPageWidget.count') do
-      post :create, front_page_widget: { image_name: @front_page_widget.image_name, image_uid: @front_page_widget.image_uid, subtext: @front_page_widget.subtext, title: @front_page_widget.title }
+      post :create, front_page_widget: { url: "http://example.com", image_name: @front_page_widget.image_name, image_uid: @front_page_widget.image_uid, subtext: @front_page_widget.subtext, title: @front_page_widget.title }
     end
 
-    assert_redirected_to front_page_widget_path(assigns(:front_page_widget))
-  end
-
-  test "should show front_page_widget" do
-    get :show, id: @front_page_widget
-    assert_response :success
+    assert_redirected_to root_url
   end
 
   test "should get edit" do
@@ -36,7 +34,7 @@ class FrontPageWidgetsControllerTest < ActionController::TestCase
 
   test "should update front_page_widget" do
     patch :update, id: @front_page_widget, front_page_widget: { image_name: @front_page_widget.image_name, image_uid: @front_page_widget.image_uid, subtext: @front_page_widget.subtext, title: @front_page_widget.title }
-    assert_redirected_to front_page_widget_path(assigns(:front_page_widget))
+    assert_redirected_to root_url
   end
 
   test "should destroy front_page_widget" do
@@ -44,6 +42,6 @@ class FrontPageWidgetsControllerTest < ActionController::TestCase
       delete :destroy, id: @front_page_widget
     end
 
-    assert_redirected_to front_page_widgets_path
+    assert_redirected_to root_url
   end
 end

@@ -1,11 +1,15 @@
-.pagination { padding: 0 35px !important; }
 
 .page-header.post-header {
   background-color: #2FBFC0;
   margin: 0;
   margin-top: -20px;
   padding-left: 30px;
-  min-height: 100px;
+  min-height: 150px;
+
+  .post-data { 
+    padding-left: 0px; 
+    h1 { line-height: 100px; }
+  }
 
   &.background-image {
     background-size: cover !important;
@@ -17,12 +21,15 @@
     box-shadow: inset 0px -85px 78px 16px rgba(0,0,0,0.75);
 
     .data {
-      padding-top: 150px;
+      padding-top: 180px;
+      padding-left: 30px;
     }
   }
 
   h1 {
-    line-height: 100px;
+    line-height: 150px;
+    margin-top: 20px;
+    margin-bottom: 15px;
   }
 
   .metadata {
@@ -31,6 +38,13 @@
 
     #read-more { display: none; }
     a { color: #fff; }
+  }
+
+  .avatar {
+    border-radius: 100px;
+    float: left;
+    position: relative;
+    margin-top: 30px;
   }
 }
 
@@ -49,7 +63,11 @@
   max-width:100%;
 }
 
-#post-body, #disqus_thread {
+#disqus_thread {
+  padding: 15px;
+}
+
+#post-body {
   font-family: "Source Sans Pro", "Open Sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "Tahoma", sans-serif;
   line-height: 25px;
   padding: 30px;
@@ -94,35 +112,37 @@
 }
 
 @media(max-width:991px) {
-  .pagination { padding: 0 15px !important; }
-
   #posts {
     padding: 0px;
   }
 
-  .metadata span { display: block; }
-
   .page-header.post-header {
     height: auto;
+    padding-left: 0px;
 
     &.background-image {
       -webkit-box-shadow: inset 0px -125px 78px 16px rgba(0,0,0,0.75);
       -moz-box-shadow: inset 0px -125px 78px 16px rgba(0,0,0,0.75);
       box-shadow: inset 0px -125px 78px 16px rgba(0,0,0,0.75);
-
-      .data {
-        padding-top: 0px;
-      }
     }
 
     h1 {
       line-height: inherit;
       padding: 10px 30px;
+      margin: 0;
     }
 
     .metadata {
       margin-top: 0px;
       padding: 0px 30px;
+    }
+  }
+}
+
+@media(max-width:500px) {
+  .page-header.post-header {
+    h1 {
+      line-height: inherit !important;
     }
   }
 }

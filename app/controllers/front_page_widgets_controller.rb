@@ -56,6 +56,6 @@ class FrontPageWidgetsController < ApplicationController
   end
 
   def front_page_widget_params
-    params.require(:front_page_widget).permit(:title, :subtext, :image, :url)
+    params.require(:front_page_widget).permit(:title, :subtext, :image_uid, :image_name, :image, :url)
   end
 end
