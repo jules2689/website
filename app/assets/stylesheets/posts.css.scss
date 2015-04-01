@@ -42,7 +42,7 @@
     border-radius: 100px;
     float: left;
     position: relative;
-    margin-top: 30px;
+    margin-top: 50px;
   }
 }
 
@@ -127,13 +127,26 @@
     h1 {
       line-height: inherit;
       padding: 10px 30px;
-      margin: 0;
+      margin: 30px;
       font-size: 2em;
     }
 
     .metadata {
       margin-top: 0px;
       padding: 0px 30px;
+    }
+
+    .avatar {
+      margin-top: 30px;
+      width: 60px;
+    }
+  }
+}
+
+@media(max-width:768px) {
+  .page-header.post-header {
+    h1 {
+      margin: 0px;
     }
   }
 }
@@ -143,6 +156,7 @@
     h1 {
       line-height: inherit !important;
       font-size: 1.7em;
+      margin: 0px;
     }
   }
 }
