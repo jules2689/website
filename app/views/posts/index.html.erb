@@ -21,8 +21,9 @@
       <%= render "metadata", post: post %>
       <div class="post-body clearfix">
         <% if current_user %><%= link_to "Edit Post", edit_post_path(post), class: "btn btn-default pull-right" %><% end %>
-        <%= post.trancated_body %>
-        <br>
+        <div class="clearfix">
+          <%= post.trancated_body %>
+        </div>
         <h4><%= link_to post, class: "read-more btn btn-default" do %><i class="fa fa-file-o"></i> Read More<% end %></h4>
       </div>
     </div>

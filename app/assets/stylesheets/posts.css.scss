@@ -8,7 +8,6 @@
 
   .post-data { 
     padding-left: 0px; 
-    h1 { line-height: 100px; }
   }
 
   &.background-image {
@@ -27,9 +26,8 @@
   }
 
   h1 {
-    line-height: 150px;
-    margin-top: 20px;
-    margin-bottom: 15px;
+    font-size: 2.5em;
+    line-height: 100px;
   }
 
   .metadata {
@@ -130,6 +128,7 @@
       line-height: inherit;
       padding: 10px 30px;
       margin: 0;
+      font-size: 2em;
     }
 
     .metadata {
@@ -143,6 +142,7 @@
   .page-header.post-header {
     h1 {
       line-height: inherit !important;
+      font-size: 1.7em;
     }
   }
 }

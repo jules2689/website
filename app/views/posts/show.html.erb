@@ -4,10 +4,10 @@
 
 <%= render layout: "post_header" do %>
   <h1><%= @post.title %></h1>
-  <%= render "metadata", post: @post %>
 <% end %>
 
 <div class="col-md-8 col-md-offset-2" id="post-body">
+  <%= render "metadata", post: @post %>
   <%= @post.html_body %>
 </div>
 
