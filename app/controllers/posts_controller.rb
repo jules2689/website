@@ -8,11 +8,12 @@ class PostsController < ApplicationController
     else
       @posts = Post.scoped_posts(signed_in?).paginate(page: params[:page], per_page: 3)
     end
-    @tags = Post.tag_counts_on(:tags)
+    @tags = Post.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
   end
 
   def show
     redirect_to posts_path unless signed_in? || @post.published?
+    @tags = Post.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
   end
 
   def new

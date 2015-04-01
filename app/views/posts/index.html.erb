@@ -18,10 +18,12 @@
 
   <% @posts.each do |post| %>
     <div class="col-md-8 col-md-offset-2 post">
-      <h2>
-        <% unless post.published? %> <small><span class="label label-info">Unpublished</span></small><% end %>
-        <%= post.title %>
-      </h2>
+      <%= link_to post_path(post) do %>
+        <h2>
+          <% unless post.published? %> <small><span class="label label-info">Unpublished</span></small><% end %>
+          <%= post.title %>
+        </h2>
+      <% end %>
       <%= render "metadata", post: post %>
       <div class="post-body clearfix">
         <% if current_user %><%= link_to "Edit Post", edit_post_path(post), class: "btn btn-default pull-right" %><% end %>
