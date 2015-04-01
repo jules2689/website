@@ -47,9 +47,13 @@
 }
 
 @media (min-width:768px) and (max-width:991px) {
-  .card { width: 50%; }
+  .card { width: 48%; }
 }
 
-@media (max-width:600px) {
+@media (min-width:630px) and (max-width:768px) {
+  .card { width: 47%; }
+}
+
+@media (max-width:630px) {
   .card { width: 92%; }
 }
