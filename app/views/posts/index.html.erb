@@ -4,14 +4,18 @@
 
 <%= render layout: "post_header" do %>
     <h1>Random Thoughts
-    <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
-      <small><i class="fa fa-rss"></i></small>
-    <% end %></h1>
-    <% if params[:tagged] %><small>Viewing posts tagged with <%= params[:tagged] %></small><% end %>
+      <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
+        <small><i class="fa fa-rss"></i></small>
+      <% end %>
+     <% if params[:tagged] %><small>Viewing posts tagged with <%= params[:tagged] %></small><% end %>
+    </h1>
     <% if current_user %><%= link_to "New Post", new_post_path, class: "btn btn-default" %><% end %>
 <% end %>
 
+<%= render "tag_cloud", tags: @tags %>
+
 <div id="posts">
+
   <% @posts.each do |post| %>
     <div class="col-md-8 col-md-offset-2 post">
       <h2>

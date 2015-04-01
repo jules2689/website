@@ -1,3 +1,18 @@
+/* TAG CLOUD CSS */
+
+.tag-cloud-menu { 
+  margin-top: -70px; 
+  .btn {
+    background: none;
+    color: #fff;
+    border: none;
+    &:focus, &:active, &:active:focus {
+      outline: none !important;
+    }
+  }
+}
+
+/* POST CSS */
 
 .page-header.post-header {
   background-color: #2FBFC0;
@@ -148,6 +163,10 @@
     h1 {
       margin: 0px;
     }
+  }
+
+  .tag-cloud-menu { 
+    margin-top: -35px; 
   }
 }
 

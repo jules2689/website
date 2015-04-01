@@ -1,0 +1,15 @@
+<div class="tag-cloud-menu dropdown pull-right">
+  <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    Filter by Tag
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+   <% tag_cloud(tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+     <li role="presentation" <% if tag.name == params[:tagged] %>class='active'<% end %>>
+       <%= link_to posts_path(tagged: tag.name), class: "#{css_class}" do %>
+         <%= tag.name %> <span class="badge"><%= tag.count %></span>
+       <% end %>
+     </li>
+   <% end %>
+  </ul>
+</div>

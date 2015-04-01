@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :tag_cloud]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.scoped_posts(signed_in?).paginate(page: params[:page], per_page: 3)
     end
+    @tags = Post.tag_counts_on(:tags)
   end
 
   def show
