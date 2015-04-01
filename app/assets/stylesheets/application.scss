@@ -10,7 +10,7 @@
 @import "bootstrap";
 @import "pagedown_bootstrap";
 
-html,body {  height: 100%; }
+html,body {  height: 100%; overflow-x: hidden; }
 h1 { font-family: 'Roboto Slab', serif; color: #fff; small { color: #fff; } }
 h2 { font-family: 'Roboto Slab', serif; }
 ul { list-style-position: inside; }
