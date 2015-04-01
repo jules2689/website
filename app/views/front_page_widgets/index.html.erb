@@ -1,4 +1,5 @@
 <div class="col-md-8 col-md-offset-2 front-page-header">
+  <img class="avatar pull-left" src="https://secure.gravatar.com/avatar/bccdd41945f78d7cb7c2f64275efa100.png?r=PG&s=400" width="80" alt="Julian Nadeau">
   <h1>Julian Nadeau</h1>
   <div class="pull-left">
     <a href="https://github.com/jules2689"><i class="fa fa-github-square fa-2x"></i></a>
@@ -11,12 +12,14 @@
     <div class="pull-right">
       <%= link_to "New Widget", new_front_page_widget_path, class: "btn btn-default" %>
       <%= link_to "Reposition Widgets", save_positions_front_page_widgets_path, class: "btn btn-default" %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-default" %>
     </div>
   <% end %>
 </div>
 
 <div class="col-md-8 col-md-offset-2 front-page-content">
   <p>I am a software developer at <a href="http://shopify.com">Shopify.</a> I work on the iOS and Ruby on Rails frameworks.</a></p>
+  <p>Read my <%= link_to "Blog", posts_url %></p>
 </div>
 
 <div class="card-container col-md-8 col-md-offset-2">
