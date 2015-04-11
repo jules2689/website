@@ -219,6 +219,12 @@
       width: 60px;
     }
   }
+
+  .post-preview {
+    &:nth-child(odd), &:nth-child(even) {
+      padding: inherit;
+    }
+  }
 }
 
 @media(max-width:500px) {
