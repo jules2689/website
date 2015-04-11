@@ -2,38 +2,29 @@
   Random Thoughts
 <% end %>
 
-<%= render layout: "post_header" do %>
-    <h1>Random Thoughts
-      <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
-        <small><i class="fa fa-rss"></i></small>
-      <% end %>
+<div class="posts-header">
+  <h1>
+    Random Thoughts
+    
+    <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
+      <small><i class="fa fa-rss"></i></small>
+    <% end %>
+
      <% if params[:tagged] %><small>Viewing posts tagged with <%= params[:tagged] %></small><% end %>
-    </h1>
-    <% if current_user %><%= link_to "New Post", new_post_path, class: "btn btn-default" %><% end %>
-<% end %>
+  </h1>
 
-<%= render "tag_cloud", tags: @tags %>
+  <% if current_user %><%= link_to "New Post", new_post_path, class: "btn btn-default" %><% end %>
 
-<div id="posts">
+  <%= render "tag_cloud", tags: @tags %>
+</div>
 
-  <% @posts.each do |post| %>
-    <div class="col-md-8 col-md-offset-2 post">
-      <%= link_to post_path(post) do %>
-        <h2>
-          <% unless post.published? %> <small><span class="label label-info">Unpublished</span></small><% end %>
-          <%= post.title %>
-        </h2>
-      <% end %>
-      <%= render "metadata", post: post %>
-      <div class="post-body clearfix">
-        <% if current_user %><%= link_to "Edit Post", edit_post_path(post), class: "btn btn-default pull-right" %><% end %>
-        <div class="clearfix">
-          <%= post.trancated_body %>
-        </div>
-        <h4><%= link_to post, class: "read-more btn btn-default" do %><i class="fa fa-file-o"></i> Read More<% end %></h4>
-      </div>
-    </div>
-  <% end %>
+<%= render @posts.first, first: true %>
 
-  <div class="col-md-8 col-md-offset-2"><%= will_paginate @posts, renderer: BootstrapPagination::Rails %></div>
+<div id="posts" class="col-md-10 col-md-offset-1 padded-vert">
+  <hr>
+  <%= render @posts.drop(1), first: false %>
+</div>
+
+<div class="col-md-12 text-center">
+  <%= will_paginate @posts, page_links: false, renderer: BootstrapPagination::Rails %>
 </div>

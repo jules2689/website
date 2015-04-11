@@ -1,0 +1,18 @@
+<div class="<% if first %>first-post-preview<% else %>col-md-6 post-preview<% end %>">
+  <%= link_to post_path(post) do %>
+    <%= image_tag post.header_image.try(:url) || 'default.jpg' %>
+
+    <h2>
+      <% unless post.published? %> <small><span class="label label-info">Unpublished</span></small><% end %>
+      <%= post.title %>
+    </h2>
+    
+    <div class="post-preview-metadata">
+      <small>
+        <span><%= linked_tag_list(post) %></span>
+      </small>
+      <span><i class="fa fa-clock-o"></i> <%= post.est_created_at.to_formatted_s(:long) %></span>
+      <span><i class="fa fa-comments"></i> <a class="comment-link-marker" data-disqus-url="http://jnadeau.ca/posts/<%= post.handle %>" href="http://jnadeau.ca/posts/<%= post.handle %>#disqus_thread">0 Comments</a></span>
+    </div>
+  <% end %>
+</div>

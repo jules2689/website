@@ -2,9 +2,11 @@ module PostsHelper
   include ActsAsTaggableOn::TagsHelper
 
   def linked_tag_list(post)
-    post.tag_list.collect do |tag|
+    list = post.tag_list.collect do |tag|
       link_to tag, posts_path(tagged: tag)
-    end.join(", ").html_safe
+    end.join(", ")
+    list << "<br>" if list.present?
+    list.html_safe
   end
 
   def header_height(header_image)
@@ -25,6 +27,6 @@ module PostsHelper
 	  	style << "box-shadow: inset 0px -85px 78px 16px ##{ post.dominant_header_colour };"
 	  	style << "height: #{ header_height(post.header_image) }px !important;\""
 	  	style.html_safe
-	end
+	  end
   end
 end
