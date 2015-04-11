@@ -45,6 +45,14 @@
 .post-preview {
   padding: 20px 0;
   overflow: hidden;
+
+  &:nth-child(odd) {
+    padding-right: 0px;
+  }
+
+  &:nth-child(even) {
+    padding-left: 0px;
+  }
 }
 
 
