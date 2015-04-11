@@ -4,9 +4,9 @@ class PostsController < ApplicationController
 
   def index
     if params[:tagged]
-      @posts = Post.scoped_posts(signed_in?).tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 3)
+      @posts = Post.scoped_posts(signed_in?).tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 7)
     else
-      @posts = Post.scoped_posts(signed_in?).paginate(page: params[:page], per_page: 3)
+      @posts = Post.scoped_posts(signed_in?).paginate(page: params[:page], per_page: 7)
     end
     @tags = Post.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
   end
