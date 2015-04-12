@@ -5,10 +5,10 @@
   top: 30px;
   left: 10px;
   border-radius: 100px;
-  background-color: rgba(255, 255, 255, 0.60);
+  background-color: rgba(255, 255, 255, 0.30);
   &:hover {
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.40);
+    background-color: rgba(255, 255, 255, 0.15);
   }
 
   &::before {
@@ -20,8 +20,8 @@
     /* By using an em scale, the arrows will size with the font */
     width: 15px;
     height: 15px;
-    border-right: 0.2em solid #fff;
-    border-top: 0.2em solid #fff;
+    border-right: 0.2em solid rgba(255, 255, 255, 0.50);
+    border-top: 0.2em solid rgba(255, 255, 255, 0.50);
     transform: rotate(225deg);
 
   }

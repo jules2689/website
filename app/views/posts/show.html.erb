@@ -6,8 +6,6 @@
   <h1><%= @post.title %></h1>
 <% end %>
 
-<%= render "tag_cloud", tags: @tags %>
-
 <div class="col-md-8 col-md-offset-2" id="post-body">
   <%= render "metadata", post: @post %>
   <%= @post.html_body %>
