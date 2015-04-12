@@ -6,6 +6,8 @@
   <h1><%= @post.title %></h1>
 <% end %>
 
+<a href="/posts" title="Go Back" class="back-button">&nbsp;</a>
+
 <%= render "tag_cloud", tags: @tags %>
 
 <div class="col-md-8 col-md-offset-2" id="post-body">
