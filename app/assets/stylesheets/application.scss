@@ -40,6 +40,6 @@ ul { list-style-position: inside; }
   background-color: #ccc;
 }
 
-a {
+a:hover, a:hover * {
   text-decoration: none;
 }
