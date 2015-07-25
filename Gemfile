@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pry-byebug', group: :test
+gem 'rails_12factor'
 
 # Design Controls
 gem 'bootstrap-sass', '~> 3.3.3'
