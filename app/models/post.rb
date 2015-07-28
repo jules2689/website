@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   acts_as_ordered_taggable
 
   dragonfly_accessor :header_image do
-    after_assign :set_dominant_color
+    after_assign :set_dominant_colour
   end
   validates_property :format, of: :header_image, in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false, message: "should be either .jpeg, .jpg, .png, .bmp", if: :header_image_changed?
 
@@ -54,8 +54,9 @@ class Post < ActiveRecord::Base
     self.handle = self.title.downcase.parameterize
   end
 
-  def set_dominant_color
-    histogram = Histogram.new(header_image.path)
-    self.dominant_header_colour = histogram.scores.first.last.hex
+  def set_dominant_colour
+    histogram = Histogram.new(self.header_image.path)
+    rgb_color =  histogram.scores.min_by { |h| h.last.brightness }.last
+    self.dominant_header_colour = rgb_color.hex
   end
 end
