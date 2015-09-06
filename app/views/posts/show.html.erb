@@ -2,12 +2,22 @@
   <%= @post.title %>
 <% end %>
 
+<div class="posts-header clearfix">
+  <div class="post-breadcrumb col-md-12">
+    <div class="col-sm-6 metadata">
+      <span>/<%= link_to " Home ", "/" %>/ <%= link_to "Random Thoughts", posts_path %> / <%= @post.title %></span>
+    </div>
+    <div class="col-sm-6">
+      <%= render "metadata", post: @post %>
+    </div>
+  </div>
+</div>
+
 <%= render layout: "post_header" do %>
   <h1><%= @post.title %></h1>
 <% end %>
 
 <div class="col-md-8 col-md-offset-2" id="post-body">
-  <%= render "metadata", post: @post %>
   <%= @post.html_body %>
 </div>
 

@@ -21,6 +21,15 @@ ul { list-style-position: inside; }
   margin-bottom: 10px;
 }
 
+.metadata {
+  font-size: 11px;
+  color: #A3A3A3;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 12px 0;
+}
+
 .tag-button { 
   .btn {
     background: none;
@@ -29,6 +38,37 @@ ul { list-style-position: inside; }
     &:focus, &:active, &:active:focus {
       outline: none !important;
     }
+  }
+}
+
+.back-button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  border-radius: 100px;
+  background-color: rgba(0,0,0,0.30);
+  z-index: 100;
+
+  &:hover {
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.15);
+  }
+
+  &::before {
+    position: relative;
+    top: 18px;
+    left: 20px;
+    content: "";
+    display: inline-block;
+    /* By using an em scale, the arrows will size with the font */
+    width: 15px;
+    height: 15px;
+    border-right: 0.2em solid rgba(255, 255, 255, 0.50);
+    border-top: 0.2em solid rgba(255, 255, 255, 0.50);
+    transform: rotate(225deg);
+
   }
 }
 

@@ -2,20 +2,28 @@
   Random Thoughts
 <% end %>
 
-<div class="posts-header">
-  <h1>
-    Random Thoughts
-    
-    <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
-      <small><i class="fa fa-rss"></i></small>
+<div class="posts-header clearfix">
+  <div class="post-breadcrumb metadata pull-left">
+    <span>
+      /<%= link_to " Home ", "/" %>/ Random Thoughts / 
+
+      <% if params[:tagged] %>
+      Viewing posts tagged with <%= params[:tagged] %> /
+      <% end %>
+
+      <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
+        <small><i class="fa fa-rss"></i></small>
+      <% end %> 
+    </span>
+  </div>
+
+  <div class="pull-right">
+    <% if current_user %>
+      <%= link_to "New Post", new_post_path, class: "new-post metadata pull-right" %>
     <% end %>
 
-     <% if params[:tagged] %><small>Viewing posts tagged with <%= params[:tagged] %></small><% end %>
-  </h1>
-
-  <% if current_user %><%= link_to "New Post", new_post_path, class: "btn btn-default" %><% end %>
-
-  <%= render "layouts/tag_cloud", tags: @tags %>
+    <%= render "layouts/tag_cloud", tags: @tags %>
+  </div>
 </div>
 
 <%= render @posts.first, first: true %>

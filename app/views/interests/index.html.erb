@@ -1,19 +1,24 @@
-<div class="col-md-8 col-md-offset-2 clearfix">
+<div class="posts-header clearfix">
+  <div class="post-breadcrumb pull-left metadata">
+    <span>
+      /<%= link_to " Home ", "/" %>/ Interests / 
 
-  <div class="interests-header clearfix">
-    <h1 class="pull-left">
-      Things that I find interesting
-      <% if params[:tagged].present? %>
-        <small>(<%= CGI.escape params[:tagged] %>)</small>
+      <% if params[:tagged] %>
+      Viewing interests tagged with <%= CGI.escape params[:tagged] %> /
       <% end %>
-    </h1>
-
-    <div class="header-actions pull-right">
-      <%= render "layouts/tag_cloud", tags: @tags %>
-      <%= link_to "Add an Interest", new_interest_path, class: "btn btn-default pull-right" if current_user %>
-    </div>
+    </span>
   </div>
 
+  <% if current_user %>
+  <%= link_to "Add an Interest", new_interest_path, class: "new-post pull-right metadata" %>
+  <% end %>
+
+  <%= render "layouts/tag_cloud", tags: @tags %>
+</div>
+
+<br>
+
+<div class="col-md-8 col-md-offset-2 clearfix">
   <div id="interests">
     <% @interests.in_groups(4, false) do |interests| %>
       <%= render interests %>
