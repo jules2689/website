@@ -10,7 +10,11 @@
     </div>
   <% end %>
 
+  <%= f.label :url %>
   <%= f.text_field :url, class: "form-control" %>
+
+  <%= f.label :tag_list %>
+  <%= f.text_field :tag_list, class: "form-control" %>
 
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>

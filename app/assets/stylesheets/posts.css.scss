@@ -39,7 +39,7 @@
   text-align: center;
   background-color: #fff;
 
-  .post-button {
+  .tag-button {
     margin-top: -15px;
     .btn {
       color: #6e6e6e;
@@ -81,19 +81,6 @@
 
   &:nth-child(even) {
     padding-left: 0px;
-  }
-}
-
-
-.post-button { 
-  margin-top: -35px; 
-  .btn {
-    background: none;
-    color: #fff;
-    border: none;
-    &:focus, &:active, &:active:focus {
-      outline: none !important;
-    }
   }
 }
 

@@ -16,8 +16,19 @@ h1 { font-family: 'Roboto Slab', serif; color: #fff; small { color: #fff; } }
 h2 { font-family: 'Roboto Slab', serif; }
 ul { list-style-position: inside; }
 
+.tag-button { 
+  .btn {
+    background: none;
+    color: #000;
+    border: none;
+    &:focus, &:active, &:active:focus {
+      outline: none !important;
+    }
+  }
+}
+
 .front-page-header, .interests-header {
-	h1 { color: #000; }
+	h1 { color: #000; small { color: #000; }}
 	.avatar {
 		border-radius: 100px;
 		margin-right: 15px;

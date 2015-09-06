@@ -1,16 +1,16 @@
-<div class="post-button dropdown pull-right">
+<div class="tag-button dropdown pull-right">
   <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
     Read More
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><%= link_to "Read All Posts", posts_path %></li>
+    <li role="presentation"><%= link_to "Read All", url_for(only_path: false) %></li>
     <li role="presentation" class="disabled"><a href="#"></a></li>
     <li role="presentation" class="disabled"><a href="#">Read About...</a></li>
     
     <% tag_cloud(tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
       <li role="presentation" <% if tag.name == params[:tagged] %>class='active'<% end %>>
-        <%= link_to posts_path(tagged: tag.name), class: "#{css_class}" do %>
+        <%= link_to url_for(only_path: false, tagged: tag.name), class: "#{css_class}" do %>
           <%= tag.name %> <span class="badge"><%= tag.count %></span>
         <% end %>
       </li>

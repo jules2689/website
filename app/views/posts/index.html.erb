@@ -15,7 +15,7 @@
 
   <% if current_user %><%= link_to "New Post", new_post_path, class: "btn btn-default" %><% end %>
 
-  <%= render "tag_cloud", tags: @tags %>
+  <%= render "layouts/tag_cloud", tags: @tags %>
 </div>
 
 <%= render @posts.first, first: true %>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :interests
+  resources :interests, only: [:index, :new, :create, :destroy]
 
   devise_for :users, :skip => [:registrations]
   resources :posts, param: :handle

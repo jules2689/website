@@ -1,19 +1,30 @@
 <div class="col-md-8 col-md-offset-2 clearfix">
 
   <div class="interests-header clearfix">
-    <h1 class="pull-left">Things that I find interesting</h1>
+    <h1 class="pull-left">
+      Things that I find interesting
+      <% if @interests.first.tag_list.present? %>
+        <small>(<%= h @interests.first.tag_list %>)</small>
+      <% end %>
+    </h1>
 
     <% if current_user %>
       <div class="actions pull-right">
         <%= link_to "Add an Interest", new_interest_path, class: "btn btn-default pull-right" %>
       </div>
     <% end %>
+
+    <%= render "layouts/tag_cloud", tags: @tags %>
   </div>
 
   <div id="interests">
     <% @interests.in_groups(4, false) do |interests| %>
       <%= render interests %>
     <% end %>
+  </div>
+
+  <div class="col-md-12 text-center">
+    <%= will_paginate @interests, page_links: false, renderer: BootstrapPagination::Rails %>
   </div>
 
 </div>

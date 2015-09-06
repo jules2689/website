@@ -26,22 +26,7 @@ class InterestsControllerTest < ActionController::TestCase
 
     assert_redirected_to interest_path(assigns(:interest))
   end
-
-  test "should show interest" do
-    get :show, id: @interest
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @interest
-    assert_response :success
-  end
-
-  test "should update interest" do
-    patch :update, id: @interest, interest: { embed_url: @interest.embed_url, interest_type: @interest.interest_type, provider: @interest.provider, title: @interest.title, treatment: @interest.treatment, url: @interest.url }
-    assert_redirected_to interest_path(assigns(:interest))
-  end
-
+  
   test "should destroy interest" do
     assert_difference('Interest.count', -1) do
       delete :destroy, id: @interest

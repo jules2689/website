@@ -1,16 +1,16 @@
 class InterestsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   before_action :set_interest, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    @interests = Interest.all
-    respond_with(@interests)
-  end
-
-  def show
-    respond_with(@interest)
+    if params[:tagged]
+      @interests = Interest.tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 7)
+    else
+      @interests = Interest.paginate(page: params[:page], per_page: 7)
+    end
+    @tags = Interest.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
   end
 
   def new
@@ -18,23 +18,15 @@ class InterestsController < ApplicationController
     respond_with(@interest)
   end
 
-  def edit
-  end
-
   def create
     @interest = Interest.new(interest_params)
     @interest.save
-    respond_with(@interest)
-  end
-
-  def update
-    @interest.update(interest_params)
-    respond_with(@interest)
+    redirect_to :interests
   end
 
   def destroy
     @interest.destroy
-    respond_with(@interest)
+    redirect_to :interests
   end
 
   private
@@ -43,6 +35,6 @@ class InterestsController < ApplicationController
     end
 
     def interest_params
-      params.require(:interest).permit(:url)
+      params.require(:interest).permit(:url, :tag_list)
     end
 end
