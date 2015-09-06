@@ -7,7 +7,7 @@
     <div class="col-sm-6 metadata">
       <span>/<%= link_to " Home ", "/" %>/ <%= link_to "Random Thoughts", posts_path %> / <%= @post.title %></span>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6 metadata">
       <%= render "metadata", post: @post %>
     </div>
   </div>

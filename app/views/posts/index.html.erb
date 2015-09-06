@@ -17,13 +17,11 @@
     </span>
   </div>
 
-  <div class="pull-right">
-    <% if current_user %>
-      <%= link_to "New Post", new_post_path, class: "new-post metadata pull-right" %>
-    <% end %>
+  <% if current_user %>
+    <%= link_to "New Post", new_post_path, class: "new-post metadata pull-right" %>
+  <% end %>
 
-    <%= render "layouts/tag_cloud", tags: @tags %>
-  </div>
+  <%= render "layouts/tag_cloud", tags: @tags %>
 </div>
 
 <%= render @posts.first, first: true %>
