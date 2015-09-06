@@ -8,13 +8,10 @@
       <% end %>
     </h1>
 
-    <% if current_user %>
-      <div class="actions pull-right">
-        <%= link_to "Add an Interest", new_interest_path, class: "btn btn-default pull-right" %>
-      </div>
-    <% end %>
-
-    <%= render "layouts/tag_cloud", tags: @tags %>
+    <div class="header-actions pull-right">
+      <%= render "layouts/tag_cloud", tags: @tags %>
+      <%= link_to "Add an Interest", new_interest_path, class: "btn btn-default pull-right" if current_user %>
+    </div>
   </div>
 
   <div id="interests">

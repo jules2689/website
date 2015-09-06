@@ -16,6 +16,11 @@ h1 { font-family: 'Roboto Slab', serif; color: #fff; small { color: #fff; } }
 h2 { font-family: 'Roboto Slab', serif; }
 ul { list-style-position: inside; }
 
+.header-actions {     
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .tag-button { 
   .btn {
     background: none;
