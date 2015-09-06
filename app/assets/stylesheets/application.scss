@@ -16,6 +16,11 @@ h1 { font-family: 'Roboto Slab', serif; color: #fff; small { color: #fff; } }
 h2 { font-family: 'Roboto Slab', serif; }
 ul { list-style-position: inside; }
 
+/* Hack for iFrame Overflow */
+iframe { z-index: 9; }
+.card { z-index: 10; }
+/* End Hack */
+
 .header-actions {     
   margin-top: 20px;
   margin-bottom: 10px;
