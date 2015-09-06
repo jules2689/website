@@ -11,7 +11,7 @@ class Interest < ActiveRecord::Base
     end
 
     def take_screencap!
-      ScreenShot.capture(url)
+      ScreenShot.capture(url) unless Rails.env.test?
     end
 
     def embed?

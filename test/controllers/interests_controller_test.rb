@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class InterestsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @interest = interests(:one)
+    sign_in(users(:one))
   end
 
   test "should get index" do
@@ -18,7 +21,7 @@ class InterestsControllerTest < ActionController::TestCase
 
   test "should create interest" do
     assert_difference('Interest.count') do
-      post :create, interest: { embed_url: @interest.embed_url, interest_type: @interest.interest_type, provider: @interest.provider, title: @interest.title, treatment: @interest.treatment, url: @interest.url }
+      post :create, interest: { url: "http://google.com" }
     end
 
     assert_redirected_to interest_path(assigns(:interest))
