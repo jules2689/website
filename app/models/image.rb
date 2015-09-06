@@ -1,13 +1,29 @@
 include Colorscore
+require 'screencap'
 
 class Image < ActiveRecord::Base
   dragonfly_accessor :image do
     after_assign :set_dominant_color
   end
 
-  belongs_to :post
+  belongs_to :owner, polymorphic: true
   delegate :path, :url, to: :image
   validates_property :format, of: :image, in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false, message: "should be either .jpeg, .jpg, .png, .bmp", if: :image_changed?
+
+  def self.capture_screenshot(url, owner)
+    f = Screencap::Fetcher.new(url)
+    path = Rails.root.join("public", "tmp_screencap", "#{url.parameterize}.png")
+    screenshot = f.fetch(
+      output: path,
+      :height => 768,
+      :top => 0, :left => 0
+    )
+
+    i = Image.new
+    i.owner = owner
+    i.image = File.new(path)
+    i.save
+  end
 
   private
 

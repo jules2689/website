@@ -1,8 +1,15 @@
 <%= form_for(@front_page_widget) do |f| %>
-  <div class="page-header post-header">
-    <h1>
-      <%= @front_page_widget.new_record? ? "New" : "Editing" %> Widget
-    </h1>
+  <div class="posts-header clearfix">
+    <div class="post-breadcrumb col-md-12">
+      <div class="col-sm-6 metadata">
+        <span>
+          /<%= link_to " Home ", "/" %>/ <%= @front_page_widget.new_record? ? "New" : "Editing" %> Widget
+        </span>
+      </div>
+      <div class="text-right">
+        <%= f.submit "Save", class: "btn btn-link metadata" %>
+      </div>
+    </div>
   </div>
 
   <div class="form">

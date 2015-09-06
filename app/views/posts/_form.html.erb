@@ -1,11 +1,18 @@
 <%= form_for @post do |f| %>
-  <div class="page-header post-header">
-    <h1>
-      <%= @post.new_record? ? "New" : "Editing" %> Page
-      <%= f.hidden_field :image_ids, value: params[:post].present? ? params[:post][:image_ids] : "", id: "image-ids" %>
-      <%= f.submit "Save", class: "btn btn-primary" %>
-    </h1>
+  <div class="posts-header clearfix">
+    <div class="post-breadcrumb col-md-12">
+      <div class="col-sm-6 metadata">
+        <span>
+          /<%= link_to " Home ", "/" %>/ Random Thoughts / <%= @post.new_record? ? "New" : "Editing" %> Page
+        </span>
+      </div>
+      <div class="text-right">
+        <%= f.submit "Save", class: "btn btn-link" %>
+      </div>
+    </div>
   </div>
+
+  <%= f.hidden_field :image_ids, value: params[:post].present? ? params[:post][:image_ids] : "", id: "image-ids" %>
 
   <div class="form">
 

@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   end
   validates_property :format, of: :header_image, in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false, message: "should be either .jpeg, .jpg, .png, .bmp", if: :header_image_changed?
 
-  has_many :images
+  has_many :images, as: :owner
   accepts_nested_attributes_for :images
 
   validates_presence_of :title, :body

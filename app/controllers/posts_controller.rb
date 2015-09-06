@@ -63,7 +63,7 @@ class PostsController < ApplicationController
   def process_images
     params[:post][:image_ids].split(",").each do |id|
       image = Image.find(id)
-      image.post = @post
+      image.owner = @post
       image.save
     end
   end

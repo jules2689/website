@@ -2,17 +2,20 @@ class Interest < ActiveRecord::Base
   acts_as_taggable
   attr_accessor :interest_type_hash, :doc_id
 
+  has_many :images, as: :owner
+  accepts_nested_attributes_for :images
+
   def initialize(attributes = {}, options = {})
     super(attributes, options)
     initialize_with_attributes(attributes) if attributes.present?
   end
 
   def screencap_link
-    "/screencap/#{url.parameterize}.png"
+    self.images.first.try(:url)
   end
 
   def take_screencap!
-    ScreenShot.capture(url) unless Rails.env.test?
+    Image.capture_screenshot(url, self) unless Rails.env.test?
   end
 
   def embed?

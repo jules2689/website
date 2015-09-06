@@ -1,6 +1,13 @@
-<div class="page-header">
-  <%= button_tag "Save Positions", class: "btn btn-default", id: "save-positions" %>
-  <p id="status"></p>
+<div class="posts-header clearfix">
+  <div class="post-breadcrumb col-md-12">
+    <div class="metadata pull-left">
+      / <%= link_to "Home", "/" %> / Repositioning Widgets /
+    </div>
+    <div class="pull-right">
+      <span id="status"></span>
+      <%= button_tag "Save Positions", class: "btn btn-link metadata", id: "save-positions" %>
+    </div>
+  </div>
 </div>
 
 <ul id="sortable">
