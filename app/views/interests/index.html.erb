@@ -3,8 +3,8 @@
   <div class="interests-header clearfix">
     <h1 class="pull-left">
       Things that I find interesting
-      <% if @interests.first.tag_list.present? %>
-        <small>(<%= h @interests.first.tag_list %>)</small>
+      <% if params[:tagged].present? %>
+        <small>(<%= CGI.escape params[:tagged] %>)</small>
       <% end %>
     </h1>
 
