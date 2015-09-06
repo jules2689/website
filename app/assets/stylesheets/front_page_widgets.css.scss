@@ -1,23 +1,23 @@
 #sortable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
 #sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 33%; font-size: 4em; text-align: center; }
-#sortable .card { height: 300px; border: 1px solid #ccc; overflow: hidden; }
+#sortable .front-card { height: 300px; border: 1px solid #ccc; overflow: hidden; }
 
 .widget-button-container {
   margin-top: -50px;
   padding: 5px;
 }
 
-.card {
+.front-card {
   width:32%;
   border: 1px solid #fff;
   min-width: 300px;
 }
 
-.card a {
+.front-card a {
    position: relative;
 }
 
-.card a h2 {
+.front-card a h2 {
   position: absolute;
   top: -67px;
   left: 0;
@@ -34,26 +34,26 @@
   display:block !important;
 }
 
-.card img {
+.front-card img {
   width: 100%;
   opacity: 0.6;
 }
-.card img:hover {
+.front-card img:hover {
   opacity: 1;
 }
 
 @media(max-width:991px) {
-  .card-container { margin-top: 50px; }
+  .front-card-container { margin-top: 50px; }
 }
 
 @media (min-width:768px) and (max-width:991px) {
-  .card { width: 48%; }
+  .front-card { width: 48%; }
 }
 
 @media (min-width:630px) and (max-width:768px) {
-  .card { width: 47%; }
+  .front-card { width: 47%; }
 }
 
 @media (max-width:630px) {
-  .card { width: 92%; }
+  .front-card { width: 92%; }
 }

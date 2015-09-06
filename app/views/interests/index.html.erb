@@ -1,0 +1,19 @@
+<div class="col-md-8 col-md-offset-2 clearfix">
+
+  <div class="interests-header clearfix">
+    <h1 class="pull-left">Things that I find interesting</h1>
+
+    <% if current_user %>
+      <div class="actions pull-right">
+        <%= link_to "Add an Interest", new_interest_path, class: "btn btn-default pull-right" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="interests">
+    <% @interests.in_groups(4, false) do |interests| %>
+      <%= render interests %>
+    <% end %>
+  </div>
+
+</div>

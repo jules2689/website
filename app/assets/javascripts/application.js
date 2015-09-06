@@ -7,6 +7,8 @@
 //= require turbolinks
 //= require pagedown_bootstrap
 //= require pagedown_init
+//= require stackblur
+//= require cards
 //= require masonry
 //= require_tree .
 

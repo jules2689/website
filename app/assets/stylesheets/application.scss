@@ -2,6 +2,7 @@
  *= require jquery-ui
  *= require_tree .
  *= require_self
+ *= require cards
  *= require devise_bootstrap_views
  *= require jquery.datetimepicker
  */
@@ -15,7 +16,7 @@ h1 { font-family: 'Roboto Slab', serif; color: #fff; small { color: #fff; } }
 h2 { font-family: 'Roboto Slab', serif; }
 ul { list-style-position: inside; }
 
-.front-page-header {
+.front-page-header, .interests-header {
 	h1 { color: #000; }
 	.avatar {
 		border-radius: 100px;

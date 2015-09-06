@@ -1,0 +1,21 @@
+<div class="card-box col-md-4">
+  <div class="card">                            
+      <div class="header">
+          <% if interest.embed? %>
+            <%= embed(interest.embed_url) %>
+          <% else %>
+            <%= image_tag interest.screencap_link %>
+            <div class="filter"></div>
+            <div class="actions">
+                <%= link_to "Read Content", interest.url, target: "_blank", class: "btn btn-round btn-fill btn-neutral btn-modern" %>
+            </div>
+          <% end %>
+      </div>
+      
+      <div class="content clearfix">
+        <h6 class="category"><%= interest_metadata(interest.interest_type, interest.provider) %></h6>
+        <h4 class="title"><%= link_to interest.title, interest.url, target: "_blank" %></a></h4>
+        <%= link_to "Remove", interest, method: :delete, class: "btn btn-danger pull-right" if current_user %>
+      </div>                                           
+  </div> <!-- end card -->
+</div>

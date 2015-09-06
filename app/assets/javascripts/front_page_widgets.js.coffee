@@ -1,14 +1,14 @@
 $(document).on 'page:change', ->
 
   $(window).on 'resize', ->
-    $('.card-container').masonry itemSelector: '.card'
+    $('.front-card-container').masonry itemSelector: '.front-card'
 
   $('img').load ->
-    $('.card-container').masonry itemSelector: '.card'
+    $('.front-card-container').masonry itemSelector: '.front-card'
 
-  $('.card-container').masonry itemSelector: '.card'
+  $('.front-card-container').masonry itemSelector: '.front-card'
   
-  $('.card a').hover (->
+  $('.front-card a').hover (->
     $(this).find('h2').addClass 'hover'
   ), ->
     $(this).find('h2').removeClass 'hover'

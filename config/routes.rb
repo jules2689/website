@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :interests
+
   devise_for :users, :skip => [:registrations]
   resources :posts, param: :handle
   resources :front_page_widgets, except: :show do

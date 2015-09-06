@@ -20,12 +20,13 @@
 <div class="col-md-8 col-md-offset-2 front-page-content">
   <p>I am a software developer at <a href="http://shopify.com">Shopify.</a> I work with the iOS and Ruby on Rails frameworks.</a></p>
   <p>Read my <%= link_to "Blog", posts_url %></p>
+  <p>Check out my <%= link_to "Interests", interests_url %></p>
 </div>
 
-<div class="card-container col-md-8 col-md-offset-2">
+<div class="front-card-container col-md-8 col-md-offset-2">
 
 <% @front_page_widgets.each do |widget| %>
-  <div class="card">
+  <div class="front-card">
     <a href="<%= widget.url %>">
       <img src="<%= widget.image.url %>" alt="<%= widget.title %>" />
       <h2><%= widget.title %> <% if widget.subtext %><small><%= widget.subtext%></small><% end %></h2>

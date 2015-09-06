@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  interest_type: MyString
+  treatment: MyString
+  embed_url: MyString
+  url: MyString
+  provider: MyString
+  title: MyString
+
+two:
+  interest_type: MyString
+  treatment: MyString
+  embed_url: MyString
+  url: MyString
+  provider: MyString
+  title: MyString

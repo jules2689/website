@@ -34,7 +34,8 @@ class FrontPageWidgetsController < ApplicationController
 
   def create
     @front_page_widget = FrontPageWidget.new(front_page_widget_params)
-    @front_page_widget.position = FrontPageWidget.maximum(:position) + 1
+    max = FrontPageWidget.maximum(:position) || 0
+    @front_page_widget.position = max + 1
     @front_page_widget.save
     redirect_to root_url
   end
