@@ -21,7 +21,7 @@ iframe { z-index: 9; }
 .card { z-index: 10; }
 /* End Hack */
 
-.title { word-break: break-word; }
+.title a { word-break: break-word; }
 
 .header-actions {     
   margin-top: 20px;
