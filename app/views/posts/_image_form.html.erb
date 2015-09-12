@@ -13,7 +13,7 @@
           <%= f.text_field :title, placeholder: "Image Title", class: "form-control" %>
           <%= f.number_field :width, placeholder: "Custom Width (optional)", class: "form-control" %>
           <%= f.file_field :image %>
-          <% unless @post.new_record? %><%= f.hidden_field :post_id, value: @post.id %><% end %>
+          <% unless @post.new_record? %><%= f.hidden_field :owner_id, value: @post.id %><% end %>
         </div>
 
         <div class="modal-footer">

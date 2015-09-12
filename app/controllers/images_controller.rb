@@ -1,5 +1,4 @@
 class ImagesController < ApplicationController
-  before_action :set_post
 
   def create
     @image = Image.create(image_params)
@@ -9,11 +8,8 @@ class ImagesController < ApplicationController
   end
 
   private
-    def set_post
-      @post = Post.find_by(handle: params[:post_handle])
-    end
 
-    def image_params
-      params.require(:image).permit(:image, :title, :width, :post_id)
-    end
+  def image_params
+    params.require(:image).permit(:image, :title, :width, :owner_id)
+  end
 end
