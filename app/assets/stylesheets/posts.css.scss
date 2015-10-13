@@ -138,6 +138,17 @@
   padding: 15px;
   max-width:100%;
 }
+#wmd-preview-body .galleria {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+}
+
+#post-body .galleria-image > img {
+  float: none;
+  margin: auto;
+  padding: 0;
+}
 
 #disqus_thread {
   padding: 15px;

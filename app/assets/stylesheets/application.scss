@@ -3,6 +3,7 @@
  *= require_tree .
  *= require_self
  *= require cards
+ *= require galleria.classic
  *= require devise_bootstrap_views
  *= require jquery.datetimepicker
  */
@@ -20,6 +21,13 @@ ul { list-style-position: inside; }
 iframe { z-index: 9; }
 .card { z-index: 10; }
 /* End Hack */
+
+.galleria {
+  height: 500px;
+  width: 95%;
+  margin: 30px auto;
+  display: block;
+}
 
 .title a { word-break: break-word; }
 

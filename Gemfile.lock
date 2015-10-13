@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jules2689/pagedown-bootstrap-rails.git
-  revision: 90e32da008e04d16f2e35012d2da8bf7d2ba93cd
+  revision: f64eaf467805592bc14062924e0420bfb4d8776d
   specs:
     pagedown-bootstrap-rails (2.1.1)
       railties (> 3.1)
@@ -79,6 +79,8 @@ GEM
       rack
     erubis (2.7.0)
     execjs (2.2.2)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -109,11 +111,14 @@ GEM
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.10.1)
+    multipart-post (2.0.0)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     ntlm-http (0.1.1)
+    octokit (4.1.1)
+      sawyer (~> 0.6.0, >= 0.5.3)
     orm_adapter (0.5.0)
     pg (0.17.1)
     phantomjs (1.9.8.0)
@@ -162,6 +167,9 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    sawyer (0.6.0)
+      addressable (~> 2.3.5)
+      faraday (~> 0.8, < 0.10)
     screencap (0.1.2)
       phantomjs
     sdoc (0.4.1)
@@ -216,6 +224,7 @@ DEPENDENCIES
   jquery-ui-rails
   mechanize
   nokogiri
+  octokit
   pagedown-bootstrap-rails!
   pg
   pry-byebug

@@ -1,0 +1,20 @@
+var gallery = document.createElement("DIV");
+gallery.className = "galleria";
+
+<% @images.each do |image| %>
+  var image = document.createElement("img");
+  image.setAttribute("src", "<%= image[:url] %>");
+  image.setAttribute("data-title", "<%= image[:title] %>");
+  gallery.appendChild(image);
+<% end %>
+
+var cursorPos = $('#wmd-input-body').prop('selectionStart');
+var v = $('#wmd-input-body').val();
+var textBefore = v.substring(0,  cursorPos );
+var textAfter  = v.substring( cursorPos, v.length );
+var newVal = textBefore + gallery.outerHTML + textAfter;
+
+$('#wmd-input-body').val(newVal);
+$('#galleryModal').modal('hide');
+
+initPhotoSwipe();
