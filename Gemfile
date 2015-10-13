@@ -14,6 +14,9 @@ gem 'spring',        group: :development
 gem 'pry-byebug', group: :development
 gem 'rails_12factor', group: :production
 
+# Gallery
+gem 'galleria-rails', github: 'jules2689/galleria-rails'
+
 # Github
 gem 'octokit'
 

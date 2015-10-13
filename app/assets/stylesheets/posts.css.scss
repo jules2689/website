@@ -13,8 +13,6 @@
   }
 
   border-bottom: 1px solid #ccc;
-  padding-left: 20px;
-  padding-right: 20px;
   position: relative;
   background-color: #fff;
 
@@ -142,6 +140,7 @@
   height: 100px;
   width: 100px;
   border: 1px solid black;
+  overflow: hidden;
 }
 
 #post-body .galleria-image > img {

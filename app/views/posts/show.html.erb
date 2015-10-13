@@ -19,6 +19,15 @@
 
 <div class="col-md-8 col-md-offset-2" id="post-body">
   <%= @post.html_body %>
+  <script>
+    if( $('.galleria').length ) {
+      Galleria.loadTheme("<%= javascript_path('galleria.classic.min.js') %>");
+      Galleria.run('.galleria', {
+          theme: 'classic',
+          thumbCrop: false
+      });
+    }
+  </script>
 </div>
 
 <div class="col-md-8 col-md-offset-2">

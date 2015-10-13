@@ -1,6 +1,6 @@
 var cursorPos = $('#wmd-input-body').prop('selectionStart');
 var v = $('#wmd-input-body').val();
-var textBefore = v.substring(0,  cursorPos );
+var textBefore = v.substring(0,  cursorPos);
 var textAfter  = v.substring( cursorPos, v.length );
 var img = "![<%= @image[:title] %>](<%= @image[:url] %>)"
 var newVal = textBefore + img + textAfter;

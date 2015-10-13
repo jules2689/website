@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/jules2689/galleria-rails.git
+  revision: 2915ae523af0eead86f966d3b8e973c438203922
+  specs:
+    galleria-rails (0.0.1)
+      jquery-rails
+      railties (>= 3.2.0)
+
+GIT
   remote: https://github.com/jules2689/pagedown-bootstrap-rails.git
   revision: f64eaf467805592bc14062924e0420bfb4d8776d
   specs:
@@ -218,6 +226,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   dragonfly (~> 1.0.7)
+  galleria-rails!
   jbuilder (~> 2.0)
   jquery-datetimepicker-rails
   jquery-rails

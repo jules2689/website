@@ -2,11 +2,14 @@
 <html>
 <head>
   <title>Julian Nadeau <% if content_for?(:title) %>| <%= yield :title %><% end %></title>
+  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+  
   <%= csrf_meta_tags %>
   <meta name="google-site-verification" content="thKevbVWFUwiJbi_nQJRaQc4-ZUN_Mr6YJlFt8Nv_-I" />
   <meta name="viewport" content="width=device-width, initial-scale=1">

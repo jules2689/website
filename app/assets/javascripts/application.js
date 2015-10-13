@@ -9,7 +9,7 @@
 //= require pagedown_init
 //= require stackblur
 //= require cards
-//= require galleria-1.4.2.min
+//= require galleria
 //= require masonry
 //= require_tree .
 
@@ -18,6 +18,13 @@ $(document).on("page:change", function(){
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
   });
+
+  // if( $('.galleria').length ) {
+  //   Galleria.run('.galleria', {
+  //       theme: 'classic',
+  //       thumbCrop: false
+  //   });
+  // }
 
   $("#add-image").click(function(e) {
       $("div.image-div")
@@ -40,12 +47,6 @@ $(document).on("page:change", function(){
         $(this).attr("position", index);
       });
     }
-  });
-
-  Galleria.loadTheme("/assets/galleria.classic.min.js");
-  Galleria.run('.galleria', {
-      theme: 'classic',
-      thumbCrop: false
   });
 
   $('#save-positions').on('click', function() {
