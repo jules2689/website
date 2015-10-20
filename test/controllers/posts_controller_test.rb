@@ -44,6 +44,15 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to posts_path
   end
 
+    test "should show unpublished post with key" do
+    sign_out :user
+    @post.published_date = 10.days.from_now
+    @post.save
+
+    get :show, handle: @post, published_key: PostsController::PUBLISHED_KEY
+    assert_response :success
+  end
+
   test "should get edit" do
     get :edit, handle: @post
     assert_response :success

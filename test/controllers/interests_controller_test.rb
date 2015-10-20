@@ -24,7 +24,7 @@ class InterestsControllerTest < ActionController::TestCase
       post :create, interest: { url: "http://google.com" }
     end
 
-    assert_redirected_to interest_path(assigns(:interest))
+    assert_redirected_to interests_path
   end
   
   test "should destroy interest" do

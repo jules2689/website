@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :tag_cloud]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  PUBLISHED_KEY = "01839b8948eddae71933b5d0746cc409e4f7207871afabfd51c81b".freeze
+
   def index
     if params[:tagged]
       @posts = Post.scoped_posts(signed_in?).tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 7)
@@ -12,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    redirect_to posts_path unless signed_in? || @post.published?
+    redirect_to posts_path unless signed_in? || @post.published?  || params[:published_key] == PUBLISHED_KEY
     @tags = Post.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
   end
 
