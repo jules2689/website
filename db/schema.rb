@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906035148) do
+ActiveRecord::Schema.define(version: 20151020201716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150906035148) do
     t.string   "header_image_uid"
     t.string   "header_image_name"
     t.string   "dominant_header_colour"
+    t.string   "published_key"
   end
 
   create_table "taggings", force: true do |t|

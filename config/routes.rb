@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :interests, only: [:index, :new, :create, :destroy]
 
   devise_for :users, :skip => [:registrations]
-  resources :posts, param: :handle
+  resources :posts, param: :handle do 
+    member { post :regenerate_published_key }
+  end
   
   resources :front_page_widgets, except: :show do
     collection do

@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :tag_cloud]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-
-  PUBLISHED_KEY = "01839b8948eddae71933b5d0746cc409e4f7207871afabfd51c81b".freeze
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :regenerate_published_key]
 
   def index
     if params[:tagged]
@@ -14,8 +12,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    redirect_to posts_path unless signed_in? || @post.published?  || params[:published_key] == PUBLISHED_KEY
+    redirect_to posts_path unless signed_in? || @post.published?  || @post.can_allow_unpublished_view?(params[:published_key])
     @tags = Post.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
+  end
+
+  def regenerate_published_key
+    @post.published_key = nil
+    @post.save
+    redirect_to @post, notice: "Regenerated key"
   end
 
   def new

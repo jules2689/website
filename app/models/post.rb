@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :title, :body
   before_validation :set_handle
+  before_validation :set_published_key
 
   def est_created_at
     self.created_at + Time.zone_offset('EST')
@@ -48,10 +49,18 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def can_allow_unpublished_view?(key)
+    self.published_key == key
+  end
+
   private
 
   def set_handle
     self.handle = self.title.downcase.parameterize
+  end
+
+  def set_published_key
+    self.published_key = Digest::SHA1.hexdigest(self.title.downcase.parameterize + Time.now.to_s) if self.published_key.blank?
   end
 
   def set_dominant_colour

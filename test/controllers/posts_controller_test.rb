@@ -44,13 +44,29 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to posts_path
   end
 
-    test "should show unpublished post with key" do
+  test "should show unpublished post with key" do
     sign_out :user
     @post.published_date = 10.days.from_now
     @post.save
 
-    get :show, handle: @post, published_key: PostsController::PUBLISHED_KEY
+    get :show, handle: @post, published_key: @post.published_key
     assert_response :success
+  end
+
+  test "should not show unpublished post with wrong key" do
+    sign_out :user
+    @post.published_date = 10.days.from_now
+    @post.save
+
+    get :show, handle: @post, published_key: "wrong"
+    assert_redirected_to posts_path
+  end
+
+  test "should change key" do
+    current_key = @post.published_key
+    post :regenerate_published_key, handle: @post
+    assert_not_equal @post.published_key, @post.reload.published_key
+    assert_redirected_to @post
   end
 
   test "should get edit" do
@@ -120,6 +136,14 @@ class PostsControllerTest < ActionController::TestCase
       delete :destroy, handle: @post
     end
 
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should not change key when not authenticated" do
+    sign_out :user
+    
+    post :regenerate_published_key, handle: @post
+    assert_equal @post.published_key, @post.reload.published_key
     assert_redirected_to new_user_session_path
   end
 end
