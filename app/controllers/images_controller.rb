@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
     name = image_file_name(params[:image])
     path = file_path(name)
 
-    @image = create_image(title, file_path, params[:image])
+    @image = create_image(title, file_path(name), params[:image])
   end
 
   def create_gallery
