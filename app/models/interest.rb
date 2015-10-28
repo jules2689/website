@@ -2,6 +2,8 @@ class Interest < ActiveRecord::Base
   acts_as_taggable
   attr_accessor :interest_type_hash, :doc_id
 
+  default_scope { order(updated_at: :desc) }
+
   has_many :images, as: :owner
   accepts_nested_attributes_for :images
 
