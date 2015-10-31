@@ -14,7 +14,7 @@
   <% @front_page_widgets.each_with_index do |widget, index| %>
     <li class="card" position="<%= index %>" id="<%= widget.id %>">
       <a href="#">
-        <img src="<%= widget.image.url %>" alt="<%= widget.title %>" />
+        <img src="<%= widget.image_url %>" alt="<%= widget.title %>" />
         <h2><%= widget.title %> <% if widget.subtext %><small><%= widget.subtext%></small><% end %></h2>
       </a>
     </li>

@@ -66,9 +66,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    color (1.7.1)
-    colorscore (0.0.4)
-      color
     columnize (0.9.0)
     debugger-linecache (1.2.0)
     devise (3.4.1)
@@ -81,10 +78,6 @@ GEM
     devise-bootstrap-views (0.0.3)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
-    dragonfly (1.0.7)
-      addressable (~> 2.3)
-      multi_json (~> 1.0)
-      rack
     erubis (2.7.0)
     execjs (2.2.2)
     faraday (0.9.1)
@@ -116,10 +109,13 @@ GEM
       nokogiri (~> 1.4)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
+    metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.8.1)
+    mocha (1.1.0)
+      metaclass (~> 0.0.1)
     multi_json (1.10.1)
     multipart-post (2.0.0)
     net-http-digest_auth (1.4)
@@ -224,10 +220,8 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.3)
   builder
   coffee-rails (~> 4.0.0)
-  colorscore
   devise
   devise-bootstrap-views
-  dragonfly (~> 1.0.7)
   fastimage
   galleria-rails!
   jbuilder (~> 2.0)
@@ -235,6 +229,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   mechanize
+  mocha
   nokogiri
   octokit
   pagedown-bootstrap-rails!

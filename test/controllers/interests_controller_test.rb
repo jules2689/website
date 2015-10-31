@@ -23,7 +23,6 @@ class InterestsControllerTest < ActionController::TestCase
     assert_difference('Interest.count') do
       post :create, interest: { url: "http://google.com" }
     end
-
     assert_redirected_to interests_path
   end
   

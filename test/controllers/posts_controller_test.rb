@@ -24,9 +24,10 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should create post" do
     assert_difference('Post.count') do
-      post :create, post: { body: @post.body, handle: @post.handle, title: @post.title }
+      post :create, post: { body: @post.body, handle: @post.handle, title: @post.title, image: fixture_file_upload('images/test.jpg', 'image/jpg') }
     end
 
+    assert_not_nil assigns(:post).header_image_url
     assert_redirected_to post_path(assigns(:post))
   end
 
@@ -76,6 +77,21 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should update post" do
     patch :update, handle: @post, post: { body: @post.body, handle: @post.handle, title: @post.title }
+    assert_redirected_to post_path(assigns(:post))
+  end
+
+  test "should remove header image" do
+    patch :update, handle: @post, post: { body: @post.body, handle: @post.handle, title: @post.title }, remove_image: true
+    assert_equal "", assigns(:post).header_image_url
+    assert_redirected_to post_path(assigns(:post))
+  end
+
+  test "should update header image" do
+    new_path = "http://gitcdn.jnadeau.ca/images/website/new_path.jpg"
+    ImageMaker.any_instance.stubs(:create_image).returns({ title: "Title", url: new_path })
+    
+    patch :update, handle: @post, post: { body: @post.body, handle: @post.handle, title: @post.title, image: fixture_file_upload('images/test.jpg', 'image/jpg') }
+    assert_equal new_path, assigns(:post).header_image_url
     assert_redirected_to post_path(assigns(:post))
   end
 

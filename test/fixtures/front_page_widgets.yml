@@ -3,13 +3,13 @@
 one:
   title: MyString
   subtext: MyString
-  image_uid: MyString
-  image_name: MyString
+  image_url: MyString
+  url: MyString
   position: 0
 
 two:
   title: MyString
   subtext: MyString
-  image_uid: MyString
-  image_name: MyString
+  image_url: MyString
+  url: MyString
   position: 1

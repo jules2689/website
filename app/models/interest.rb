@@ -1,17 +1,14 @@
 class Interest < ActiveRecord::Base
-  include HasImage
   acts_as_taggable
   attr_accessor :interest_type_hash, :doc_id
+
+  has_many :images, as: :owner
 
   default_scope { order(updated_at: :desc) }
 
   def initialize(attributes = {}, options = {})
     super(attributes, options)
     initialize_with_attributes(attributes) if attributes.present?
-  end
-
-  def screencap_link
-    self.images.first.try(:url)
   end
 
   def take_screencap!

@@ -1,7 +1,7 @@
-include Colorscore
-
 class Post < ActiveRecord::Base
+  IMAGE_URL_ATTR = "header_image_url"
   include HasImage
+  
   default_scope { where('published_date <= ?', DateTime.now).order(updated_at: :desc) }
   acts_as_ordered_taggable
 

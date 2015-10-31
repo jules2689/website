@@ -11,8 +11,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
-gem 'pry-byebug', group: :development
+gem 'pry-byebug', group: :test
 gem 'rails_12factor', group: :production
+gem 'mocha', group: :test
+gem 'rack-cache'
 
 # Gallery
 gem 'galleria-rails', github: 'jules2689/galleria-rails'
@@ -45,11 +47,6 @@ gem 'devise-bootstrap-views'
 # Pagination
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-
-# Image Uploading
-gem 'dragonfly', '~> 1.0.7'
-gem 'rack-cache', :require => 'rack/cache'
-gem 'colorscore'
 
 # Ajax Forms
 gem 'remotipart', '~> 1.2'

@@ -4,7 +4,7 @@
           <% if interest.embed? %>
             <%= embed(interest.embed_url) %>
           <% else %>
-            <%= image_tag interest.screencap_link %>
+            <%= image_tag interest.image_url %>
             <div class="filter"></div>
             <div class="actions">
                 <%= link_to "Read Content", interest.url, target: "_blank", class: "btn btn-round btn-fill btn-neutral btn-modern" %>

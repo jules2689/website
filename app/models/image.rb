@@ -1,4 +1,3 @@
-include Colorscore
 require 'screencap'
 
 class Image < ActiveRecord::Base

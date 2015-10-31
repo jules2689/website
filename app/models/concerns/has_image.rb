@@ -1,20 +1,37 @@
 module HasImage
-  def update(params)
-    # Remove image url if necessary
-    if params[:remove_image]
-      params[:header_url] = ""
-    end
 
-    # Add image url if necessary
-    if params[:image].present?
-      image_name = params[:image].original_filename
+  IMAGE_URL_ATTR = "image_url"
+
+  def update(attributes)
+    remove_image(attributes)
+    assign_image_from_params(attributes)
+    super(attributes)
+  end
+
+  def create(attributes)
+    assign_image_from_params(attributes)
+    super(attributes)
+  end
+
+  def initialize(attributes = nil, options = {})
+    assign_image_from_params(attributes)
+    super(attributes, options)
+  end
+
+  def assign_image_from_params(attributes)
+    if !attributes.nil? && attributes[:image].present?
+      image_name = attributes[:image].original_filename
       title = image_name.split(".").first.downcase.gsub(/-/,"_")
-      image_maker = ImageMaker.new.create_image(title, "headers/#{image_name.gsub(/\s+/,"_")}", params[:image])
-      params[:image_url] = image_maker[:url]
+      image_maker = ImageMaker.new.create_image(title, "headers/#{image_name.gsub(/\s+/,"_")}", attributes[:image])
+      attributes[self.class::IMAGE_URL_ATTR] = image_maker[:url]
     end
+    attributes.delete(:image) if attributes
+  end
 
-    params.delete(:remove_image)
-    params.delete(:image)
-    super(params)
+  def remove_image(attributes)
+    if attributes[:remove_image]
+      attributes[self.class::IMAGE_URL_ATTR] = ""
+    end
+    attributes.delete(:remove_image) if attributes
   end
 end
