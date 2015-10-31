@@ -4,11 +4,7 @@ class Post < ActiveRecord::Base
   default_scope { where('published_date <= ?', DateTime.now).order(updated_at: :desc) }
   acts_as_ordered_taggable
 
-  dragonfly_accessor :header_image do
-    after_assign :set_dominant_colour
-  end
-  validates_property :format, of: :header_image, in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false, message: "should be either .jpeg, .jpg, .png, .bmp", if: :header_image_changed?
-
+  has_one :header_image, class_name: "Image", foreign_key: "owner_id"
   has_many :images, as: :owner
   accepts_nested_attributes_for :images
 

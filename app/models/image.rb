@@ -7,8 +7,15 @@ class Image < ActiveRecord::Base
   end
 
   belongs_to :owner, polymorphic: true
-  delegate :path, :url, to: :image
   validates_property :format, of: :image, in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false, message: "should be either .jpeg, .jpg, .png, .bmp", if: :image_changed?
+
+  def url
+    image.url rescue ""
+  end
+
+  def path
+    image.path rescue ""
+  end
 
   def self.capture_screenshot(url, owner)
     f = Screencap::Fetcher.new(url)

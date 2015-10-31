@@ -16,6 +16,7 @@ gem 'rails_12factor', group: :production
 
 # Gallery
 gem 'galleria-rails', github: 'jules2689/galleria-rails'
+gem 'fastimage'
 
 # Github
 gem 'octokit'

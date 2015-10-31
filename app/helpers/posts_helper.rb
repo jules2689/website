@@ -14,13 +14,13 @@ module PostsHelper
   end
 
   def top_for_header(post)
-  	height = post && post.header_image_stored? ? header_height(post.header_image) : 150
+  	height = post && post.header_image.present? ? header_height(post.header_image) : 150
   	top = height - 120
   	"style=\"margin-top: #{top}px !important\"".html_safe
   end
 
   def style_for_header_image_on_post(post)
-  	if post.header_image_stored?
+  	if post.header_image.present?
 	  	style = "style=\"background: url(#{ post.header_image.url });"
 	  	style << "-webkit-box-shadow: inset 0px -85px 78px 16px ##{ post.dominant_header_colour };"
 	  	style << "-moz-box-shadow: inset 0px -85px 78px 16px ##{ post.dominant_header_colour };"

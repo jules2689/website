@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020201716) do
+ActiveRecord::Schema.define(version: 20151031083159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20151020201716) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "owner_type"
+    t.string   "path",            limit: 500
+    t.string   "old_url",         limit: 500
   end
 
   create_table "interests", force: true do |t|
