@@ -1,5 +1,5 @@
 class FrontPageWidget < ActiveRecord::Base
+  include HasImage
   default_scope { order(position: :asc) }
-  dragonfly_accessor :image
-  validates_presence_of :title, :url, :image_name
+  validates_presence_of :title, :url, :image_url, :image_name
 end

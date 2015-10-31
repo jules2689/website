@@ -32,7 +32,7 @@
 <% @front_page_widgets.each do |widget| %>
   <div class="front-card">
     <a href="<%= widget.url %>">
-      <img src="<%= widget.image.url %>" alt="<%= widget.title %>" />
+      <img src="<%= widget.image_url %>" alt="<%= widget.title %>" />
       <h2><%= widget.title %> <% if widget.subtext %><small><%= widget.subtext%></small><% end %></h2>
     </a>
     <% if current_user %>

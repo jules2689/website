@@ -2,20 +2,16 @@ include Colorscore
 require 'screencap'
 
 class Image < ActiveRecord::Base
-  dragonfly_accessor :image do
-    after_assign :set_dominant_color
-  end
-
-  belongs_to :owner, polymorphic: true
-  validates_property :format, of: :image, in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false, message: "should be either .jpeg, .jpg, .png, .bmp", if: :image_changed?
 
   def url
-    image.url rescue ""
+    path
   end
 
-  def path
-    image.path rescue ""
+  def height
+    FastImage.size(url).last
   end
+
+  # TODO: Refactor this out
 
   def self.capture_screenshot(url, owner)
     f = Screencap::Fetcher.new(url)

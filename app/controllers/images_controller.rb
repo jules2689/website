@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
     name = image_file_name(params[:image])
     path = file_path(name)
 
-    @image = create_image(title, file_path(name), params[:image])
+    @image = image_maker.create_image(title, file_path(name), params[:image])
   end
 
   def create_gallery
@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
       @title = nil
       @image_file_name = nil
 
-      @images << create_image(title, path, image)
+      @images << image_maker.create_image(title, path, image)
     end
 
     @images
@@ -33,18 +33,8 @@ class ImagesController < ApplicationController
 
   private
 
-  def create_image(title, path, image)
-    Rails.logger.info("Creating image '#{title}'...")
-    client.create_contents("jules2689/gitcdn",
-                           "images/website/#{path}",
-                           "Adding Image #{path}",
-                            branch: "gh-pages",
-                            file: image.path)
-    { title: title, url: "http://gitcdn.jnadeau.ca/images/website/#{path}" }
-  end
-
-  def client
-    @client ||= Octokit::Client.new(access_token: ENV["WEBSITE_GITHUB_KEY"])
+  def image_maker
+    @image_maker ||= ImageMaker.new
   end
 
   def file_path(name)

@@ -9,23 +9,23 @@ module PostsHelper
     list.html_safe
   end
 
-  def header_height(header_image)
-    header_image.height > 500 ? 500 : header_image.height
+  def header_height(header_image_url)
+    image = FastImage.size(header_image_url)
+    image.present? ? image.last : 150
   end
 
   def top_for_header(post)
-  	height = post && post.header_image.present? ? header_height(post.header_image) : 150
-  	top = height - 120
+  	top = header_height(post.header_image_url) - 120
   	"style=\"margin-top: #{top}px !important\"".html_safe
   end
 
   def style_for_header_image_on_post(post)
-  	if post.header_image.present?
-	  	style = "style=\"background: url(#{ post.header_image.url });"
+  	if post.header_image_url.present?
+	  	style = "style=\"background: url(#{ post.header_image_url });"
 	  	style << "-webkit-box-shadow: inset 0px -85px 78px 16px ##{ post.dominant_header_colour };"
 	  	style << "-moz-box-shadow: inset 0px -85px 78px 16px ##{ post.dominant_header_colour };"
 	  	style << "box-shadow: inset 0px -85px 78px 16px ##{ post.dominant_header_colour };"
-	  	style << "height: #{ header_height(post.header_image) }px !important;\""
+	  	style << "height: #{ header_height(post.header_image_url) }px !important;\""
 	  	style.html_safe
 	  end
   end

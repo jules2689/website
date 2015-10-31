@@ -1,6 +1,6 @@
 <div class="<% if first %>first-post-preview<% else %>col-md-6 post-preview<% end %>">
   <%= link_to post_path(post) do %>
-    <%= image_tag post.header_image.try(:url) || 'default.jpg' %>
+    <%= image_tag post.header_image_url || 'default.jpg' %>
 
     <h2>
       <% unless post.published? %> <small><span class="label label-info">Unpublished</span></small><% end %>

@@ -12,8 +12,6 @@
     </div>
   </div>
 
-  <%= f.hidden_field :image_ids, value: params[:post].present? ? params[:post][:image_ids] : "", id: "image-ids" %>
-
   <div class="form">
 
     <%= render "layouts/forms/errors", object: @post %>
@@ -34,14 +32,14 @@
     </div>
 
     <div class="field">
-      <%= f.label :header_image %>
-      <%= f.file_field :header_image %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
     </div>
 
-    <% if @post.header_image_stored? %>
+    <% if @post.header_image_url.present? %>
       <div class="field">
-        <%= f.label :remove_header_image %>
-        <%= f.check_box :remove_header_image %>
+        <%= label_tag "remove_image" %>
+        <%= check_box_tag "remove_image" %>
       </div>
     <% end %>
 

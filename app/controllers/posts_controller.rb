@@ -34,7 +34,6 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        process_images if params[:post][:image_ids]
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -45,8 +44,9 @@ class PostsController < ApplicationController
   end
 
   def update
+    update_params = post_params.merge({ "remove_image" => params[:remove_image]})
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(update_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -66,19 +66,11 @@ class PostsController < ApplicationController
 
   private
 
-  def process_images
-    params[:post][:image_ids].split(",").each do |id|
-      image = Image.find(id)
-      image.owner = @post
-      image.save
-    end
-  end
-
   def set_post
     @post = Post.unscoped.find_by(handle: params[:handle])
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :tag_list, :published_date, :header_image, :remove_header_image)
+    params.require(:post).permit(:title, :body, :tag_list, :published_date, :image, :remove_image)
   end
 end

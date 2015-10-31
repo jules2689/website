@@ -9,6 +9,8 @@ class ScreenShot
       :height => 768,
       :top => 0, :left => 0
     )
+
+    ImageMaker.new.create_image("#{url.parameterize}.png", "screencap/#{url.parameterize}.png", File.read(path))
   end
 
 end

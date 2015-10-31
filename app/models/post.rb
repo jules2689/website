@@ -1,12 +1,9 @@
 include Colorscore
 
 class Post < ActiveRecord::Base
+  include HasImage
   default_scope { where('published_date <= ?', DateTime.now).order(updated_at: :desc) }
   acts_as_ordered_taggable
-
-  has_one :header_image, class_name: "Image", foreign_key: "owner_id"
-  has_many :images, as: :owner
-  accepts_nested_attributes_for :images
 
   validates_presence_of :title, :body
   before_validation :set_handle

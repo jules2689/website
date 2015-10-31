@@ -1,11 +1,9 @@
 class Interest < ActiveRecord::Base
+  include HasImage
   acts_as_taggable
   attr_accessor :interest_type_hash, :doc_id
 
   default_scope { order(updated_at: :desc) }
-
-  has_many :images, as: :owner
-  accepts_nested_attributes_for :images
 
   def initialize(attributes = {}, options = {})
     super(attributes, options)
@@ -17,7 +15,9 @@ class Interest < ActiveRecord::Base
   end
 
   def take_screencap!
-    Image.capture_screenshot(url, self) unless Rails.env.test?
+    unless Rails.env.test?
+      self.image_url = ScreenShot.capture(url, self)[:url]
+    end
   end
 
   def embed?
