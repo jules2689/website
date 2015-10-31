@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jules2689/galleria-rails.git
-  revision: 0c8240460ba17324ad1b2529f0d0d358395ee470
+  revision: 10d1b2715685eeaec7a0a3767d0c7fb11340b49b
   specs:
     galleria-rails (0.0.1)
       jquery-rails
@@ -130,7 +130,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
-    minitest (5.8.1)
+    minitest (5.8.2)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     multi_json (1.10.1)

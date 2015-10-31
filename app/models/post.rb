@@ -1,8 +1,8 @@
 class Post < ActiveRecord::Base
   IMAGE_URL_ATTR = "header_image_url"
   include HasImage
-  
-  default_scope { where('published_date <= ?', DateTime.now).order(updated_at: :desc) }
+
+  default_scope { where('published_date <= ?', DateTime.now).order(created_at: :desc) }
   acts_as_ordered_taggable
 
   validates_presence_of :title, :body
@@ -36,7 +36,7 @@ class Post < ActiveRecord::Base
 
   def self.scoped_posts(signed_in)
     if signed_in
-      Post.unscoped.all.order(updated_at: :desc)
+      Post.unscoped.all.order(created_at: :desc)
     else
       Post.all
     end

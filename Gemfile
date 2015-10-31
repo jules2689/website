@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+group :development, :test do
+  gem 'pry-byebug'
+end
+
 group :development do
   gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false
@@ -7,12 +11,10 @@ group :development do
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
   gem 'spring'
-  gem 'pry-byebug'
 end
 
 group :test do
   gem 'mocha'
-  gem 'pry-byebug'
 end
 
 group :production do

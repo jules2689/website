@@ -7,7 +7,7 @@ class ImageMaker
                            "Adding Image #{path}",
                             branch: "gh-pages",
                             file: image.path)
-    { title: title, url: "http://gitcdn.jnadeau.ca/images/website/#{path}" }
+    { title: title, url: "https://jules2689.github.io/gitcdn/images/website/#{path}" }
   end
 
   def client
