@@ -1,5 +1,27 @@
 source 'https://rubygems.org'
 
+group :development do
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'spring'
+  gem 'pry-byebug'
+end
+
+group :test do
+  gem 'mocha'
+  gem 'pry-byebug'
+end
+
+group :production do
+  gem 'rails_12factor'
+end
+
+gem 'puma'
+
+
 gem 'rails', '4.1.8'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -9,11 +31,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
-gem 'pry-byebug', group: :test
-gem 'rails_12factor', group: :production
-gem 'mocha', group: :test
 gem 'rack-cache'
 
 # Gallery
