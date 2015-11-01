@@ -1,8 +1,6 @@
 class ImagesController < ApplicationController
 
   def create_github_image
-    client = Octokit::Client.new(access_token: ENV["WEBSITE_GITHUB_KEY"])
-
     title = image_title(params[:image])
     name = image_file_name(params[:image])
     path = file_path(name)

@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class ImagesControllerTest < ActionController::TestCase
-  setup do
-    @image = images(:one)
-  end
 
   test "should create image" do
     post :create_github_image, image: fixture_file_upload('images/test.jpg', 'image/jpg'), format: :js
@@ -21,4 +18,5 @@ class ImagesControllerTest < ActionController::TestCase
     expected_response = { title: "Title", url: "http://gitcdn.jnadeau.ca/images/website/path.jpg" }
     assert_equal [first, second], assigns(:images)
   end
+
 end
