@@ -1,6 +1,7 @@
 # Load DSL and Setup Up Stages
 require 'capistrano/setup'
 require 'capistrano/deploy'
+require 'capistrano/secrets_yml'
 
 require 'capistrano/rails'
 require 'capistrano/bundler'
