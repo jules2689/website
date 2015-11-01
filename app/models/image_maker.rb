@@ -11,6 +11,12 @@ class ImageMaker
   end
 
   def client
+    if ENV["WEBSITE_GITHUB_KEY"].present?
+      puts "I have a github key"
+    else
+      puts "I don't have a github key"
+    end
+    
     @client ||= Octokit::Client.new(access_token: ENV["WEBSITE_GITHUB_KEY"])
   end
 
