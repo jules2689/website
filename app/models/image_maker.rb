@@ -2,7 +2,7 @@ class ImageMaker
 
   def create_image(title, path, image)
     Rails.logger.info("Creating image '#{title}'...")
-    if ENV["WEBSITE_GITHUB_KEY"].present?
+    if Rails.application.secrets.github_key.present?
       puts "TOKEN WAS HERE"
     else
       puts "TOKEN MISSING"

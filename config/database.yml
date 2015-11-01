@@ -13,7 +13,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['POSTGRESQL_DATABASE'] %>
+  database: <%= Rails.application.secrets.pg_db_name %>
   pool: 25
-  username: <%= ENV['POSTGRESQL_USERNAME'] %>
-  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
+  username: <%= Rails.application.secrets.pg_user %>
+  password: <%= Rails.application.secrets.pg_pass %>

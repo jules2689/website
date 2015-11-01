@@ -1,1 +1,1 @@
-Julianssite::GithubClient = Octokit::Client.new(access_token: ENV["WEBSITE_GITHUB_KEY"])
+Julianssite::GithubClient = Octokit::Client.new(access_token: Rails.application.secrets.github_key)
