@@ -1,10 +1,12 @@
 <div class="posts-header clearfix">
   <div class="post-breadcrumb pull-left metadata">
     <span>
-      /<%= link_to " Home ", "/" %>/ Interests / 
+      /<%= link_to " Home ", "/" %>/
 
       <% if params[:tagged] %>
-      Viewing interests tagged with <%= CGI.escape params[:tagged] %> /
+       <%= link_to "Interests", interests_path %> / Viewing interests tagged with <%= CGI.escape params[:tagged] %> /
+      <% else %>
+       Interests / 
       <% end %>
     </span>
   </div>

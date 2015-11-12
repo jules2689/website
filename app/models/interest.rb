@@ -13,7 +13,7 @@ class Interest < ActiveRecord::Base
 
   def take_screencap!
     unless Rails.env.test?
-      self.image_url = ScreenShot.capture(url, self)[:url]
+      self.image_url = ScreenShot.capture(url)[:url]
     end
   end
 
