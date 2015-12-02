@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   end
 
   def html_body
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true, fenced_code_blocks: true)
     markdown.render(body).html_safe
   end
 
