@@ -32,7 +32,7 @@ $(document).on("page:change", function(){
             pre[i].innerHTML = "<code>" + pre[i].innerHTML + "</code>";
           }
           pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
-          var num = pre[i].innerHTML.split(/\n/).length;
+          var num = pre[i].innerHTML.split(/\n/).length - 1;
           for (var j = 0; j < num; j++) {
               var line_num = pre[i].getElementsByTagName('span')[0];
               line_num.innerHTML += '<span>' + (j + 1) + '</span>';
