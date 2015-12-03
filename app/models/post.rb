@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   default_scope { where('published_date <= ?', DateTime.now).order(created_at: :desc) }
   acts_as_ordered_taggable
 
-  validates_presence_of :title, :body
+  validates_presence_of :title, :body, :tag_list
   before_validation :set_handle
   before_validation :set_published_key
 
