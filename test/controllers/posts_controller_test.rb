@@ -24,7 +24,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should create post" do
     assert_difference('Post.count') do
-      post :create, post: { body: @post.body, handle: @post.handle, title: @post.title, image: fixture_file_upload('images/test.jpg', 'image/jpg') }
+      post :create, post: { body: @post.body, handle: @post.handle, title: @post.title, image: fixture_file_upload('images/test.jpg', 'image/jpg'), tag_list: "a,b,c" }
     end
 
     assert_not_nil assigns(:post).header_image_url
