@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include TagActions
   before_action :authenticate_user!, except: [:index, :show, :tag_cloud]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :regenerate_published_key]
 

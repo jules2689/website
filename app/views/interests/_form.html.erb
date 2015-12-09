@@ -14,7 +14,8 @@
   <%= f.text_field :url, class: "form-control" %>
 
   <%= f.label :tag_list %>
-  <%= f.text_field :tag_list, class: "form-control" %>
+  <%= f.hidden_field :tag_list, id: "tag_list", "data-url" => "/interests/tags", class: "form-control" %>
+  <div id="taggle"></div>
 
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>

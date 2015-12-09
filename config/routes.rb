@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
-  resources :interests, only: [:index, :new, :create, :destroy]
-
-  devise_for :users, :skip => [:registrations]
-  resources :posts, param: :handle do 
-    member { post :regenerate_published_key }
+  concern :tag_resources do
+    collection { get :tags }
   end
-  
-  resources :front_page_widgets, except: :show do
-    collection do
-      get "/positions", to: :positions, as: :positions
-      post "/positions", to: :save_positions, as: :save_positions
-    end
+
+  resources :interests, concerns: :tag_resources, only: [:index, :new, :create, :destroy]
+
+  resources :posts, concerns: :tag_resources, param: :handle do 
+    member { post :regenerate_published_key }
   end
 
   controller :images, path: "images" do
@@ -18,9 +14,17 @@ Rails.application.routes.draw do
     post :create_gallery
   end
 
+  devise_for :users, :skip => [:registrations]
   resources :users do
     collection do
       resource :sessions, only: [:new, :create, :destroy]
+    end
+  end
+
+  resources :front_page_widgets, except: :show do
+    collection do
+      get "/positions", to: :positions, as: :positions
+      post "/positions", to: :save_positions, as: :save_positions
     end
   end
 

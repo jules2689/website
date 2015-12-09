@@ -23,7 +23,8 @@
 
     <div class="field">
       <%= f.label :tags %><br>
-      <%= f.text_field :tag_list, class: "form-control" %>
+      <%= f.hidden_field :tag_list, id: "tag_list", "data-url" => "/posts/tags", class: "form-control" %>
+      <div id="taggle"></div>
     </div>
 
     <div class="field">
