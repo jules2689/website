@@ -4,7 +4,7 @@
 
 <div class="posts-header clearfix">
   <div class="post-breadcrumb col-md-12">
-    <div class="col-sm-6 metadata">
+    <div class="pull-left metadata">
       <span>/<%= link_to " Home ", "/" %>/ <%= link_to "Blog", posts_path %> / <%= @post.title %></span> <% if current_user %> 
           (<%= link_to "Edit Post", edit_post_path(@post)%>
           <% if !@post.published? %>
@@ -14,7 +14,7 @@
           <% end %>)
         <% end %>
     </div>
-    <div class="text-right">
+    <div class="pull-right">
       <%= render "metadata", post: @post %>
     </div>
   </div>
