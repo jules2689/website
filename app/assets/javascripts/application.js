@@ -7,10 +7,7 @@
 //= require turbolinks
 //= require pagedown_bootstrap
 //= require pagedown_init
-//= require stackblur
-//= require cards
 //= require galleria
-//= require masonry
 //= require highlight.pack
 //= require taggle
 //= require jquery.autocomplete

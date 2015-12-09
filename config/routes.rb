@@ -21,12 +21,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :front_page_widgets, except: :show do
-    collection do
-      get "/positions", to: :positions, as: :positions
-      post "/positions", to: :save_positions, as: :save_positions
-    end
-  end
-
-  root "front_page_widgets#index"
+  root "application#index"
 end

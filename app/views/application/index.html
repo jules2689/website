@@ -1,0 +1,29 @@
+<% if current_user %>
+<div class="posts-header clearfix">
+  <div class="post-breadcrumb col-md-12">
+    <div class="metadata pull-right">
+      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div class="full_center">
+
+  <div class="front-page-header clearfix">
+    <img class="avatar pull-left" src="https://secure.gravatar.com/avatar/bccdd41945f78d7cb7c2f64275efa100.png?r=PG&s=400" width="80" alt="Julian Nadeau">
+    <h1>Julian Nadeau</h1>
+    <div class="pull-left">
+      <a href="https://github.com/jules2689"><i class="fa fa-github-square fa-2x"></i></a>
+      <a href="https://twitter.com/jules2689"><i class="fa fa-twitter-square fa-2x"></i></a>
+      <a href="http://www.linkedin.com/pub/julian-nadeau/49/1b0/721"><i class="fa fa-linkedin-square fa-2x"></i></a>
+      <a href="mailto:julian@jnadeau.ca"><i class="fa fa-envelope-square fa-2x"></i></a>
+    </div>
+  </div>
+
+  <div class="front-page-content">
+    <p>I am a production engineer at <a href="http://shopify.com">Shopify.</a> I work on Mobile Infrastructure.</a></p>
+    <p>Read my <%= link_to "Blog", posts_url %> | Check out my <%= link_to "Interests", interests_url %></p>
+  </div>
+
+</div>

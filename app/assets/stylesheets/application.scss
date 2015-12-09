@@ -2,7 +2,6 @@
  *= require jquery-ui
  *= require_tree .
  *= require_self
- *= require cards
  *= require galleria.classic
  *= require highlight
  *= require devise_bootstrap_views
@@ -13,6 +12,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "pagedown_bootstrap";
+
+div.full_center {
+    width: 90%;
+    height: 200px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+    font-size: 150%;
+}
 
 html,body {  height: 100%; overflow-x: hidden; }
 h1 { font-family: 'Roboto Slab', serif; color: #fff; small { color: #fff; } }
