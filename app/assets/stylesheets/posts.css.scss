@@ -41,21 +41,21 @@
   }
 
   .post-metadata {
-    text-align: center;
-    margin-top: -80px;
-    padding: 5px;
+    text-align: left;
+    margin-top: -90px;
+    margin-bottom: 30px;
+    padding: 10px;
     background-color: rgba(255, 255, 255, 0.78);
-    font-family: "Lato", helvetica, arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
     h2 { 
-      font: 400 18px "Lato", helvetica, arial, sans-serif; 
-      text-align: center; 
+      font: 500 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
       color: #000;
       margin-top: 0px;
     }
 
     .post-preview-metadata {
-      text-align: center;
+      font-size: 12px;
     }
   }
 

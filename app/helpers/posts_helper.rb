@@ -5,7 +5,6 @@ module PostsHelper
     list = post.tag_list.collect do |tag|
       link_to tag, posts_path(tagged: tag)
     end.join(", ")
-    list << "<br>" if list.present?
     list.html_safe
   end
 
