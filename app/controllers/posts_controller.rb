@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if params[:tagged]
       @posts = Post.scoped_posts(signed_in?).tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 7)
     else
-      @posts = Post.scoped_posts(signed_in?).paginate(page: params[:page], per_page: 7)
+      @posts = Post.scoped_posts(signed_in?).paginate(page: params[:page], per_page: 8)
     end
     @tags = Post.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
   end
