@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+GC::Profiler.enable
+
 module Julianssite
   class Application < Rails::Application
   end
