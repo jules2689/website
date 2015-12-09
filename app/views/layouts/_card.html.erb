@@ -1,8 +1,8 @@
 <div class="col-md-6">
   <div class="card card-max">
 
-    <% if local_assigns.has_key?(:embed) && embed.present? %>
-      <%= embed %>
+    <% if local_assigns.has_key?(:embed_url) && embed_url.present? %>
+      <%= embed(embed_url) %>
     <% else %>                            
       <%= link_to link do %>
         <div class="header" style="background-image:url('<%= asset_url header_image %>')">
