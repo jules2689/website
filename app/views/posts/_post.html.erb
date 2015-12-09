@@ -1,22 +1,7 @@
-<div class="post col-md-6 post-preview">
-  <%= link_to post_path(post) do %>
-    <div class="post-image" style="background-image: url(<%= asset_path post.header_image_url || 'default.jpg' %>)">
-      &nbsp;
-    </div>
+<%= render layout: "layouts/card", locals: { object: post, link: post, header_image: post.header_image_url || 'default.jpg' } do %>
+  <% unless post.published? %> 
+  <span class="label label-info">Unpublished</span>
   <% end %>
-
-  <div class="post-metadata">
-    <h2>
-      <% unless post.published? %> 
-        <small><span class="label label-info">Unpublished</span></small>
-      <% end %>
-      <%= post.title %>
-      <small><%= linked_tag_list(post) %></small>
-    </h2>
-
-    <div class="post-preview-metadata">
-      <span><%= post.est_created_at.to_formatted_s(:long) %></span> |
-      <span><a class="comment-link-marker" data-disqus-url="http://jnadeau.ca/posts/<%= post.handle %>" href="http://jnadeau.ca/posts/<%= post.handle %>#disqus_thread">0 comments</a></span>
-    </div>
-  </div>
-</div>
+  <span><%= post.est_created_at.to_formatted_s(:long) %></span> |
+  <span><a class="comment-link-marker" data-disqus-url="http://jnadeau.ca/posts/<%= post.handle %>" href="http://jnadeau.ca/posts/<%= post.handle %>#disqus_thread">0 comments</a></span>
+<% end %>

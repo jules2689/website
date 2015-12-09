@@ -1,13 +1,6 @@
 module PostsHelper
   include ActsAsTaggableOn::TagsHelper
 
-  def linked_tag_list(post)
-    list = post.tag_list.collect do |tag|
-      link_to tag, posts_path(tagged: tag)
-    end.join(", ")
-    list.html_safe
-  end
-
   def header_height(header_image_url)
     image = FastImage.size(header_image_url)
     image.present? ? image.last : 150

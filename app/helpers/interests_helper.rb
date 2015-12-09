@@ -8,12 +8,4 @@ module InterestsHelper
   def interest_metadata(provider, interest_type)
     [interest_type.try(:humanize), provider].reject(&:blank?).join("/")
   end
-
-  def linked_interest_tag_list(interest)
-    list = interest.tag_list.collect do |tag|
-      link_to tag, interests_path(tagged: tag)
-    end.join(", ")
-    list << "<br>" if list.present?
-    list.html_safe
-  end
 end

@@ -1,21 +1,4 @@
-<div class="card-box">
-  <div class="card">                            
-      <div class="header">
-          <% if interest.embed? %>
-            <%= embed(interest.embed_url) %>
-          <% else %>
-            <%= image_tag interest.image_url %>
-            <div class="filter"></div>
-            <div class="actions">
-                <%= link_to "Read Content", interest.url, target: "_blank", class: "btn btn-round btn-fill btn-neutral btn-modern" %>
-            </div>
-          <% end %>
-      </div>
-      
-      <div class="content clearfix">
-        <span><%= linked_interest_tag_list(interest) %></span>
-        <h4 class="title"><%= link_to interest.title, interest.url, target: "_blank" %></a></h4>
-        <%= link_to "Remove", interest, method: :delete, class: "btn btn-danger pull-right" if current_user %>
-      </div>                                           
-  </div> <!-- end card -->
-</div>
+<%= render layout: "layouts/card", locals: { object: interest, link: interest.url, header_image: interest.image_url, embed: embed(interest.embed_url) } do %>
+  <%= link_to "Remove", interest, method: :delete, class: "btn btn-danger pull-right" if current_user %>
+<% end %>
+

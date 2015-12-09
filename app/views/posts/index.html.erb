@@ -5,7 +5,7 @@
 <div class="posts-header clearfix">
   <div class="post-breadcrumb metadata pull-left">
     <span>
-      /<%= link_to " Home ", "/" %>/ Random Thoughts / 
+      /<%= link_to " Home ", "/" %>/ Blog / 
 
       <% if params[:tagged] %>
       Viewing posts tagged with <%= params[:tagged] %> /
@@ -24,7 +24,7 @@
   <%= render "layouts/tag_cloud", tags: @tags %>
 </div>
 
-<div id="posts" class="col-md-10 col-md-offset-1 padded-vert">
+<div id="posts" class="card-box col-md-10 col-md-offset-1 padded-vert">
   <%= render @posts %>
 </div>
 

@@ -20,13 +20,8 @@
 
 <br>
 
-<div class="col-md-8 col-md-offset-2 clearfix">
-  <div id="interests">
-    <% @interests.in_groups(3, false) do |interests| %>
-      <div class="col-md-4">
-        <%= render interests %>
-      </div>
-    <% end %>
+  <div id="interests" class="card-box col-md-10 col-md-offset-1 padded-vert">
+    <%= render @interests %>
   </div>
 
   <div class="col-md-12 text-center">

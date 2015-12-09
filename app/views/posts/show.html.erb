@@ -5,7 +5,7 @@
 <div class="posts-header clearfix">
   <div class="post-breadcrumb col-md-12">
     <div class="col-sm-6 metadata">
-      <span>/<%= link_to " Home ", "/" %>/ <%= link_to "Random Thoughts", posts_path %> / <%= @post.title %></span> <% if current_user %> 
+      <span>/<%= link_to " Home ", "/" %>/ <%= link_to "Blog", posts_path %> / <%= @post.title %></span> <% if current_user %> 
           (<%= link_to "Edit Post", edit_post_path(@post)%>
           <% if !@post.published? %>
             , 

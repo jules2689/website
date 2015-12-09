@@ -7,11 +7,23 @@
  *= require devise_bootstrap_views
  *= require jquery.datetimepicker
  *= require taggle
+ *= require cards
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "pagedown_bootstrap";
+
+.badge {
+  background-color: rgba(204, 204, 204, 0.18);
+  a {
+    color: #fff;
+  }
+}
+
+#interests .title {
+  height: 70px;
+}
 
 div.full_center {
     width: 90%;
