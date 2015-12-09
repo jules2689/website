@@ -34,7 +34,7 @@ $(document).on("page:change", function(){
 
       var tags = actual_tag_list.value.split(',')
       for (var tag_idx in tags) {
-        var tag = tags[tag_idx].replace(/ /g,'');
+        var tag = tags[tag_idx].replace(/, /g,',');
         taggle.add(tag);
       }
 
