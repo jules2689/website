@@ -1,4 +1,4 @@
-<div class="post <% if first %>first-post-preview<% else %>col-md-6 post-preview<% end %>">
+<div class="post col-md-6 post-preview">
   <%= link_to post_path(post) do %>
     <div class="post-image" style="background-image: url(<%= asset_path post.header_image_url || 'default.jpg' %>)">
       &nbsp;

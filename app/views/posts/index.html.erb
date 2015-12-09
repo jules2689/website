@@ -24,11 +24,8 @@
   <%= render "layouts/tag_cloud", tags: @tags %>
 </div>
 
-<%= render @posts.first, first: true %>
-
 <div id="posts" class="col-md-10 col-md-offset-1 padded-vert">
-  <hr>
-  <%= render @posts.drop(1), first: false %>
+  <%= render @posts %>
 </div>
 
 <div class="col-md-12 text-center">

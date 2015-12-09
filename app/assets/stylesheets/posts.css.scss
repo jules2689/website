@@ -42,11 +42,16 @@
 
   .post-metadata {
     text-align: center;
+    margin-top: -80px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.78);
+    font-family: "Lato", helvetica, arial, sans-serif;
 
     h2 { 
       font: 400 18px "Lato", helvetica, arial, sans-serif; 
       text-align: center; 
-      color: #000; 
+      color: #000;
+      margin-top: 0px;
     }
 
     .post-preview-metadata {
