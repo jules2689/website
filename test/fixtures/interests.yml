@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   interest_type: MyString
   treatment: MyString
   embed_url: MyString
@@ -9,6 +10,7 @@ one:
   title: MyString
 
 two:
+  id: 2
   interest_type: MyString
   treatment: MyString
   embed_url: MyString

@@ -103,6 +103,12 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to posts_path
   end
 
+  test "should get tags" do
+    get :tags, query: "another"
+    assert_response :success
+    assert_equal ["Another Tag"], JSON.parse(response.body)["suggestions"]
+  end
+
   # Unauthenticated
 
   test "should get index while unauthorized" do

@@ -33,4 +33,10 @@ class InterestsControllerTest < ActionController::TestCase
 
     assert_redirected_to interests_path
   end
+
+  test "should get tags" do
+    get :tags, query: "third"
+    assert_response :success
+    assert_equal ["A third Tag"], JSON.parse(response.body)["suggestions"]
+  end
 end

@@ -9,3 +9,9 @@ two:
   taggable_id: 2
   taggable_type: Post
   context: tags
+
+three:
+  tag_id: 3
+  taggable_id: 1
+  taggable_type: Interest
+  context: tags
