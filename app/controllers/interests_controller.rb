@@ -7,9 +7,9 @@ class InterestsController < ApplicationController
 
   def index
     if params[:tagged]
-      @interests = Interest.tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 7)
+      @interests = Interest.tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 8)
     else
-      @interests = Interest.paginate(page: params[:page], per_page: 9)
+      @interests = Interest.paginate(page: params[:page], per_page: 8)
     end
     @tags = Interest.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
   end
