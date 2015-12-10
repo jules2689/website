@@ -1,5 +1,4 @@
 /*
- *= require jquery-ui
  *= require_tree .
  *= require_self
  *= require galleria.classic
@@ -8,6 +7,7 @@
  *= require jquery.datetimepicker
  *= require taggle
  *= require cards
+ *= require jquery-ui
  */
 
 @import "bootstrap-sprockets";
