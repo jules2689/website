@@ -25,7 +25,7 @@ class InterestsControllerTest < ActionController::TestCase
     end
     assert_redirected_to interests_path
   end
-  
+
   test "should destroy interest" do
     assert_difference('Interest.count', -1) do
       delete :destroy, id: @interest

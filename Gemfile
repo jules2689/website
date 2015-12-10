@@ -15,7 +15,6 @@ gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
-
 # Gallery
 gem 'galleria-rails', github: 'jules2689/galleria-rails'
 gem 'fastimage'
@@ -56,6 +55,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rubocop', require: false
   gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false

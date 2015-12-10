@@ -8,7 +8,7 @@ class ActionView::Helpers::FormBuilder
   def markdown_input(method, options = {})
     out = "<div id=\"wmd-button-bar-#{method}\"></div>\n"
     out << "#{text_area(method, options.merge(
-      { :class => 'wmd-input', :id => "wmd-input-#{method}"})) }"
+      class: 'wmd-input', id: "wmd-input-#{method}"))}"
     if options[:preview]
       out << "<div id=\"wmd-preview-#{method}\" class=\"wmd-preview\"></div>"
     end

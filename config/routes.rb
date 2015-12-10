@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :interests, concerns: :tag_resources, only: [:index, :new, :create, :destroy]
 
-  resources :posts, concerns: :tag_resources, param: :handle do 
+  resources :posts, concerns: :tag_resources, param: :handle do
     member { post :regenerate_published_key }
   end
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     post :create_gallery
   end
 
-  devise_for :users, :skip => [:registrations]
+  devise_for :users, skip: [:registrations]
   resources :users do
     collection do
       resource :sessions, only: [:new, :create, :destroy]

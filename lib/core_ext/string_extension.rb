@@ -5,7 +5,7 @@ class String
     current = doc.children.first
     count = 0
 
-    while true
+    loop do
       # we found a text node
       if current.is_a?(Nokogiri::XML::Text)
         count += current.text.split.length
@@ -19,19 +19,19 @@ class String
         # lets descend and look for text nodes
         current = current.children.first
       elsif !current.next.nil?
-        #this has no children, but has a sibling, let's check it out
+        # this has no children, but has a sibling, let's check it out
         current = current.next
       else
         # we are the last child, we need to ascend until we are
         # either done or find a sibling to continue on to
         n = current
-        while !n.is_a?(Nokogiri::HTML::Document) and n.parent.next.nil?
+        while !n.is_a?(Nokogiri::HTML::Document) && n.parent.next.nil?
           n = n.parent
         end
 
         # we've reached the top and found no more text nodes, break
         if n.is_a?(Nokogiri::HTML::Document)
-          break;
+          break
         else
           current = n.parent.next
         end
@@ -59,7 +59,7 @@ class String
         # 6 - 4 = 2, so we get 2 words from this node, but words #1-2 are indices #0-1, so
         # we subtract 1.  If this gives us -1, we want nothing from this node. So go back to
         # the previous node instead.
-        index = num_words-(count-new_content.length)-1
+        index = num_words - (count - new_content.length) - 1
         if index >= 0
           new_content = new_content[0..index]
           current.content = new_content.join(' ') + truncate_string
@@ -70,10 +70,8 @@ class String
       end
 
       # remove everything else
-      while !current.is_a?(Nokogiri::HTML::Document)
-        while !current.next.nil?
-          current.next.remove
-        end
+      until current.is_a?(Nokogiri::HTML::Document)
+        current.next.remove until current.next.nil?
         current = current.parent
       end
     end

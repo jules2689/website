@@ -6,7 +6,7 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  setup do 
+  setup do
     ImageMaker.any_instance.stubs(:create_image).returns({ title: "Title", url: "http://gitcdn.jnadeau.ca/images/website/path.jpg" })
   end
 end

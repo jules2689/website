@@ -10,11 +10,11 @@ class Post < ActiveRecord::Base
   before_validation :set_published_key
 
   def est_created_at
-    self.created_at + Time.zone_offset('EST')
+    created_at + Time.zone_offset('EST')
   end
 
   def est_updated_at
-    self.updated_at + Time.zone_offset('EST')
+    updated_at + Time.zone_offset('EST')
   end
 
   def trancated_body
@@ -43,22 +43,22 @@ class Post < ActiveRecord::Base
   end
 
   def can_allow_unpublished_view?(key)
-    self.published_key == key
+    published_key == key
   end
 
   private
 
   def set_handle
-    self.handle = self.title.downcase.parameterize
+    self.handle = title.downcase.parameterize
   end
 
   def set_published_key
-    self.published_key = Digest::SHA1.hexdigest(self.title.downcase.parameterize + Time.now.to_s) if self.published_key.blank?
+    self.published_key = Digest::SHA1.hexdigest(title.downcase.parameterize + Time.now.to_s) if published_key.blank?
   end
 
   def set_dominant_colour
-    histogram = Histogram.new(self.header_image.path)
-    rgb_color =  histogram.scores.min_by { |h| h.last.brightness }.last
+    histogram = Histogram.new(header_image.path)
+    rgb_color = histogram.scores.min_by { |h| h.last.brightness }.last
     self.dominant_header_colour = rgb_color.hex
   end
 end

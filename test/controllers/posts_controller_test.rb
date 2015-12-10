@@ -88,8 +88,8 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should update header image" do
     new_path = "http://gitcdn.jnadeau.ca/images/website/new_path.jpg"
-    ImageMaker.any_instance.stubs(:create_image).returns({ title: "Title", url: new_path })
-    
+    ImageMaker.any_instance.stubs(:create_image).returns(title: "Title", url: new_path)
+
     patch :update, handle: @post, post: { body: @post.body, handle: @post.handle, title: @post.title, image: fixture_file_upload('images/test.jpg', 'image/jpg') }
     assert_equal new_path, assigns(:post).header_image_url
     assert_redirected_to post_path(assigns(:post))
@@ -153,7 +153,7 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should not destroy post while unauthorized" do
-   sign_out(@user)
+    sign_out(@user)
     assert_no_difference('Post.count', -1) do
       delete :destroy, handle: @post
     end
@@ -163,7 +163,7 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should not change key when not authenticated" do
     sign_out :user
-    
+
     post :regenerate_published_key, handle: @post
     assert_equal @post.published_key, @post.reload.published_key
     assert_redirected_to new_user_session_path

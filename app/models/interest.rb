@@ -12,18 +12,16 @@ class Interest < ActiveRecord::Base
   end
 
   def take_screencap!
-    unless Rails.env.test?
-      self.image_url = ScreenShot.capture(url)[:url]
-    end
+    self.image_url = ScreenShot.capture(url)[:url] unless Rails.env.test?
   end
 
   def embed?
-    Interest.interest_types.find { |d| d["name"] == self.provider }.try(:[], "embeddable")
+    Interest.interest_types.find { |d| d["name"] == provider }.try(:[], "embeddable")
   end
 
   def document_profile(url)
-    hashes = Interest.interest_types.keep_if do |interest_type| 
-      interest_type["supported_schemas"].any? do |schema| 
+    hashes = Interest.interest_types.keep_if do |interest_type|
+      interest_type["supported_schemas"].any? do |schema|
         if url =~ /#{escape(schema)}/
           matches = /#{escape(schema)}/.match(url)
           self.doc_id = matches[matches.size - 1]
@@ -38,16 +36,16 @@ class Interest < ActiveRecord::Base
     interest_types.collect { |interest_type| interest_type["name"] }
   end
 
-private
+  private
 
   def initialize_with_attributes(attributes)
     self.interest_type_hash = document_profile(attributes[:url]) || { "url" => url, "treatment" => "link", "type" => "website" }
-    self.doc_id = url if self.doc_id.blank?
+    self.doc_id = url if doc_id.blank?
     self.url = url
-    self.treatment = self.interest_type_hash["treatment"]
-    self.interest_type = self.interest_type_hash["type"]
-    self.provider = self.interest_type_hash["name"]
-    self.embed_url = self.interest_type_hash["url"] % { :id => self.doc_id } if self.interest_type_hash["url"]
+    self.treatment = interest_type_hash["treatment"]
+    self.interest_type = interest_type_hash["type"]
+    self.provider = interest_type_hash["name"]
+    self.embed_url = interest_type_hash["url"] % { id: doc_id } if interest_type_hash["url"]
     set_title_from_url(url)
     self.take_screencap! unless embed?
   end
@@ -55,12 +53,12 @@ private
   def set_title_from_url(url)
     m = Mechanize.new
     m.user_agent_alias = "Mac Safari"
-    self.title = m.get(url).title.gsub(/- #{self.provider}/i, '')
+    self.title = m.get(url).title.gsub(/- #{provider}/i, '')
   end
 
   def escape(url)
     regex = Regexp.escape(url)
-    regex.gsub!(/\\\*/,"(.*)")
+    regex.gsub!(/\\\*/, "(.*)")
     regex.gsub!(/http:/, "(https|http):")
     regex
   end

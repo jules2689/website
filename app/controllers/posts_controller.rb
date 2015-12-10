@@ -9,12 +9,12 @@ class PostsController < ApplicationController
     else
       @posts = Post.scoped_posts(signed_in?).paginate(page: params[:page], per_page: 8)
     end
-    @tags = Post.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
+    @tags = Post.tag_counts_on(:tags).to_a.sort_by(&:name)
   end
 
   def show
-    redirect_to posts_path unless signed_in? || @post.published?  || @post.can_allow_unpublished_view?(params[:published_key])
-    @tags = Post.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
+    redirect_to posts_path unless signed_in? || @post.published? || @post.can_allow_unpublished_view?(params[:published_key])
+    @tags = Post.tag_counts_on(:tags).to_a.sort_by(&:name)
   end
 
   def regenerate_published_key
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    update_params = post_params.merge({ "remove_image" => params[:remove_image]})
+    update_params = post_params.merge("remove_image" => params[:remove_image])
     respond_to do |format|
       if @post.update(update_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }

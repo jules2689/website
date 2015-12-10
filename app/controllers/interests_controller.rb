@@ -11,7 +11,7 @@ class InterestsController < ApplicationController
     else
       @interests = Interest.paginate(page: params[:page], per_page: 8)
     end
-    @tags = Interest.tag_counts_on(:tags).to_a.sort_by { |t| t.name }
+    @tags = Interest.tag_counts_on(:tags).to_a.sort_by(&:name)
   end
 
   def new
@@ -31,11 +31,12 @@ class InterestsController < ApplicationController
   end
 
   private
-    def set_interest
-      @interest = Interest.find(params[:id])
-    end
 
-    def interest_params
-      params.require(:interest).permit(:url, :tag_list)
-    end
+  def set_interest
+    @interest = Interest.find(params[:id])
+  end
+
+  def interest_params
+    params.require(:interest).permit(:url, :tag_list)
+  end
 end
