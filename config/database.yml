@@ -1,13 +1,13 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: julian
+  database: website_dev
   pool: 5
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: julian_test
+  database: website_test
   pool: 5
 
 production:

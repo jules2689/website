@@ -7,11 +7,17 @@ Written in Rails, this encompasses my blog and interests.
 
 1. Requires Postgres
 2. `bundle install` from the root directory, then `bin/rake db:create db:migrate`
-3. Setup `config/secrets.yml`. Don't worry it's gitignored.
+3. Setup `config/secrets.yml`. Don't worry it's gitignored. Make sure to fill out default with your information.
 ```
   default: &default
+    git_user: jules2689
+    twitter_user: jules2689
+    website_tagline: I am a production engineer at <a href="http://shopify.com">Shopify.</a> I work on Mobile Infrastructure.
+    linkedin_url: http://www.linkedin.com/pub/julian-nadeau/49/1b0/721
     git_cdn_repo: jules2689/gitcdn
     git_cdn_repo_url: https://jules2689.github.io/gitcdn/
+    website_title: Julian Nadeau
+    website_email: julian@jnadeau.ca
 
   development:
     <<: *default

@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 GC::Profiler.enable
 
-module Julianssite
+module PersonalWebsite
   class Application < Rails::Application
   end
 end

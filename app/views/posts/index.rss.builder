@@ -1,9 +1,9 @@
 xml.instruct! :xml, :version => '1.0'
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title "Julian Nadeau"
-    xml.description "My random, incoherent thoughts."
-    xml.link "http://jnadeau.ca"
+    xml.title Rails.application.secrets.website_title
+    xml.description strip_tags(Rails.application.secrets.website_tagline)
+    xml.link request.protocol + request.host_with_port
 
     @posts.each do |post|
       xml.item do

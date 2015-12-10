@@ -1,4 +1,6 @@
 module TagHelper
+  include ActsAsTaggableOn::TagsHelper
+  
   def linked_tag_list(object, spanned: true)
     list = object.tag_list.collect do |tag|
       link = link_to(tag, action: 'index', tagged: tag)
