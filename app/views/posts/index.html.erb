@@ -1,27 +1,27 @@
 <% content_for :title do %>
-  Random Thoughts
+  Blog
 <% end %>
 
-<div class="posts-header clearfix">
-  <div class="post-breadcrumb metadata pull-left">
-    <span>
-      /<%= link_to " Home ", "/" %>/ Blog / 
-
+<div class="page-header-breadcrumb clearfix">
+  <div class="page-breadcrumb">
+    <ul class="breadcrumbs list-inline pull-left">
+      <li><%= link_to " Home ", "/" %></li>
+      <li>Blog</li>
       <% if params[:tagged] %>
-      Viewing posts tagged with <%= params[:tagged] %> /
+        <li>Viewing posts tagged with <%= params[:tagged] %></li>
       <% end %>
+      <li>
+        <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
+          <small><i class="fa fa-rss"></i></small>
+        <% end %>
+      </li>
+    </ul>
 
-      <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
-        <small><i class="fa fa-rss"></i></small>
-      <% end %> 
-    </span>
+    <div class="pull-right">
+      <% if current_user %><%= link_to "New Post", new_post_path, class: "new-post metadata" %><% end %>
+      <%= render "layouts/tag_cloud", tags: @tags %>
+    </div>
   </div>
-
-  <% if current_user %>
-    <%= link_to "New Post", new_post_path, class: "new-post metadata pull-right" %>
-  <% end %>
-
-  <%= render "layouts/tag_cloud", tags: @tags %>
 </div>
 
 <div id="posts" class="card-box col-md-10 col-md-offset-1 padded-vert">

@@ -1,18 +1,20 @@
 <%= form_for @post do |f| %>
-  <div class="posts-header clearfix">
-    <div class="post-breadcrumb col-md-12">
-      <div class="col-sm-6 metadata">
-        <span>
-          /<%= link_to " Home ", "/" %>/ Random Thoughts / <%= @post.new_record? ? "New" : "Editing" %> Page
-        </span>
-      </div>
-      <div class="text-right">
+
+  <div class="page-header-breadcrumb clearfix">
+    <div class="page-breadcrumb">
+      <ul class="breadcrumbs list-inline pull-left">
+        <li><%= link_to "Home", "/" %></li>
+        <li><%= link_to "Blog", posts_path %></li>
+        <li><%= @post.new_record? ? "New" : "Editing" %> Page</li>
+      </ul>
+
+      <div class="pull-right">
         <%= f.submit "Save", class: "btn btn-link" %>
       </div>
     </div>
   </div>
 
-  <div class="form">
+  <div class="post-form">
 
     <%= render "layouts/forms/errors", object: @post %>
 

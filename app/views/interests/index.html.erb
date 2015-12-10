@@ -1,31 +1,24 @@
-<div class="posts-header clearfix">
-  <div class="post-breadcrumb pull-left metadata">
-    <span>
-      /<%= link_to " Home ", "/" %>/
-
+<div class="page-header-breadcrumb clearfix">
+  <div class="page-breadcrumb">
+    <ul class="breadcrumbs list-inline pull-left">
+      <li><%= link_to " Home ", "/" %></li>
+      <li><%= link_to "Interests", interests_path %></li>
       <% if params[:tagged] %>
-       <%= link_to "Interests", interests_path %> / Viewing interests tagged with <%= CGI.escape params[:tagged] %> /
-      <% else %>
-       Interests / 
+        <li>Viewing interests tagged with <%= CGI.escape params[:tagged] %></li>
       <% end %>
-    </span>
+    </ul>
+
+    <div class="pull-right">
+      <% if current_user %><%= link_to "Add an Interest", new_interest_path, class: "metadata" %><% end %>
+      <%= render "layouts/tag_cloud", tags: @tags %>
+    </div>
   </div>
-
-  <% if current_user %>
-  <%= link_to "Add an Interest", new_interest_path, class: "new-post pull-right metadata" %>
-  <% end %>
-
-  <%= render "layouts/tag_cloud", tags: @tags %>
 </div>
 
-<br>
+<div id="interests" class="card-box col-md-10 col-md-offset-1 padded-vert">
+  <%= render @interests %>
+</div>
 
-  <div id="interests" class="card-box col-md-10 col-md-offset-1 padded-vert">
-    <%= render @interests %>
-  </div>
-
-  <div class="col-md-12 text-center">
-    <%= will_paginate @interests, page_links: false, renderer: BootstrapPagination::Rails %>
-  </div>
-
+<div class="col-md-12 text-center">
+  <%= will_paginate @interests, page_links: false, renderer: BootstrapPagination::Rails %>
 </div>
