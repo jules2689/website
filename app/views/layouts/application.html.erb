@@ -2,6 +2,8 @@
 <html>
 <head>
   <title><%= Rails.application.secrets.website_title %> <% if content_for?(:title) %>| <%= yield :title %><% end %></title>
+  <link rel="shortcut icon" type="image/png" href="<%= gravatar(Rails.application.secrets.website_email, size: 16) %>"/>
+
   
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
