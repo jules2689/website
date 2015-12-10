@@ -6,8 +6,8 @@ Written in Rails, this encompasses my blog and interests.
 ## Setup
 
 1. Requires Postgres
-2. `bundle install` from the root directory
-3. Setup 'config/secrets.yml'. Don't worry it's gitignored.
+2. `bundle install` from the root directory, then `bin/rake db:create db:migrate`
+3. Setup `config/secrets.yml`. Don't worry it's gitignored.
 ```
   development:
     secret_key_base: KEY
@@ -23,8 +23,9 @@ Written in Rails, this encompasses my blog and interests.
     pg_user: KEY
     pg_pass: KEY
 ```
-4. All setup with Capistrano. Use `cap production deploy` to deploy (setting proper IPs in `deploy.rb`)
-5. Use `cap production setup` to copy the secrets.yml file to the server
+4. Create a user manually. This is a personal website, so there are no registrations.
+5. All setup with Capistrano. Use `cap production deploy` to deploy (setting proper IPs in `deploy.rb`)
+6. Use `cap production setup` to copy the secrets.yml file to the server
 
 ## How to Interests work?
 
