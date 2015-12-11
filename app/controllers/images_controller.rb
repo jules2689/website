@@ -2,7 +2,6 @@ class ImagesController < ApplicationController
   def create_github_image
     title = image_title(params[:image])
     name = image_file_name(params[:image])
-    path = file_path(name)
 
     @image = image_maker.create_image(title, file_path(name), params[:image])
   end

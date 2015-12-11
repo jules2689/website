@@ -8,22 +8,4 @@
 </div>
 <% end %>
 
-<div class="full_center">
-
-  <div class="front-page-header clearfix">
-    <img class="avatar pull-left" src="<%= gravatar(Rails.application.secrets.website_email, size: 400) %>" width="80" alt="<%= Rails.application.secrets.website_title %>">
-    <h1><%= Rails.application.secrets.website_title %></h1>
-    <div class="pull-left">
-      <a href="https://github.com/<%= Rails.application.secrets.git_user %>"><i class="fa fa-github-square fa-2x"></i></a>
-      <a href="https://twitter.com/<%= Rails.application.secrets.twitter_user %>"><i class="fa fa-twitter-square fa-2x"></i></a>
-      <a href="<%= Rails.application.secrets.linkedin_url %>"><i class="fa fa-linkedin-square fa-2x"></i></a>
-      <a href="mailto:<%= Rails.application.secrets.website_email %>"><i class="fa fa-envelope-square fa-2x"></i></a>
-    </div>
-  </div>
-
-  <div class="front-page-content">
-    <p><%= Rails.application.secrets.website_tagline.html_safe %></p>
-    <p>Read my <%= link_to "Blog", posts_url %> | Check out my <%= link_to "Interests", interests_url %></p>
-  </div>
-
-</div>
+<%= render Rails.application.secrets.theme %>

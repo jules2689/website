@@ -2,6 +2,9 @@ AllCops:
   RunRailsCops: true
   Exclude:
     - db/**
+    - bin/rails
+    - bin/rake
+    - config/deploy.rb
 
 Lint/AssignmentInCondition:
   Enabled: false
@@ -45,6 +48,8 @@ Style/RegexpLiteral:
 
 Metrics/LineLength:
   Max: 120
+  Exclude:
+    - test/**/*
 
 Metrics/ClassLength:
   Enabled: false

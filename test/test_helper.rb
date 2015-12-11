@@ -7,6 +7,6 @@ class ActiveSupport::TestCase
   fixtures :all
 
   setup do
-    ImageMaker.any_instance.stubs(:create_image).returns({ title: "Title", url: "http://gitcdn.jnadeau.ca/images/website/path.jpg" })
+    ImageMaker.any_instance.stubs(:create_image).returns(title: "Title", url: "http://gitcdn.jnadeau.ca/images/website/path.jpg")
   end
 end

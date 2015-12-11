@@ -64,7 +64,6 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should change key" do
-    current_key = @post.published_key
     post :regenerate_published_key, handle: @post
     assert_not_equal @post.published_key, @post.reload.published_key
     assert_redirected_to @post

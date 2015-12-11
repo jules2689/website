@@ -2,10 +2,10 @@ class Post < ActiveRecord::Base
   IMAGE_URL_ATTR = "header_image_url"
   include HasImage
 
-  default_scope { where('published_date <= ?', DateTime.now).order(created_at: :desc) }
+  default_scope { where('published_date <= ?', DateTime.now.utc).order(created_at: :desc) }
   acts_as_ordered_taggable
 
-  validates_presence_of :title, :body, :tag_list
+  validates :title, :body, :tag_list, presence: :true
   before_validation :set_handle
   before_validation :set_published_key
 
@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
   end
 
   def published?
-    published_date.present? && published_date <= DateTime.now
+    published_date.present? && published_date <= DateTime.now.utc
   end
 
   def to_param
@@ -53,7 +53,7 @@ class Post < ActiveRecord::Base
   end
 
   def set_published_key
-    self.published_key = Digest::SHA1.hexdigest(title.downcase.parameterize + Time.now.to_s) if published_key.blank?
+    self.published_key = Digest::SHA1.hexdigest(title.downcase.parameterize + Time.zone.now.to_s) if published_key.blank?
   end
 
   def set_dominant_colour

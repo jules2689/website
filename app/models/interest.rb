@@ -46,14 +46,14 @@ class Interest < ActiveRecord::Base
     self.interest_type = interest_type_hash["type"]
     self.provider = interest_type_hash["name"]
     self.embed_url = interest_type_hash["url"] % { id: doc_id } if interest_type_hash["url"]
-    set_title_from_url(url)
+    self.title = title_from_url(url)
     self.take_screencap! unless embed?
   end
 
-  def set_title_from_url(url)
+  def title_from_url(url)
     m = Mechanize.new
     m.user_agent_alias = "Mac Safari"
-    self.title = m.get(url).title.gsub(/- #{provider}/i, '')
+    m.get(url).title.gsub(/- #{provider}/i, '')
   end
 
   def escape(url)

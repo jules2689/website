@@ -1,0 +1,58 @@
+#theme_1 {
+
+  h1 { font-family: 'Roboto Slab', serif; word-break: break-word; }
+  h2 { font-family: 'Roboto Slab', serif; word-break: break-word; }
+
+  // Helpers
+
+  .tag-button { 
+    .btn {
+      background: none;
+      color: #000;
+      border: none;
+      &:focus, &:active, &:active:focus {
+        outline: none !important;
+      }
+    }
+  }
+
+  div.full_center {
+    width: 90%;
+    height: 200px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+    font-size: 150%;
+  }
+
+  .page-header-breadcrumb {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+  }
+
+  .page-header-breadcrumb > * {
+    margin-top: 5px;
+  }
+
+  // Bootstrap Overrides
+
+  .dropdown-menu {
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-clip: none;
+  }
+
+  .badge {
+    background-color: rgba(204, 204, 204, 0.18);
+    a {
+      color: #ccc;
+    }
+  }
+
+}

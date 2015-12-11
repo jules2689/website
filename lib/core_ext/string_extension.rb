@@ -11,7 +11,6 @@ class String
         count += current.text.split.length
         # we reached our limit, let's get outta here!
         break if count > num_words
-        previous = current
       end
 
       if current.children.length > 0

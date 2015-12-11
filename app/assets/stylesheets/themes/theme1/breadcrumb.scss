@@ -1,0 +1,29 @@
+#theme_1 {
+
+  .breadcrumbs.list-inline {
+    margin-left: 15px;
+
+    li {
+      padding: 0;
+      font-size: 11px;
+      color: #A3A3A3;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+
+      &:after {
+        content: ' /';
+      }
+    }
+  }
+
+  .metadata {
+    font-size: 11px !important;
+    color: #A3A3A3;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 5px;
+  }
+
+}

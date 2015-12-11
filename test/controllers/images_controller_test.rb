@@ -14,7 +14,6 @@ class ImagesControllerTest < ActionController::TestCase
 
     post :create_gallery, images: [["image1", { image: fixture_file_upload('images/test.jpg', 'image/jpg'), title: "Title1" }],
                                    ["image2", { image: fixture_file_upload('images/test.jpg', 'image/jpg'), title: "Title2" }]], format: :js
-    expected_response = { title: "Title", url: "http://gitcdn.jnadeau.ca/images/website/path.jpg" }
     assert_equal [first, second], assigns(:images)
   end
 end
