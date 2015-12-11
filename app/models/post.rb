@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   acts_as_ordered_taggable
 
   validates :title, :body, :tag_list, presence: :true
+  validates :title, length: {minimum: 5, maximum: 50}
   before_validation :set_handle
   before_validation :set_published_key
 

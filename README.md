@@ -18,6 +18,7 @@ Written in Rails, this encompasses my blog and interests.
     git_cdn_repo_url: https://jules2689.github.io/gitcdn/
     website_title: Julian Nadeau
     website_email: julian@jnadeau.ca
+    theme: theme_1
 
   development:
     <<: *default
