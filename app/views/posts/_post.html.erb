@@ -3,5 +3,5 @@
   <span class="label label-info">Unpublished</span>
   <% end %>
   <span><%= post.est_created_at.to_formatted_s(:long) %></span> |
-  <span><a class="comment-link-marker" data-disqus-url="http://jnadeau.ca/posts/<%= post.handle %>" href="http://jnadeau.ca/posts/<%= post.handle %>#disqus_thread">0 comments</a></span>
+  <span><%= render "disqus_link", post: post %></span>
 <% end %>
