@@ -1,6 +1,6 @@
 $(document).on('page:change', function () {
-  var disqusPublicKey = "s8oUrLbzLsAL371XjvtXwarHriNqscuI3kAVzzc4cKXVTnixncg5g0IAMMrdfKEx"; // Replace with your own public key
-  var disqusShortname = "jnadeau"; // Replace with your own shortname
+  var disqusPublicKey = "<%= Rails.application.secrets.disqus_public_key %>";
+  var disqusShortname = "<%= Rails.application.secrets.disqus_shortname %>";
 
   var urlArray = [];
 

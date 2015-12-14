@@ -9,34 +9,48 @@ Written in Rails, this encompasses my blog and interests.
 2. `bundle install` from the root directory, then `bin/rake db:create db:migrate`
 3. Setup `config/secrets.yml`. Don't worry it's gitignored. Make sure to fill out default with your information.
 ```
-  default: &default
-    git_user: jules2689
-    twitter_user: jules2689
-    website_tagline: I am a production engineer at <a href="http://shopify.com">Shopify.</a> I work on Mobile Infrastructure.
-    linkedin_url: http://www.linkedin.com/pub/julian-nadeau/49/1b0/721
-    git_cdn_repo: jules2689/gitcdn
-    git_cdn_repo_url: https://jules2689.github.io/gitcdn/
-    website_title: Julian Nadeau
-    website_email: julian@jnadeau.ca
-    theme: theme_1
+disqus: &disqus
+  disqus_public_key: public_key
+  disqus_shortname: jnadeau
 
-  development:
-    <<: *default
-    secret_key_base: KEY
+theme: &theme
+  website_title: Julian Nadeau
+  website_email: julian@jnadeau.ca
+  website_tagline: I am a production engineer at <a href="http://shopify.com">Shopify.</a> I work on Mobile Infrastructure.
+  theme: theme_1
 
-  test:
-    <<: *default
-    secret_key_base: KEY
+social_media: &social_media
+  git_user: jules2689
+  twitter_user: jules2689
+  linkedin_url: http://www.linkedin.com/pub/julian-nadeau/49/1b0/721
 
-  production:
-    <<: *default
-    secret_key_base: KEY
-    github_key: KEY
-    devise_secret: KEY
-    pg_db_name: KEY
-    pg_user: KEY
-    pg_pass: KEY
-    google_analytics: UA-xxx-x
+gitcdn: &gitcdn
+  git_cdn_repo: jules2689/gitcdn
+  git_cdn_repo_url: https://jules2689.github.io/gitcdn/
+
+default: &default
+  <<: *disqus
+  <<: *theme
+  <<: *social_media
+  <<: *gitcdn
+
+development:
+  <<: *default
+  secret_key_base: KEY
+
+test:
+  <<: *default
+  secret_key_base: KEY
+
+production:
+  <<: *default
+  secret_key_base: KEY
+  github_key: KEY
+  devise_secret: KEY
+  pg_db_name: KEY
+  pg_user: KEY
+  pg_pass: KEY
+  google_analytics: UA-xxx-x
 ```
 4. Create a user manually. This is a personal website, so there are no registrations.
 5. All setup with Capistrano. Use `cap production deploy` to deploy (setting proper IPs in `deploy.rb`)
