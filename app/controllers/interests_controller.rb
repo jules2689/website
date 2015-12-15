@@ -1,7 +1,7 @@
 class InterestsController < ApplicationController
   include TagActions
   skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
-  before_action :authenticate_user_from_token!, only: [:tags, :create]
+  before_action :authenticate_user_from_token!, only: [:tags, :create], if: -> { request.format.json? }
   before_action :authenticate_user!, except: [:index]
   before_action :set_interest, only: [:show, :edit, :update, :destroy]
 
