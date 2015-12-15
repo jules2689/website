@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
     if user
       sign_in user, store: false
-    else
+    elsif params[:use_html_auth].blank?
       head :unauthorized
     end
   end
