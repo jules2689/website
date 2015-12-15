@@ -1,15 +1,15 @@
 class InterestsController < ApplicationController
   include TagActions
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :tags]
   before_action :set_interest, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
     if params[:tagged]
-      @interests = Interest.tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 8)
+      @interests = Interest.is_public.tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 8)
     else
-      @interests = Interest.paginate(page: params[:page], per_page: 8)
+      @interests = Interest.is_public.paginate(page: params[:page], per_page: 8)
     end
     @tags = Interest.tag_counts_on(:tags).to_a.sort_by(&:name)
   end
