@@ -1,11 +1,14 @@
 <% if current_user %>
-<div class="page-header-breadcrumb clearfix">
-  <div class="page-breadcrumb">
-    <div class="metadata pull-right">
-      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+  <div class="page-header-breadcrumb clearfix">
+    <div class="page-breadcrumb">
+      <div class="metadata lowercase pull-left">
+        Auth Token: <%= current_user.authentication_token %>
+      </div>
+      <div class="metadata pull-right">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      </div>
     </div>
   </div>
-</div>
 <% end %>
 
 <%= render Rails.application.secrets.theme %>

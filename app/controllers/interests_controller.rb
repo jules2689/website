@@ -1,9 +1,11 @@
 class InterestsController < ApplicationController
   include TagActions
-  before_action :authenticate_user!, except: [:index, :tags]
+  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
+  before_action :authenticate_user_from_token!, only: [:tags, :create]
+  before_action :authenticate_user!, except: [:index]
   before_action :set_interest, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     if params[:tagged]
@@ -12,6 +14,7 @@ class InterestsController < ApplicationController
       @interests = Interest.is_public.paginate(page: params[:page], per_page: 8)
     end
     @tags = Interest.tag_counts_on(:tags).to_a.sort_by(&:name)
+    respond_with(@interests)
   end
 
   def new
@@ -22,7 +25,7 @@ class InterestsController < ApplicationController
   def create
     @interest = Interest.new(interest_params)
     @interest.save
-    redirect_to :interests
+    respond_with(@interest)
   end
 
   def destroy
@@ -37,6 +40,6 @@ class InterestsController < ApplicationController
   end
 
   def interest_params
-    params.require(:interest).permit(:url, :tag_list)
+    params.require(:interest).permit(:url, :tag_list, :is_private)
   end
 end

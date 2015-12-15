@@ -21,9 +21,12 @@
     font-size: 11px !important;
     color: #A3A3A3;
     line-height: 1;
-    text-transform: uppercase;
     letter-spacing: 3px;
     margin: 0 5px;
+
+    &:not(.lowercase) {
+      text-transform: uppercase;
+    }
   }
 
 }
