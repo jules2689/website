@@ -6,6 +6,9 @@
       <% if params[:tagged] %>
         <li>Viewing interests tagged with <%= CGI.escape params[:tagged] %></li>
       <% end %>
+      <% if params[:private] %>
+        <li>Private Interests</li>
+      <% end %>
     </ul>
 
     <div class="pull-right">

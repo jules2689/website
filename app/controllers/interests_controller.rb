@@ -8,12 +8,14 @@ class InterestsController < ApplicationController
   respond_to :html, :json
 
   def index
-    if params[:tagged]
-      @interests = Interest.is_public.tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 8)
+    if params[:private] && user_signed_in?
+      @interests = Interest.is_not_public
     else
-      @interests = Interest.is_public.paginate(page: params[:page], per_page: 8)
+      @interests = Interest.is_public
     end
-    @tags = Interest.tag_counts_on(:tags).to_a.sort_by(&:name)
+    
+    filter_interests!(@interests)
+    @tags = @interests.tag_counts_on(:tags).to_a.sort_by(&:name)
     respond_with(@interests)
   end
 
@@ -34,6 +36,13 @@ class InterestsController < ApplicationController
   end
 
   private
+
+  def filter_interests!(interests)
+    if params[:tagged]
+      @interests = @interests.tagged_with(params[:tagged])
+    end
+    @interests = @interests.paginate(page: params[:page], per_page: 8)
+  end
 
   def set_interest
     @interest = Interest.find(params[:id])

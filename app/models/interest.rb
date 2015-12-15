@@ -6,6 +6,7 @@ class Interest < ActiveRecord::Base
 
   default_scope { order(updated_at: :desc) }
   scope :is_public, -> { where(is_private: false) }
+  scope :is_not_public, -> { where(is_private: true) }
 
   def initialize(attributes = {}, options = {})
     super(attributes, options)
