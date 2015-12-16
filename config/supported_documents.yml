@@ -7,7 +7,6 @@ interest_types:
       - "http://www.youtube.com/watch?v=*"
       - "http://www.youtube.com/v/*"
     type: video
-    treatment: embed
     url: "https://www.youtube.com/embed/%{id}"
     embeddable: true
 
