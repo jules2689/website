@@ -36,6 +36,11 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should render 404 for missing post" do
+    get :show, handle: 'not-a-handle-nope-nope'
+    assert_response 404
+  end
+
   test "should not show unpublished post" do
     sign_out :user
     @post.published_date = 10.days.from_now

@@ -69,6 +69,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.unscoped.find_by(handle: params[:handle])
+    if @post.nil?
+      render file: "#{Rails.root}/public/404.html", status: 404
+    end
   end
 
   def post_params
