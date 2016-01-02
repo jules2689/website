@@ -24,9 +24,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :tags %><br>
-      <%= f.hidden_field :tag_list, id: "tag_list", "data-url" => "/posts/tags", class: "form-control" %>
-      <div id="taggle"></div>
+      <%= render "layouts/forms/tags", f: f, data_url: "/posts/tags" %>
     </div>
 
     <div class="field">
