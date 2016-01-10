@@ -17,6 +17,13 @@
           showEm = value.toString() == fieldValue;
         }
       }
+
+      if (showEm) {
+        elements.val('');
+      } else {
+        elements.val($this.val());
+      }
+
       elements.toggle(showEm);
     }
     //add change handler to element

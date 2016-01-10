@@ -7,6 +7,7 @@
     <ul class="breadcrumbs list-inline pull-left">
       <li><%= link_to " Home ", "/" %></li>
       <li><%= link_to "Blog", posts_path %></li>
+      <li><%= link_to @post_category.title, posts_path(category: @post_category.title) %></li>
       <li><%= @post.title.truncate(50) %></li> 
     </ul>
 

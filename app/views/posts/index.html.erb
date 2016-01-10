@@ -30,6 +30,9 @@
 
 <div id="posts" class="card-box col-md-8 col-md-offset-1 padded-vert">
   <%= render @posts %>
+  <% if @posts.empty? %>
+    <h2>Don't seem to have any posts here. Maybe you can try another category or tag?</h2>
+  <% end %>
 </div>
 
 <div class="col-md-2">
@@ -58,9 +61,6 @@
       <% end %>
     <% end %>
   </div>
-  <% if @tags.empty? %>
-    <p>There are no tagged articles in this category.</p>
-  <% end %>
 </div>
 
 <div class="col-md-12 text-center">

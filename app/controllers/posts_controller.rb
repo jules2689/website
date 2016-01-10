@@ -5,12 +5,12 @@ class PostsController < ApplicationController
   before_action :set_or_create_post_category, only: [:create, :update]
 
   def index
-    @posts = Post.scoped_posts(signed_in?)
+    @posts = Post.scoped_posts(signed_in?).includes(:post_category)
     @posts = @posts.tagged_with(params[:tagged]) if params[:tagged].present?
     @posts = @posts.where(post_category_id: PostCategory.find_by(title: params[:category])) if params[:category].present?
-    @posts = @posts.paginate(page: params[:page], per_page: 10)
+    @posts = @posts.paginate(page: params[:page], per_page: 12)
 
-    @tags = @posts.tag_counts_on(:tags).to_a.sort_by(&:name)
+    @tags = Post.tag_counts_on(:tags).to_a.sort_by(&:name)
     @post_categories = PostCategory.all
   end
 
