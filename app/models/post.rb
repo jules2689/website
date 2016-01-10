@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   default_scope { where('published_date <= ?', DateTime.now.utc).order(created_at: :desc) }
   acts_as_ordered_taggable
 
-  belongs_to :post_category
+  belongs_to :post_category, counter_cache: true
 
   validates :title, :body, :tag_list, :post_category, presence: :true
   validates :title, length: {minimum: 5, maximum: 50}
