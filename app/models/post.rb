@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   belongs_to :post_category, counter_cache: true
 
   validates :title, :body, :tag_list, :post_category, presence: :true
-  validates :title, length: {minimum: 5, maximum: 50}
+  validates :title, length: {minimum: 5, maximum: 70}
   before_validation :set_handle
   before_validation :set_published_key
 
