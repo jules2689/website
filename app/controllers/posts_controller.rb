@@ -1,15 +1,17 @@
 class PostsController < ApplicationController
   include TagActions
   before_action :authenticate_user!, except: [:index, :show, :tag_cloud]
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :regenerate_published_key]
+  before_action :set_post_and_category, only: [:show, :edit, :update, :destroy, :regenerate_published_key]
+  before_action :set_or_create_post_category, only: [:create, :update]
 
   def index
-    if params[:tagged]
-      @posts = Post.scoped_posts(signed_in?).tagged_with(params[:tagged]).paginate(page: params[:page], per_page: 7)
-    else
-      @posts = Post.scoped_posts(signed_in?).paginate(page: params[:page], per_page: 8)
-    end
-    @tags = Post.tag_counts_on(:tags).to_a.sort_by(&:name)
+    @posts = Post.scoped_posts(signed_in?)
+    @posts = @posts.tagged_with(params[:tagged]) if params[:tagged].present?
+    @posts = @posts.where(post_category_id: PostCategory.find_by(title: params[:category])) if params[:category].present?
+    @posts = @posts.paginate(page: params[:page], per_page: 10)
+
+    @tags = @posts.tag_counts_on(:tags).to_a.sort_by(&:name)
+    @post_categories = PostCategory.all
   end
 
   def show
@@ -67,14 +69,23 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post
+  def set_post_and_category
     @post = Post.unscoped.find_by(handle: params[:handle])
     if @post.nil?
       render file: "#{Rails.root}/public/404.html", status: 404
+    else
+      @post_category = @post.post_category
     end
   end
 
+  def set_or_create_post_category
+    @post_category = PostCategory.where(id: post_params[:post_category_id]).first
+    @post_category = PostCategory.create(title: post_params[:post_category_id]) if @post_category.nil?
+
+    params[:post][:post_category_id] = @post_category.id
+  end
+
   def post_params
-    params.require(:post).permit(:title, :body, :tag_list, :published_date, :image, :remove_image)
+    params.require(:post).permit(:title, :body, :tag_list, :published_date, :post_category_id, :image, :remove_image)
   end
 end

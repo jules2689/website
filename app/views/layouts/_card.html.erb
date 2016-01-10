@@ -1,24 +1,20 @@
-<div class="col-md-6">
-  <div class="card card-max">
-
-    <% if object.try(:embed?) %>
-      <%= embed(embed_url) %>
-    <% else %>                            
-      <%= link_to link do %>
-        <div class="header" style="background-image:url('<%= asset_url header_image %>')">
-          <div class="filter"></div>
-          <div class="actions">
-            <p class="action-btn">Read Content</p>
-          </div>
+<div class="card card-max">
+  <% if object.try(:embed?) %>
+    <%= embed(embed_url) %>
+  <% else %>                            
+    <%= link_to link do %>
+      <div class="header" style="background-image:url('<%= asset_url header_image %>')">
+        <div class="filter"></div>
+        <div class="actions">
+          <p class="action-btn">Read Content</p>
         </div>
-      <% end %>
+      </div>
     <% end %>
-    
-    <div class="content clearfix">
-      <h4 class="title"><%= link_to object.title, link %></a></h4>
-      <div class="tags"><%= linked_tag_list(object) %></div>
-      <%= yield %>
-    </div>
-
+  <% end %>
+  
+  <div class="content clearfix">
+    <h4 class="title"><%= link_to object.title, link %></a></h4>
+    <%= yield %>
+    <div class="tags"><%= linked_tag_list(object) %></div>
   </div>
 </div>

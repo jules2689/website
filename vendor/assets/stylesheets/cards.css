@@ -10,25 +10,25 @@
   margin: 30px 0 15px;
 }
 .card h1, .card .h1 {
-  font-size: 52px;
+  font-size: 35px;
 }
 .card h2, .card .h2 {
-  font-size: 36px;
+  font-size: 30px;
 }
 .card h3, .card .h3 {
-  font-size: 28px;
+  font-size: 24px;
   margin: 20px 0 10px;
 }
 .card h4, .card .h4 {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 30px;
 }
 .card h5, .card .h5 {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 15px;
 }
 .card h6, .card .h6 {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -112,17 +112,9 @@
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.05);
   background-color: #FFFFFF;
+  width: 100%;
+  display: inline-block;
   margin-bottom: 20px;
-  position: relative;
-  max-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  padding: 0;
-}
-
-.card.card-max {
-  max-width: 100%;
 }
 
 .card .title,
@@ -321,6 +313,8 @@
 }
 .card .content .title {
   margin: 0px 0 10px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .card .content .category ~ .title {
   margin-top: 0px;

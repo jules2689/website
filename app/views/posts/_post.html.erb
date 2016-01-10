@@ -1,7 +1,9 @@
 <%= render layout: "layouts/card", locals: { object: post, link: post, header_image: post.header_image_url || 'default.jpg' } do %>
   <% unless post.published? %> 
-  <span class="label label-info">Unpublished</span>
+    <span class="label label-info pull-right">Unpublished</span>
   <% end %>
-  <span><%= post.est_created_at.to_formatted_s(:long) %></span> |
-  <span><%= render "disqus_link", post: post %></span>
+  <h6>
+    <span><%= post.est_created_at.to_formatted_s(:long) %></span> |
+    <span><%= render "disqus_link", post: post %></span>
+  </h6>
 <% end %>

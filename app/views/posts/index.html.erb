@@ -7,8 +7,11 @@
     <ul class="breadcrumbs list-inline pull-left">
       <li><%= link_to " Home ", "/" %></li>
       <li>Blog</li>
+      <% if params[:category] %>
+        <li>Category: <%= params[:category] %></li>
+      <% end %>
       <% if params[:tagged] %>
-        <li>Viewing posts tagged with <%= params[:tagged] %></li>
+        <li>Tagged: <%= params[:tagged] %></li>
       <% end %>
       <li>
         <%= link_to posts_path({ format: :rss }), title: "RSS Feed" do %>
@@ -17,15 +20,47 @@
       </li>
     </ul>
 
-    <div class="pull-right">
-      <% if current_user %><%= link_to "New Post", new_post_path, class: "new-post metadata" %><% end %>
-      <%= render "layouts/tag_cloud", tags: @tags %>
-    </div>
+    <% if current_user %>
+      <div class="pull-right">
+        <%= link_to "New Post", new_post_path, class: "new-post metadata" %>
+      </div>
+    <% end %>
   </div>
 </div>
 
-<div id="posts" class="card-box col-md-10 col-md-offset-1 padded-vert">
+<div id="posts" class="card-box col-md-8 col-md-offset-1 padded-vert">
   <%= render @posts %>
+</div>
+
+<div class="col-md-2">
+  <h4>Categories</h4>
+  <div class="list-group">
+    <%= link_to posts_path, class: "list-group-item" do %>
+      Read All
+    <% end %>
+    <% @post_categories.each do |category| %>
+      <%= link_to url_for(only_path: false, category: category.title), class: "list-group-item" do %>
+        <span class="badge badge-dark"><%= category.posts_count %></span>
+        <%= category.title %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h4>Tags</h4>
+  <div class="list-group">
+    <%= link_to posts_path, class: "list-group-item" do %>
+      Read All
+    <% end %>
+    <% @tags.each do |tag| %>
+      <%= link_to url_for(only_path: false, tagged: tag.name), class: "list-group-item" do %>
+        <span class="badge badge-dark"><%= tag.count  %></span>
+        <%= tag.name %>
+      <% end %>
+    <% end %>
+  </div>
+  <% if @tags.empty? %>
+    <p>There are no tagged articles in this category.</p>
+  <% end %>
 </div>
 
 <div class="col-md-12 text-center">

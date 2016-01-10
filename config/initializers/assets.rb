@@ -6,4 +6,5 @@ Rails.application.config.assets.precompile += %w( galleria.classic.min.js
                                                   galleria.classic.css 
                                                   classic-loader.gif 
                                                   classic-map.png
+                                                  default.jpg
                                                 )

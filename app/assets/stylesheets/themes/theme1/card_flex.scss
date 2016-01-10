@@ -1,0 +1,44 @@
+.card-box {
+  display: flex;
+  flex-flow: row wrap;
+
+  .card {
+    flex: 1;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 1%;
+
+    .header {
+      height: 160px;
+    }
+
+    iframe {
+      border-radius: 6px;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .card-box .card {
+    width: 48%;
+    min-width: 48%;
+    max-width: 48%;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-box .card {
+    width: 31.3%;
+    min-width: 31.3%;
+    max-width: 31.3%;
+  }
+}
+
+@media (min-width: 1540px) {
+  .card-box .card {
+    width: 23%;
+    min-width: 23%;
+    max-width: 23%;
+  }
+}

@@ -11,37 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215040548) do
+ActiveRecord::Schema.define(version: 20160110202142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "front_page_widgets", force: true do |t|
-    t.string   "title"
-    t.string   "subtext"
-    t.string   "url"
-    t.string   "image_uid"
-    t.string   "image_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "position"
-    t.string   "image_url",  limit: 500
-  end
-
-  create_table "images", force: true do |t|
-    t.string   "image_uid"
-    t.string   "image_name"
-    t.string   "title"
-    t.string   "width"
-    t.string   "dominant_colour"
-    t.integer  "owner_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "owner_type"
-    t.string   "path",            limit: 500
-    t.string   "old_url",         limit: 500
-  end
-
+  
   create_table "interests", force: true do |t|
     t.string   "interest_type"
     t.string   "treatment"
@@ -55,6 +29,13 @@ ActiveRecord::Schema.define(version: 20151215040548) do
     t.boolean  "is_private",                default: false
   end
 
+  create_table "post_categories", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "posts_count"
+  end
+
   create_table "posts", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -62,11 +43,10 @@ ActiveRecord::Schema.define(version: 20151215040548) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "published_date",                     default: '2015-01-31 06:19:36'
-    t.string   "header_image_uid"
-    t.string   "header_image_name"
     t.string   "dominant_header_colour"
     t.string   "published_key"
     t.string   "header_image_url",       limit: 500
+    t.integer  "post_category_id"
   end
 
   create_table "taggings", force: true do |t|

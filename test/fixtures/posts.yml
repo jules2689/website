@@ -27,7 +27,8 @@ one:
   created_at: 2015-01-28
   updated_at: 2015-01-28
   published_key: "1234Published"
-  header_image_url: "http://gitcdn.jnadeau.ca/images/website/fixture.jpg" 
+  header_image_url: "http://gitcdn.jnadeau.ca/images/website/fixture.jpg"
+  post_category: one
 
 two:
   id: 2
@@ -39,3 +40,4 @@ two:
   published_date: <%= 5.days.from_now %>
   published_key: "12345Published"
   header_image_url: "http://gitcdn.jnadeau.ca/images/website/fixture.jpg"
+  post_category: two

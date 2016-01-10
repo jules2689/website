@@ -5,7 +5,13 @@
       <ul class="breadcrumbs list-inline pull-left">
         <li><%= link_to "Home", "/" %></li>
         <li><%= link_to "Blog", posts_path %></li>
-        <li><%= @post.new_record? ? "New" : "Editing" %> Page</li>
+        <% if !@post.new_record? %>
+          <li>Editing Page</li>
+          <li><%= @post_category.title %></li>
+          <li><%= @post.title %></li>
+        <% else %>
+          <li>New Page</li>
+        <% end %>
       </ul>
 
       <div class="pull-right">
@@ -15,36 +21,45 @@
   </div>
 
   <div class="post-form">
-
     <%= render "layouts/forms/errors", object: @post %>
-
-    <div class="field">
-      <%= f.label :title %><br>
-      <%= f.text_field :title, class: "form-control" %>
-    </div>
-
-    <div class="field">
-      <%= render "layouts/forms/tags", f: f, data_url: "/posts/tags" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :published_date %><br>
-      <%= f.text_field :published_date, class: "form-control datetimepicker" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-    </div>
-
-    <% if @post.header_image_url.present? %>
+    
+    <div class="col-md-9">
       <div class="field">
-        <%= label_tag "remove_image" %>
-        <%= check_box_tag "remove_image" %>
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control" %>
       </div>
-    <% end %>
 
-    <div class="field">
+      <div class="field">
+        <%= f.label :published_date %><br>
+        <%= f.text_field :published_date, class: "form-control datetimepicker" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :post_category_id %><br>
+        <%= f.select :post_category_id, post_categories, {}, { class: "form-control" } %>
+        <%= f.text_field :post_category_id, value: '', placeholder: "Enter New Category", class: "form-control", "data-depends-on" => "#post_post_category_id", "data-depends-on-value" => "New Category" %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="field">
+        <%= f.label :image, 'Header Image' %>
+        <%= f.file_field :image %>
+        <% if @post.header_image_url.present? %>
+          <%= label_tag "remove_image", 'Remove Header Image' %>
+          <%= check_box_tag "remove_image" %>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= render "layouts/forms/tags", f: f, data_url: "/posts/tags" %>
+      </div>
+    </div>
+
+    <div class="clear">&nbsp;</div>
+    <br>
+
+    <div class="field col-md-12 clearfix">
       <%= f.label :body %><br>
       <%= f.markdown_input :body, { preview: true } %>
     </div>

@@ -5,7 +5,9 @@ class Post < ActiveRecord::Base
   default_scope { where('published_date <= ?', DateTime.now.utc).order(created_at: :desc) }
   acts_as_ordered_taggable
 
-  validates :title, :body, :tag_list, presence: :true
+  belongs_to :post_category, counter_cache: true
+
+  validates :title, :body, :tag_list, :post_category, presence: :true
   validates :title, length: {minimum: 5, maximum: 50}
   before_validation :set_handle
   before_validation :set_published_key
@@ -55,11 +57,5 @@ class Post < ActiveRecord::Base
 
   def set_published_key
     self.published_key = Digest::SHA1.hexdigest(title.downcase.parameterize + Time.zone.now.to_s) if published_key.blank?
-  end
-
-  def set_dominant_colour
-    histogram = Histogram.new(header_image.path)
-    rgb_color = histogram.scores.min_by { |h| h.last.brightness }.last
-    self.dominant_header_colour = rgb_color.hex
   end
 end

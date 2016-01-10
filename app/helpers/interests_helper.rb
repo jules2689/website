@@ -1,6 +1,6 @@
 module InterestsHelper
   def embed(url)
-    "<iframe src='#{url}?controls=0' height='200px' width='100%'
+    "<iframe src='#{url}?controls=0' height='155px' width='100%'
                     frameborder='0'
                     scrolling='no' seamless webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>".html_safe
   end
