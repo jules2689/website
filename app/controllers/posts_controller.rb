@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @posts = @posts.paginate(page: params[:page], per_page: 12)
 
     @tags = Post.tag_counts_on(:tags).to_a.sort_by(&:name)
-    @post_categories = PostCategory.all
+    @post_categories = PostCategory.where('posts_count > 0')
   end
 
   def show
