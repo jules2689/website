@@ -11,11 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110202142) do
+ActiveRecord::Schema.define(version: 20160110185928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  
+
+  create_table "courses", force: true do |t|
+    t.string   "course_code",   limit: nil
+    t.string   "course_title",  limit: nil
+    t.string   "level",         limit: nil
+    t.text     "link"
+    t.text     "description"
+    t.string   "department",    limit: nil
+    t.string   "image",         limit: nil
+    t.text     "syllabus_link"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "price",         limit: nil, default: "Free"
+    t.string   "provider",      limit: nil
+  end
+
+  add_index "courses", ["course_code"], name: "index_courses_on_course_code", using: :btree
+  add_index "courses", ["department"], name: "index_courses_on_department", using: :btree
+  add_index "courses", ["level"], name: "index_courses_on_level", using: :btree
+
   create_table "interests", force: true do |t|
     t.string   "interest_type"
     t.string   "treatment"
@@ -33,7 +52,6 @@ ActiveRecord::Schema.define(version: 20160110202142) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "posts_count"
   end
 
   create_table "posts", force: true do |t|
