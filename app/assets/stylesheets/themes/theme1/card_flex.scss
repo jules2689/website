@@ -1,6 +1,9 @@
 .card-box {
-  display: flex;
   flex-flow: row wrap;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  display: flex;   
+  flex-wrap: wrap;
 
   .card {
     flex: 1;

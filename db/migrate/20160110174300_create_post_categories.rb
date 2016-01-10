@@ -9,6 +9,6 @@ class CreatePostCategories < ActiveRecord::Migration
 
     add_column :posts, :post_category_id, :integer, references: :post_categories
 
-    Post.all.each { |p| p.update_attribute(:post_category_id, pc.id) }
+    Post.unscoped.all.each { |p| p.update_attribute(:post_category_id, pc.id) }
   end
 end
