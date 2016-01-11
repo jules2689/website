@@ -4,6 +4,11 @@
     height: 290px;
   }
 
+  .mobile-sidebar-container {
+    margin-bottom: 10px;
+    z-index: 1000;
+  }
+
   #post-header {
     h1 {
       padding: 0 15px;
