@@ -41,7 +41,7 @@ class InterestsController < ApplicationController
     if params[:tagged]
       @interests = @interests.tagged_with(params[:tagged])
     end
-    @interests = @interests.paginate(page: params[:page], per_page: 8)
+    @interests = @interests.paginate(page: params[:page], per_page: 12)
   end
 
   def set_interest
