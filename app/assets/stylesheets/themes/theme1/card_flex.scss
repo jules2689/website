@@ -2,11 +2,13 @@
   flex-flow: row wrap;
   display: -webkit-flex; /* Safari */
   -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  -webkit-flex: 1 1 auto;
   display: flex;   
   flex-wrap: wrap;
 
   .card {
     flex: 1;
+    -webkit-flex: 1 1 auto;
     width: 100%;
     min-width: 100%;
     max-width: 100%;
