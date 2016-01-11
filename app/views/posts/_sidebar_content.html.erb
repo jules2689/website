@@ -1,0 +1,25 @@
+<h4>Categories</h4>
+<div class="list-group">
+  <%= link_to posts_path, class: "list-group-item" do %>
+    Read All
+  <% end %>
+  <% post_categories.each do |category| %>
+    <%= link_to url_for(only_path: false, category: category.title), class: "list-group-item" do %>
+      <span class="badge badge-dark"><%= category.posts_count %></span>
+      <%= category.title %>
+    <% end %>
+  <% end %>
+</div>
+
+<h4>Tags</h4>
+<div class="list-group">
+  <%= link_to posts_path, class: "list-group-item" do %>
+    Read All
+  <% end %>
+  <% tags.each do |tag| %>
+    <%= link_to url_for(only_path: false, tagged: tag.name), class: "list-group-item" do %>
+      <span class="badge badge-dark"><%= tag.count  %></span>
+      <%= tag.name %>
+    <% end %>
+  <% end %>
+</div>
