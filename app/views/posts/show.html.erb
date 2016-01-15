@@ -2,6 +2,13 @@
   <%= @post.title %>
 <% end %>
 
+<% content_for :head_meta do %>
+  <meta property="og:title" content="<%= @post.title %>" />
+  <meta property="og:type" content="video.movie" />
+  <meta property="og:url" content="<%= post_url(@post) %>" />
+  <% if @post.header_image_url.present? %><meta property="og:image" content="<%= @post.header_image_url %>" /><% end %>
+<% end %>
+
 <div class="page-header-breadcrumb clearfix">
   <div class="page-breadcrumb">
     <ul class="breadcrumbs list-inline pull-left">
