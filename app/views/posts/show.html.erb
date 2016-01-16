@@ -17,14 +17,14 @@
 
 <div class="page-header-breadcrumb clearfix">
   <div class="page-breadcrumb">
-    <ul class="breadcrumbs list-inline pull-left">
+    <ul class="breadcrumbs list-inline">
       <li><%= link_to " Home ", "/" %></li>
       <li><%= link_to "Blog", posts_path %></li>
       <li><%= link_to @post_category.title, posts_path(category: @post_category.title) %></li>
-      <li><%= @post.title.truncate(50) %></li> 
+      <li class="hidden-xs"><%= @post.title.truncate(50) %></li> 
     </ul>
 
-    <ul class="list-inline pull-right">
+    <ul class="breadcrumb-metadata list-inline hidden-xs">
       <% if current_user %> 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Page Actions <span class="caret"></span></a>
@@ -44,6 +44,9 @@
 
 <div class="col-md-8 col-md-offset-2" id="post-header">
   <h1><%= @post.title %></h1>
+  <div class="visible-xs header-metadata">
+    <%= render "metadata", post: @post %>
+  </div>
 
   <% if @post.header_image_url.present? %>
     <div class="header-image" style="background: url(<%= @post.header_image_url %>);">
