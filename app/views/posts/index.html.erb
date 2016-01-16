@@ -6,7 +6,13 @@
   <div class="page-breadcrumb">
     <ul class="breadcrumbs list-inline pull-left">
       <li><%= link_to " Home ", "/" %></li>
-      <li>Blog</li>
+      <li>
+        <% if params[:category].present? || params[:tagged].present? %>
+          <%= link_to "Blog", posts_path %>
+        <% else %>
+          Blog
+        <% end %>
+      </li>
       <% if params[:category] %>
         <li>Category: <%= params[:category] %></li>
       <% end %>

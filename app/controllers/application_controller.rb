@@ -12,5 +12,5 @@ class ApplicationController < ActionController::Base
     elsif params[:use_html_auth].blank?
       head :unauthorized
     end
-  end
+  end 
 end

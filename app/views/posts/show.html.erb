@@ -4,9 +4,15 @@
 
 <% content_for :head_meta do %>
   <meta property="og:title" content="<%= @post.title %>" />
-  <meta property="og:type" content="video.movie" />
-  <meta property="og:url" content="<%= post_url(@post) %>" />
-  <% if @post.header_image_url.present? %><meta property="og:image" content="<%= @post.header_image_url %>" /><% end %>
+  <meta property="og:url" content="<%= post_url(@post, protocol: 'https') %>" />
+  <% if @post.header_image_url.present? %>
+    <meta property="og:image" content="<%= @post.header_image_url %>" />
+  <% end %>
+
+  <meta property="og:type" content="article" />
+  <meta property="og:article:published_time" content="<%= @post.est_created_at.to_formatted_s(:long) %>" />
+  <meta property="og:article:section" content="<%= @post_category.title %>" />
+  <meta property="og:article:tag" content="<%= @post.tag_list %>" />
 <% end %>
 
 <div class="page-header-breadcrumb clearfix">
