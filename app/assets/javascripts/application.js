@@ -25,7 +25,9 @@
 
 $(document).on("page:change", function(){
 
-  ahoy.trackView();
+  if (location.pathname.match(/^\/users/) == null) {
+    ahoy.trackView();
+  }
 
   $("#menu-toggle").click(function(e) {
       e.preventDefault();
