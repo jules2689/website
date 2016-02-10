@@ -1,5 +1,5 @@
-AllCops:
-  RunRailsCops: true
+Rails:
+  Enabled: true
   Exclude:
     - db/**
     - bin/rails
@@ -24,7 +24,10 @@ Style/AlignParameters:
 Style/FirstParameterIndentation:
   EnforcedStyle: consistent
 
-Style/TrailingComma:
+Style/TrailingCommaInLiteral:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/SignalException:

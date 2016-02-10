@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.5'
+gem 'railties', '> 4.0.0'
 gem 'puma'
 gem 'pg'
 gem 'newrelic_rpm'
 gem 'rack-cache'
+gem 'ahoy_matey'
 
 # Assets and JS
 gem 'sass-rails', '~> 4.0.3'

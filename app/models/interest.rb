@@ -23,7 +23,7 @@ class Interest < ActiveRecord::Base
     interest_types.collect { |interest_type| interest_type["name"] }
   end
 
-private
+  private
 
   def initialize_with_attributes(attributes)
     self.interest_type_hash = document_profile(attributes[:url]) || { "url" => url, "embeddable" => false, "type" => "website" }
@@ -33,7 +33,7 @@ private
     self.provider = interest_type_hash["name"]
     self.embed_url = interest_type_hash["url"] % { id: doc_id } if interest_type_hash["url"]
     self.title = title_from_url(url)
-    self.take_screencap! unless embed?
+    take_screencap! unless embed?
   end
 
   def document_profile(url)

@@ -1,6 +1,5 @@
 class FixInterests < ActiveRecord::Migration
   def change
-
     Interest.all.each do |i|
       images = Image.where(owner_id: i.id, owner_type: "Interest")
       if images.present?
@@ -8,6 +7,5 @@ class FixInterests < ActiveRecord::Migration
         i.save
       end
     end
-
   end
 end

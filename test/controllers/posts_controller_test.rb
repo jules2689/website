@@ -24,7 +24,12 @@ class PostsControllerTest < ActionController::TestCase
 
   test "should create post" do
     assert_difference('Post.count') do
-      post :create, post: { body: @post.body, handle: @post.handle, title: @post.title, image: fixture_file_upload('images/test.jpg', 'image/jpg'), tag_list: "a,b,c" }
+      post :create, post: { body: @post.body,
+                            handle: @post.handle,
+                            title: @post.title,
+                            image: fixture_file_upload('images/test.jpg', 'image/jpg'),
+                            tag_list: "a,b,c",
+                            post_category_id: post_categories(:one).id }
     end
 
     assert_not_nil assigns(:post).header_image_url
@@ -80,12 +85,18 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should update post" do
-    patch :update, handle: @post, post: { body: @post.body, handle: @post.handle, title: @post.title }
+    patch :update, handle: @post, post: { body: @post.body,
+                                          handle: @post.handle,
+                                          title: @post.title,
+                                          post_category_id: post_categories(:one).id }
     assert_redirected_to post_path(assigns(:post))
   end
 
   test "should remove header image" do
-    patch :update, handle: @post, post: { body: @post.body, handle: @post.handle, title: @post.title }, remove_image: true
+    patch :update, handle: @post, post: { body: @post.body,
+                                          handle: @post.handle,
+                                          title: @post.title,
+                                          post_category_id: post_categories(:one).id }, remove_image: true
     assert_equal "", assigns(:post).header_image_url
     assert_redirected_to post_path(assigns(:post))
   end
@@ -94,7 +105,11 @@ class PostsControllerTest < ActionController::TestCase
     new_path = "http://gitcdn.jnadeau.ca/images/website/new_path.jpg"
     ImageMaker.any_instance.stubs(:create_image).returns(title: "Title", url: new_path)
 
-    patch :update, handle: @post, post: { body: @post.body, handle: @post.handle, title: @post.title, image: fixture_file_upload('images/test.jpg', 'image/jpg') }
+    patch :update, handle: @post, post: { body: @post.body,
+                                          handle: @post.handle,
+                                          title: @post.title,
+                                          image: fixture_file_upload('images/test.jpg', 'image/jpg'),
+                                          post_category_id: post_categories(:one).id }
     assert_equal new_path, assigns(:post).header_image_url
     assert_redirected_to post_path(assigns(:post))
   end

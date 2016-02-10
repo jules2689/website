@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  IMAGE_URL_ATTR = "header_image_url"
+  IMAGE_URL_ATTR = "header_image_url".freeze
   include HasImage
 
   default_scope { where('published_date <= ?', DateTime.now.utc).order(created_at: :desc) }
@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   belongs_to :post_category, counter_cache: true
 
   validates :title, :body, :tag_list, :post_category, presence: :true
-  validates :title, length: {minimum: 5, maximum: 70}
+  validates :title, length: { minimum: 5, maximum: 70 }
   before_validation :set_handle
   before_validation :set_published_key
 

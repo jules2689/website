@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require ahoy
 
 // Form Specific
 //= require pagedown_bootstrap
@@ -23,6 +24,8 @@
 //= require_tree .
 
 $(document).on("page:change", function(){
+
+  ahoy.trackView();
 
   $("#menu-toggle").click(function(e) {
       e.preventDefault();

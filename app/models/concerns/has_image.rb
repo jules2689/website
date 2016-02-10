@@ -1,5 +1,5 @@
 module HasImage
-  IMAGE_URL_ATTR = "image_url"
+  IMAGE_URL_ATTR = "image_url".freeze
 
   def update(attributes)
     remove_image(attributes)
