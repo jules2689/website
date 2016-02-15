@@ -43,14 +43,14 @@
   </div>
 </div>
 
-<div id="posts" class="card-box col-md-8 col-md-offset-1 col-xs-12 padded-vert">
+<div id="posts" class="card-box col-md-7 col-md-offset-1 col-xs-12 padded-vert">
   <%= render @posts %>
   <% if @posts.empty? %>
     <h2>Don't seem to have any posts here. Maybe you can try another category or tag?</h2>
   <% end %>
 </div>
 
-<div class="col-md-2 hidden-sm hidden-xs">
+<div class="col-md-3 hidden-sm hidden-xs">
   <%= render 'sidebar_content', tags: @tags, post_categories: @post_categories %>
 </div>
 

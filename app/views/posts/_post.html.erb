@@ -2,8 +2,6 @@
   <% unless post.published? %> 
     <span class="label label-info pull-right">Unpublished</span>
   <% end %>
-  <h6>
-    <span><%= post.est_created_at.to_formatted_s(:long) %></span> |
-    <span><%= render "disqus_link", post: post %></span>
-  </h6>
+
+  <div class="date"><h6><%= post.est_created_at.to_formatted_s(:long) %></h6></div>
 <% end %>

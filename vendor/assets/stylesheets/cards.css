@@ -109,8 +109,8 @@
 }
 
 .card {
-  border-radius: 6px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   background-color: #FFFFFF;
   width: 100%;
   display: inline-block;
@@ -157,7 +157,7 @@
 }
 .card .header {
   position: relative;
-  border-radius: 6px 6px 0 0;
+  border-radius: 2px 2px 0 0;
   height: 200px;
   z-index: 3;
   background-position: 50%;
@@ -308,13 +308,23 @@
 .card .content {
   padding: 15px 15px 5px 15px;
 }
-.card .content .tags {
-  padding-bottom: 5px;
-}
 .card .content .title {
   margin: 0px 0 10px 0;
   text-overflow: ellipsis;
   overflow: hidden;
+  text-align: center;
+}
+.card .content .date {
+  width: 50%;
+  text-align: right;
+  padding-right: 5px;
+  display: inline-block;
+}
+.card .content .tags {
+  width: 50%;
+  text-align: left;
+  padding-left: 5px;
+  display: inline;
 }
 .card .content .category ~ .title {
   margin-top: 0px;
