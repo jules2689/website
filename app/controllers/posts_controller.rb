@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @posts = Post.scoped_posts(signed_in?).includes(:post_category)
     @posts = @posts.tagged_with(params[:tagged]) if params[:tagged].present?
     @posts = @posts.where(post_category_id: PostCategory.find_by(title: params[:category])) if params[:category].present?
-    @posts = @posts.paginate(page: params[:page], per_page: 12)
+    @posts = @posts.paginate(page: params[:page], per_page: 6)
 
     @tags = Post.tag_counts_on(:tags).to_a.sort_by(&:name)
     @post_categories = PostCategory.where('posts_count > 0')
