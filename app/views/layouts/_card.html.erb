@@ -14,7 +14,9 @@
   
   <div class="content clearfix">
     <h4 class="title"><%= link_to object.title, link %></a></h4>
-    <%= yield %>
-    <div class="tags"><%= linked_tag_list(object) %></div>
+    <div class="card-subcontent">
+      <%= yield %>
+      <div class="tags"><%= linked_tag_list(object) %></div>
+    </div>
   </div>
 </div>
