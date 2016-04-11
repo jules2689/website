@@ -32,7 +32,7 @@ set :puma_init_active_record, true # Change to false when not using ActiveRecord
 
 ## Linked Files & Directories (Default None):
 # set :linked_files, %w{config/database.yml}
-# set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs,  %w{ config/ssl }
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -78,6 +78,21 @@ namespace :deploy do
   after :finishing,    :cleanup
   after :finishing,    :restart
   after "deploy:updated", "newrelic:notice_deployment"
+end
+
+namespace :ssl do
+  desc 'renew SSL'
+  task :renew do
+    on roles(:app) do
+      within "#{current_path}" do
+        with rails_env: :production do
+          rake "ssl:renew"
+          puts "Restarting nginx"
+          execute :sudo, "service nginx restart"
+        end
+      end
+    end
+  end
 end
 
 # ps aux | grep puma    # Get puma pid

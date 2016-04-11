@@ -37,3 +37,5 @@ build/
 .rvmrc
 config/secrets.yml
 .byebug_history
+
+public/.well-known

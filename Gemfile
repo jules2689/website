@@ -5,8 +5,9 @@ gem 'railties', '> 4.0.0'
 gem 'puma'
 gem 'pg'
 gem 'newrelic_rpm'
-gem 'rack-cache'
+gem 'rack-cache', '~> 1.6.0'
 gem 'ahoy_matey'
+gem 'le_ssl' # For Let's Encrypt Renewals
 
 # Assets and JS
 gem 'sass-rails', '~> 4.0.3'
