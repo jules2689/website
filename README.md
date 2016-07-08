@@ -16,7 +16,7 @@ disqus: &disqus
 theme: &theme
   website_title: Julian Nadeau
   website_email: julian@jnadeau.ca
-  website_tagline: I am a production engineer at <a href="http://shopify.com">Shopify.</a> I work on Mobile Infrastructure.
+  website_tagline: I am a production engineer at <a href="http://shopify.com">Shopify.</a> I work on Developer Infrastructure.
   theme: theme_1
 
 social_media: &social_media
