@@ -117,6 +117,7 @@ GEM
     devise-bootstrap-views (0.0.7)
     domain_name (0.5.20160128)
       unf (>= 0.0.5, < 1.0.0)
+    ejson (1.0.1)
     errbase (0.0.3)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -312,6 +313,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   devise-bootstrap-views
+  ejson
   fastimage
   galleria-rails!
   jbuilder (~> 2.0)
@@ -343,4 +345,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.11.2
+   1.12.5

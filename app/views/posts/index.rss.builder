@@ -1,8 +1,8 @@
 xml.instruct! :xml, :version => '1.0'
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title Rails.application.secrets.website_title
-    xml.description strip_tags(Rails.application.secrets.website_tagline)
+    xml.title Rails.application.app_config.website_title
+    xml.description strip_tags(Rails.application.app_config.website_tagline)
     xml.link request.protocol + request.host_with_port
 
     @posts.each do |post|

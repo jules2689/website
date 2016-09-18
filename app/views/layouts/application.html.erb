@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= Rails.application.secrets.website_title %> <% if content_for?(:title) %>| <%= yield :title %><% end %></title>
-  <link rel="shortcut icon" type="image/png" href="<%= gravatar(Rails.application.secrets.website_email, size: 16) %>"/>
+  <title><%= Rails.application.app_config.website_title %> <% if content_for?(:title) %>| <%= yield :title %><% end %></title>
+  <link rel="shortcut icon" type="image/png" href="<%= gravatar(Rails.application.app_config.website_email, size: 16) %>"/>
   <%= yield :head_meta %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body id="<%= Rails.application.secrets.theme %>">
+<body id="<%= Rails.application.app_config.theme %>">
   <%= render "layouts/analytics" %>
   <div id="wrapper">
     <%= yield %>

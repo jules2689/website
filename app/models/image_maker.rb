@@ -5,11 +5,11 @@ class ImageMaker
     Rails.logger.info("Creating image '#{title}'...")
     remote_image_path = "images/website/#{remote_path}"
 
-    PersonalWebsite::GithubClient.create_contents(Rails.application.secrets.git_cdn_repo,
+    PersonalWebsite::GithubClient.create_contents(Rails.application.app_config.git_cdn_repo,
       remote_image_path,
       "Adding Image #{remote_path}",
       branch: "gh-pages",
       file: image_path)
-    { title: title, url: "#{Rails.application.secrets.git_cdn_repo_url}#{remote_image_path}" }
+    { title: title, url: "#{Rails.application.app_config.git_cdn_repo_url}#{remote_image_path}" }
   end
 end

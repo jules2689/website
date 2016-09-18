@@ -52,6 +52,9 @@ gem 'will_paginate-bootstrap'
 # Ajax Forms
 gem 'remotipart', '~> 1.2'
 
+# Secrets
+gem 'ejson'
+
 group :development, :test do
   gem 'pry-byebug'
 end
