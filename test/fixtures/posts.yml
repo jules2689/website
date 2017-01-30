@@ -41,3 +41,13 @@ two:
   published_key: "12345Published"
   header_image_url: "http://gitcdn.jnadeau.ca/images/website/fixture.jpg"
   post_category: two
+
+medium:
+  id: 3
+  title: MyString
+  body: MyText
+  handle: MyString3
+  created_at: 2015-01-28
+  updated_at: 2015-01-28
+  post_category: medium
+  medium_url: 'https://example.com'

@@ -15,6 +15,10 @@ class PostsController < ApplicationController
   end
 
   def show
+    if @post.medium_url
+      redirect_to @post.medium_url
+      return
+    end
     redirect_to posts_path unless signed_in? || @post.published? || @post.can_allow_unpublished_view?(params[:published_key])
     @tags = Post.tag_counts_on(:tags).to_a.sort_by(&:name)
   end
@@ -76,7 +80,6 @@ class PostsController < ApplicationController
     if @post.save
       render :show, status: :ok
     else
-      debugger
       render json: @post.errors, status: :unprocessable_entity
     end
   end

@@ -40,7 +40,7 @@ class PostsControllerTest < ActionController::TestCase
     assert_difference('Post.count') do
       post :create_medium_post, post: {
         title: 'this is a title',
-        medium_url: 'https://example.com',
+        medium_url: 'https://example.com/banana',
         published_date: DateTime.now.to_s,
         tag_list: 'banana'
       }, format: :json
@@ -50,6 +50,11 @@ class PostsControllerTest < ActionController::TestCase
   test "should show post" do
     get :show, handle: @post
     assert_response :success
+  end
+
+  test "should rediect to medium post" do
+    get :show, handle: posts(:medium)
+    assert_redirected_to 'https://example.com'
   end
 
   test "should render 404 for missing post" do
