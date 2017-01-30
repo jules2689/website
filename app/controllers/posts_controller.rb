@@ -67,6 +67,20 @@ class PostsController < ApplicationController
     end
   end
 
+  def create_medium_post
+    @post = Post.new(medium_post_params.merge(
+      body: "This is a medium post"
+    ))
+    @post.post_category = PostCategory.find_by(title: 'Medium')
+
+    if @post.save
+      render :show, status: :ok
+    else
+      debugger
+      render json: @post.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_post_and_category
@@ -87,5 +101,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :tag_list, :published_date, :post_category_id, :image, :remove_image)
+  end
+
+  def medium_post_params
+    params.require(:post).permit(:title, :tag_list, :published_date, :medium_url)
   end
 end

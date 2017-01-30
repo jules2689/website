@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/jules2689/galleria-rails.git
+  remote: https://github.com/jules2689/galleria-rails.git
   revision: 10d1b2715685eeaec7a0a3767d0c7fb11340b49b
   specs:
     galleria-rails (0.0.1)
@@ -345,4 +345,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.12.5
+   1.13.7

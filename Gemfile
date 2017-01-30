@@ -18,7 +18,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 # Gallery
-gem 'galleria-rails', github: 'jules2689/galleria-rails'
+gem 'galleria-rails', git: 'https://github.com/jules2689/galleria-rails.git'
 gem 'fastimage'
 
 # Github

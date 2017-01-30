@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210045351) do
+ActiveRecord::Schema.define(version: 20170130013119) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,8 +37,8 @@ ActiveRecord::Schema.define(version: 20160210045351) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_url", limit: 500
-    t.boolean  "is_private", default: false
+    t.string   "image_url",     limit: 500
+    t.boolean  "is_private",                default: false
   end
 
   create_table "post_categories", force: :cascade do |t|
@@ -55,11 +56,12 @@ ActiveRecord::Schema.define(version: 20160210045351) do
     t.string   "handle"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "published_date", default: '2016-02-09 05:09:51'
+    t.datetime "published_date",                     default: '2017-01-29 01:33:42'
     t.string   "dominant_header_colour"
     t.string   "published_key"
-    t.string   "header_image_url", limit: 500
+    t.string   "header_image_url",       limit: 500
     t.integer  "post_category_id"
+    t.string   "medium_url"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -68,12 +70,12 @@ ActiveRecord::Schema.define(version: 20160210045351) do
     t.string   "taggable_type"
     t.integer  "tagger_id"
     t.string   "tagger_type"
-    t.string   "context", limit: 128
+    t.string   "context",       limit: 128
     t.datetime "created_at"
   end
 
-  add_index "taggings", %w(tag_id taggable_id taggable_type context tagger_id tagger_type), name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", %w(taggable_id taggable_type context), name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
@@ -90,7 +92,7 @@ ActiveRecord::Schema.define(version: 20160210045351) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count", default: 0, null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -130,4 +132,5 @@ ActiveRecord::Schema.define(version: 20160210045351) do
   end
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
+
 end

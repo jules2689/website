@@ -36,6 +36,17 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to post_path(assigns(:post))
   end
 
+  test "should create post from medium" do
+    assert_difference('Post.count') do
+      post :create_medium_post, post: {
+        title: 'this is a title',
+        medium_url: 'https://example.com',
+        published_date: DateTime.now.to_s,
+        tag_list: 'banana'
+      }, format: :json
+    end
+  end
+
   test "should show post" do
     get :show, handle: @post
     assert_response :success

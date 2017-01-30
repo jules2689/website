@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :posts, concerns: :tag_resources, param: :handle do
     member { post :regenerate_published_key }
+    collection { post :create_medium_post }
   end
 
   controller :images, path: "images" do
