@@ -76,7 +76,9 @@ class PostsController < ApplicationController
 
   def create_medium_post
     @post = Post.new(medium_post_params.merge(
-      body: "This is a medium post"
+      body: "This is a medium post",
+      created_at: medium_post_params[:published_date],
+      updated_at: medium_post_params[:published_date]
     ))
     @post.post_category = PostCategory.find_by(title: 'Medium')
 
