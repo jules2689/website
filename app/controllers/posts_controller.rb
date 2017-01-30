@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
   include TagActions
-  before_action :authenticate_user!, except: [:index, :show, :tag_cloud]
+  before_action :authenticate_user!, except: [:index, :show, :tag_cloud, :create_medium_post]
+  before_action :authenticate_user_from_token!, only: [:create_medium_post]
+  skip_before_action :verify_authenticity_token, only: :create_medium_post
+
   before_action :set_post_and_category, only: [:show, :edit, :update, :destroy, :regenerate_published_key]
   before_action :set_or_create_post_category, only: [:create, :update]
-  skip_before_action :verify_authenticity_token, only: :create_medium_post
 
   def index
     @posts = Post.scoped_posts(signed_in?).includes(:post_category)
