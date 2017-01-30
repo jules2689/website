@@ -110,6 +110,6 @@ class PostsController < ApplicationController
   end
 
   def medium_post_params
-    params.require(:post).permit(:title, :tag_list, :published_date, :medium_url)
+    params.require(:post).permit(:title, :tag_list, :published_date, :medium_url, :header_image_url)
   end
 end
