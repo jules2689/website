@@ -20,7 +20,7 @@ class DiatexController < ApplicationController
     return if image_cache(latex, remote_path)
 
     # Generate Image & send reponse
-    exp = Calculus::Expression.new(CGI.unescape(params[:latex]))
+    exp = Calculus::Expression.new(latex, parse: false)
     json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, exp.to_png)
     render json: { input: params[:latex], url: json_hash[:url] }
   rescue Calculus::ParserError => e
