@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jules2689/calculus.git
-  revision: d744be33e2931c5259f059a2a1dbe3fe60091993
+  revision: 5a273ac77a7d9af91f54ebefe3d614133f88260d
   specs:
     calculus (0.2.0)
 
