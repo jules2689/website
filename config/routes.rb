@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     post :create_gallery
   end
 
+  controller :diatex, path: "diatex" do
+    get :latex
+  end
+
   devise_for :users, skip: [:registrations]
   resources :users do
     collection do
