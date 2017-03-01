@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/jules2689/calculus.git
+  revision: d744be33e2931c5259f059a2a1dbe3fe60091993
+  specs:
+    calculus (0.2.0)
+
+GIT
   remote: https://github.com/jules2689/galleria-rails.git
   revision: 10d1b2715685eeaec7a0a3767d0c7fb11340b49b
   specs:
@@ -80,7 +86,6 @@ GEM
     browser (1.1.0)
     builder (3.2.2)
     byebug (8.2.2)
-    calculus (0.2.0)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -305,7 +310,7 @@ DEPENDENCIES
   ahoy_matey
   bootstrap-sass (~> 3.3.3)
   builder
-  calculus
+  calculus!
   capistrano
   capistrano-bundler
   capistrano-rails
