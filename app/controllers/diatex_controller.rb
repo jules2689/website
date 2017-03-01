@@ -23,7 +23,9 @@ class DiatexController < ApplicationController
     exp = Calculus::Expression.new(latex, parse: false)
     new_path = File.join(TEMP_IMAGES, "#{uid}.png")
     png = exp.to_png
+    Rails.logger.info "Calculus"
     Rails.logger.info png
+    Rails.logger.info exp.inspect
     FileUtils.mv(png, new_path)
 
     json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, new_path)
