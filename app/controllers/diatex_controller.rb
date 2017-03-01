@@ -4,29 +4,19 @@ class DiatexController < ApplicationController
   include SequenceDiagram
 
   def latex
-    uid = image_request(:latex)
+    uid, remote_path = image_request(:latex)
+    return if uid.nil?
+    exp = Calculus::Expression.new(params[:latex])
 
-    # Convert latex to DVI
-    success, dvi_path = convert_latex_to_dvi(uid, params)
-    unless success
-      render json: { error: 'latex command did not succeed', input: params[:latex], output: dvi_path }, status: 500
-      return
-    end
-
-    # Convert DVI to PNG
-    success, png_path = convert_latex_to_png(uid, dvi_path)
-    unless success
-      render json: { error: 'dvipng command did not succeed', input: params[:latex], output: png_path }, status: 500
-      return
-    end
-
-    # Send response
-    json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, path.to_s)
+    json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, exp.to_png)
     render json: { input: params[:latex], url: json_hash[:url] }
+  rescue Calculus::ParserError => e
+    render json: { error: e.message }, status: 422
   end
 
   def diagram
-    uid = image_request(:diagram)
+    uid, remote_path = image_request(:diagram)
+    return if uid.nil?
     success, png_path = convert_mermaid_to_png(params[:diagram])
 
     unless success
@@ -43,7 +33,7 @@ class DiatexController < ApplicationController
   def image_request(param_name)
     if params[param_name].blank?
       render json: { error: "#{param_name} param was not found" }, status: 422
-      return
+      return nil
     end
 
     uid = Digest::MD5.hexdigest(params[param_name])
@@ -54,9 +44,9 @@ class DiatexController < ApplicationController
     if image_maker.exists?(remote_path)
       Rails.logger.info "Already made, sending cache"
       render json: { input: params[param_name], url: image_maker.url(remote_path) }
-      return
+      return nil
     end
 
-    uid
+    [uid, remote_path]
   end
 end

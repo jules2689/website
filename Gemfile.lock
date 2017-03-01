@@ -80,6 +80,7 @@ GEM
     browser (1.1.0)
     builder (3.2.2)
     byebug (8.2.2)
+    calculus (0.2.0)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -304,6 +305,7 @@ DEPENDENCIES
   ahoy_matey
   bootstrap-sass (~> 3.3.3)
   builder
+  calculus
   capistrano
   capistrano-bundler
   capistrano-rails
@@ -345,4 +347,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.13.7
+   1.14.3
