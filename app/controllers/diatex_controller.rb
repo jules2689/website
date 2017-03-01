@@ -4,39 +4,38 @@ class DiatexController < ApplicationController
   include SequenceDiagram
 
   def latex
-    image_request(:latex) do |uid|
-      # Convert latex to DVI
-      success, dvi_path = convert_latex_to_dvi(uid, params)
-      unless success
-        render json: { error: 'latex command did not succeed', input: params[:latex], output: dvi_path }, status: 500
-        return
-      end
+    uid = image_request(:latex)
 
-      # Convert DVI to PNG
-      success, png_path = convert_latex_to_png(uid, dvi_path)
-      unless success
-        render json: { error: 'dvipng command did not succeed', input: params[:latex], output: png_path }, status: 500
-        return
-      end
-
-      png_path
+    # Convert latex to DVI
+    success, dvi_path = convert_latex_to_dvi(uid, params)
+    unless success
+      render json: { error: 'latex command did not succeed', input: params[:latex], output: dvi_path }, status: 500
+      return
     end
+
+    # Convert DVI to PNG
+    success, png_path = convert_latex_to_png(uid, dvi_path)
+    unless success
+      render json: { error: 'dvipng command did not succeed', input: params[:latex], output: png_path }, status: 500
+      return
+    end
+
+    # Send response
+    json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, path.to_s)
+    render json: { input: params[:latex], url: json_hash[:url] }
   end
 
   def diagram
-    image_request(:diagram) do
-      success, png_path = convert_mermaid_to_png(params[:diagram])
-      unless success
-        render json: {
-          error: 'mermaid command did not succeed',
-          input: params[:diagram],
-          output: png_path
-        }, status: 500
-        return
-      end
+    uid = image_request(:diagram)
+    success, png_path = convert_mermaid_to_png(params[:diagram])
 
-      png_path
+    unless success
+      render json: { error: 'mermaid command did not succeed', input: params[:diagram], output: png_path }, status: 500
     end
+
+    # Send response
+    json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, path.to_s)
+    render json: { input: params[:diagram], url: json_hash[:url] }
   end
 
   private
@@ -58,11 +57,6 @@ class DiatexController < ApplicationController
       return
     end
 
-    path = yield(uid)
-    return unless path
-
-    # Send response
-    json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, path.to_s)
-    render json: { input: params[param_name], url: json_hash[:url] }
+    uid
   end
 end
