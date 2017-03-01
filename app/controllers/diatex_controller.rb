@@ -21,6 +21,8 @@ class DiatexController < ApplicationController
 
     # Generate Image & send reponse
     exp = Calculus::Expression.new(latex, parse: false)
+    FileUtils.mv(exp.to_png, File.join(TEMP_IMAGES, "#{uid}.png"))
+
     json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, exp.to_png)
     render json: { input: params[:latex], url: json_hash[:url] }
   rescue Calculus::ParserError => e
