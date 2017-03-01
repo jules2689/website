@@ -1,7 +1,11 @@
 # Main Path
-output_temp_dir = Rails.root.join('tmp/diatex')
-FileUtils.mkdir_p(output_temp_dir) unless File.exists?(output_temp_dir)
+output_temp_dir = Rails.root.join('tmp', 'diatex').freeze
+FileUtils.mkdir_p(output_temp_dir) unless File.exist?(output_temp_dir)
 
 # Temporary dvi file
-TEMP_DVI = "%s/dvi" % output_temp_dir
-FileUtils.mkdir_p(TEMP_DVI) unless File.exists?(TEMP_DVI)
+TEMP_DVI = "#{output_temp_dir}/dvi".freeze
+FileUtils.mkdir_p(TEMP_DVI) unless File.exist?(TEMP_DVI)
+
+# Temporary Mermaid
+TEMP_MERMAID = "#{output_temp_dir}/mermaid".freeze
+FileUtils.mkdir_p(TEMP_MERMAID) unless File.exist?(TEMP_MERMAID)

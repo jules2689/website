@@ -1,5 +1,5 @@
 module Latex
-  def convert_to_dvi(uid, params)
+  def convert_latex_to_dvi(uid, params)
     # LaTeX document skeleton
     document_top = "\\documentclass{article}
     \\usepackage{mathtools}
@@ -31,7 +31,7 @@ module Latex
     [true, Dir["#{TEMP_DVI}/#{uid}*.dvi"].first]
   end
 
-  def convert_to_png(uid, dvi_path)
+  def convert_latex_to_png(uid, dvi_path)
     png_file = Tempfile.new([uid, '.png'])
     Rails.logger.info "render png @ #{png_file.path}"
     output = `dvipng -T tight -D 119 -o #{png_file.path} #{dvi_path}`

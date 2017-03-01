@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   controller :diatex, path: "diatex" do
     get :latex
+    get :diagram
   end
 
   devise_for :users, skip: [:registrations]
