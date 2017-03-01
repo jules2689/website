@@ -14,6 +14,8 @@ class DiatexController < ApplicationController
     uid = Digest::MD5.hexdigest(latex)
     remote_path = "images/latex/#{uid}.png"
 
+    Rails.logger.info "Got latex #{latex}"
+
     # Check Cache First
     return if image_cache(latex, remote_path)
 
