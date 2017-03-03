@@ -11,7 +11,7 @@ module SequenceDiagram
 
     file = Dir["#{TEMP_MERMAID}/#{uid}*.png"].first
     Rails.logger.info "Mermaid made a file at #{file}"
-    return [false, output] if file.nil? || !File.exist?(file)
+    return [false, output] if file.nil? || file.strip == '' || !File.exist?(file)
 
     [true, Dir["#{TEMP_MERMAID}/#{uid}*.png"].first]
   end
