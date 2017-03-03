@@ -9,10 +9,10 @@ module SequenceDiagram
     file.close
     return [false, output] if $?.exitstatus != 0
 
-    file = Dir["#{TEMP_MERMAID}/#{uid}*.png"].first
-    Rails.logger.info "Mermaid made a file at #{file}"
-    return [false, output] if file.nil? || file.strip == '' || !File.exist?(file)
+    files = Dir["#{TEMP_MERMAID}/#{uid}*.png"]
+    Rails.logger.info "Mermaid made a file at #{files.inspect}"
+    return [false, output] if files.empty?
 
-    [true, Dir["#{TEMP_MERMAID}/#{uid}*.png"].first]
+    [true, files.first]
   end
 end
