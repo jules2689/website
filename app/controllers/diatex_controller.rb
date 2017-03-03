@@ -53,7 +53,7 @@ class DiatexController < ApplicationController
     end
 
     # Send response
-    json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, path.to_s)
+    json_hash = ImageMaker.new.create_image("#{uid}.png", remote_path, png_path)
     render json: { input: params[:diagram], url: json_hash[:url] }
   end
 
