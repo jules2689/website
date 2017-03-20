@@ -5,7 +5,9 @@ module SequenceDiagram
     file.write(content)
     file.flush
 
-    output = `mermaid #{file.path} -w 2048 --png --outputDir #{TEMP_MERMAID}`
+    cmd = "mermaid #{file.path} -w 2048 --png --outputDir #{TEMP_MERMAID}"
+    Rails.logger.info "Running `#{cmd}`"
+    output = `#{cmd}`
     file.close
     return [false, output] if $?.exitstatus != 0
 

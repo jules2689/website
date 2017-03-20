@@ -8,6 +8,7 @@ gem 'newrelic_rpm'
 gem 'rack-cache', '~> 1.6.0'
 gem 'ahoy_matey'
 gem 'le_ssl' # For Let's Encrypt Renewals
+gem 'remote_syslog_logger'
 
 # Assets and JS
 gem 'sass-rails', '~> 4.0.3'

@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20170130013119) do
     t.string   "handle"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "published_date",                     default: '2017-01-29 01:33:42'
+    t.datetime "published_date",                     default: '2017-03-19 21:17:16'
     t.string   "dominant_header_colour"
     t.string   "published_key"
     t.string   "header_image_url",       limit: 500
