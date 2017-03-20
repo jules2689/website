@@ -5,7 +5,7 @@ module SequenceDiagram
     file.write(content)
     file.flush
 
-    output = `mermaid #{file.path} --png --outputDir #{TEMP_MERMAID}`
+    output = `mermaid #{file.path} -w 2048 --png --outputDir #{TEMP_MERMAID}`
     file.close
     return [false, output] if $?.exitstatus != 0
 
