@@ -5,27 +5,16 @@ module SequenceDiagram
     file.write(content)
     file.flush
 
-    # Run the command. This should output a file at `file.path` + .png
-    cmd_path = Rails.root('scripts', 'mermaid_online.js')
-    cmd = "phantomjs #{cmd_path} #{file.path}"
+    cmd = "mermaid #{file.path} -w 2048 --png --outputDir #{TEMP_MERMAID}"
     Rails.logger.info "Running `#{cmd}`"
     output = `#{cmd}`
-
-    # If not successful, return
-    if $?.exitstatus != 0
-      file.close
-      return [false, output]
-    end
-
-    # Make sure the file exists
-    picture_file = file.path + ".png"
-    Rails.logger.info "Mermaid made a file at #{picture_file}"
-    unless File.exist?(picture_file)
-      file.close
-      return [false, output]
-    end
-
     file.close
-    [true, picture_file]
+    return [false, output] if $?.exitstatus != 0
+
+    files = Dir["#{TEMP_MERMAID}/#{uid}*.png"]
+    Rails.logger.info "Mermaid made a file at #{files.inspect}"
+    return [false, output] if files.empty?
+
+    [true, files.first]
   end
 end
