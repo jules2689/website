@@ -27,7 +27,7 @@ module SequenceDiagram
 
     # Make sure the picture exists
     png_file = file.path + ".png"
-    system("svgexport #{svg_file} #{png_file}")
+    system("convert #{svg_file} #{png_file}")
     unless File.exist?(png_file)
       file.close
       return [false, output]
