@@ -18,22 +18,14 @@ module SequenceDiagram
     end
 
     # Make sure the file exists
-    svg_file = file.path + ".svg"
-    Rails.logger.info "Mermaid made a file at #{svg_file}"
-    unless File.exist?(svg_file)
-      file.close
-      return [false, output]
-    end
-
-    # Make sure the picture exists
-    png_file = file.path + ".png"
-    system("convert #{svg_file} #{png_file}")
-    unless File.exist?(png_file)
+    picture_file = file.path + ".png"
+    Rails.logger.info "Mermaid made a file at #{picture_file}"
+    unless File.exist?(picture_file)
       file.close
       return [false, output]
     end
 
     file.close
-    [true, png_file]
+    [true, picture_file]
   end
 end
