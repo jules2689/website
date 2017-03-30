@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/jules2689/charts.git
-  revision: f9e44f052d390279f4125bc82b202d46dadcdd6c
+  revision: f82acc1507d487fd51418c07bc90c3d59c833547
   specs:
     charts (0.0.1)
       ttfunk
