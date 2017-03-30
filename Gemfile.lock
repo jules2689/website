@@ -5,6 +5,14 @@ GIT
     calculus (0.2.0)
 
 GIT
+  remote: https://github.com/jules2689/charts.git
+  revision: f9e44f052d390279f4125bc82b202d46dadcdd6c
+  specs:
+    charts (0.0.1)
+      ttfunk
+      victor (= 0.2.1)
+
+GIT
   remote: https://github.com/jules2689/galleria-rails.git
   revision: 10d1b2715685eeaec7a0a3767d0c7fb11340b49b
   specs:
@@ -289,6 +297,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    ttfunk (1.5.0)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -303,6 +312,7 @@ GEM
     url_safe_base64 (0.2.2)
     user_agent_parser (2.3.0)
     uuidtools (2.1.5)
+    victor (0.2.1)
     warden (1.2.6)
       rack (>= 1.0)
     webrobots (0.1.2)
@@ -325,6 +335,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano-secrets-yml (~> 1.0.0)
   capistrano3-puma
+  charts!
   coffee-rails (~> 4.0.0)
   devise
   devise-bootstrap-views

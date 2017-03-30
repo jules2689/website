@@ -19,6 +19,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'calculus', git: 'https://github.com/jules2689/calculus.git'
 
+# Charts
+gem 'charts', git: 'https://github.com/jules2689/charts.git'
+
 # Gallery
 gem 'galleria-rails', git: 'https://github.com/jules2689/galleria-rails.git'
 gem 'fastimage'
