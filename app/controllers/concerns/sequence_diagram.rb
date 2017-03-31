@@ -5,7 +5,7 @@ module SequenceDiagram
     if content.strip.start_with?('gantt')
       gantt_chart(content)
     else
-      mermaid_chart(chart)
+      mermaid_chart(content)
     end
   end
 
