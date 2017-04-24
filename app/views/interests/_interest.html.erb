@@ -1,4 +1,0 @@
-<%= render layout: "layouts/card", locals: { object: interest, link: interest.url, header_image: interest.image_url, embed_url: interest.embed_url } do %>
-  <%= link_to "Remove", interest, method: :delete, class: "btn btn-danger pull-right" if current_user %>
-<% end %>
-
