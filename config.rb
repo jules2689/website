@@ -2,14 +2,14 @@ activate :autoprefixer do |prefix|
   prefix.browsers = "last 2 versions"
 end
 
+activate :directory_indexes
+set :relative_links, true
+
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
 
-proxy(
-  '/kaigi.html',
-  '/presentations/rubykaigi2017.html'
-)
+redirect 'kaigi.html', to: 'presentations/rubykaigi2017.html'
 
 helpers do
   def iterate_folder(folder, limit: -1, sort: nil)

@@ -8,6 +8,9 @@ git clone $(git remote get-url origin) --branch gh-pages build
 bundle exec middleman build
 cp CNAME build
 
+# Special handling
+mv build/kaigi/index.html build/kaigi.html
+
 # Push to Github
 pushd build
 git add --all .
