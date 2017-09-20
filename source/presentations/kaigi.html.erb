@@ -1,0 +1,49 @@
+---
+title: "[RubyKaigi 2017] Busting Performance Bottlenecks: Decreasing Ruby Boot time by 60%"
+layout: layout
+---
+
+<script>
+  $(document).ready(function() {
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="title pt-4">Busting Performance Bottlenecks</br><small>Decreasing Ruby Boot time by 60%</small></h1>
+      <h5 class="title">Ruby Kaigi 2017</h5>
+    </div>
+
+    <div class="col-md-4 text-md-right" style="display: flex; flex-direction: column; justify-content: center;">
+      <a class="btn btn-secondary" href="https://github.com/jules2689/kaigi2017demo">Github Demo Repo</a>
+      <a class="btn btn-secondary" href="http://rubykaigi.org/2017/presentations/jules2689.html">Presentation Overview</a>
+    </div>
+  </div>
+</div>
+
+<div class="iframe-box">
+  <iframe class="pt-2" src="https://docs.google.com/presentation/d/e/2PACX-1vSEgYekXwjLfee68dVwn6_Of4KWyfKKLIaWo3oWEvhfAKs0JxkzYdey0x35LkE78-RBS0SpFdtiYT24/embed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>
+
+<%= partial 'timing_helper' %>
+<%= partial 'aggregate' %>
+<%= partial 'gantt' %>
+
+<div class="col-md-12 pt-5 mt-5 text-center">
+  <h3 class="title text-center">Put it all together</h3>
+  
+  <p>With all of these you can end up creating flow charts and gantt charts to determine slow paths in the code.</p>
+  <a href="assets/flowcharts.JPG">
+    <%= image_tag "flowcharts_small.jpeg", width: "700px" %>
+  </a>
+</div>
+
+<hr>
+
+<div class="text-center">
+  <%= image_tag "kaigiheader.png", height: "100" %>
+</div>

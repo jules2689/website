@@ -11,6 +11,7 @@
 /tmp/
 /log/
 /public/screencap
+.sass-cache
 
 ## Specific to RubyMotion:
 .dat*

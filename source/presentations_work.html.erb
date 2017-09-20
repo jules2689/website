@@ -1,0 +1,14 @@
+---
+title: Presentations and Work
+---
+
+<div class="full_center">
+  <div class="content">
+    <h1>Presentations</h1>
+    <ul>
+    <% iterate_folder('presentations') do |page| %>
+      <li><%= link_to page.data.title, page.url %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>

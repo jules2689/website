@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="csrf-param" content="authenticity_token">
+    <meta name="csrf-token" content="pqJxoIW3eeboexvdZD2vubiP2i4YObofseM91zLGIkTKu9NL+aTw2CyQO00aCcEjn7neRpn4hYl1cImBY1SSfA==">
+    <meta name="google-site-verification" content="thKevbVWFUwiJbi_nQJRaQc4-ZUN_Mr6YJlFt8Nv_-I">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title><%= current_page.data.title || "Middleman" %></title>
+    <%= stylesheet_link_tag "site" %>
+    <%= javascript_include_tag "site" %>
+
+    <!-- Highlighting -->
+    <%= stylesheet_link_tag "highlight" %>
+    <%= javascript_include_tag "highlight" %>
+
+    <!-- Gravatar icon -->
+    <link rel="shortcut icon" type="image/png" href="https://www.gravatar.com/avatar/6e01dd682c021a600a943b0a539ed6a2default=&amp;rating=&amp;size=16">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <%= partial 'layouts/nav' if current_page.url != "/" %>
+    <%= yield %>
+  </body>
+</html>
+
