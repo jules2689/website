@@ -16,6 +16,7 @@
 ## Specific to RubyMotion:
 .dat*
 .repl_history
+build/
 
 ## Documentation cache and generated files:
 /.yardoc/

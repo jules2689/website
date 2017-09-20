@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
-set -eox
+set +eox
 
+# Set up build folder and build
+rm -rf build
+git clone $(git remote get-url origin) --branch gh-pages build
 bundle exec middleman build
 cp CNAME build
-git subtree push --prefix build origin gh-pages
+
+# Push to Github
+pushd build
+git add --all .
+git commit -m 'Update website'
+git push origin +gh-pages
+popd
