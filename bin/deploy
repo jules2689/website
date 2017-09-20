@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eox
+
 bundle exec middleman build
 cp CNAME build
 git subtree push --prefix build origin gh-pages
