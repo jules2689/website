@@ -1,4 +1,5 @@
 $break-small: 550px;
+$break-medium: 768px;
 $break-large: 1000px;
 
 $purple: #5c2b5f;
@@ -85,6 +86,20 @@ img {
   margin-right: 10%;
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: $break-medium) {
+    flex-direction: column-reverse;
+  }
+}
+
+.flex-item {
+  flex: 1;
+  min-width: 300px;
+}
+
 // Speciality
 
 nav {
@@ -111,13 +126,10 @@ nav {
 }
 
 .homepage {
-  width: 50%;
-  height: 200px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1em;
 
   h1 {
     font-size: 4rem;
@@ -130,17 +142,31 @@ nav {
       color: $dark-purple;
     }
   }
-
-  @media screen and (max-width: $break-large) {
-    width: 94%;
-    left: 0;
-    margin-left: 3%;
-    margin-right: 3%;
-  }
 }
 
 .presentations {
+  padding: 1em;
+
   h1, a {
     color: $white;
+  }
+
+  // TODO : Change to flex when more items
+  ul {
+    padding: 0;
+    .presentation-item {
+      width: 100%;
+      max-width: 600px;
+      list-style: none;
+
+      opacity: 1;
+      transition: opacity .25s ease-in-out;
+      -moz-transition: opacity .25s ease-in-out;
+      -webkit-transition: opacity .25s ease-in-out;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
   }
 }

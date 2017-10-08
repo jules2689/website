@@ -2,23 +2,41 @@
 title: Julian Nadeau
 ---
 
-<div class="background white fill">
-  <div class="homepage upcase">
-    <h1 class="upcase">
-      Julian <span class="dark">Nadeau</span>
-    </h1>
-    <p>
-      Production Engineer <span class="dark">@ Shopify</span>
-    </p>
+<script>var scroll = new SmoothScroll('a[href*="#"]');</script>
 
-    <%= link_to 'Presentations and Work', 'presentations_work' %> | 
-    <a href="https://medium.com/@jules2689">Posts</a> | 
-    <a href="https://notes.jnadeau.ca">Notes</a> |
+<div class="background white fill flex-container">
+  <div class="flex-item">
+    &nbsp;
+  </div>
+  <div class="flex-item homepage upcase">
+    <h1>Julian <span class="dark">Nadeau</span></h1>
+    <p>Production Engineer <span class="dark">@ Shopify</span></p>
 
-    <a href="https://github.com/jules2689"><i class="fa fa-github-square"></i></a>
-    <a href="https://twitter.com/jules2689"><i class="fa fa-twitter-square"></i></a>
-    <a href="http://www.linkedin.com/pub/julian-nadeau/49/1b0/721"><i class="fa fa-linkedin-square"></i></a>
-    <a href="mailto:julian@jnadeau.ca"><i class="fa fa-envelope-square"></i></a>
+    <div>
+      <a href="#presentations" data-scroll>Presentations and Work</a> | 
+      <a href="https://medium.com/@jules2689">Posts</a> | 
+      <a href="https://notes.jnadeau.ca">Notes</a> |
 
+      <a href="https://github.com/jules2689"><i class="fa fa-github-square"></i></a>
+      <a href="https://twitter.com/jules2689"><i class="fa fa-twitter-square"></i></a>
+      <a href="http://www.linkedin.com/pub/julian-nadeau/49/1b0/721"><i class="fa fa-linkedin-square"></i></a>
+      <a href="mailto:julian@jnadeau.ca"><i class="fa fa-envelope-square"></i></a>
+    </div>
+  </div>
+</div>
+
+
+<div class="background white fill flex-container">
+  <div class="flex-item presentations upcase">
+    <h1 id="presentations">Presentations</h1>
+    <ul>
+    <% iterate_folder('presentations') do |page| %>
+      <li class="presentation-item">
+        <% link_to page.path do %>
+          <%= image_tag page.data.image %>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
   </div>
 </div>
