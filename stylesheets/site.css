@@ -9,20 +9,24 @@ html, body {
 pre, pre > *, pre *, code, code > *, code * {
   font-family: monospace; }
 
+h1, h2, h3, h4, h5, h6, pre {
+  margin-top: 0;
+  margin-bottom: 0; }
+
 a {
-  color: #001f38; }
+  color: #180b19; }
 
 img {
   max-width: 100%; }
 
 .dark {
-  color: #001f38; }
+  color: #180b19; }
 
 .white {
   color: #fff; }
 
-.blue-background {
-  background: #025aa5; }
+.background {
+  background: #421e44; }
 
 .fill {
   height: 100%;
@@ -69,7 +73,7 @@ nav ul {
       color: #fff;
       text-decoration: none; }
       nav ul li a:hover {
-        color: #001f38; }
+        color: #180b19; }
 
 .homepage {
   width: 50%;
