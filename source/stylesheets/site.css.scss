@@ -1,25 +1,57 @@
-.full_center {
-  width: 90%;
-  height: 200px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  font-size: 150%;
+$break-small: 550px;
+$break-large: 1000px;
+
+$blue: #025aa5;
+$dark-blue: #001f38;
+$white: #fff;
+
+* {
+  font-family: 'helvetica-light', sans-serif;
 }
 
-.avatar {
-  width: 80px;
-  border-radius: 40px;
-  margin-right: 20px;
-  margin-top: 10px;
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
-.content {
-  line-height: 20px;
-  margin-top: 20px;
+pre, pre > *, pre *, code, code > *, code * {
+  font-family: monospace;
+}
+
+a {
+  color: $dark-blue;
+}
+
+img {
+  max-width: 100%;
+}
+
+// Utilities
+
+.dark {
+  color: $dark-blue;
+}
+
+.white {
+  color: $white;
+}
+
+.blue-background {
+  background: $blue;
+}
+
+.fill {
+  height: 100%;
+  width: 100%;
+}
+
+.upcase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .iframe-box {
@@ -37,5 +69,76 @@
     right:    0;
     width:    100%;
     height:   100%
+  }
+}
+
+// Layouts
+
+.container {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+// Speciality
+
+nav {
+  ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    padding-top: 8px;
+    padding-bottom: 20px;
+
+    li {
+      display: inline;
+      list-style-type: none;
+      padding-right: 20px;
+      a {
+        color: $white;
+        text-decoration: none;
+        &:hover {
+          color: $dark-blue;
+        }
+      }
+    }
+  }
+}
+
+.homepage {
+  width: 50%;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin: auto;
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+  }
+
+  a {
+    color: $white;
+  }
+
+  @media screen and (max-width: $break-large) {
+    width: 94%;
+    left: 0;
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}
+
+.presentations {
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  a {
+    color: $white;
   }
 }

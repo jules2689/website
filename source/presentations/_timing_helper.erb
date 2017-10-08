@@ -1,60 +1,54 @@
-<div class="container pt-5">
-  <h3 class="title text-center">Timing Helper</h3>
-  <div class="row">
-    <div class="col-md-12">
-      <p>This snippet of code is very simple, but very powerful.</p>
-      <p>Wrapping a block of code with this method will allow you to track how much time it takes to run</p>
-      <pre>
-        <code>
+<div>
+  <h2>Timing Helper</h2>
+  <p>This snippet of code is very simple, but very powerful.</p>
+  <p>Wrapping a block of code with this method will allow you to track how much time it takes to run</p>
+  <pre>
+    <code>
   def _t(label)
-  t = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-  ret = yield
-  puts "#{label} #{Process.clock_gettime(Process::CLOCK_MONOTONIC) - t}"
-  ret
+    t = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    ret = yield
+    puts "#{label} #{Process.clock_gettime(Process::CLOCK_MONOTONIC) - t}"
+    ret
   end
-        </code>
-      </pre>
-    </div>
+    </code>
+  </pre>
 
-    <div class="col-md-8">
-      <h4>Example Code</h4>
-      <pre>
-        <code>
+  <h4>Example Code</h4>
+  <pre>
+    <code>
   i = 0
 
   # This will output a basic statement
   _t('basic') do
-  puts i
+    puts i
   end
 
   # This will output a basic statement
   _t('longer') do
-  while i < 30
-    i += 1
-    sleep 0.1
-  end
+    while i < 30
+      i += 1
+      sleep 0.1
+    end
   end
 
   # _t('method') is called many times because of the recursion
   # In this case we will see many outputs for _t('method')
   # This may not be what we want, see the aggregation demo
   def my_method(i = 0)
-  _t('method') do
-    return if i > 20
-    sleep 0.1
-    my_method(i + 1)
-  end
+    _t('method') do
+      return if i > 20
+      sleep 0.1
+      my_method(i + 1)
+    end
   end
 
   my_method
-        </code>
-      </pre>
-    </div>
+    </code>
+  </pre>
 
-    <div class="col-md-4">
-      <h4>Output</h4>
-      <pre>
-        <code>
+  <h4>Output</h4>
+  <pre>
+    <code>
   0
   basic 3.700001980178058e-05
   longer 3.099142999999458
@@ -80,8 +74,6 @@
   method 2.073551999987103
   method 2.1743229999847244
   => nil
-        </code>
-      </pre>
-    </div>
-  </div>
+    </code>
+  </pre>
 </div>
