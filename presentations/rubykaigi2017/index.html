@@ -20,23 +20,21 @@
     <!-- Gravatar icon -->
     <link rel="shortcut icon" type="image/png" href="https://www.gravatar.com/avatar/6e01dd682c021a600a943b0a539ed6a2default=&amp;rating=&amp;size=16">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link href="/stylesheets/fontawesome.css" rel="stylesheet" />
   </head>
   <body>
-    <nav class="navbar navbar-light bg-faded">
-  <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link active" href="/">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/presentations_work">Presentations &amp; Work</a>
-    </li>
-  </ul>
+    <nav class="blue-background">
+  <div class="container">
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/presentations_work">Presentations &amp; Work</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 
     <script>
@@ -47,81 +45,81 @@
   });
 </script>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h1 class="title pt-4">Busting Performance Bottlenecks</br><small>Decreasing Ruby Boot time by 60%</small></h1>
-      <h5 class="title">Ruby Kaigi 2017</h5>
-    </div>
+<div class="blue-background white">
+  <div class="container" style="padding: 20px 0;">
+    <h1 class="upcase" style="margin-top: 0">Busting Performance Bottlenecks</br><small>Decreasing Ruby Boot time by 60%</small></h1>
+    <h5 class="upcase dark">Ruby Kaigi 2017</h5>
 
-    <div class="col-md-4 text-md-right" style="display: flex; flex-direction: column; justify-content: center;">
-      <a class="btn btn-secondary" href="https://github.com/jules2689/kaigi2017demo">Github Demo Repo</a>
-      <a class="btn btn-secondary" href="http://rubykaigi.org/2017/presentations/jules2689.html">Presentation Overview</a>
+    <div style="display: flex; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 300px;">
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSEgYekXwjLfee68dVwn6_Of4KWyfKKLIaWo3oWEvhfAKs0JxkzYdey0x35LkE78-RBS0SpFdtiYT24/embed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" width="100%" height="500" webkitallowfullscreen="true"></iframe>
+      </div>
+
+      <div style="flex: 1; min-width: 300px;">
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/8BJKrx6rsM0?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="iframe-box">
-  <iframe class="pt-2" src="https://docs.google.com/presentation/d/e/2PACX-1vSEgYekXwjLfee68dVwn6_Of4KWyfKKLIaWo3oWEvhfAKs0JxkzYdey0x35LkE78-RBS0SpFdtiYT24/embed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<div class="container text-center">
+  <br>
+  <a href="https://github.com/jules2689/kaigi2017demo">Github Demo Repo</a> | 
+  <a href="http://rubykaigi.org/2017/presentations/jules2689.html">Presentation Overview</a>
 </div>
 
-<div class="container pt-5">
-  <h3 class="title text-center">Timing Helper</h3>
-  <div class="row">
-    <div class="col-md-12">
-      <p>This snippet of code is very simple, but very powerful.</p>
-      <p>Wrapping a block of code with this method will allow you to track how much time it takes to run</p>
-      <pre>
-        <code>
+<div class="container">
+  <div>
+  <h2>Timing Helper</h2>
+  <p>This snippet of code is very simple, but very powerful.</p>
+  <p>Wrapping a block of code with this method will allow you to track how much time it takes to run</p>
+  <pre>
+    <code>
   def _t(label)
-  t = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-  ret = yield
-  puts "#{label} #{Process.clock_gettime(Process::CLOCK_MONOTONIC) - t}"
-  ret
+    t = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    ret = yield
+    puts "#{label} #{Process.clock_gettime(Process::CLOCK_MONOTONIC) - t}"
+    ret
   end
-        </code>
-      </pre>
-    </div>
+    </code>
+  </pre>
 
-    <div class="col-md-8">
-      <h4>Example Code</h4>
-      <pre>
-        <code>
+  <h4>Example Code</h4>
+  <pre>
+    <code>
   i = 0
 
   # This will output a basic statement
   _t('basic') do
-  puts i
+    puts i
   end
 
   # This will output a basic statement
   _t('longer') do
-  while i < 30
-    i += 1
-    sleep 0.1
-  end
+    while i < 30
+      i += 1
+      sleep 0.1
+    end
   end
 
   # _t('method') is called many times because of the recursion
   # In this case we will see many outputs for _t('method')
   # This may not be what we want, see the aggregation demo
   def my_method(i = 0)
-  _t('method') do
-    return if i > 20
-    sleep 0.1
-    my_method(i + 1)
-  end
+    _t('method') do
+      return if i > 20
+      sleep 0.1
+      my_method(i + 1)
+    end
   end
 
   my_method
-        </code>
-      </pre>
-    </div>
+    </code>
+  </pre>
 
-    <div class="col-md-4">
-      <h4>Output</h4>
-      <pre>
-        <code>
+  <h4>Output</h4>
+  <pre>
+    <code>
   0
   basic 3.700001980178058e-05
   longer 3.099142999999458
@@ -147,97 +145,90 @@
   method 2.073551999987103
   method 2.1743229999847244
   => nil
-        </code>
-      </pre>
-    </div>
-  </div>
+    </code>
+  </pre>
 </div>
 
-<div class="container pt-5">
-  <h3 class="title text-center">Aggregate Helper</h3>
-  <div class="row">
-    <div class="col-md-12">
-      <p>The timing code was simple and powerful, but it didn't quite work if a line or block was called many times.</p>
-      <p>To solve this, I used a global variable to keep track of how long and how many times each call is hit.</p>
-      <pre>
-        <code>
+  <br>
+  <div>
+  <h2>Aggregate Helper</h2>
+  <p>The timing code was simple and powerful, but it didn't quite work if a line or block was called many times.</p>
+  <p>To solve this, I used a global variable to keep track of how long and how many times each call is hit.</p>
+  <pre>
+    <code>
   $agg = {}
   at_exit do
-  line_column_size = $agg.keys.max_by(&:size).size
-  time_column_size = $agg.values.max_by { |v| v[:time].to_s.size }[:time].to_s.size
+    line_column_size = $agg.keys.max_by(&:size).size
+    time_column_size = $agg.values.max_by { |v| v[:time].to_s.size }[:time].to_s.size
 
-  puts "| line#{' ' * (line_column_size - 4)} | num_calls | time (s)#{' ' * (time_column_size - 8)} |"
-  puts "| #{'-' * line_column_size} | --------- | #{'-' * time_column_size} |"
-  $agg.each do |k, v|
-    line_entry = k.tr('|', '')
-    line_entry << ' ' * (line_column_size - line_entry.size)
+    puts "| line#{' ' * (line_column_size - 4)} | num_calls | time (s)#{' ' * (time_column_size - 8)} |"
+    puts "| #{'-' * line_column_size} | --------- | #{'-' * time_column_size} |"
+    $agg.each do |k, v|
+      line_entry = k.tr('|', '')
+      line_entry << ' ' * (line_column_size - line_entry.size)
 
-    num_calls = v[:num_calls].to_s
-    num_calls << ' ' * (9 - num_calls.size)
+      num_calls = v[:num_calls].to_s
+      num_calls << ' ' * (9 - num_calls.size)
 
-    time = v[:time].to_s
-    time << ' ' * (time_column_size - time.size)
+      time = v[:time].to_s
+      time << ' ' * (time_column_size - time.size)
 
-    puts "| #{line_entry} | #{num_calls} | #{time} |"
-  end
+      puts "| #{line_entry} | #{num_calls} | #{time} |"
+    end
   end
 
   # Aggregate the time it takes to run a block of code.
   # Returns the value of the block.
   # At exit, it will output the aggregated time.
   def _ta(label)
-  $agg[label] ||= { time: 0, num_calls: 0 }
-  t = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-  ret = yield
+    $agg[label] ||= { time: 0, num_calls: 0 }
+    t = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    ret = yield
   ensure
-  $agg[label][:time] += (Process.clock_gettime(Process::CLOCK_MONOTONIC) - t)
-  $agg[label][:num_calls] += 1
-  ret
+    $agg[label][:time] += (Process.clock_gettime(Process::CLOCK_MONOTONIC) - t)
+    $agg[label][:num_calls] += 1
+    ret
   end
-        </code>
-      </pre>
-    </div>
+    </code>
+  </pre>
 
-    <div class="col-md-8">
-      <h4>Example Code</h4>
-      <pre>
-        <code>
+  <h4>Example Code</h4>
+  <pre>
+    <code>
   i = 0
 
   # This will react the same as _t
   # except the result is deferred to the end
   _ta('basic') do
-  puts i
+    puts i
   end
 
   # This will react the same as _t
   # except the result is deferred to the end
   _ta('longer') do
-  while i < 30
-    i += 1
-    sleep 0.1
-  end
+    while i < 30
+      i += 1
+      sleep 0.1
+    end
   end
 
   # _ta is called many times here
   # But because it is aggregated - we only see once at the end
   def my_method(i = 0)
-  _ta('method') do
-    return if i > 20
-    sleep 0.1
-    my_method(i + 1)
-  end
+    _ta('method') do
+      return if i > 20
+      sleep 0.1
+      my_method(i + 1)
+    end
   end
 
   my_method
-        </code>
-      </pre>
-    </div>
+    </code>
+  </pre>
 
-    <div class="col-md-4">
-      <h4>Output</h4>
-      <pre>
-        <code>
+  <h4>Output</h4>
+  <pre>
+    <code>
   0
   | line   | num_calls | time (s)              |
   | ------ | --------- | --------------------- |
@@ -245,21 +236,18 @@
   | longer | 1         | 3.0774530000053346    |
   | method | 22        | 23.5655019999831      |
   => nil
-        </code>
-      </pre>
-    </div>
-  </div>
+    </code>
+  </pre>
 </div>
 
-<div class="container pt-5">
-  <h3 class="title text-center">Gantt Charts</h3>
-  <div class="row">
-    <div class="col-md-12">
-      <p>Aggregating the times was a great step to improve usability of the code.</p>
-      <p>But we can visualize the information to improve it even more. <a href="https://en.wikipedia.org/wiki/Gantt_chart">Gantt Charts</a> are a common engineering tool that can help here.</p>
-      <p>This code outputs a syntax that can be consumed by my <a href="https://rubygems.org/gems/chart_helpers">Chart Helpers Gem</a>.</p>
-      <pre>
-        <code>
+  <br>
+  <div>
+  <h2>Gantt Charts</h2>
+  <p>Aggregating the times was a great step to improve usability of the code.</p>
+  <p>But we can visualize the information to improve it even more. <a href="https://en.wikipedia.org/wiki/Gantt_chart">Gantt Charts</a> are a common engineering tool that can help here.</p>
+  <p>This code outputs a syntax that can be consumed by my <a href="https://rubygems.org/gems/chart_helpers">Chart Helpers Gem</a>.</p>
+  <pre>
+    <code>
   require 'chart_helpers'
   require 'date'
 
@@ -267,55 +255,55 @@
   $timed = {}
 
   at_exit do
-  $timed.each do |method_name, timed_hash|
-    output = []
+    $timed.each do |method_name, timed_hash|
+      output = []
 
-    # Output Chart Helpers syntax for gantt
-    title_file = timed_hash[:path].dup
-    title_file.gsub!(ENV.fetch('GEM_HOME', 'GEM_HOME'), '')
-    title_file.gsub!(ENV.fetch('HOME', 'USER'), '')
-    output << "gantt"
-    output << "   title file: #{title_file} method: #{method_name}"
+      # Output Chart Helpers syntax for gantt
+      title_file = timed_hash[:path].dup
+      title_file.gsub!(ENV.fetch('GEM_HOME', 'GEM_HOME'), '')
+      title_file.gsub!(ENV.fetch('HOME', 'USER'), '')
+      output << "gantt"
+      output << "   title file: #{title_file} method: #{method_name}"
 
-    curr_percent = 0.000
+      curr_percent = 0.000
 
-    # Aggregate the lines together. Loops can cause things to become unweildly otherwise
-    @grouped_lines = timed_hash[:entries].group_by do |line|
-      [line[:line], line[:line_no]]
+      # Aggregate the lines together. Loops can cause things to become unweildly otherwise
+      @grouped_lines = timed_hash[:entries].group_by do |line|
+        [line[:line], line[:line_no]]
+      end
+
+      # Calculate total time for all groups
+      total_group_time = ->(group) do
+        gantt_chart_time = 0.000024 * group.size # 0.000024 is an approximation
+        time = group.collect { |e| e[:time] }.inject(:+) - gantt_chart_time
+        time < 0.001 ? 0.001 : time
+      end
+      total_time = @grouped_lines.collect { |_, group| total_group_time.call(group) }.inject(:+)
+
+      @grouped_lines.each do |(group_name, _line_no), group|
+        # If we have run more than once, we should indicate how many times something is called
+        entry_name = group.size > 1 ? "#{group_name} (run #{group.size} times)" : group_name
+        entry_name = entry_name.tr('"', "'").tr(",", ' ') # Sometimes Chart Helpers has trouble with these
+
+        # Total time for all entries to run
+        time = total_group_time.call(group)
+        percent = (time / total_time * 100)
+
+        # Output the line
+        post_percent = percent + curr_percent
+        output << format("   \"%s\" :a1, %.3f, %.3f", entry_name, curr_percent, post_percent)
+        curr_percent = post_percent
+      end
+
+      output << "\n\n"
+
+      file_name = "output/#{method_name}.svg"
+      puts "Outputting chart to #{file_name}"
+      # Could also output the `output` content instead
+      # The original intention of the library was to use
+      # human readable/writeable syntax
+      ChartHelpers.render_chart(output.join("\n"), file_name)
     end
-
-    # Calculate total time for all groups
-    total_group_time = ->(group) do
-      gantt_chart_time = 0.000024 * group.size # 0.000024 is an approximation
-      time = group.collect { |e| e[:time] }.inject(:+) - gantt_chart_time
-      time < 0.001 ? 0.001 : time
-    end
-    total_time = @grouped_lines.collect { |_, group| total_group_time.call(group) }.inject(:+)
-
-    @grouped_lines.each do |(group_name, _line_no), group|
-      # If we have run more than once, we should indicate how many times something is called
-      entry_name = group.size > 1 ? "#{group_name} (run #{group.size} times)" : group_name
-      entry_name = entry_name.tr('"', "'").tr(",", ' ') # Sometimes Chart Helpers has trouble with these
-
-      # Total time for all entries to run
-      time = total_group_time.call(group)
-      percent = (time / total_time * 100)
-
-      # Output the line
-      post_percent = percent + curr_percent
-      output << format("   \"%s\" :a1, %.3f, %.3f", entry_name, curr_percent, post_percent)
-      curr_percent = post_percent
-    end
-
-    output << "\n\n"
-
-    file_name = "output/#{method_name}.svg"
-    puts "Outputting chart to #{file_name}"
-    # Could also output the `output` content instead
-    # The original intention of the library was to use
-    # human readable/writeable syntax
-    ChartHelpers.render_chart(output.join("\n"), file_name)
-  end
   end
 
   def _gantt_chart
@@ -367,66 +355,62 @@
 
   ret
   end
-        </code>
-      </pre>
-    </div>
+    </code>
+  </pre>
 
-    <div class="col-md-12">
-      <h4>Example Code</h4>
-      <pre>
-        <code>
+  <h4>Example Code</h4>
+  <pre>
+    <code>
   # This is the basic example of a gantt chart
   # Each line takes about an equal amount of time
   def my_method(i)
-  _gantt_chart do
-    puts i
-    return if i > 200
-    my_method(i + 1)
-  end
+    _gantt_chart do
+      puts i
+      return if i > 200
+      my_method(i + 1)
+    end
   end
 
   # This shows the difference when one line takes a lot longer than the others
   # You can see the `sleep` line takes a lot longer than the other lines
   def my_method_2(i)
-  _gantt_chart do
-    puts i
-    return if i > 20
-    sleep 0.1
-    my_method_2(i + 1)
-  end
+    _gantt_chart do
+      puts i
+      return if i > 20
+      sleep 0.1
+      my_method_2(i + 1)
+    end
   end
 
   my_method(0)
   my_method_2(0)
-        </code>
-      </pre>
-    </div>
+    </code>
+  </pre>
 
-    <div class="col-md-12">
-      <h4>Output</h4>
-      <a href="images/my_method.png">
-        <img src="/images/my_method.png" width="100%" alt="My method" />
-      </a>
-      <a href="images/my_method_2.png">
-        <img src="/images/my_method_2.png" width="100%" alt="My method 2" />
-      </a>
-    </div>
-  </div>
+  <h4>Output</h4>
+  <a href="/images/my_method.png">
+    <img src="/images/my_method.png" width="100%" alt="My method" />
+  </a>
+  <a href="/images/my_method_2.png">
+    <img src="/images/my_method_2.png" width="100%" alt="My method 2" />
+  </a>
 </div>
 
+  <br>
 
-<div class="col-md-12 pt-5 mt-5 text-center">
-  <h3 class="title text-center">Put it all together</h3>
-  
-  <p>With all of these you can end up creating flow charts and gantt charts to determine slow paths in the code.</p>
-  <a href="assets/flowcharts.JPG">
-    <img src="/images/flowcharts_small.jpeg" width="700px" alt="Flowcharts small" />
-  </a>
+  <div>
+    <h3>Put it all together</h3>
+    
+    <p>With all of these you can end up creating flow charts and gantt charts to determine slow paths in the code.</p>
+    <a href="/assets/flowcharts.JPG">
+      <img src="/images/flowcharts_small.jpeg" width="700px" alt="Flowcharts small" />
+    </a>
+  </div>
 </div>
 
 <hr>
 
-<div class="text-center">
+<div class="text-center container">
   <img src="/images/kaigiheader.png" height="100" alt="Kaigiheader" />
 </div>
 
