@@ -17,3 +17,5 @@ git add --all .
 git commit -m 'Update website'
 git push origin +gh-pages
 popd
+
+rm -rf build
