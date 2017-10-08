@@ -140,13 +140,7 @@ nav {
 }
 
 .presentations {
-  h1 {
-    font-size: 4rem;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-  a {
+  h1, a {
     color: $white;
   }
 }
