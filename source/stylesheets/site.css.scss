@@ -1,8 +1,8 @@
 $break-small: 550px;
 $break-large: 1000px;
 
-$blue: #025aa5;
-$dark-blue: #001f38;
+$purple: #421e44;
+$dark-purple: #180b19;
 $white: #fff;
 
 * {
@@ -19,8 +19,13 @@ pre, pre > *, pre *, code, code > *, code * {
   font-family: monospace;
 }
 
+h1, h2, h3, h4, h5, h6, pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 a {
-  color: $dark-blue;
+  color: $dark-purple;
 }
 
 img {
@@ -30,15 +35,15 @@ img {
 // Utilities
 
 .dark {
-  color: $dark-blue;
+  color: $dark-purple;
 }
 
 .white {
   color: $white;
 }
 
-.blue-background {
-  background: $blue;
+.background {
+  background: $purple;
 }
 
 .fill {
@@ -98,7 +103,7 @@ nav {
         color: $white;
         text-decoration: none;
         &:hover {
-          color: $dark-blue;
+          color: $dark-purple;
         }
       }
     }
