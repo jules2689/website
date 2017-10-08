@@ -72,6 +72,12 @@ img {
           -ms-flex-direction: column-reverse;
               flex-direction: column-reverse; } }
 
+.flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
 .flex-item {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -114,19 +120,28 @@ nav ul {
     .homepage a:hover {
       color: #180b19; }
 
+h1#presentations {
+  padding-left: 0.5em; }
+
 .presentations {
-  padding: 1em; }
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
   .presentations h1, .presentations a {
     color: #fff; }
-  .presentations ul {
-    padding: 0; }
-    .presentations ul .presentation-item {
-      width: 100%;
-      max-width: 600px;
-      list-style: none;
-      opacity: 1;
-      transition: opacity .25s ease-in-out;
-      -moz-transition: opacity .25s ease-in-out;
-      -webkit-transition: opacity .25s ease-in-out; }
-      .presentations ul .presentation-item:hover {
-        opacity: 0.5; }
+  .presentations .presentation-item {
+    width: 100%;
+    max-width: 600px;
+    list-style: none;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    opacity: 1;
+    transition: opacity .15s ease-in-out;
+    -moz-transition: opacity .15s ease-in-out;
+    -webkit-transition: opacity .15s ease-in-out; }
+    .presentations .presentation-item:hover {
+      opacity: 0.5; }
