@@ -120,8 +120,9 @@ nav ul {
     .homepage a:hover {
       color: #180b19; }
 
-h1#presentations {
-  padding-left: 0.5em; }
+h1#presentations_work {
+  padding-left: 0.5em;
+  padding-top: 1em; }
 
 .presentations {
   padding: 1em;
