@@ -126,6 +126,9 @@ nav {
 
   a {
     color: $white;
+    &:hover {
+      color: $dark-purple;
+    }
   }
 
   @media screen and (max-width: $break-large) {
