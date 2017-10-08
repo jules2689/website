@@ -95,6 +95,10 @@ img {
   }
 }
 
+.flex-column {
+  flex-direction: column;
+}
+
 .flex-item {
   flex: 1;
   min-width: 300px;
@@ -144,29 +148,33 @@ nav {
   }
 }
 
+h1#presentations {
+  padding-left: 0.5em;
+}
+
 .presentations {
   padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
 
   h1, a {
     color: $white;
   }
 
   // TODO : Change to flex when more items
-  ul {
-    padding: 0;
-    .presentation-item {
-      width: 100%;
-      max-width: 600px;
-      list-style: none;
+  .presentation-item {
+    width: 100%;
+    max-width: 600px;
+    list-style: none;
+    flex: 1;
 
-      opacity: 1;
-      transition: opacity .25s ease-in-out;
-      -moz-transition: opacity .25s ease-in-out;
-      -webkit-transition: opacity .25s ease-in-out;
+    opacity: 1;
+    transition: opacity .15s ease-in-out;
+    -moz-transition: opacity .15s ease-in-out;
+    -webkit-transition: opacity .15s ease-in-out;
 
-      &:hover {
-        opacity: 0.5;
-      }
+    &:hover {
+      opacity: 0.5;
     }
   }
 }

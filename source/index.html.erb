@@ -26,17 +26,15 @@ title: Julian Nadeau
 </div>
 
 
-<div class="background white fill flex-container">
+<div class="background white fill flex-container flex-column">
+  <h1 class="upcase" id="presentations">Presentations</h1><br>
   <div class="flex-item presentations upcase">
-    <h1 id="presentations">Presentations</h1>
-    <ul>
-    <% iterate_folder('presentations') do |page| %>
-      <li class="presentation-item">
+    <% iterate_folder(%w(presentations work)) do |page| %>
+      <div class="presentation-item">
         <% link_to page.path do %>
           <%= image_tag page.data.image %>
         <% end %>
-      </li>
+      </div>
     <% end %>
-    </ul>
   </div>
 </div>

@@ -12,9 +12,10 @@ page '/*.txt', layout: false
 redirect 'kaigi.html', to: 'presentations/rubykaigi2017.html'
 
 helpers do
-  def iterate_folder(folder, limit: -1, sort: nil)
+  def iterate_folder(*folders, limit: -1, sort: nil)
+    folders = [folders].flatten
     files = sitemap.resources.select do |s|
-      File.dirname(s.path) == folder &&
+      folders.any? { |f| f == File.dirname(s.path) }  &&
       s.source_file.end_with?('.md', '.md.erb', '.html.erb', '.html') &&
       !s.source_file.include?('index.')
     end
