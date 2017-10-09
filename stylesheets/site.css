@@ -4,7 +4,8 @@
 html, body {
   height: 100%;
   width: 100%;
-  margin: 0; }
+  margin: 0;
+  min-height: 100%; }
 
 pre, pre > *, pre *, code, code > *, code * {
   font-family: monospace; }
@@ -53,6 +54,11 @@ img {
     right: 0;
     width: 100%;
     height: 100%; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 .container {
   width: 80%;
@@ -126,23 +132,27 @@ h1#presentations_work {
 
 .presentations {
   padding: 1em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+  -webkit-column-gap: 0;
+          column-gap: 0;
+  -webkit-column-count: 3;
+          column-count: 3; }
+  @media screen and (max-width: 1000px) {
+    .presentations {
+      -webkit-column-count: 2;
+              column-count: 2; } }
+  @media screen and (max-width: 550px) {
+    .presentations {
+      -webkit-column-count: 1;
+              column-count: 1; } }
   .presentations h1, .presentations a {
     color: #fff; }
   .presentations .presentation-item {
     width: 100%;
-    max-width: 600px;
-    list-style: none;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
     opacity: 1;
     transition: opacity .15s ease-in-out;
     -moz-transition: opacity .15s ease-in-out;
     -webkit-transition: opacity .15s ease-in-out; }
+    .presentations .presentation-item img {
+      width: 100%; }
     .presentations .presentation-item:hover {
       opacity: 0.5; }
