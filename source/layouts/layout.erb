@@ -23,7 +23,7 @@
     <!-- Font Awesome -->
     <%= stylesheet_link_tag "fontawesome" %>
   </head>
-  <body>
+  <body class="clearfix">
     <%= partial 'layouts/nav' if current_page.url != "/" %>
     <%= yield %>
   </body>
