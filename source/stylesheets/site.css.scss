@@ -2,8 +2,8 @@ $break-small: 550px;
 $break-medium: 768px;
 $break-large: 1000px;
 
-$purple: #5c2b5f;
-$dark-purple: #180b19;
+$blue: #025aa5;
+$dark-blue: #001f38;
 $white: #fff;
 
 * {
@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6, pre {
 }
 
 a {
-  color: $dark-purple;
+  color: $dark-blue;
 }
 
 img {
@@ -37,7 +37,7 @@ img {
 // Utilities
 
 .dark {
-  color: $dark-purple;
+  color: $dark-blue;
 }
 
 .white {
@@ -45,7 +45,7 @@ img {
 }
 
 .background {
-  background: $purple;
+  background: $blue;
 }
 
 .fill {
@@ -129,7 +129,7 @@ nav {
         color: $white;
         text-decoration: none;
         &:hover {
-          color: $dark-purple;
+          color: $dark-blue;
         }
       }
     }
@@ -150,7 +150,7 @@ nav {
   a {
     color: $white;
     &:hover {
-      color: $dark-purple;
+      color: $dark-blue;
     }
   }
 }
