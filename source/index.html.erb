@@ -31,11 +31,11 @@ title: Julian Nadeau
   <h1 class="upcase" id="presentations_work">Presentations and Work</h1><br>
   <div class="presentations background upcase">
     <% iterate_folder(%w(presentations work)) do |page| %>
-      <div class="presentation-item">
-        <% link_to page.path do %>
-          <%= image_tag page.data.image, width: '500' %>
-        <% end %>
-      </div>
+      <% link_to page.path do %>
+        <div class="presentation-item" style="background-image: url('<%= image_path page.data.image %>')">
+          &nbsp;
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
