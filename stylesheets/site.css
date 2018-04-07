@@ -119,7 +119,8 @@ nav ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 1em; }
+  padding: 1em;
+  text-align: center; }
   .homepage h1 {
     font-size: 4rem;
     margin-bottom: 0; }
