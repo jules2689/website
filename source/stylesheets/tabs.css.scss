@@ -38,5 +38,7 @@ input.tab:checked + label.tab {
   input.tab:checked + label.tab {
     border: none;
     border-left: 2px solid #025aa5;
+    display: block;
+    text-align: left;
   }
 }
