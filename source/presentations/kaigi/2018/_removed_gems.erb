@@ -1,0 +1,75 @@
+<div>
+  <h2>Make sure we don't add back gems</h2>
+  <p>Sometimes we remove a gem from the code base for various reasons.</p>
+  <p>With a larger org, it's hard to get that message out to people, so I wrote a test to check that some gems aren't added back.</p>
+  <p>Below is an example of that test</p>
+
+  <h4>The Test</h4>
+  <pre>
+    <code>
+    test "no removed gems are added to the Gemfile" do
+      base_msg = <<~EOF
+        Context
+        =========
+        When we add a gem, we need to really look and understand what we are adding.
+        We need to ask if we are adding a non trivial amount of code for a very small amount of benefit (code used).
+        Each gem added means that we will be adding a significant amount of code and in turn we will be increasing boot time,
+        application performance, and increase the likelihood of a Ruby or Rails upgrade experiencing problems
+        (since not all gems update to the point where we need them to).
+        This test is here to make sure we don't add gems we have deemed:
+        - generally not much of the code used
+        - provides wrong functionality
+        - not supported upstream anymore
+        - etc
+        The follow explains what gems are being added, and shouldn't be - and why they shouldn't be added.
+      EOF
+
+      # Load a list of gems we have removed
+      removed_gems = YAML.load_file(Rails.root.join('test/files/removed_gems.yml'))
+
+      # Find a list of all gems currently in the project
+      definition = Bundler.definition
+      gem_names = definition.specs.collect(&:name)
+
+      # Get the intersection of removed gems with the current gem names
+      should_not_be_added = removed_gems.keys & gem_names
+
+      # If we added gems we shouldn't have, collect those into a message list
+      messages = should_not_be_added.each_with_object([]) do |gem_name, msgs|
+        msgs << "#{gem_name}\n#{'=' * gem_name.length}\n#{removed_gems[gem_name]}"
+      end
+
+      # Fail if we ended up with messages (aka added removed gems)
+      assert messages.empty?, message: ([base_msg] + messages).join("\n\n")
+    end
+
+    </code>
+  </pre>
+
+  <h4>The Removed Gems</h4>
+  <pre>
+    <code>
+  # This file documents why we removed gems and fails a test if someone adds it back
+  # The message should explain why it was removed and what we need to prove if someone wants to add it back
+  #
+  # Format gem: Reason it was removed
+  #
+  faker: |
+    - The faker gem is extremely large and complex, and we used such a small amount of it.
+    - Faker made a lot of very poor assumptions in the way it calculated positional data (zip codes, addresses)
+      - this means that the data it gives is invalid which meant that we failed our own tests and validations. 
+      - This made our development pipeline flaky and prevented hundreds of engineers from working smoothly. 
+      - Our test pipeline also experienced issues.
+    We removed faker for these reasons, please do not add it back without validating that it gives:
+      - Proper zip and postal codes that pass our validation 100% of the time. Faker just uses format, but doesn't provide real data.
+      - Assure that for every field you intend to generate fake data for, faker generates data that will always validate against our own validation rules.
+      - We use a significant portion of the gem
+      - The functionality isn't already in ShopBuilder classes
+  rspec: |
+    We have standardized on one Ruby test framework for Shopify core for organizational efficiency: Minitest.
+    - Standardizing on one tool will make it easier for people to move between codebases and be up to speed quickly.
+    - We have build a lot of tooling around Minitest to maintain the quality of our test suite, which will not work for RSpec.
+      Migrating those tools to RSpec will be a significant amount of work.
+    </code>
+  </pre>
+</div>

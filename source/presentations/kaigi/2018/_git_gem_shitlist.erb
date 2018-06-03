@@ -1,0 +1,59 @@
+<div>
+  <h2>Ban Git-based Gems</h2>
+  <p>Git-based gems can cause a lot of pain when it comes to performance and authentication.</p>
+  <p>They also make it hard to use pre-compiled images for native extensions.</p>
+  <p>We decided to ban git gems, so we wrote a test to fail on newly added git gems but not on old ones</p>
+
+  <h4>The Test</h4>
+  <pre>
+    <code>
+  # Rails is a gem that we are always trying the git version, even to get bug fixes early or even to test the next
+  # releases. Becasuse of that it is better to always whitelist it.
+  PERMANENT_WHITELIST = %w(
+    https://github.com/rails/rails.git
+    https://github.com/rails/activeresource.git
+  )
+
+  test "git gems are all on the shitlist" do
+    # Find all the bundler dependencies, then only get the ones that are using git
+    definition = Bundler.definition
+    sources = definition.dependencies.collect(&:source).compact
+    sources.select! { |s| s.is_a?(Bundler::Source::Git) }
+
+    # Remove any gems we want to be using git and load the shitlist
+    # A shitlist is a list of things that violate a new rule. This list is used to allow those violations
+    # which gives us time to migrate and fix the new rule without added new violations.
+    git_urls = sources.collect(&:uri).sort - PERMANENT_WHITELIST
+    expected_urls = File.readlines(Rails.root.join('test/files/git_gems_shitlist.txt')).map(&:chomp)
+
+    # For each git url in our gemfile, check that it is expected to be loaded
+    # A url is expecte to be loaded if it is on the shitlist
+    # If it is not, then tell the user what is wrong (they added the gem), why it is wrong (performance and development issues), and how they can continue forward (using a private gem host).
+    git_urls.each do |git_url|
+      assert expected_urls.include?(git_url), message: <<~EOF
+        It seems you have added a Git-Based Gem (#{git_url}) to our Gemfile. This is now deprecated.
+        Git Gems are being phased out of all development at Shopify.
+        They are not performant and cause a lot of issues.
+        There is more information at [PROJECT INFORMATION]
+        To continue forward, please use a non-git source.
+        [PRIVATE GEM HOST] can be used for private gems.
+        Please read [LINK TO DOCUMENTATION] for help on setting that up
+      EOF
+    end
+
+    # If a user removed a git gem, make sure the shitlist is updated.
+    # In this case, we ask that the user updates the list themselves and thank them for being
+    # a good person. This allows us to share the work and make sure the list doesn't become stale.
+    expected_urls.each do |expected_url|
+      assert git_urls.include?(expected_url), message: <<~EOF
+        It seems you removed a git url (#{expected_url}) from our app.
+        Congratulations! You are a steward and a fanstastic person.
+        Git gems cause us a lot of pain in performance and in issues on dev laptops
+        To track this, a shitlist was added at test/files/git_gems_shitlist.txt
+        Please remove #{expected_url} from it
+      EOF
+    end
+  end
+    </code>
+  </pre>
+</div>

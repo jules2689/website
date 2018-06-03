@@ -37,5 +37,33 @@ image: kaigi_2018.png
 </div>
 
 <div class="container">
-  <p>More information and examples coming soon...</p>
+  <p>This presentation focused on testing, proper error messages, and JIT-based education.</p>
+  <p>I included a number of examples in the presentation about these concepts, which I've also included below for your convenience.</p>
+
+  <br/>
+
+  <%= stylesheet_link_tag 'tabs' %>
+
+  <input id="tab1" class="tab" type="radio" name="tabs" checked>
+  <label for="tab1" class="tab">Testing LOAD_PATH is not altered</label>
+    
+  <input id="tab2" class="tab" type="radio" name="tabs">
+  <label for="tab2" class="tab">Make sure all task references are valid</label>
+
+  <input id="tab3" class="tab" type="radio" name="tabs">
+  <label for="tab3" class="tab">Make sure gems aren't added back</label>
+
+  <input id="tab4" class="tab" type="radio" name="tabs">
+  <label for="tab4" class="tab">Git-based Gem ban</label>
+
+  <section id="content1" class="tab"><%= partial 'kaigi/2018/load_path' %></section>
+  <section id="content2" class="tab"><%= partial 'kaigi/2018/invalid_maintenance' %></section>
+  <section id="content3" class="tab"><%= partial 'kaigi/2018/removed_gems' %></section>
+  <section id="content4" class="tab"><%= partial 'kaigi/2018/git_gem_shitlist' %></section>
+</div>
+
+<hr>
+
+<div class="text-center container">
+  <%= image_tag "kaigi_2018_header.png", height: "100" %>
 </div>
