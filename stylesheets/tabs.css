@@ -86,4 +86,6 @@ input.tab:checked + label.tab {
 @media screen and (max-width: 800px) {
   input.tab:checked + label.tab {
     border: none;
-    border-left: 2px solid #025aa5; } }
+    border-left: 2px solid #025aa5;
+    display: block;
+    text-align: left; } }
