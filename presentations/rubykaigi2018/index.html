@@ -71,7 +71,299 @@
 </div>
 
 <div class="container">
-  <p>More information and examples coming soon...</p>
+  <p>This presentation focused on testing, proper error messages, and JIT-based education.</p>
+  <p>I included a number of examples in the presentation about these concepts, which I've also included below for your convenience.</p>
+
+  <br/>
+
+  <link href="/stylesheets/tabs.css" rel="stylesheet" />
+
+  <input id="tab1" class="tab" type="radio" name="tabs" checked>
+  <label for="tab1" class="tab">Testing LOAD_PATH is not altered</label>
+    
+  <input id="tab2" class="tab" type="radio" name="tabs">
+  <label for="tab2" class="tab">Make sure all task references are valid</label>
+
+  <input id="tab3" class="tab" type="radio" name="tabs">
+  <label for="tab3" class="tab">Make sure gems aren't added back</label>
+
+  <input id="tab4" class="tab" type="radio" name="tabs">
+  <label for="tab4" class="tab">Git-based Gem ban</label>
+
+  <section id="content1" class="tab"><div>
+  <h2>Testing LOAD_PATH is not altered</h2>
+  <p>In some applications boot time is one of the most important aspects because this allows the application to respond instantaneously to requests.</p>
+  <p>To make sure that developers do not have to spend their time always remembering this, and hoping not to make a mistake, let's boot the app in a test and see what has been loaded</p>
+
+  <h4>bin/support/load_dev.rb</h4>
+  <pre>
+    <code>
+  #!/usr/bin/ruby --disable-gems
+  # By disabling gems, we reduce the load path significantly as Bundler and Ruby
+  # won't pollute the LOAD_PATH with unnecessary libraries
+
+  # Load a known and specific library
+  lib_path = File.expand_path("../../../lib", __FILE__)
+  $LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
+
+  # ... Some setup code ...
+
+  # Require the application
+  require 'dev'
+
+  # A special feature that will print all the LOADED_FEATURES (required files)
+  # if PRINT_LOADED_FEATURES env var is set. This lets us test more easily.
+  if ENV['PRINT_LOADED_FEATURES']
+    puts $LOADED_FEATURES
+  end
+    </code>
+  </pre>
+
+  <h4>The Test</h4>
+  <pre>
+    <code>
+  require 'test_helper'
+
+  module Dev
+    class BootTest < MiniTest::Test
+      def root
+        File.expand_path('../../../', __FILE__)
+      end
+
+      def test_required_modules_on_boot
+        # Record what is loaded when `dev` is loaded
+        dev = "#{root}/bin/support/load_dev.rb"
+        cmd = "RUBYLIB='' RUBYOPT='' PRINT_LOADED_FEATURES=1 "\
+          "ruby --disable-gems -I#{root} -e \"require '#{dev}'\""
+        required_files = `#{cmd}`.lines.map(&:chomp)
+
+        # We expect these to be loaded
+        expected_required_files = [
+          # Ruby Libraries
+          "enumerator.so",
+          "thread.rb",
+          "rational.so",
+          "complex.so",
+          "#{ENV['RUBY_ROOT']}/lib/ruby/2.3.0/#{RUBY_PLATFORM}/enc/encdb.bundle",
+          "#{ENV['RUBY_ROOT']}/lib/ruby/2.3.0/#{RUBY_PLATFORM}/enc/trans/transdb.bundle",
+          "#{ENV['RUBY_ROOT']}/lib/ruby/2.3.0/unicode_normalize.rb",
+          "#{ENV['RUBY_ROOT']}/lib/ruby/2.3.0/#{RUBY_PLATFORM}/stringio.bundle",
+
+          # Core Dev Files
+          "#{root}/lib/support/ruby_backports.rb",
+          "#{root}/lib/dev/register.rb",
+          "#{root}/lib/dev/commands.rb",
+          "#{root}/lib/dev.rb",
+          "#{root}/lib/dev/util.rb",
+          "#{root}/lib/dev/tool_conflicts.rb",
+          "#{root}/lib/dev/helpers/mac_os.rb",
+          "#{root}/vendor/lib/gem_version.rb",
+
+          # CLI UI files (https://github.com/shopify/cli-ui)
+          "#{root}/vendor/deps/cli-ui/lib/cli/ui/ansi.rb",
+          "#{root}/vendor/deps/cli-ui/lib/cli/ui/color.rb",
+          "#{root}/vendor/deps/cli-ui/lib/cli/ui/spinner.rb",
+          "#{root}/vendor/deps/cli-ui/lib/cli/ui/spinner/spin_group.rb",
+          "#{root}/vendor/deps/cli-ui/lib/cli/ui/stdout_router.rb",
+          "#{root}/vendor/deps/cli-ui/lib/cli/ui.rb",
+          "#{root}/vendor/deps/cli-ui/lib/cli/ui/frame.rb",
+
+          # CLI Kit Files (https://github.com/shopify/cli-kit)
+          "#{root}/vendor/deps/cli-kit/lib/cli/kit/ruby_backports/enumerable.rb",
+          "#{root}/vendor/deps/cli-kit/lib/cli/kit/autocall.rb",
+          "#{root}/vendor/deps/cli-kit/lib/cli/kit.rb",
+          "#{root}/vendor/deps/cli-kit/lib/cli/kit/command_registry.rb",
+        ]
+
+        # Make sure everything that is expected to be loaded is loaded
+        # This makes sure that our array is kept up to date (no stale entries)
+        expected_required_files.each do |file|
+          assert required_files.include?(file), "#{file} was expected to be required but wasn't.\n\t"\
+            "All Required: #{required_files}"
+        end
+
+        # Make sure everything that is loaded is expected to be loaded
+        # This makes sure that we don't increase the load path
+        required_files.each do |file|
+          assert expected_required_files.include?(file), "#{file} was required but shouldn't be"
+        end
+      end
+    end
+  end
+    </code>
+  </pre>
+</div></section>
+  <section id="content2" class="tab"><div>
+  <h2>Make sure all task references are valid</h2>
+  <p>In our core application we had an issue where a migration would reference an nonexistant task.</p>
+  <p>What was happening is that user A would make a PR referencing <code>MyTask</code>, but user B would delete task <code>MyTask</code> because they noticed it was no longer used when they finished their use of it.</p>
+  <p>While this is a valid train of thought, the occurence of events would be such that we did not catch the mistake until the migration was running in production. To fix this I wrote a test to make sure all tasks that are referenced exist as expected</p>
+
+  <h4>The Test</h4>
+  <pre>
+    <code>
+  test 'migrations dont reference invalid tasks' do
+    # This helper iterates all files in the project looking for `*_task.rb` files
+    available_tasks = DevelopmentSupport::Rake::MaintenanceHelpers.maintainance_task_files
+    # This helper looks through all of our migrations to look for references to `*Task`
+    used_tasks = DevelopmentSupport::Rake::MaintenanceHelpers.used_tasks
+
+    # If we consider that all `*Task` references should find a definition at *_task.rb`
+    # then we can make sure this is true
+    used_tasks.each do |task|
+      path_to_file = Pathname.new(task[:caller_file]).relative_path_from(Rails.root)
+      msg = <<~EOF
+      This File \x1b[36m#{path_to_file}\x1b[0m\n"\
+      References: \x1b[36m#{task[:name]}\x1b[0m\n"\
+      But expected defintion for that reference did not exist in db/maintenance/maintenance.
+      Please make sure this task is defined at the expected location:  \x1b[36m#{task[:file_name]}\x1b[0m
+      EOF
+      assert available_tasks.include?(task[:file_name]), message: msg
+    end
+  end
+    </code>
+  </pre>
+</div></section>
+  <section id="content3" class="tab"><div>
+  <h2>Make sure we don't add back gems</h2>
+  <p>Sometimes we remove a gem from the code base for various reasons.</p>
+  <p>With a larger org, it's hard to get that message out to people, so I wrote a test to check that some gems aren't added back.</p>
+  <p>Below is an example of that test</p>
+
+  <h4>The Test</h4>
+  <pre>
+    <code>
+    test "no removed gems are added to the Gemfile" do
+      base_msg = <<~EOF
+        Context
+        =========
+        When we add a gem, we need to really look and understand what we are adding.
+        We need to ask if we are adding a non trivial amount of code for a very small amount of benefit (code used).
+        Each gem added means that we will be adding a significant amount of code and in turn we will be increasing boot time,
+        application performance, and increase the likelihood of a Ruby or Rails upgrade experiencing problems
+        (since not all gems update to the point where we need them to).
+        This test is here to make sure we don't add gems we have deemed:
+        - generally not much of the code used
+        - provides wrong functionality
+        - not supported upstream anymore
+        - etc
+        The follow explains what gems are being added, and shouldn't be - and why they shouldn't be added.
+      EOF
+
+      # Load a list of gems we have removed
+      removed_gems = YAML.load_file(Rails.root.join('test/files/removed_gems.yml'))
+
+      # Find a list of all gems currently in the project
+      definition = Bundler.definition
+      gem_names = definition.specs.collect(&:name)
+
+      # Get the intersection of removed gems with the current gem names
+      should_not_be_added = removed_gems.keys & gem_names
+
+      # If we added gems we shouldn't have, collect those into a message list
+      messages = should_not_be_added.each_with_object([]) do |gem_name, msgs|
+        msgs << "#{gem_name}\n#{'=' * gem_name.length}\n#{removed_gems[gem_name]}"
+      end
+
+      # Fail if we ended up with messages (aka added removed gems)
+      assert messages.empty?, message: ([base_msg] + messages).join("\n\n")
+    end
+
+    </code>
+  </pre>
+
+  <h4>The Removed Gems</h4>
+  <pre>
+    <code>
+  # This file documents why we removed gems and fails a test if someone adds it back
+  # The message should explain why it was removed and what we need to prove if someone wants to add it back
+  #
+  # Format gem: Reason it was removed
+  #
+  faker: |
+    - The faker gem is extremely large and complex, and we used such a small amount of it.
+    - Faker made a lot of very poor assumptions in the way it calculated positional data (zip codes, addresses)
+      - this means that the data it gives is invalid which meant that we failed our own tests and validations. 
+      - This made our development pipeline flaky and prevented hundreds of engineers from working smoothly. 
+      - Our test pipeline also experienced issues.
+    We removed faker for these reasons, please do not add it back without validating that it gives:
+      - Proper zip and postal codes that pass our validation 100% of the time. Faker just uses format, but doesn't provide real data.
+      - Assure that for every field you intend to generate fake data for, faker generates data that will always validate against our own validation rules.
+      - We use a significant portion of the gem
+      - The functionality isn't already in ShopBuilder classes
+  rspec: |
+    We have standardized on one Ruby test framework for Shopify core for organizational efficiency: Minitest.
+    - Standardizing on one tool will make it easier for people to move between codebases and be up to speed quickly.
+    - We have build a lot of tooling around Minitest to maintain the quality of our test suite, which will not work for RSpec.
+      Migrating those tools to RSpec will be a significant amount of work.
+    </code>
+  </pre>
+</div></section>
+  <section id="content4" class="tab"><div>
+  <h2>Ban Git-based Gems</h2>
+  <p>Git-based gems can cause a lot of pain when it comes to performance and authentication.</p>
+  <p>They also make it hard to use pre-compiled images for native extensions.</p>
+  <p>We decided to ban git gems, so we wrote a test to fail on newly added git gems but not on old ones</p>
+
+  <h4>The Test</h4>
+  <pre>
+    <code>
+  # Rails is a gem that we are always trying the git version, even to get bug fixes early or even to test the next
+  # releases. Becasuse of that it is better to always whitelist it.
+  PERMANENT_WHITELIST = %w(
+    https://github.com/rails/rails.git
+    https://github.com/rails/activeresource.git
+  )
+
+  test "git gems are all on the shitlist" do
+    # Find all the bundler dependencies, then only get the ones that are using git
+    definition = Bundler.definition
+    sources = definition.dependencies.collect(&:source).compact
+    sources.select! { |s| s.is_a?(Bundler::Source::Git) }
+
+    # Remove any gems we want to be using git and load the shitlist
+    # A shitlist is a list of things that violate a new rule. This list is used to allow those violations
+    # which gives us time to migrate and fix the new rule without added new violations.
+    git_urls = sources.collect(&:uri).sort - PERMANENT_WHITELIST
+    expected_urls = File.readlines(Rails.root.join('test/files/git_gems_shitlist.txt')).map(&:chomp)
+
+    # For each git url in our gemfile, check that it is expected to be loaded
+    # A url is expecte to be loaded if it is on the shitlist
+    # If it is not, then tell the user what is wrong (they added the gem), why it is wrong (performance and development issues), and how they can continue forward (using a private gem host).
+    git_urls.each do |git_url|
+      assert expected_urls.include?(git_url), message: <<~EOF
+        It seems you have added a Git-Based Gem (#{git_url}) to our Gemfile. This is now deprecated.
+        Git Gems are being phased out of all development at Shopify.
+        They are not performant and cause a lot of issues.
+        There is more information at [PROJECT INFORMATION]
+        To continue forward, please use a non-git source.
+        [PRIVATE GEM HOST] can be used for private gems.
+        Please read [LINK TO DOCUMENTATION] for help on setting that up
+      EOF
+    end
+
+    # If a user removed a git gem, make sure the shitlist is updated.
+    # In this case, we ask that the user updates the list themselves and thank them for being
+    # a good person. This allows us to share the work and make sure the list doesn't become stale.
+    expected_urls.each do |expected_url|
+      assert git_urls.include?(expected_url), message: <<~EOF
+        It seems you removed a git url (#{expected_url}) from our app.
+        Congratulations! You are a steward and a fanstastic person.
+        Git gems cause us a lot of pain in performance and in issues on dev laptops
+        To track this, a shitlist was added at test/files/git_gems_shitlist.txt
+        Please remove #{expected_url} from it
+      EOF
+    end
+  end
+    </code>
+  </pre>
+</div></section>
+</div>
+
+<hr>
+
+<div class="text-center container">
+  <img src="/images/kaigi_2018_header.png" height="100" alt="Kaigi 2018 header" />
 </div>
 
   </body>

@@ -1,0 +1,89 @@
+input.tab, section.tab {
+  display: none; }
+
+section.tab {
+  padding-top: 50px; }
+
+label.tab {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent; }
+
+label.tab:hover {
+  color: #888;
+  cursor: pointer; }
+
+input.tab:checked + label.tab {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid #025aa5;
+  border-bottom: 1px solid #fff; }
+
+#tab1:checked ~ #content1 {
+  display: block; }
+
+#tab2:checked ~ #content2 {
+  display: block; }
+
+#tab3:checked ~ #content3 {
+  display: block; }
+
+#tab4:checked ~ #content4 {
+  display: block; }
+
+#tab5:checked ~ #content5 {
+  display: block; }
+
+#tab6:checked ~ #content6 {
+  display: block; }
+
+#tab7:checked ~ #content7 {
+  display: block; }
+
+#tab8:checked ~ #content8 {
+  display: block; }
+
+#tab9:checked ~ #content9 {
+  display: block; }
+
+#tab10:checked ~ #content10 {
+  display: block; }
+
+#tab11:checked ~ #content11 {
+  display: block; }
+
+#tab12:checked ~ #content12 {
+  display: block; }
+
+#tab13:checked ~ #content13 {
+  display: block; }
+
+#tab14:checked ~ #content14 {
+  display: block; }
+
+#tab15:checked ~ #content15 {
+  display: block; }
+
+#tab16:checked ~ #content16 {
+  display: block; }
+
+#tab17:checked ~ #content17 {
+  display: block; }
+
+#tab18:checked ~ #content18 {
+  display: block; }
+
+#tab19:checked ~ #content19 {
+  display: block; }
+
+#tab20:checked ~ #content20 {
+  display: block; }
+
+@media screen and (max-width: 800px) {
+  input.tab:checked + label.tab {
+    border: none;
+    border-left: 2px solid #025aa5; } }
