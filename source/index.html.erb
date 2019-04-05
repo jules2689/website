@@ -1,5 +1,6 @@
 ---
 title: Julian Nadeau
+fixed: true
 ---
 
 <div class="flex-container fill">
@@ -19,15 +20,17 @@ title: Julian Nadeau
   </div>
 
   <div class="flex-item padded">
-    <h3 class="upcase" id="presentations_work">Presentations and Work</h3><br>
-    <div class="presentations upcase">
-      <% iterate_folder(%w(presentations work)) do |page| %>
-        <% link_to page.path do %>
-          <div class="presentation-item" style="background-image: url('<%= image_path page.data.image %>')">
-            &nbsp;
-          </div>
+    <div class="scrollable">
+      <h3 class="upcase" id="presentations_work">Presentations and Work</h3><br>
+      <div class="presentations upcase">
+        <% iterate_folder(%w(presentations work)) do |page| %>
+          <% link_to page.path do %>
+            <div class="presentation-item" style="background-image: url('<%= image_path page.data.image %>')">
+              &nbsp;
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -64,6 +64,15 @@ img {
   }
 }
 
+.scrollable {
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.fixed {
+  position: fixed;
+}
+
 @import "layouts";
 @import "nav";
 @import "presentations";
