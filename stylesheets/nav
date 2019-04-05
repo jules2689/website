@@ -1,0 +1,15 @@
+nav ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  padding-top: 8px;
+  padding-bottom: 20px; }
+  nav ul li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px; }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none; }
+      nav ul li a:hover {
+        color: #003838; }
