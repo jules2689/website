@@ -1,0 +1,55 @@
+@import 'variables';
+
+.padded {
+  padding: 1em;
+}
+
+.container {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-column-reverse {
+  flex-direction: column-reverse;
+}
+
+.flex-item {
+  flex: 1;
+  min-width: 300px;
+}
+
+.item-center {
+  margin: 0 auto;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.fill {
+  height: 100%;
+  width: 100%;
+}
