@@ -48,6 +48,13 @@ img {
     width: 100%;
     height: 100%; }
 
+.scrollable {
+  overflow-y: scroll;
+  height: 100vh; }
+
+.fixed {
+  position: fixed; }
+
 .padded {
   padding: 1em; }
 
