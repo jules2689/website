@@ -8,7 +8,7 @@ fixed: true
       <div class="flex-item text-center">
         <%= image_tag "toronto_skyline.png", width: "60%", class: 'item-center' %>
         <h1>Julian Nadeau</h1>
-        <h3>Software Consultant</h3>
+        <h3>Senior Software Developer @ <a href="https://github.com"><i class="fab fa-github-square"></i></a></h3>
         <div>
           <br/>
           <a href="https://github.com/jules2689" title="GitHub"><i class="fab fa-2x fa-github-square"></i></a>
@@ -25,7 +25,7 @@ fixed: true
     <div class="scrollable">
       <h3 class="upcase" id="presentations_work">Presentations and Work</h3><br>
       <div class="presentations upcase">
-        <% iterate_folder(%w(presentations work)) do |page| %>
+        <% iterate_folder(%w(presentations work), sort: ->(page) { -(page.data.priority || 0) }) do |page| %>
           <% link_to page.path do %>
             <div class="presentation-item" style="background-image: url('<%= image_path page.data.image %>')">
               &nbsp;
