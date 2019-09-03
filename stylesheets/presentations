@@ -1,7 +1,7 @@
 .presentations {
   padding: 1em;
   column-gap: 0;
-  column-count: 3; }
+  column-count: 4; }
   @media screen and (max-width: 1000px) {
     .presentations {
       column-count: 2; } }
