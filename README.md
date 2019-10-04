@@ -1,3 +1,5 @@
+{:toc}
+
 # website
 
 My Personal Website
