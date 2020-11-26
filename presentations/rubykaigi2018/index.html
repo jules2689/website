@@ -313,7 +313,7 @@
     <code>
   # Rails is a gem that we are always trying the git version, even to get bug fixes early or even to test the next
   # releases. Becasuse of that it is better to always whitelist it.
-  PERMANENT_WHITELIST = %w(
+  PERMANENT_ALLOWLIST = %w(
     https://github.com/rails/rails.git
     https://github.com/rails/activeresource.git
   )
@@ -327,7 +327,7 @@
     # Remove any gems we want to be using git and load the shitlist
     # A shitlist is a list of things that violate a new rule. This list is used to allow those violations
     # which gives us time to migrate and fix the new rule without added new violations.
-    git_urls = sources.collect(&:uri).sort - PERMANENT_WHITELIST
+    git_urls = sources.collect(&:uri).sort - PERMANENT_ALLOWLIST
     expected_urls = File.readlines(Rails.root.join('test/files/git_gems_shitlist.txt')).map(&:chomp)
 
     # For each git url in our gemfile, check that it is expected to be loaded
@@ -360,13 +360,14 @@
   end
     </code>
   </pre>
-</div></section>
+</div>
+</section>
 </div>
 
 <hr>
 
 <div class="text-center container">
-  <img src="/images/kaigi_2018_header.png" height="100" alt="Kaigi 2018 header" />
+  <img src="/images/kaigi_2018_header.png" height="100" alt="" />
 </div>
 
   </body>

@@ -66,40 +66,25 @@ img {
   padding-bottom: 2em; }
 
 .flex-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+  flex-wrap: wrap; }
 
 .flex-column {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
+  flex-direction: column; }
 
 .flex-column-reverse {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse; }
+  flex-direction: column-reverse; }
 
 .flex-item {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   min-width: 300px; }
 
 .item-center {
   margin: 0 auto; }
 
 .flex-center {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
+  align-items: center;
+  justify-content: center; }
 
 .clearfix:after {
   content: "";
@@ -132,16 +117,20 @@ nav ul {
 .presentations {
   padding: 1em;
   -webkit-column-gap: 0;
+     -moz-column-gap: 0;
           column-gap: 0;
   -webkit-column-count: 4;
+     -moz-column-count: 4;
           column-count: 4; }
   @media screen and (max-width: 1000px) {
     .presentations {
       -webkit-column-count: 2;
+         -moz-column-count: 2;
               column-count: 2; } }
   @media screen and (max-width: 550px) {
     .presentations {
       -webkit-column-count: 1;
+         -moz-column-count: 1;
               column-count: 1; } }
   .presentations h1 {
     color: #fff; }
@@ -158,8 +147,10 @@ nav ul {
     -webkit-transition: opacity .15s ease-in-out;
     -webkit-column-break-inside: avoid;
     /* Chrome, Safari */
+    page-break-inside: avoid;
     /* Theoretically FF 20+ */
-    break-inside: avoid-column;
+    -moz-column-break-inside: avoid;
+         break-inside: avoid-column;
     /* IE 11 */
     display: table;
     /* Actually FF 20+ */ }
