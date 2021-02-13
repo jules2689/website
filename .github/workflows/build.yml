@@ -27,7 +27,7 @@ jobs:
       - name: Commit Blog Changes and deploy
         run: |
           if [ ! -z "$(git status --porcelain)" ]; then 
-            .github/commit.sh "Add new changes for the blog" \
+            bin/commit.sh "Add new changes for the blog" \
               "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" \
               "${{ github.repository }}" \
               ${{ github.ref }} \
@@ -36,5 +36,5 @@ jobs:
             echo "Setting Config for Git"
             git config --global user.email "action@github.com"
             git config --global user.name "GitHub Action"
-            bin/deploy
+            bin/deploy "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" "${{ github.repository }}"
           fi

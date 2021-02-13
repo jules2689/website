@@ -12,7 +12,12 @@ cp CNAME build
 pushd build
 git add --all .
 git commit -m 'Update website'
-git push origin +gh-pages
+if [ $# -eq 0 ]
+  then
+    git push origin +gh-pages
+else
+  git push "https://$1@github.com/$2.git" "HEAD:gh-pages" -f
+fi
 popd
 
 rm -rf build
