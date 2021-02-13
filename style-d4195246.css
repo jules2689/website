@@ -647,6 +647,10 @@ video {
   align-self: center;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .font-light {
   font-weight: 300;
 }
@@ -715,9 +719,9 @@ video {
   margin-bottom: 3rem;
 }
 
-.my-20 {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+.my-24 {
+  margin-top: 6rem;
+  margin-bottom: 6rem;
 }
 
 .mx-auto {
@@ -786,6 +790,10 @@ video {
 
 .pr-1 {
   padding-right: 0.25rem;
+}
+
+.pl-1 {
+  padding-left: 0.25rem;
 }
 
 .pb-12 {
@@ -5329,6 +5337,10 @@ html.dark .hljs-emphasis{
 }
 
 @media (min-width: 640px) {
+  .sm\:justify-start {
+    justify-content: flex-start;
+  }
+
   .sm\:ml-12 {
     margin-left: 3rem;
   }
