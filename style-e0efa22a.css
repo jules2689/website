@@ -741,6 +741,10 @@ video {
   margin-top: 3rem;
 }
 
+.mt-24 {
+  margin-top: 6rem;
+}
+
 .max-w-max {
   max-width: -webkit-max-content;
   max-width: -moz-max-content;
