@@ -4,9 +4,9 @@
         link: post.url,
         image: post.social_image,
         year: post.readable_publish_date,
-        type: "Blog Post",
+        type: URI(post.url).hostname,
         title: post.title,
-        description: "[#{URI(post.url).hostname}] " + post.description[0..140] + "..."
+        description: post.description[0..140] + "..."
       }
     %>
 <% end %>
