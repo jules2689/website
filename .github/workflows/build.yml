@@ -1,4 +1,4 @@
-name: Iroh
+name: Update and Deploy
 
 on:
   schedule:
