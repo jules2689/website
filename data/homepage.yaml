@@ -1,0 +1,63 @@
+- link: "https://industryday.cs.toronto.edu/"
+  image:  /images/dcs.jpg
+  year: "2021"
+  type: "Event"
+  title: "DCS Industry Day"
+  description: |
+    Founded and organized the "Department of Computer Science Industry Day".
+    We're bringing in developers, data scientists, product managers, recruiters and other leading professionals from the industry to help students find jobs, internships, and network.
+
+- link: "https://csc491.dcsil.ca"
+  image: "https://avatars.githubusercontent.com/u/53465050?s=200&v=4"
+  year: "2019-Present"
+  type: "Teaching"
+  title: "CSC491/2600 Instructor"
+  description: |
+    University of Toronto’s Capstone Design Course through the Department of Computer Science Innovation Lab (DCSIL).
+    This course exposes students to the core technologies, ideas, and processes in developing a startup.   
+
+- link: "/presentations/devopsto_dec2019/"
+  image: /images/devopsto_header.png
+  year: "2019"
+  type: "Public Speaking"
+  title: "Avoiding Cognitive Overload"
+  description: |
+    This is a shortened, re-written talk from my RubyKaigi 2018 talk.
+    This presentation focused on testing, proper error messages, and JIT-based education.
+    Delivered at DevOps TO 2019.
+
+- link: "/presentations/rubykaigi2018/"
+  image: /images/kaigi_2018.png
+  year: "2018"
+  type: "Public Speaking"
+  title: "Avoiding Cognitive Overload"
+  description: |
+    A presentation on cognitive burdens of developers and strategies to mitigate these concerns, primarily in Ruby.
+    Delivered at RubyKaigi 2018 in Sendai, Japan
+
+- link: "/presentations/github_constellation_2018"
+  image: images/github_constellation_2018.png
+  year: "2018"
+  type: "Public Speaking"
+  title: "Git Issues at Scale"
+  description: |
+    A presentation on issues experienced in large git repoistories, particularly around cloning, pulling, and fetching.
+    Delivered at GitHub Constellation 2018 in Toronto, Canada.
+
+- link: "/presentations/rubykaigi2017/"
+  image: /images/kaigi_2017.png
+  year: "2017"
+  type: "Public Speaking"
+  title: "Busting Performance Bottlenecks"
+  description: |
+    A presentation on decreasing Ruby Boot time by 60% and work in the Bundler project.
+    Delivered at RubyKaigi 2017 in Hiroshima, Japan
+
+- link: "/work/code_for_kids/"
+  image: /images/cfk.png
+  year: "2013-2015"
+  type: "Not-For-Profit"
+  title: "Code For Kids"
+  description: |
+    Code For Kids was a Not For Profit (NFP) corporation that aimed to teach children aged 7-13 the basics of coding, technology and design.
+    Founder 2013-2015.
