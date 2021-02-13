@@ -1,0 +1,30 @@
+name: Iroh
+
+on:
+  schedule:
+    # Once a day at 8 AM
+    - cron: 0 8 * * *
+  workflow_dispatch: {}
+
+jobs:
+  iroh:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+      - name: Build blog
+        run: ruby bin/blog
+      - name: Commit Blog Changes and deploy
+        run: |
+          if [ ! -z "$(git status --porcelain)" ]; then 
+            .github/bin/commit.sh "Add new changes for the blog" \
+              "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" \
+              "${{ github.repository }}" \
+              ${{ github.ref }} \
+              "data/blog.json"
+
+            bin/deploy
+          fi
