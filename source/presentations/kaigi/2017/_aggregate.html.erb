@@ -3,7 +3,7 @@
   <p>The timing code was simple and powerful, but it didn't quite work if a line or block was called many times.</p>
   <p>To solve this, I used a global variable to keep track of how long and how many times each call is hit.</p>
   <pre>
-    <code>
+    <code class="ruby">
   $agg = {}
   at_exit do
     line_column_size = $agg.keys.max_by(&:size).size
@@ -42,7 +42,7 @@
 
   <h4 class="text-xl font-semibold">Example Code</h4>
   <pre>
-    <code>
+    <code class="ruby">
   i = 0
 
   # This will react the same as _t
@@ -76,7 +76,7 @@
 
   <h4 class="text-xl font-semibold">Output</h4>
   <pre>
-    <code>
+    <code class="shell">
   0
   | line   | num_calls | time (s)              |
   | ------ | --------- | --------------------- |

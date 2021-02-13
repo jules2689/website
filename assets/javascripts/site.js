@@ -2,7 +2,12 @@ import 'highlight.js/styles/github.css';
 
 import hljs from 'highlight.js/lib/core';
 import ruby from 'highlight.js/lib/languages/ruby';
+import yaml from 'highlight.js/lib/languages/yaml';
+import shell from 'highlight.js/lib/languages/shell';
+
 hljs.registerLanguage('ruby', ruby);
+hljs.registerLanguage('yaml', yaml);
+hljs.registerLanguage('shell', shell);
 
 document.addEventListener('DOMContentLoaded', (event) => {
   document.querySelectorAll('pre code').forEach((block) => {
