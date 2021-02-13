@@ -20,7 +20,7 @@ jobs:
       - name: Commit Blog Changes and deploy
         run: |
           if [ ! -z "$(git status --porcelain)" ]; then 
-            .github/bin/commit.sh "Add new changes for the blog" \
+            .github/commit.sh "Add new changes for the blog" \
               "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" \
               "${{ github.repository }}" \
               ${{ github.ref }} \
