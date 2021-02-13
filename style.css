@@ -5155,6 +5155,55 @@ video {
   display:block
 }
 
+.hljs{
+  --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  border-radius: 0.25rem
+}
+
+html.dark .hljs{
+  display:block;
+  overflow-x:auto;
+  padding:0.5em;
+  background:#282a36
+}
+
+html.dark .hljs-built_in,html.dark .hljs-selector-tag,html.dark .hljs-section,html.dark .hljs-link{
+  color:#8be9fd
+}
+
+html.dark .hljs-keyword{
+  color:#ff79c6
+}
+
+html.dark .hljs,html.dark .hljs-subst{
+  color:#f8f8f2
+}
+
+html.dark .hljs-title{
+  color:#50fa7b
+}
+
+html.dark .hljs-string,html.dark .hljs-meta,html.dark .hljs-name,html.dark .hljs-type,html.dark .hljs-attr,html.dark .hljs-symbol,html.dark .hljs-bullet,html.dark .hljs-addition,html.dark .hljs-variable,html.dark .hljs-template-tag,html.dark .hljs-template-variable{
+  color:#f1fa8c
+}
+
+html.dark .hljs-comment,html.dark .hljs-quote,html.dark .hljs-deletion{
+  color:#6272a4
+}
+
+html.dark .hljs-keyword,html.dark .hljs-selector-tag,html.dark .hljs-literal,html.dark .hljs-title,html.dark .hljs-section,html.dark .hljs-doctag,html.dark .hljs-type,html.dark .hljs-name,html.dark .hljs-strong{
+  font-weight:bold
+}
+
+html.dark .hljs-literal,html.dark .hljs-number{
+  color:#bd93f9
+}
+
+html.dark .hljs-emphasis{
+  font-style:italic
+}
+
 @media (min-width: 640px) {
 }
 
