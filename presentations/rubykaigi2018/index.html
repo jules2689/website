@@ -290,20 +290,20 @@
     https://github.com/rails/activeresource.git
   )
 
-  test "git gems are all on the shitlist" do
+  test "git gems are all on the deprecation list" do
     # Find all the bundler dependencies, then only get the ones that are using git
     definition = Bundler.definition
     sources = definition.dependencies.collect(&:source).compact
     sources.select! { |s| s.is_a?(Bundler::Source::Git) }
 
-    # Remove any gems we want to be using git and load the shitlist
-    # A shitlist is a list of things that violate a new rule. This list is used to allow those violations
+    # Remove any gems we want to be using git and load the deprecation list
+    # A deprecation list is a list of things that violate a new rule. This list is used to allow those violations
     # which gives us time to migrate and fix the new rule without added new violations.
     git_urls = sources.collect(&:uri).sort - PERMANENT_ALLOWLIST
-    expected_urls = File.readlines(Rails.root.join('test/files/git_gems_shitlist.txt')).map(&:chomp)
+    expected_urls = File.readlines(Rails.root.join('test/files/git_gems_deprecation_list.txt')).map(&:chomp)
 
     # For each git url in our gemfile, check that it is expected to be loaded
-    # A url is expecte to be loaded if it is on the shitlist
+    # A url is expecte to be loaded if it is on the deprecation list
     # If it is not, then tell the user what is wrong (they added the gem), why it is wrong (performance and development issues), and how they can continue forward (using a private gem host).
     git_urls.each do |git_url|
       assert expected_urls.include?(git_url), message: <<~EOF
@@ -317,7 +317,7 @@
       EOF
     end
 
-    # If a user removed a git gem, make sure the shitlist is updated.
+    # If a user removed a git gem, make sure the deprecation list is updated.
     # In this case, we ask that the user updates the list themselves and thank them for being
     # a good person. This allows us to share the work and make sure the list doesn't become stale.
     expected_urls.each do |expected_url|
@@ -325,7 +325,7 @@
         It seems you removed a git url (#{expected_url}) from our app.
         Congratulations! You are a steward and a fanstastic person.
         Git gems cause us a lot of pain in performance and in issues on dev laptops
-        To track this, a shitlist was added at test/files/git_gems_shitlist.txt
+        To track this, a deprecation list was added at test/files/git_gems_deprecation list.txt
         Please remove #{expected_url} from it
       EOF
     end
