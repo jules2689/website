@@ -7,7 +7,7 @@
     <title>[RubyKaigi 2017] Busting Performance Bottlenecks: Decreasing Ruby Boot time by 60%</title>
     <link href="/style-d4195246.css" rel="stylesheet" />
     <link href="/site-fa13a787.css" rel="stylesheet" />
-    <script src="/site.min-da76e35f.js"></script>
+    <script src="/site.min-c47c0502.js"></script>
     <link rel="icon" href="/favicon.ico">
   </head>
   <body class="h-full w-full bg-gray-50 dark:bg-gray-800">
@@ -48,7 +48,7 @@
   <p>This snippet of code is very simple, but very powerful.</p>
   <p>Wrapping a block of code with this method will allow you to track how much time it takes to run</p>
   <pre>
-    <code>
+    <code class="ruby">
   def _t(label)
     t = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     ret = yield
@@ -60,7 +60,7 @@
 
   <h4 class="text-xl font-semibold">Example Code</h4>
   <pre>
-    <code>
+    <code class="ruby">
   i = 0
 
   # This will output a basic statement
@@ -93,7 +93,7 @@
 
   <h4 class="text-xl font-semibold">Output</h4>
   <pre>
-    <code>
+    <code class="ruby">
   0
   basic 3.700001980178058e-05
   longer 3.099142999999458
@@ -129,7 +129,7 @@
   <p>The timing code was simple and powerful, but it didn't quite work if a line or block was called many times.</p>
   <p>To solve this, I used a global variable to keep track of how long and how many times each call is hit.</p>
   <pre>
-    <code>
+    <code class="ruby">
   $agg = {}
   at_exit do
     line_column_size = $agg.keys.max_by(&:size).size
@@ -168,7 +168,7 @@
 
   <h4 class="text-xl font-semibold">Example Code</h4>
   <pre>
-    <code>
+    <code class="ruby">
   i = 0
 
   # This will react the same as _t
@@ -202,7 +202,7 @@
 
   <h4 class="text-xl font-semibold">Output</h4>
   <pre>
-    <code>
+    <code class="shell">
   0
   | line   | num_calls | time (s)              |
   | ------ | --------- | --------------------- |
@@ -221,7 +221,7 @@
   <p>But we can visualize the information to improve it even more. <a href="https://en.wikipedia.org/wiki/Gantt_chart">Gantt Charts</a> are a common engineering tool that can help here.</p>
   <p>This code outputs a syntax that can be consumed by my <a href="https://rubygems.org/gems/chart_helpers">Chart Helpers Gem</a>.</p>
   <pre>
-    <code>
+    <code class="ruby">
   require 'chart_helpers'
   require 'date'
 
@@ -334,7 +334,7 @@
 
   <h4 class="text-xl font-semibold">Example Code</h4>
   <pre>
-    <code>
+    <code class="ruby">
   # This is the basic example of a gantt chart
   # Each line takes about an equal amount of time
   def my_method(i)
