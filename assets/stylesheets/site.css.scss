@@ -44,7 +44,7 @@
   height: 80vh;
 }
 
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape) and (max-device-width: 812px) {
   .header-wrapper {
     min-height: 0;
     height: auto;
