@@ -1,104 +1,60 @@
 <!doctype html>
 <html>
   <head>
-    <meta name="csrf-param" content="authenticity_token">
-    <meta name="csrf-token" content="pqJxoIW3eeboexvdZD2vubiP2i4YObofseM91zLGIkTKu9NL+aTw2CyQO00aCcEjn7neRpn4hYl1cImBY1SSfA==">
-    <meta name="google-site-verification" content="thKevbVWFUwiJbi_nQJRaQc4-ZUN_Mr6YJlFt8Nv_-I">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-
+    <!-- Use the title from a page's frontmatter if it has one -->
     <title>[RubyKaigi 2018] Avoiding Cognitive Overload: Tests For Productivity and Education</title>
-    <link href="/stylesheets/site.css" rel="stylesheet" />
-    <script src="/javascripts/site.js"></script>
-
-    <!-- presentations columns -->
-    <link href="/stylesheets/presentations.css" rel="stylesheet" />
-
-    <!-- Highlighting -->
-    <link href="/stylesheets/highlight.css" rel="stylesheet" />
-    <script src="/javascripts/highlight.js"></script>
-
+    <link href="/style.css" rel="stylesheet" />
+    <link href="/site.css" rel="stylesheet" />
+    <script src="/site.min.js"></script>
     <!-- Gravatar icon -->
     <link rel="shortcut icon" type="image/png" href="https://www.gravatar.com/avatar/6e01dd682c021a600a943b0a539ed6a2default=&amp;rating=&amp;size=16">
-
-    <!-- Font Awesome -->
-    <link href="/stylesheets/fontawesome.css" rel="stylesheet" />
   </head>
-  <body class="clearfix ">
-    <nav class="background">
-  <div class="container">
-    <ul>
-      <li>
-        <a href="/">Home</a>
-      </li>
-      <!-- <li>
-        <a href="/#presentations_work">Presentations &amp; Work</a>
-      </li> -->
-    </ul>
-  </div>
-</nav>
+  <body class="h-full w-full bg-gray-50 dark:bg-gray-800">
+    <div class="w-screen bg-left-top text-gray-50 bg-green-800 py-12">
+  <div class="w-screen px-4 text-gray-50 block">
+  <a href="/">← Back</a>
+</div>
 
-    <script>
-  $(document).ready(function() {
-    $('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
-    });
-  });
-</script>
-
-<div class="background white">
-  <div class="container" style="padding: 20px 0;">
-    <h1 class="upcase" style="margin-top: 0"> Avoiding Cognitive Overload</br><small>Tests For Productivity and Education</small></h1>
-    <h5 class="upcase">Ruby Kaigi 2018</h5>
+  <div class="text-center w-screen lg:w-2/3 mx-auto">
+    <h1 class="uppercase text-4xl font-bold">Avoiding Cognitive Overload</br><small>Tests For Productivity and Education</small></h1>
+    <h5 class="uppercase  text-xl font-light">Ruby Kaigi 2018, Sendai, Japan</h5>
     <br>
-
-    <div class="flex-container">
-      <div class="flex-item">
-        <iframe src="https://docs.google.com/presentation/d/1aaLX5rxZNMTtl9jc1PS_Ewfk_LGbCS9_1fgIsmc-DE8/embed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" width="100%" height="500" webkitallowfullscreen="true"></iframe>
-      </div>
-
-      <div class="flex-item">
-        <iframe width="100%" height="500" src="https://www.youtube.com/embed/InFnu8bYi6s?rel=0" frameborder="0" allowfullscreen></iframe>
-      </div>
+    <div class="block md:flex">
+      <iframe src="https://docs.google.com/presentation/d/1aaLX5rxZNMTtl9jc1PS_Ewfk_LGbCS9_1fgIsmc-DE8/embed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" width="100%" height="500" webkitallowfullscreen="true"></iframe>
+      <iframe width="100%" height="500" src="https://www.youtube.com/embed/InFnu8bYi6s?rel=0" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </div>
 
-<div class="container text-center">
-  <br>
-  <a href="https://github.com/jules2689/extended_bundler-errors">Extended Errors Bundler Plugin</a> | 
-  <a href="http://rubykaigi.org/2018/presentations/jules2689.html">Presentation Overview</a>
-</div>
+<div class="container w-screen lg:w-2/3 mx-auto text-gray-800 dark:text-gray-50">
+  <div class="text-center w-100 py-6">
+    <a class="underline" href="https://github.com/jules2689/extended_bundler-errors">Extended Errors Bundler Plugin</a> | 
+    <a class="underline" href="http://rubykaigi.org/2018/presentations/jules2689.html">Presentation Overview</a>
+  </div>
 
-<div class="container">
-  <p>This presentation focused on testing, proper error messages, and JIT-based education.</p>
-  <p>I included a number of examples in the presentation about these concepts, which I've also included below for your convenience.</p>
+  <div class="p-3">
+    <p>This presentation focused on testing, proper error messages, and JIT-based education.</p>
+    <p>I included a number of examples in the presentation about these concepts, which I've also included below for your convenience.</p>
+  </div>
 
-  <br/>
+  <div class="mt-12 flex flex-col lg:flex-row">
+    <a data-href="#tab1" class="tab active">Testing LOAD_PATH is not altered</a>
+    <a data-href="#tab2" class="tab"> Make sure all task references are valid</a>
+    <a data-href="#tab3" class="tab">Make sure gems aren't added back</a>
+    <a data-href="#tab4" class="tab">Git-based Gem ban</a>
+  </div>
 
-  <link href="/stylesheets/tabs.css" rel="stylesheet" />
-
-  <input id="tab1" class="tab" type="radio" name="tabs" checked>
-  <label for="tab1" class="tab">Testing LOAD_PATH is not altered</label>
-    
-  <input id="tab2" class="tab" type="radio" name="tabs">
-  <label for="tab2" class="tab">Make sure all task references are valid</label>
-
-  <input id="tab3" class="tab" type="radio" name="tabs">
-  <label for="tab3" class="tab">Make sure gems aren't added back</label>
-
-  <input id="tab4" class="tab" type="radio" name="tabs">
-  <label for="tab4" class="tab">Git-based Gem ban</label>
-
-  <section id="content1" class="tab"><div>
-  <h2>Testing LOAD_PATH is not altered</h2>
+  <div class="tab-content active" id="tab1">
+    <div class="py-6">
+  <h2 class="text-2xl font-semibold">Testing LOAD_PATH is not altered</h2>
   <p>In some applications boot time is one of the most important aspects because this allows the application to respond instantaneously to requests.</p>
   <p>To make sure that developers do not have to spend their time always remembering this, and hoping not to make a mistake, let's boot the app in a test and see what has been loaded</p>
 
-  <h4>bin/support/load_dev.rb</h4>
+  <h4 class="text-xl font-semibold">bin/support/load_dev.rb</h4>
   <pre>
     <code>
   #!/usr/bin/ruby --disable-gems
@@ -122,7 +78,7 @@
     </code>
   </pre>
 
-  <h4>The Test</h4>
+  <h4 class="text-xl font-semibold">The Test</h4>
   <pre>
     <code>
   require 'test_helper'
@@ -195,14 +151,17 @@
   end
     </code>
   </pre>
-</div></section>
-  <section id="content2" class="tab"><div>
-  <h2>Make sure all task references are valid</h2>
+</div>
+  </div>
+
+  <div class="tab-content" id="tab2">
+    <div class="py-6">
+  <h2 class="text-2xl font-semibold">Make sure all task references are valid</h2>
   <p>In our core application we had an issue where a migration would reference an nonexistant task.</p>
   <p>What was happening is that user A would make a PR referencing <code>MyTask</code>, but user B would delete task <code>MyTask</code> because they noticed it was no longer used when they finished their use of it.</p>
   <p>While this is a valid train of thought, the occurence of events would be such that we did not catch the mistake until the migration was running in production. To fix this I wrote a test to make sure all tasks that are referenced exist as expected</p>
 
-  <h4>The Test</h4>
+  <h4 class="text-xl font-semibold">The Test</h4>
   <pre>
     <code>
   test 'migrations dont reference invalid tasks' do
@@ -226,14 +185,17 @@
   end
     </code>
   </pre>
-</div></section>
-  <section id="content3" class="tab"><div>
-  <h2>Make sure we don't add back gems</h2>
+</div>
+  </div>
+
+  <div class="tab-content" id="tab3">
+    <div class="py-6">
+  <h2 class="text-2xl font-semibold">Make sure we don't add back gems</h2>
   <p>Sometimes we remove a gem from the code base for various reasons.</p>
   <p>With a larger org, it's hard to get that message out to people, so I wrote a test to check that some gems aren't added back.</p>
   <p>Below is an example of that test</p>
 
-  <h4>The Test</h4>
+  <h4 class="text-xl font-semibold">The Test</h4>
   <pre>
     <code>
     test "no removed gems are added to the Gemfile" do
@@ -275,7 +237,7 @@
     </code>
   </pre>
 
-  <h4>The Removed Gems</h4>
+  <h4 class="text-xl font-semibold">The Removed Gems</h4>
   <pre>
     <code>
   # This file documents why we removed gems and fails a test if someone adds it back
@@ -301,14 +263,17 @@
       Migrating those tools to RSpec will be a significant amount of work.
     </code>
   </pre>
-</div></section>
-  <section id="content4" class="tab"><div>
-  <h2>Ban Git-based Gems</h2>
+</div>
+  </div>
+
+  <div class="tab-content" id="tab4">
+    <div class="py-6">
+  <h2 class="text-2xl font-semibold">Ban Git-based Gems</h2>
   <p>Git-based gems can cause a lot of pain when it comes to performance and authentication.</p>
   <p>They also make it hard to use pre-compiled images for native extensions.</p>
   <p>We decided to ban git gems, so we wrote a test to fail on newly added git gems but not on old ones</p>
 
-  <h4>The Test</h4>
+  <h4 class="text-xl font-semibold">The Test</h4>
   <pre>
     <code>
   # Rails is a gem that we are always trying the git version, even to get bug fixes early or even to test the next
@@ -361,15 +326,14 @@
     </code>
   </pre>
 </div>
-</section>
+
+  </div>
 </div>
 
 <hr>
 
-<div class="text-center container">
-  <img src="/images/kaigi_2018_header.png" height="100" alt="" />
-</div>
-
+    <div class="w-full text-center pb-2 dark:text-gray-50 text-gray-800">
+      &copy; 2021 Julian Nadeau
+    </div>
   </body>
 </html>
-
