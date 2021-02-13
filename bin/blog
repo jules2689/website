@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+
+require 'bundler/inline'
+
+gemfile do
+  source 'https://rubygems.org'
+  gem 'ogp'
+end
+
+require "net/http"
+require "uri"
+require "rss"
+require "json"
+
+# Start with devto
+puts "Pulling Dev.to"
+URL = "https://dev.to/api/articles?username=jules2689"
+resp = Net::HTTP.get_response(URI(URL))
+blog_articles = JSON.parse(resp.body)
+blog_articles.each { |a| a["readable_publish_date"] = Time.parse(a["published_at"]).strftime('%b %d, %Y') }
+
+# Add in some hardcoded ones
+puts "Adding hardcoded"
+blog_articles << {
+  "title" => "Improving how we deploy GitHub",
+  "social_image" => "https://github.blog/wp-content/uploads/2021/01/card.png?w=1200",
+  "description" => "As GitHub doubled it’s developer head count, tooling that worked for us no longer functioned in the same capacity. We aimed to improve the deployment process for all developers at GitHub and mitigate risk associated with deploying one of the largest developer platforms in the world.",
+  "readable_publish_date" => "January 25, 2021",
+  "url" => "https://github.blog/2021-01-25-improving-how-we-deploy-github/",
+}
+blog_articles << {
+  "title" => "How to Set Up Your Own Mobile CI System",
+  "social_image" => "https://cdn.shopify.com/s/files/1/0779/4361/articles/Artboard_1-1.png?format=webp&v=1494617223&width=1024",
+  "description" => "Building a Dynamic Mobile CI System.&quot; Over the past few years the mobile development community has seen a dramatic shift towards the use of continuous integration (CI) systems similar to changes present in other...",
+  "readable_publish_date" => "June 15, 2016",
+  "url" => "https://shopify.engineering/how-to-set-up-your-own-mobile-ci-system",
+}
+
+# Add Medium
+puts "Pulling medium"
+MEDIUM_URL = "https://medium.com/feed/@jules2689"
+feed = RSS::Parser.parse(Net::HTTP.get_response(URI(MEDIUM_URL)).body)
+puts "Title: #{feed.channel.title}"
+feed.items.each do |item|
+  puts "Item: #{item.title}"
+  url = URI(item.link)
+  url.query = nil
+  puts url.to_s
+  open_graph = begin
+    OGP::OpenGraph.new(Net::HTTP.get_response(url).body)
+  rescue OGP::MissingAttributeError
+    OpenStruct.new(image: OpenStruct.new(url: "/images/generic.jpg"))
+  end
+
+  blog_articles << {
+    "title" => item.title,
+    "social_image" => open_graph.image.url,
+    "description" => item.content_encoded.gsub(/<\/?[^>]*>/, "")[0..140] + "...",
+    "readable_publish_date" => item.pubDate.strftime('%b %d, %Y'), # TODO: Human Readable
+    "url" => url
+  }
+end
+
+puts "Sorting posts by published date"
+blog_articles = blog_articles.sort_by { |a| -Time.parse(a["readable_publish_date"]).to_i }
+
+puts "Outputting file"
+File.write("data/blog.json", blog_articles.to_json)
