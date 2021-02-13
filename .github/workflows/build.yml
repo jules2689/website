@@ -27,5 +27,9 @@ jobs:
               ${{ github.ref }} \
               "data/blog.json"
 
+
+            echo "Setting Config for Git"
+            git config --global user.email "action@github.com"
+            git config --global user.name "GitHub Action"
             bin/deploy
           fi
