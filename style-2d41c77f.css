@@ -5251,6 +5251,32 @@ video {
   border-radius: 0.25rem
 }
 
+.header-wrapper{
+  min-height:650px;
+  height:80vh
+}
+
+.header{
+  max-height:80%;
+  min-height:650px;
+  height:80vh
+}
+
+@media screen and (orientation: landscape){
+  .header-wrapper{
+    min-height:0;
+    height:auto
+  }
+
+  .header{
+    background-position:left bottom !important;
+    height:100vh !important;
+    min-height:0 !important;
+    max-height:100% !important;
+    filter:opacity(0.5)
+  }
+}
+
 html.dark .header{
   filter:brightness(40%)
 }
