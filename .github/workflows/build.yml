@@ -16,6 +16,12 @@ jobs:
         with:
           ruby-version: 2.7
           bundler-cache: true
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: npm install
       - name: Build blog
         run: ruby bin/blog
       - name: Commit Blog Changes and deploy
@@ -26,7 +32,6 @@ jobs:
               "${{ github.repository }}" \
               ${{ github.ref }} \
               "data/blog.json"
-
 
             echo "Setting Config for Git"
             git config --global user.email "action@github.com"
