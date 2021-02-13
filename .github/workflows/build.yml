@@ -27,14 +27,14 @@ jobs:
       - name: Commit Blog Changes and deploy
         run: |
           if [ ! -z "$(git status --porcelain)" ]; then 
+            echo "Setting Config for Git"
+            git config --global user.email "action@github.com"
+            git config --global user.name "GitHub Action"
+            bin/deploy "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" "${{ github.repository }}"
+
             bin/commit.sh "Add new changes for the blog" \
               "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" \
               "${{ github.repository }}" \
               ${{ github.ref }} \
               "data/blog.json"
-
-            echo "Setting Config for Git"
-            git config --global user.email "action@github.com"
-            git config --global user.name "GitHub Action"
-            bin/deploy "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" "${{ github.repository }}"
           fi
