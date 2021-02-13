@@ -5,16 +5,24 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Use the title from a page's frontmatter if it has one -->
     <title>[RubyKaigi 2017] Busting Performance Bottlenecks: Decreasing Ruby Boot time by 60%</title>
     <link href="/style.css" rel="stylesheet" />
     <link href="/site.css" rel="stylesheet" />
     <script src="/site.min.js"></script>
-    <!-- Gravatar icon -->
-    <link rel="shortcut icon" type="image/png" href="https://www.gravatar.com/avatar/6e01dd682c021a600a943b0a539ed6a2default=&amp;rating=&amp;size=16">
+    <link rel="icon" href="/favicon.ico">
   </head>
   <body class="h-full w-full bg-gray-50 dark:bg-gray-800">
-    <div class="w-screen bg-left-top text-gray-50 bg-green-800 py-12">
+    <div style="position: absolute; top: 1em; right: 2em;">
+       <button title="Turn on light mode" id="toggle-light" class="hidden uppercase p-3 flex items-center border border-white bg-blue-400 text-white max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 ">
+        <svg width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);"><path d="M15 2h2v3h-2z" fill="currentColor"></path><path d="M27 15h3v2h-3z" fill="currentColor"></path><path d="M15 27h2v3h-2z" fill="currentColor"></path><path d="M2 15h3v2H2z" fill="currentColor"></path><path d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z" fill="currentColor"></path><path d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z" fill="currentColor"></path><path d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z" fill="currentColor"></path><path d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z" fill="currentColor"></path><path d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z" fill="currentColor"></path></svg>
+      </button>
+
+      <button title="Turn on dark mode" id="toggle-dark" class="hidden uppercase p-3 flex items-center bg-gray-900 text-blue-50 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 ">
+        <svg width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);"><path d="M15 2h2v3h-2z" fill="currentColor"></path><path d="M27 15h3v2h-3z" fill="currentColor"></path><path d="M15 27h2v3h-2z" fill="currentColor"></path><path d="M2 15h3v2H2z" fill="currentColor"></path><path d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z" fill="currentColor"></path><path d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z" fill="currentColor"></path><path d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z" fill="currentColor"></path><path d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z" fill="currentColor"></path><path d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z" fill="currentColor"></path></svg>
+      </button>
+    </div>
+   
+    <div class="w-screen bg-left-top text-gray-50 bg-green-800 dark:bg-green-900 py-12">
   <div class="w-screen px-4 text-gray-50 block">
   <a href="/">← Back</a>
 </div>
@@ -375,9 +383,7 @@
   </div>
 </div>
 
-<hr>
-
-    <div class="w-full text-center pb-2 dark:text-gray-50 text-gray-800">
+    <div style="margin: 20px 0;" class="w-full text-center dark:text-gray-50 text-gray-800">
       &copy; 2021 Julian Nadeau
     </div>
   </body>
