@@ -34,7 +34,14 @@
 }
 
 html.dark {
-    /* Dracula Theme v1.2.5
+  .header {
+    filter: brightness(40%);
+  }
+  .card img {
+    filter: brightness(65%);
+  }
+
+  /* Dracula Theme v1.2.5
   *
   * https://github.com/dracula/highlightjs
   *
