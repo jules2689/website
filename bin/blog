@@ -1,12 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'bundler/inline'
-
-gemfile do
-  source 'https://rubygems.org'
-  gem 'ogp'
-end
-
+require 'bundler/setup'
 require "net/http"
 require "uri"
 require "rss"

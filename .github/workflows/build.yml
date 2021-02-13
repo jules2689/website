@@ -25,7 +25,7 @@ jobs:
       - name: Bundler fix
         run: bundle lock --add-platform ruby
       - name: Build blog
-        run: ruby bin/blog
+        run: bundle exec ruby bin/blog
       - name: Commit Blog Changes and deploy
         run: |
           if [ ! -z "$(git status --porcelain)" ]; then 
