@@ -19,4 +19,43 @@ document.addEventListener('DOMContentLoaded', (event) => {
       this.classList.add('active')
     })
   })
+
+  /// DARK MODE
+
+  var theme = localStorage.getItem('theme')
+  var userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+  var toggleDark = document.querySelectorAll('#toggle-dark')
+  var toggleLight = document.querySelectorAll('#toggle-light')
+  var htmlElem = document.querySelector('html')
+
+  if (theme === 'dark' || (!theme && userPrefersDark.matches)) {
+    htmlElem.classList.add('dark')
+    toggleDark.forEach(el => el.classList.add('visible'))
+    toggleLight.forEach(el => el.classList.remove('hidden'))
+  } else {
+    toggleLight.forEach(el => el.classList.add('visible'))
+    toggleDark.forEach(el => el.classList.remove('hidden'))
+  }
+
+  toggleLight.forEach(el => {
+    el.addEventListener('click', function () {
+      localStorage.setItem('theme', 'light')
+      htmlElem.classList.remove('dark')
+      toggleDark.forEach(el => el.classList.add('visible'))
+      toggleDark.forEach(el => el.classList.remove('hidden'))
+      toggleLight.forEach(el => el.classList.add('hidden'))
+      toggleLight.forEach(el => el.classList.remove('visible'))
+    })
+  })
+
+  toggleDark.forEach(el => {
+    el.addEventListener('click', function () {
+      localStorage.setItem('theme', 'dark')
+      htmlElem.classList.add('dark')
+      toggleLight.forEach(el => el.classList.add('visible'))
+      toggleLight.forEach(el => el.classList.remove('hidden'))
+      toggleDark.forEach(el => el.classList.add('hidden'))
+      toggleDark.forEach(el => el.classList.remove('visible'))
+    })
+  })
 });
