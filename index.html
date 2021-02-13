@@ -5,13 +5,13 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Julian Nadeau</title>
-    <link href="/style-ac6b94c9.css" rel="stylesheet" />
+    <link href="/style-05bba0d8.css" rel="stylesheet" />
     <link href="/site-fa13a787.css" rel="stylesheet" />
     <script src="/site.min-da76e35f.js"></script>
     <link rel="icon" href="/favicon.ico">
   </head>
   <body class="h-full w-full bg-gray-50 dark:bg-gray-800">
-    <div style="position: absolute; top: 1em; right: 2em;">
+    <div class="z-50" style="position: absolute; top: 1em; right: 2em;">
        <button title="Turn on light mode" id="toggle-light" class="hidden uppercase p-3 flex items-center border border-white bg-blue-400 text-white max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 ">
         <svg width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);"><path d="M15 2h2v3h-2z" fill="currentColor"></path><path d="M27 15h3v2h-3z" fill="currentColor"></path><path d="M15 27h2v3h-2z" fill="currentColor"></path><path d="M2 15h3v2H2z" fill="currentColor"></path><path d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z" fill="currentColor"></path><path d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z" fill="currentColor"></path><path d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z" fill="currentColor"></path><path d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z" fill="currentColor"></path><path d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z" fill="currentColor"></path></svg>
       </button>
@@ -21,8 +21,9 @@
       </button>
     </div>
    
-    <div class="flex w-screen bg-left-top xl:bg-left-bottom bg-cover" style="min-height: 650px; height: 80vh; background-image: url('/images/header-41b57c2b.jpg')">
-  <div class="w-5/6 ml-24 my-24 text-gray-900 antialiased">
+    <div class="flex w-screen" style="min-height: 650px; height: 80vh;" > 
+  <div class="z-0 absolute w-screen h-full bg-left-top xl:bg-left-bottom bg-cover header" style="min-height: 650px; height: 80vh; background-image: url('/images/header-41b57c2b.jpg')"></div>
+  <div class="z-50 w-5/6 ml-24 my-24 text-gray-900 dark:text-gray-200 antialiased">
     <h1 class="text-6xl font-bold uppercase">Julian Nadeau</h1>
     <h2 class="text-3xl font-light">Software Developer & University Instructor</h2>
     <div class="flex flex-col mt-2">
@@ -37,10 +38,10 @@
 
 <div class="container mx-auto my-12">
   <div class="text-center">
-    <h2 class="text-4xl uppercase font-semibold underline pb-12 text-gray-800 dark:text-gray-50">Selected Highlights</h2>
+    <h2 class="text-4xl uppercase font-semibold underline pb-12 text-gray-800 dark:text-gray-100">Selected Highlights</h2>
   </div>
   <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
-    <a href="https://industryday.cs.toronto.edu/" class="w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
+    <a href="https://industryday.cs.toronto.edu/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
   <div class="md:flex h-full">
     <div class="hidden md:block md:flex-shrink-0 h-full">
       <img class="h-full w-full object-cover md:w-48" src="/images/dcs-875029c4.jpg" alt="DCS Industry Day">
@@ -52,10 +53,10 @@
         </div>
         <div>
           <div class="uppercase tracking-wide text-sm text-green-800 dark:text-green-100 font-semibold">Event &bull; <span class="font-light">2021</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-50 hover:underline">DCS Industry Day</span>
+          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">DCS Industry Day</span>
         </div>
       </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-50">Founded and organized the "Department of Computer Science Industry Day".
+      <p class="mt-2 text-gray-500 dark:text-gray-100">Founded and organized the "Department of Computer Science Industry Day".
 We're bringing in developers, data scientists, product managers, recruiters and other leading professionals from the industry to help students find jobs, internships, and network.
 </p>
     </div>
@@ -63,7 +64,7 @@ We're bringing in developers, data scientists, product managers, recruiters and 
 </a>
 
 
-    <a href="https://csc491.dcsil.ca" class="w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
+    <a href="https://csc491.dcsil.ca" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
   <div class="md:flex h-full">
     <div class="hidden md:block md:flex-shrink-0 h-full">
       <img class="h-full w-full object-cover md:w-48" src="https://avatars.githubusercontent.com/u/53465050?s=200&v=4" alt="CSC491/2600 Instructor">
@@ -75,10 +76,10 @@ We're bringing in developers, data scientists, product managers, recruiters and 
         </div>
         <div>
           <div class="uppercase tracking-wide text-sm text-green-800 dark:text-green-100 font-semibold">Teaching &bull; <span class="font-light">2019-Present</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-50 hover:underline">CSC491/2600 Instructor</span>
+          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">CSC491/2600 Instructor</span>
         </div>
       </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-50">University of Toronto’s Capstone Design Course through the Department of Computer Science Innovation Lab (DCSIL).
+      <p class="mt-2 text-gray-500 dark:text-gray-100">University of Toronto’s Capstone Design Course through the Department of Computer Science Innovation Lab (DCSIL).
 This course exposes students to the core technologies, ideas, and processes in developing a startup.   
 </p>
     </div>
@@ -86,7 +87,7 @@ This course exposes students to the core technologies, ideas, and processes in d
 </a>
 
 
-     <a href="/presentations/devopsto_dec2019/" class="w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
+     <a href="/presentations/devopsto_dec2019/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
   <div class="md:flex h-full">
     <div class="hidden md:block md:flex-shrink-0 h-full">
       <img class="h-full w-full object-cover md:w-48" src="/images/devopsto_header-3af76a59.png" alt="Avoiding Cognitive Overload">
@@ -98,10 +99,10 @@ This course exposes students to the core technologies, ideas, and processes in d
         </div>
         <div>
           <div class="uppercase tracking-wide text-sm text-green-800 dark:text-green-100 font-semibold">Public Speaking &bull; <span class="font-light">2019</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-50 hover:underline">Avoiding Cognitive Overload</span>
+          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Avoiding Cognitive Overload</span>
         </div>
       </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-50">This is a shortened, re-written talk from my RubyKaigi 2018 talk.
+      <p class="mt-2 text-gray-500 dark:text-gray-100">This is a shortened, re-written talk from my RubyKaigi 2018 talk.
 This presentation focused on testing, proper error messages, and JIT-based education.
 Delivered at DevOps TO 2019.
 </p>
@@ -110,7 +111,7 @@ Delivered at DevOps TO 2019.
 </a>
 
 
-    <a href="/presentations/rubykaigi2018/" class="w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
+    <a href="/presentations/rubykaigi2018/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
   <div class="md:flex h-full">
     <div class="hidden md:block md:flex-shrink-0 h-full">
       <img class="h-full w-full object-cover md:w-48" src="/images/kaigi_2018-4c384595.png" alt="Avoiding Cognitive Overload">
@@ -122,10 +123,10 @@ Delivered at DevOps TO 2019.
         </div>
         <div>
           <div class="uppercase tracking-wide text-sm text-green-800 dark:text-green-100 font-semibold">Public Speaking &bull; <span class="font-light">2018</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-50 hover:underline">Avoiding Cognitive Overload</span>
+          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Avoiding Cognitive Overload</span>
         </div>
       </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-50">A presentation on cognitive burdens of developers and strategies to mitigate these concerns, primarily in Ruby.
+      <p class="mt-2 text-gray-500 dark:text-gray-100">A presentation on cognitive burdens of developers and strategies to mitigate these concerns, primarily in Ruby.
 Delivered at RubyKaigi 2018 in Sendai, Japan
 </p>
     </div>
@@ -133,7 +134,7 @@ Delivered at RubyKaigi 2018 in Sendai, Japan
 </a>
 
 
-    <a href="/presentations/github_constellation_2018" class="w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
+    <a href="/presentations/github_constellation_2018" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
   <div class="md:flex h-full">
     <div class="hidden md:block md:flex-shrink-0 h-full">
       <img class="h-full w-full object-cover md:w-48" src="/images/github_constellation_2018-a878ad6a.png" alt="Git Issues at Scale">
@@ -145,10 +146,10 @@ Delivered at RubyKaigi 2018 in Sendai, Japan
         </div>
         <div>
           <div class="uppercase tracking-wide text-sm text-green-800 dark:text-green-100 font-semibold">Public Speaking &bull; <span class="font-light">2018</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-50 hover:underline">Git Issues at Scale</span>
+          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Git Issues at Scale</span>
         </div>
       </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-50">A presentation on issues experienced in large git repoistories, particularly around cloning, pulling, and fetching.
+      <p class="mt-2 text-gray-500 dark:text-gray-100">A presentation on issues experienced in large git repoistories, particularly around cloning, pulling, and fetching.
 Delivered at GitHub Constellation 2018 in Toronto, Canada.
 </p>
     </div>
@@ -156,7 +157,7 @@ Delivered at GitHub Constellation 2018 in Toronto, Canada.
 </a>
 
 
-    <a href="/presentations/rubykaigi2017/" class="w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
+    <a href="/presentations/rubykaigi2017/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
   <div class="md:flex h-full">
     <div class="hidden md:block md:flex-shrink-0 h-full">
       <img class="h-full w-full object-cover md:w-48" src="/images/kaigi_2017-0c09ee40.png" alt="Busting Performance Bottlenecks">
@@ -168,10 +169,10 @@ Delivered at GitHub Constellation 2018 in Toronto, Canada.
         </div>
         <div>
           <div class="uppercase tracking-wide text-sm text-green-800 dark:text-green-100 font-semibold">Public Speaking &bull; <span class="font-light">2017</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-50 hover:underline">Busting Performance Bottlenecks</span>
+          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Busting Performance Bottlenecks</span>
         </div>
       </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-50">A presentation on decreasing Ruby Boot time by 60% and work in the Bundler project.
+      <p class="mt-2 text-gray-500 dark:text-gray-100">A presentation on decreasing Ruby Boot time by 60% and work in the Bundler project.
 Delivered at RubyKaigi 2017 in Hiroshima, Japan
 </p>
     </div>
@@ -179,7 +180,7 @@ Delivered at RubyKaigi 2017 in Hiroshima, Japan
 </a>
 
 
-    <a href="/work/code_for_kids/" class="w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
+    <a href="/work/code_for_kids/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
   <div class="md:flex h-full">
     <div class="hidden md:block md:flex-shrink-0 h-full">
       <img class="h-full w-full object-cover md:w-48" src="/images/cfk-e7b231de.png" alt="Code For Kids">
@@ -191,10 +192,10 @@ Delivered at RubyKaigi 2017 in Hiroshima, Japan
         </div>
         <div>
           <div class="uppercase tracking-wide text-sm text-green-800 dark:text-green-100 font-semibold">Not-For-Profit &bull; <span class="font-light">2013-2015</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-50 hover:underline">Code For Kids</span>
+          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Code For Kids</span>
         </div>
       </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-50">Code For Kids was a Not For Profit (NFP) corporation that aimed to teach children aged 7-13 the basics of coding, technology and design.
+      <p class="mt-2 text-gray-500 dark:text-gray-100">Code For Kids was a Not For Profit (NFP) corporation that aimed to teach children aged 7-13 the basics of coding, technology and design.
 Founder 2013-2015.
 </p>
     </div>
@@ -203,7 +204,7 @@ Founder 2013-2015.
 
   </div>
 </div>
-    <div style="margin: 20px 0;" class="w-full text-center dark:text-gray-50 text-gray-800">
+    <div style="margin: 20px 0;" class="w-full text-center dark:text-gray-100 text-gray-800">
       &copy; 2021 Julian Nadeau
     </div>
   </body>
