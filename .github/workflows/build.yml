@@ -22,6 +22,8 @@ jobs:
           node-version: 12.x
       - name: Install dependencies
         run: npm install
+      - name: Bundler fix
+        run: bundle lock --add-platform ruby
       - name: Build blog
         run: ruby bin/blog
       - name: Commit Blog Changes and deploy
