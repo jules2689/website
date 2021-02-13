@@ -5,17 +5,15 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Use the title from a page's frontmatter if it has one -->
     <title><%= current_page.data.title || "Julian Nadeau" %></title>
     <%= stylesheet_link_tag "style" %>
     <%= stylesheet_link_tag "site" %>
     <%= javascript_include_tag "site.min" %>
-    <!-- Gravatar icon -->
-    <link rel="shortcut icon" type="image/png" href="https://www.gravatar.com/avatar/6e01dd682c021a600a943b0a539ed6a2default=&amp;rating=&amp;size=16">
+    <link rel="icon" href="/favicon.ico">
   </head>
   <body class="h-full w-full bg-gray-50 dark:bg-gray-800">
     <%= yield %>
-    <div class="w-full text-center pb-2 dark:text-gray-50 text-gray-800">
+    <div class="w-full text-center mb-2 dark:text-gray-50 text-gray-800">
       &copy; 2021 Julian Nadeau
     </div>
   </body>
