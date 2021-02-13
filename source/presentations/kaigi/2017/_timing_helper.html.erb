@@ -1,0 +1,79 @@
+<div class="py-6">
+  <h2 class="text-2xl font-semibold">Timing Helper</h2>
+  <p>This snippet of code is very simple, but very powerful.</p>
+  <p>Wrapping a block of code with this method will allow you to track how much time it takes to run</p>
+  <pre>
+    <code>
+  def _t(label)
+    t = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    ret = yield
+    puts "#{label} #{Process.clock_gettime(Process::CLOCK_MONOTONIC) - t}"
+    ret
+  end
+    </code>
+  </pre>
+
+  <h4 class="text-xl font-semibold">Example Code</h4>
+  <pre>
+    <code>
+  i = 0
+
+  # This will output a basic statement
+  _t('basic') do
+    puts i
+  end
+
+  # This will output a basic statement
+  _t('longer') do
+    while i < 30
+      i += 1
+      sleep 0.1
+    end
+  end
+
+  # _t('method') is called many times because of the recursion
+  # In this case we will see many outputs for _t('method')
+  # This may not be what we want, see the aggregation demo
+  def my_method(i = 0)
+    _t('method') do
+      return if i > 20
+      sleep 0.1
+      my_method(i + 1)
+    end
+  end
+
+  my_method
+    </code>
+  </pre>
+
+  <h4 class="text-xl font-semibold">Output</h4>
+  <pre>
+    <code>
+  0
+  basic 3.700001980178058e-05
+  longer 3.099142999999458
+  method 0.1033249999745749
+  method 0.20763499999884516
+  method 0.31305300001986325
+  method 0.41850800000247546
+  method 0.5237309999938589
+  method 0.629190000006929
+  method 0.734292999986792
+  method 0.8383620000095107
+  method 0.938666000001831
+  method 1.0441250000149012
+  method 1.1493350000237115
+  method 1.2505610000225715
+  method 1.3516309999977238
+  method 1.4528080000018235
+  method 1.5531109999865294
+  method 1.6536609999893699
+  method 1.757898000010755
+  method 1.8631080000195652
+  method 1.9683300000033341
+  method 2.073551999987103
+  method 2.1743229999847244
+  => nil
+    </code>
+  </pre>
+</div>

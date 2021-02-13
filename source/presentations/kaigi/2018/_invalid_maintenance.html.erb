@@ -1,0 +1,31 @@
+<div class="py-6">
+  <h2 class="text-2xl font-semibold">Make sure all task references are valid</h2>
+  <p>In our core application we had an issue where a migration would reference an nonexistant task.</p>
+  <p>What was happening is that user A would make a PR referencing <code>MyTask</code>, but user B would delete task <code>MyTask</code> because they noticed it was no longer used when they finished their use of it.</p>
+  <p>While this is a valid train of thought, the occurence of events would be such that we did not catch the mistake until the migration was running in production. To fix this I wrote a test to make sure all tasks that are referenced exist as expected</p>
+
+  <h4 class="text-xl font-semibold">The Test</h4>
+  <pre>
+    <code>
+  test 'migrations dont reference invalid tasks' do
+    # This helper iterates all files in the project looking for `*_task.rb` files
+    available_tasks = DevelopmentSupport::Rake::MaintenanceHelpers.maintainance_task_files
+    # This helper looks through all of our migrations to look for references to `*Task`
+    used_tasks = DevelopmentSupport::Rake::MaintenanceHelpers.used_tasks
+
+    # If we consider that all `*Task` references should find a definition at *_task.rb`
+    # then we can make sure this is true
+    used_tasks.each do |task|
+      path_to_file = Pathname.new(task[:caller_file]).relative_path_from(Rails.root)
+      msg = <<~EOF
+      This File \x1b[36m#{path_to_file}\x1b[0m\n"\
+      References: \x1b[36m#{task[:name]}\x1b[0m\n"\
+      But expected defintion for that reference did not exist in db/maintenance/maintenance.
+      Please make sure this task is defined at the expected location:  \x1b[36m#{task[:file_name]}\x1b[0m
+      EOF
+      assert available_tasks.include?(task[:file_name]), message: msg
+    end
+  end
+    </code>
+  </pre>
+</div>

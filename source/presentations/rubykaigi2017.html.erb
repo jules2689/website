@@ -1,42 +1,27 @@
 ---
 title: "[RubyKaigi 2017] Busting Performance Bottlenecks: Decreasing Ruby Boot time by 60%"
-layout: layout
-image: kaigi_2017.png
 ---
 
-<script>
-  $(document).ready(function() {
-    $('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
-    });
-  });
-</script>
+<div class="w-screen bg-left-top text-gray-50 bg-green-800 py-12">
+  <%= partial "partials/nav" %>
 
-<div class="background white">
-  <div class="container" style="padding: 20px 0;">
-    <h1 class="upcase" style="margin-top: 0">Busting Performance Bottlenecks</br><small>Decreasing Ruby Boot time by 60%</small></h1>
-    <h5 class="upcase">Ruby Kaigi 2017</h5>
+  <div class="text-center w-screen lg:w-2/3 mx-auto">
+    <h1 class="uppercase text-4xl font-bold">Busting Performance Bottlenecks</br><small>Decreasing Ruby Boot time by 60%</small></h1>
+    <h5 class="uppercase  text-xl font-light">Ruby Kaigi 2017, Hiroshima, Japan</h5>
     <br>
-
-    <div class="flex-container">
-      <div class="flex-item">
-        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSEgYekXwjLfee68dVwn6_Of4KWyfKKLIaWo3oWEvhfAKs0JxkzYdey0x35LkE78-RBS0SpFdtiYT24/embed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" width="100%" height="500" webkitallowfullscreen="true"></iframe>
-      </div>
-
-      <div class="flex-item">
-        <iframe width="100%" height="500" src="https://www.youtube.com/embed/8BJKrx6rsM0?rel=0" frameborder="0" allowfullscreen></iframe>
-      </div>
+    <div class="block md:flex">
+      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSEgYekXwjLfee68dVwn6_Of4KWyfKKLIaWo3oWEvhfAKs0JxkzYdey0x35LkE78-RBS0SpFdtiYT24/embed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" width="100%" height="500" webkitallowfullscreen="true"></iframe>
+      <iframe width="100%" height="500" src="https://www.youtube.com/embed/8BJKrx6rsM0?rel=0" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </div>
 
-<div class="container text-center">
-  <br>
-  <a href="https://github.com/jules2689/kaigi2017demo">Github Demo Repo</a> | 
-  <a href="http://rubykaigi.org/2017/presentations/jules2689.html">Presentation Overview</a>
-</div>
+<div class="container w-screen lg:w-2/3 mx-auto text-gray-800 dark:text-gray-50">
+  <div class="text-center w-100 py-6">
+    <a class="underline" href="https://github.com/jules2689/kaigi2017demo">Github Demo Repo</a> | 
+    <a class="underline" href="http://rubykaigi.org/2017/presentations/jules2689.html">Presentation Overview</a>
+  </div>
 
-<div class="container">
   <%= partial 'kaigi/2017/timing_helper' %>
   <br>
   <%= partial 'kaigi/2017/aggregate' %>
@@ -48,14 +33,10 @@ image: kaigi_2017.png
     <h3>Put it all together</h3>
     
     <p>With all of these you can end up creating flow charts and gantt charts to determine slow paths in the code.</p>
-    <a href="/assets/flowcharts.JPG">
-      <%= image_tag "flowcharts_small.jpeg", width: "700px" %>
+    <a href="/images/flowcharts.JPG">
+      <%= image_tag "/images/flowcharts_small.jpeg", width: "700px" %>
     </a>
   </div>
 </div>
 
 <hr>
-
-<div class="text-center container">
-  <%= image_tag "kaigi_2017_header.png", height: "100" %>
-</div>

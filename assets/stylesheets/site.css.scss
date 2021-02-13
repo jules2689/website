@@ -1,0 +1,29 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-brands";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid";
+
+.tab {
+  padding: 1em;
+  margin: 0 5px;
+  border-bottom: 3px solid theme('colors.gray.300');
+  border-left: 1px solid theme('colors.gray.300');
+  cursor: pointer;
+
+  &.active {
+    border-bottom: 3px solid theme('colors.green.500');
+    border-left: 1px solid theme('colors.green.500');
+  }
+}
+
+.tab-content {
+  display: none;
+  padding: 2em;
+
+  &.active {
+    display: block;
+  }
+}

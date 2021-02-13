@@ -1,0 +1,19 @@
+<a href="<%= link %>" class="w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
+  <div class="md:flex h-full">
+    <div class="hidden md:block md:flex-shrink-0 h-full">
+      <img class="h-full w-full object-cover md:w-48" src="<%= image %>" alt="<%= title %>">
+    </div>
+    <div class="p-8">
+      <div class="flex">
+        <div class="mx-2 self-center d-inline md:hidden">
+          <img class="object-cover rounded-full w-12 h-12" src="<%= image %>" alt="<%= title %>">
+        </div>
+        <div>
+          <div class="uppercase tracking-wide text-sm text-green-800 dark:text-green-100 font-semibold"><%= type %> &bull; <span class="font-light"><%= year %></span></div>
+          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-50 hover:underline"><%= title %></span>
+        </div>
+      </div>
+      <p class="mt-2 text-gray-500 dark:text-gray-50"><%= description %></p>
+    </div>
+  </div>
+</a>

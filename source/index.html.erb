@@ -1,37 +1,62 @@
 ---
 title: Julian Nadeau
-fixed: true
 ---
 
-<div class="flex-container fill">
-  <div class="flex-item flex-container flex-center">
-      <div class="flex-item text-center">
-        <%= image_tag "toronto_skyline.png", width: "60%", class: 'item-center' %>
-        <h1>Julian Nadeau</h1>
-        <h3>Senior Software Developer @ <a href="https://github.com"><i class="fab fa-github-square"></i></a></h3>
-        <div>
-          <br/>
-          <a href="https://github.com/jules2689" title="GitHub"><i class="fab fa-2x fa-github-square"></i></a>
-          <a href="http://www.linkedin.com/pub/julian-nadeau/49/1b0/721" title="LinkedIn"><i class="fab fa-2x fa-linkedin"></i></a>
-          <a href="mailto:julian@jnadeau.ca" title="Email"><i class="fas fa-2x fa-envelope-square"></i></a>
-        </div>
-        <br/>
-        <h4><a href="/Resume.pdf" title="Resume"><i class="fas fa-id-card"></i></a> <a href="/Resume.pdf" title="Resume">Resume</a></h4>
-      </div>
-  </div>
+<%= partial "partials/header" %>
 
-  <div class="flex-item padded">
-    <div class="scrollable">
-      <h3 class="upcase" id="presentations_work">Presentations and Work</h3><br>
-      <div class="presentations upcase">
-        <% iterate_folder(%w(presentations work), sort: ->(page) { -(page.data.priority || 0) }) do |page| %>
-          <% link_to page.path do %>
-            <div class="presentation-item" style="background-image: url('<%= image_path page.data.image %>')">
-              &nbsp;
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+<div class="container mx-auto my-12">
+  <div class="text-center">
+    <h2 class="text-4xl uppercase font-semibold underline pb-12 text-gray-800 dark:text-gray-50">Selected Highlights</h2>
+  </div>
+  <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
+    <%=
+      partial "partials/card", locals: { link: "https://industryday.cs.toronto.edu/", image:  asset_url("/images/dcs.jpg"), year: "2021", type: "Event", title: "DCS Industry Day", description: <<~EOF }
+      Founded and organized the "Department of Computer Science Industry Day".
+      We're bringing in developers, data scientists, product managers, recruiters and other leading professionals from the industry to help students find jobs, internships, and network.
+      EOF
+    %>
+
+    <%=
+      partial "partials/card", locals: { link: "https://csc491.dcsil.ca", image: "https://avatars.githubusercontent.com/u/53465050?s=200&v=4", year: "2019-Present", type: "Teaching", title: "CSC491/2600 Instructor", description: <<~EOF }
+      University of Toronto’s Capstone Design Course through the Department of Computer Science Innovation Lab (DCSIL).
+      This course exposes students to the core technologies, ideas, and processes in developing a startup.   
+      EOF
+    %>
+
+     <%=
+      partial "partials/card", locals: { link: "/presentations/devopsto_dec2019/", image: asset_url("/images/devopsto_header.png"), year: "2019", type: "Public Speaking", title: "Avoiding Cognitive Overload", description: <<~EOF }
+      This is a shortened, re-written talk from my RubyKaigi 2018 talk.
+      This presentation focused on testing, proper error messages, and JIT-based education.
+      Delivered at DevOps TO 2019.
+      EOF
+    %>
+
+    <%=
+      partial "partials/card", locals: { link: "/presentations/rubykaigi2018/", image: asset_url("/images/kaigi_2018.png"), year: "2018", type: "Public Speaking", title: "Avoiding Cognitive Overload", description: <<~EOF }
+      A presentation on cognitive burdens of developers and strategies to mitigate these concerns, primarily in Ruby.
+      Delivered at RubyKaigi 2018 in Sendai, Japan
+      EOF
+    %>
+
+    <%=
+      partial "partials/card", locals: { link: "/presentations/github_constellation_2018", image: asset_url("images/github_constellation_2018.png"), year: "2018", type: "Public Speaking", title: "Git Issues at Scale", description: <<~EOF }
+      A presentation on issues experienced in large git repoistories, particularly around cloning, pulling, and fetching.
+      Delivered at GitHub Constellation 2018 in Toronto, Canada.
+      EOF
+    %>
+
+    <%=
+      partial "partials/card", locals: { link: "/presentations/rubykaigi2017/", image: asset_url("/images/kaigi_2017.png"), year: "2017", type: "Public Speaking", title: "Busting Performance Bottlenecks", description: <<~EOF }
+      A presentation on decreasing Ruby Boot time by 60% and work in the Bundler project.
+      Delivered at RubyKaigi 2017 in Hiroshima, Japan
+      EOF
+    %>
+
+    <%=
+      partial "partials/card", locals: { link: "#", image: asset_url("/images/cfk.png"), year: "2013-2015", type: "Not-For-Profit", title: "Code For Kids", description: <<~EOF }
+      Code For Kids was a Not For Profit (NFP) corporation that aimed to teach children aged 7-13 the basics of coding, technology and design.
+      Founder 2013-2015.
+      EOF
+    %>
   </div>
 </div>
