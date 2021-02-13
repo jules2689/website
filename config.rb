@@ -1,4 +1,5 @@
 activate :directory_indexes
+activate :asset_hash
 set :relative_links, true
 
 # Per-page layout changes
