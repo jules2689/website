@@ -64,53 +64,53 @@
   end
 
   def _gantt_chart
-  ret = nil
+    ret = nil
 
-  # Determine the method and path that we're calling from
-  call_loc = caller_locations.reject { |l| l.path.include?('byebug') }.first
-  method_name = call_loc.label
-  path = call_loc.path
-  source = File.readlines(path)
+    # Determine the method and path that we're calling from
+    call_loc = caller_locations.reject { |l| l.path.include?('byebug') }.first
+    method_name = call_loc.label
+    path = call_loc.path
+    source = File.readlines(path)
 
-  unless $timed[method_name]
-    puts "Tracing #{path} for method #{method_name}"
-    $timed[method_name] = { path: path, entries: [], calls: 0 }
-  end
-
-  # This block will be used to finalize the time it to run, gather the line source, etc.
-  finalize_time = -> () do
-    if last = $timed[method_name][:entries].pop
-      # Finalize the time
-      return if last[:start].nil? # Sometimes at the end it can mess up
-      time = Process.clock_gettime(Process::CLOCK_MONOTONIC) - last[:start]
-      # Get the source line from the line number
-      line = source[last[:line_no] - 1].strip
-      next if line.include?('_gantt_chart')
-      $timed[method_name][:entries] << { line_no: last[:line_no], line: line, time: time }
+    unless $timed[method_name]
+      puts "Tracing #{path} for method #{method_name}"
+      $timed[method_name] = { path: path, entries: [], calls: 0 }
     end
-  end
 
-  # We use Ruby's tracepoint on a per line basis
-  # We only care about lines called within our method and within our path
-  trace = TracePoint.new(:line) do |tp|
-    next unless tp.path == path
-    next unless tp.method_id.to_s == method_name.to_s
-
-    # We could have a call from last time, finalize it, we've moved to a new line
-    finalize_time.call
-    # Initialize a new entry with the line number and a start time
-    $timed[method_name][:entries] << { line_no: tp.lineno, start: Process.clock_gettime(Process::CLOCK_MONOTONIC) }
-  end
-
-  begin
-    trace.enable do
-      ret = yield
+    # This block will be used to finalize the time it to run, gather the line source, etc.
+    finalize_time = -> () do
+      if last = $timed[method_name][:entries].pop
+        # Finalize the time
+        return if last[:start].nil? # Sometimes at the end it can mess up
+        time = Process.clock_gettime(Process::CLOCK_MONOTONIC) - last[:start]
+        # Get the source line from the line number
+        line = source[last[:line_no] - 1].strip
+        next if line.include?('_gantt_chart')
+        $timed[method_name][:entries] << { line_no: last[:line_no], line: line, time: time }
+      end
     end
-  ensure
-    finalize_time.call # The last call needs to be finalized, finalize it here
-  end
 
-  ret
+    # We use Ruby's tracepoint on a per line basis
+    # We only care about lines called within our method and within our path
+    trace = TracePoint.new(:line) do |tp|
+      next unless tp.path == path
+      next unless tp.method_id.to_s == method_name.to_s
+
+      # We could have a call from last time, finalize it, we've moved to a new line
+      finalize_time.call
+      # Initialize a new entry with the line number and a start time
+      $timed[method_name][:entries] << { line_no: tp.lineno, start: Process.clock_gettime(Process::CLOCK_MONOTONIC) }
+    end
+
+    begin
+      trace.enable do
+        ret = yield
+      end
+    ensure
+      finalize_time.call # The last call needs to be finalized, finalize it here
+    end
+
+    ret
   end
     </code>
   </pre>
