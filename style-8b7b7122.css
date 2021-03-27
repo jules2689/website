@@ -740,6 +740,10 @@ video {
   margin-top: 3rem;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .mt-24 {
   margin-top: 6rem;
 }
@@ -797,10 +801,6 @@ video {
 
 .pl-1 {
   padding-left: 0.25rem;
-}
-
-.pb-12 {
-  padding-bottom: 3rem;
 }
 
 .absolute {
