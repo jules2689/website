@@ -737,6 +737,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .mt-12 {
   margin-top: 3rem;
 }
@@ -5397,6 +5401,11 @@ html.dark .hljs-emphasis{
 @media (min-width: 1024px) {
   .lg\:flex-row {
     flex-direction: row;
+  }
+
+  .lg\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .lg\:w-1\/2 {
