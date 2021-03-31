@@ -31,7 +31,6 @@ blog_articles << {
   "url" => "https://shopify.engineering/how-to-set-up-your-own-mobile-ci-system",
 }
 
-
 blog_articles << {
   "title" => "The Future of Developer Environments at Shopify",
   "social_image" => "/images/generic.jpg",
