@@ -4,9 +4,9 @@
       <img class="h-full w-full object-cover md:w-48" src="<%= image %>" alt="<%= title %>">
     </div>
     <div class="p-8">
-      <div class="flex">
-        <div class="mr-2 self-center d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px;" src="<%= image %>" alt="<%= title %>">
+      <div class="flex flex-col">
+        <div class="mb-2 d-inline md:hidden">
+          <img class="object-cover rounded-full" style="<%= %w(width height max-width max-height min-width min-height).map { |att| "#{att}: 48px; " }.join %>" src="<%= image %>" alt="<%= title %>">
         </div>
         <div>
           <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold"><%= type %> &bull; <span class="font-light"><%= year %></span></div>
