@@ -9,8 +9,15 @@ require "json"
 
 # Start with devto
 puts "Pulling Dev.to"
+
 URL = "https://dev.to/api/articles?username=jules2689"
-resp = Net::HTTP.get_response(URI(URL))
+uri = URI.parse(URL)
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+request = Net::HTTP::Get.new(uri.request_uri)
+request["User-Agent"] = "jules2689/website"
+resp = http.request(request)
+
 blog_articles = JSON.parse(resp.body)
 blog_articles.each { |a| a["readable_publish_date"] = Time.parse(a["published_at"]).strftime('%b %d, %Y') }
 
