@@ -43,21 +43,21 @@ blog_articles << {
   "social_image" => "/images/generic.jpg",
   "description" => "In the previous posts we talked about our past experiences with Artisinal Systems, Boxen, and Vagrant as well as our current system using Railgun and Dev. In this post, we're going to talk about some future plans and give a few forward thoughts.",
   "readable_publish_date" => "January 14, 2018",
-  "url" => "https://devproductivity.io/the-future-of-developer-environments-at-shopify/index.html",
+  "url" => "https://devproductivity.github.io/devproductivity.io/the-future-of-developer-environments-at-shopify/index.html",
 }
 blog_articles << {
   "title" => "Current Developer Environments at Shopify",
-  "social_image" => "https://devproductivity.io/content/images/2018/01/Screen-Shot-2018-01-24-at-3.40.17-PM.png",
+  "social_image" => "https://devproductivity.github.io/devproductivity.io/content/images/2018/01/Screen-Shot-2018-01-24-at-3.40.17-PM.png",
   "description" => "In a previous post, we discussed the systems we have had throughout the history of Shopify. In this follow up post we'll talk about the system we run today. Finally, we will have another post that includes a few forward thinking questions about developer operations at Shopify.",
   "readable_publish_date" => "January 14, 2018",
-  "url" => "https://devproductivity.io/shopify-developer-environments-p2/index.html",
+  "url" => "https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p2/index.html",
 }
 blog_articles << {
   "title" => "Historical Developer Environments at Shopify",
   "social_image" => "/images/generic.jpg",
   "description" => "Development operations at Shopify has a long history that winds its way through various systems, technologies, and iterations. Over the course of these iterations we have learned a number of lessons, experienced ups and downs, and ultimately ended up with a system that performs well.",
   "readable_publish_date" => "January 14, 2018",
-  "url" => "https://devproductivity.io/shopify-developer-environments-p1.html",
+  "url" => "https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p1.html",
 }
 
 # Add Medium
