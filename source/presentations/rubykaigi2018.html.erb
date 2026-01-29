@@ -2,51 +2,45 @@
 title: "[RubyKaigi 2018] Avoiding Cognitive Overload: Tests For Productivity and Education"
 ---
 
-<div class="w-screen bg-left-top text-gray-50 bg-blue-700 dark:bg-gray-800 py-12">
-  <%= partial "partials/nav" %>
-
-  <div class="text-center w-screen lg:w-2/3 mx-auto">
-    <h1 class="uppercase text-4xl font-bold">Avoiding Cognitive Overload</br><small>Tests For Productivity and Education</small></h1>
-    <h5 class="uppercase  text-xl font-light">Ruby Kaigi 2018, Sendai, Japan</h5>
-    <br>
-    <div class="block md:flex">
+<div class="page-header">
+  <div class="wrapper">
+    <%= partial "partials/nav" %>
+    <h1 class="page-title">Avoiding Cognitive Overload<small>Tests For Productivity and Education</small></h1>
+    <p class="page-subtitle">Ruby Kaigi 2018, Sendai, Japan</p>
+    <div class="embed-wrap">
       <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTaBVMHq1T0ts_vM1yuxDFNhI1HtsnhnKjDLUv_ocibsOpopMblXmcgN-_aLxx-YA7Nprns5GRpiumo/pubembed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" width="100%" height="500" webkitallowfullscreen="true"></iframe>
       <iframe width="100%" height="500" src="https://www.youtube.com/embed/InFnu8bYi6s?rel=0" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </div>
 
-<div class="container w-screen lg:w-2/3 mx-auto text-gray-700 dark:text-gray-100">
-  <div class="text-center w-100 py-6">
-    <a class="underline" href="https://github.com/jules2689/extended_bundler-errors">Extended Errors Bundler Plugin</a> | 
-    <a class="underline" href="http://rubykaigi.org/2018/presentations/jules2689.html">Presentation Overview</a>
-  </div>
-
-  <div class="p-3">
+<section class="page-content">
+  <div class="wrapper">
+    <div class="link-row">
+      <a href="https://github.com/jules2689/extended_bundler-errors">Extended Errors Bundler Plugin</a> |
+      <a href="http://rubykaigi.org/2018/presentations/jules2689.html">Presentation Overview</a>
+    </div>
     <p>This presentation focused on testing, proper error messages, and JIT-based education.</p>
     <p>I included a number of examples in the presentation about these concepts, which I've also included below for your convenience.</p>
-  </div>
 
-  <div class="mt-12 flex flex-col lg:flex-row">
-    <a data-href="#tab1" class="tab active">Testing LOAD_PATH is not altered</a>
-    <a data-href="#tab2" class="tab"> Make sure all task references are valid</a>
-    <a data-href="#tab3" class="tab">Make sure gems aren't added back</a>
-    <a data-href="#tab4" class="tab">Git-based Gem ban</a>
-  </div>
+    <div class="tab-row">
+      <a data-href="#tab1" class="tab active">Testing LOAD_PATH is not altered</a>
+      <a data-href="#tab2" class="tab">Make sure all task references are valid</a>
+      <a data-href="#tab3" class="tab">Make sure gems aren't added back</a>
+      <a data-href="#tab4" class="tab">Git-based Gem ban</a>
+    </div>
 
-  <div class="tab-content active" id="tab1">
-    <%= partial 'kaigi/2018/load_path' %>
+    <div class="tab-content active" id="tab1">
+      <%= partial 'kaigi/2018/load_path' %>
+    </div>
+    <div class="tab-content" id="tab2">
+      <%= partial 'kaigi/2018/invalid_maintenance' %>
+    </div>
+    <div class="tab-content" id="tab3">
+      <%= partial 'kaigi/2018/removed_gems' %>
+    </div>
+    <div class="tab-content" id="tab4">
+      <%= partial 'kaigi/2018/git_gem_deprecation_list' %>
+    </div>
   </div>
-
-  <div class="tab-content" id="tab2">
-    <%= partial 'kaigi/2018/invalid_maintenance' %>
-  </div>
-
-  <div class="tab-content" id="tab3">
-    <%= partial 'kaigi/2018/removed_gems' %>
-  </div>
-
-  <div class="tab-content" id="tab4">
-    <%= partial 'kaigi/2018/git_gem_deprecation_list' %>
-  </div>
-</div>
+</section>

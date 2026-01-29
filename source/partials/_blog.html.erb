@@ -3,6 +3,7 @@
       partial "partials/card", locals: { 
         link: post.url,
         image: post.social_image,
+        image_title: post.social_image_alt,
         year: post.readable_publish_date,
         type: URI(post.url).hostname,
         title: post.title,

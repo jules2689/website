@@ -3,20 +3,37 @@
 require 'bundler/setup'
 require "ogp"
 require "net/http"
+require "openssl"
 require "uri"
 require "rss"
 require "json"
+
+# SSL cert store without CRL checking (avoids "unable to get certificate CRL" on macOS/Ruby 3.4+)
+def ssl_cert_store
+  @ssl_cert_store ||= begin
+    store = OpenSSL::X509::Store.new
+    store.set_default_paths
+    store
+  end
+end
+
+def https_get(uri, headers = {})
+  uri = URI(uri) if uri.is_a?(String)
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = (uri.scheme == "https")
+  if http.use_ssl?
+    http.cert_store = ssl_cert_store
+  end
+  request = Net::HTTP::Get.new(uri.request_uri)
+  headers.each { |k, v| request[k] = v }
+  http.request(request)
+end
 
 # Start with devto
 puts "Pulling Dev.to"
 
 URL = "https://dev.to/api/articles?username=jules2689"
-uri = URI.parse(URL)
-http = Net::HTTP.new(uri.host, uri.port)
-http.use_ssl = true
-request = Net::HTTP::Get.new(uri.request_uri)
-request["User-Agent"] = "jules2689/website"
-resp = http.request(request)
+resp = https_get(URL, "User-Agent" => "jules2689/website")
 
 blog_articles = JSON.parse(resp.body)
 blog_articles.each { |a| a["readable_publish_date"] = Time.parse(a["published_at"]).strftime('%b %d, %Y') }
@@ -40,7 +57,8 @@ blog_articles << {
 
 blog_articles << {
   "title" => "The Future of Developer Environments at Shopify",
-  "social_image" => "/images/generic.jpg",
+  "social_image" => "/images/monitor.jpg",
+  "social_image_alt" => "Photo by Rob Wingate on Unsplash (https://unsplash.com/photos/code-is-displayed-on-a-computer-monitor-zUrEj_OwLQM)",
   "description" => "In the previous posts we talked about our past experiences with Artisinal Systems, Boxen, and Vagrant as well as our current system using Railgun and Dev. In this post, we're going to talk about some future plans and give a few forward thoughts.",
   "readable_publish_date" => "January 14, 2018",
   "url" => "https://devproductivity.github.io/devproductivity.io/the-future-of-developer-environments-at-shopify/index.html",
@@ -54,7 +72,8 @@ blog_articles << {
 }
 blog_articles << {
   "title" => "Historical Developer Environments at Shopify",
-  "social_image" => "/images/generic.jpg",
+  "social_image" => "/images/monitor2.jpg",
+  "social_image_alt" => "Photo by David Schultz on Unsplash (https://unsplash.com/photos/black-flat-screen-computer-monitor-turned-on-near-blue-and-white-sky-SrewPUfo2c0)",
   "description" => "Development operations at Shopify has a long history that winds its way through various systems, technologies, and iterations. Over the course of these iterations we have learned a number of lessons, experienced ups and downs, and ultimately ended up with a system that performs well.",
   "readable_publish_date" => "January 14, 2018",
   "url" => "https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p1.html",
@@ -63,7 +82,7 @@ blog_articles << {
 # Add Medium
 puts "Pulling medium"
 MEDIUM_URL = "https://medium.com/feed/@jules2689"
-feed = RSS::Parser.parse(Net::HTTP.get_response(URI(MEDIUM_URL)).body)
+feed = RSS::Parser.parse(https_get(MEDIUM_URL).body)
 puts "Title: #{feed.channel.title}"
 feed.items.each do |item|
   puts "Item: #{item.title}"
@@ -71,14 +90,31 @@ feed.items.each do |item|
   url.query = nil
   puts url.to_s
   open_graph = begin
-    OGP::OpenGraph.new(Net::HTTP.get_response(url).body)
+    OGP::OpenGraph.new(https_get(url).body)
   rescue OGP::MissingAttributeError
     OpenStruct.new(image: OpenStruct.new(url: "/images/generic.jpg"))
   end
 
+  # Download image if it's not already local
+  extension = File.extname(open_graph.image.url)
+  if extension.empty?
+    open_graph = OpenStruct.new(image: OpenStruct.new(url: "/images/generic.jpg"))
+  end
+
+  if open_graph.image.url.start_with?('http')
+    image_filename = "/images/#{open_graph.image.url.split('/').last}"
+    if !File.exist?(image_filename)
+      path = File.expand_path("../../source/", __FILE__)
+      puts "Writing image to #{path}"
+      File.write(File.join(path, image_filename), https_get(open_graph.image.url).body)
+    end
+  else
+    image_filename = open_graph.image.url
+  end
+
   blog_articles << {
     "title" => item.title,
-    "social_image" => open_graph.image.url,
+    "social_image" => image_filename,
     "description" => item.content_encoded.gsub(/<\/?[^>]*>/, "")[0..140] + "...",
     "readable_publish_date" => item.pubDate.strftime('%b %d, %Y'), # TODO: Human Readable
     "url" => url

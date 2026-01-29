@@ -14,6 +14,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
     hljs.highlightBlock(block);
   });
 
+  // Copy-to-clipboard buttons for code blocks
+  document.querySelectorAll('pre code').forEach((block) => {
+    const pre = block.closest('pre');
+    if (!pre || pre.querySelector('.copy-code-btn')) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-code-btn';
+    btn.textContent = 'Copy';
+    btn.setAttribute('aria-label', 'Copy code');
+    btn.addEventListener('click', () => {
+      const text = block.textContent || '';
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1500);
+      });
+    });
+    pre.insertBefore(btn, pre.firstChild);
+  });
+
   document.querySelectorAll('.tab').forEach((tab) => {
     tab.addEventListener('click', function() {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'))
