@@ -13,9 +13,10 @@
   --content-bg: #f2f1ee;
   --text: #1a1a18;
   --text-muted: #6b6b66;
-  --accent: #3730a3;
-  --accent-bg: #4f46e5;
+  --accent: #6366f1;
+  --accent-bg: #6470b8;
   --accent-soft: #e0e7ff;
+  --accent-hero-hover: #c4c5f7;
   --border: #e8e6e3;
   --radius: 12px;
   --radius-lg: 20px;
@@ -30,7 +31,6 @@ html.dark {
   --text: #f0f0ee;
   --text-muted: #a8a8a2;
   --accent: #a5b4fc;
-  --accent-bg: #6470b8;
   --accent-soft: rgba(99, 102, 241, 0.18);
   --border: #3a3a36;
   --shadow: 0 2px 12px rgba(0,0,0,.3);
@@ -149,8 +149,8 @@ html.dark .hero::before {
 }
 
 .hero-links a:hover {
-  color: var(--accent) !important;
-  border-bottom-color: var(--accent);
+  color: var(--accent-hero-hover) !important;
+  border-bottom-color: var(--accent-hero-hover);
 }
 
 html.dark .hero h1 {
@@ -171,6 +171,11 @@ html.dark .hero .label {
 html.dark .hero-links a {
   color: var(--text);
   text-shadow: 0 1px 2px rgba(0,0,0,.85);
+}
+
+html.dark .hero-links a:hover {
+  color: var(--accent) !important;
+  border-bottom-color: var(--accent);
 }
 
 /* Sections */
