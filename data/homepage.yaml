@@ -1,5 +1,5 @@
 - link: "#"
-  image:  /images/dcs.jpg
+  image:  /images/dcs.png
   year: "2021"
   type: "Event"
   title: "DCS Industry Day"
@@ -8,7 +8,7 @@
     We're bringing in developers, data scientists, product managers, recruiters and other leading professionals from the industry to help students find jobs, internships, and network.
 
 - link: "https://csc491.dcsil.ca"
-  image: "https://avatars.githubusercontent.com/u/53465050?s=200&v=4"
+  image: "./images/dcsil-new.png"
   year: "2019-2023"
   type: "Teaching"
   title: "CSC491/2600 Instructor"

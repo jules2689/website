@@ -1,30 +1,40 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= current_page.data.title || "Julian Nadeau" %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "style" %>
     <%= stylesheet_link_tag "site" %>
     <%= javascript_include_tag "site.min" %>
     <link rel="icon" href="/favicon.ico">
   </head>
-  <body class="h-full w-full bg-gray-50 dark:bg-gray-800">
-    <div class="z-50" style="position: absolute; top: 1em; right: 2em;">
-       <button title="Turn on light mode" id="toggle-light" class="hidden uppercase p-3 flex items-center border border-white bg-blue-400 text-white max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 ">
-        <svg width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);"><path d="M15 2h2v3h-2z" fill="currentColor"></path><path d="M27 15h3v2h-3z" fill="currentColor"></path><path d="M15 27h2v3h-2z" fill="currentColor"></path><path d="M2 15h3v2H2z" fill="currentColor"></path><path d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z" fill="currentColor"></path><path d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z" fill="currentColor"></path><path d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z" fill="currentColor"></path><path d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z" fill="currentColor"></path><path d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z" fill="currentColor"></path></svg>
-      </button>
+  <body>
+    <button type="button" class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+      <svg class="icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      <svg class="icon-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+    </button>
 
-      <button title="Turn on dark mode" id="toggle-dark" class="hidden uppercase p-3 flex items-center bg-gray-900 text-blue-50 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 ">
-        <svg width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);"><path d="M15 2h2v3h-2z" fill="currentColor"></path><path d="M27 15h3v2h-3z" fill="currentColor"></path><path d="M15 27h2v3h-2z" fill="currentColor"></path><path d="M2 15h3v2H2z" fill="currentColor"></path><path d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z" fill="currentColor"></path><path d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z" fill="currentColor"></path><path d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z" fill="currentColor"></path><path d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z" fill="currentColor"></path><path d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z" fill="currentColor"></path></svg>
-      </button>
-    </div>
-   
     <%= yield %>
-    <div style="margin: 20px 0;" class="w-full text-center dark:text-gray-100 text-gray-800">
-      &copy; <span id="cp-year">2026</span> Julian Nadeau
-      <script>document.getElementById('cp-year').innerText = new Date().getFullYear();</script>
-    </div>
+
+    <footer>
+      <div class="wrapper">© <span id="cp-year">2026</span> Julian Nadeau</div>
+    </footer>
+    <script>
+      document.getElementById('cp-year').textContent = new Date().getFullYear();
+      (function() {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+          document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+      })();
+    </script>
   </body>
 </html>

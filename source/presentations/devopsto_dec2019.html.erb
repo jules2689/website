@@ -2,24 +2,23 @@
 title: "[DevOps TO Dec 2019] Avoiding Cognitive Overload: Tests For Productivity and Education"
 ---
 
-<div class="w-screen bg-left-top text-gray-50 bg-blue-700 dark:bg-gray-800 py-12">
-  <%= partial "partials/nav" %>
-
-  <div class="text-center w-screen lg:w-2/3 mx-auto">
-    <h1 class="uppercase text-4xl font-bold">Avoiding Cognitive Overload</br><small>Tests For Productivity and Education</small></h1>
-    <h5 class="uppercase  text-xl font-light">DevOps TO 2019, Toronto, Canada</h5>
-    <br>
-    <div class="flex">
+<div class="page-header">
+  <div class="wrapper">
+    <%= partial "partials/nav" %>
+    <h1 class="page-title">Avoiding Cognitive Overload<small>Tests For Productivity and Education</small></h1>
+    <p class="page-subtitle">DevOps TO 2019, Toronto, Canada</p>
+    <div class="embed-wrap">
       <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSu0ZDN0gGdQaVXxAIm9CXeRBPySdth9AfGttbidmE2OOQfnT7xMB4Wxim9J-WOxfl8LBk9Fvv9_olv/pubembed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" width="100%" height="500" webkitallowfullscreen="true"></iframe>
-       <iframe width="100%" height="500" src="https://www.youtube.com/embed/zyr0C40_DUY?rel=0" frameborder="0" allowfullscreen></iframe>
+      <iframe width="100%" height="500" src="https://www.youtube.com/embed/zyr0C40_DUY?rel=0" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </div>
 
-<div class="text-center w-screen py-12 text-gray-700 dark:text-gray-100">
-  <a class="underline" href="https://github.com/jules2689/extended_bundler-errors">Extended Errors Bundler Plugin</a>
-  <br>
-  <p>This is a shortened, re-written talk from my <a class="underline" href="/presentations/rubykaigi2018/">RubyKaigi 2018</a> talk.</p>
-  <p>This presentation focused on testing, proper error messages, and JIT-based education.</p>
-  <p>For examples of tests I speak about during this presentation, as well as other relevant examples, please see  my <a class="underline" href="/presentations/rubykaigi2018/">RubyKaigi 2018</a> talk.</a>
-</div>
+<section class="page-content">
+  <div class="wrapper">
+    <p class="link-row"><a href="https://github.com/jules2689/extended_bundler-errors">Extended Errors Bundler Plugin</a></p>
+    <p>This is a shortened, re-written talk from my <a href="<%= url_for('/presentations/rubykaigi2018/') %>">RubyKaigi 2018</a> talk.</p>
+    <p>This presentation focused on testing, proper error messages, and JIT-based education.</p>
+    <p>For examples of tests I speak about during this presentation, as well as other relevant examples, please see my <a href="<%= url_for('/presentations/rubykaigi2018/') %>">RubyKaigi 2018</a> talk.</p>
+  </div>
+</section>

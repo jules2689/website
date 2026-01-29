@@ -1,0 +1,44 @@
+# Middleman Website - Cursor Rules
+
+This is a **Middleman 4** static site. Follow these conventions when editing.
+
+## Project structure
+
+- **`config.rb`** – Middleman config (directory_indexes, asset_hash, relative_links, external Webpack pipeline).
+- **`source/`** – All templates and static assets. Files here become the built site.
+  - **`source/layouts/layout.erb`** – Main layout; use `<%= yield %>` for page content.
+  - **`source/partials/`** – Reusable ERB partials; names must start with `_` (e.g. `_header.html.erb`). Render with `<%= partial "partial_name" %>`.
+  - **`source/images/`** – Image assets; reference with `/images/filename.png` or `image_path`.
+- **`data/`** – YAML/JSON data files. Load in templates as `data.filename` (e.g. `data.homepage`, `data.blog`). No file extension in the name.
+- **`assets/`** – JS and CSS source for the **Webpack** pipeline (not served directly). Built output goes to `.tmp/dist` (dev) or `build/` (production).
+
+## Templating
+
+- **ERB** for all HTML templates. Use frontmatter (YAML between `---` lines) for page-specific data.
+- In templates: `current_page.data.title` for frontmatter, `data.homepage` for `data/homepage.yaml`.
+- **Helpers**: `stylesheet_link_tag "site"`, `javascript_include_tag "site.min"`, `image_path`, `partial "name"`.
+- **Directory indexes** are on: `/about` is served by `source/about.html.erb` or `source/about/index.html.erb`.
+
+## Adding or changing content
+
+- **New page**: Add `source/path.html.erb` or `source/path/index.html.erb`. Use the layout unless you set `layout: false` in frontmatter.
+- **New partial**: Add `source/partials/_name.html.erb`, render with `<%= partial "name" %>`.
+- **New data**: Add YAML/JSON under `data/`; access as `data.filename.key`.
+- **New image**: Put it in `source/images/` and link with `/images/filename.ext`.
+
+## Assets (JS/CSS)
+
+- JS lives in `assets/javascripts/`, CSS in `assets/stylesheets/`.
+- Build is handled by **Webpack** (see `config.rb`). Dev: `npm run start`, build: `npm run build`.
+- Layout references `stylesheet_link_tag "style"`, `"site"` and `javascript_include_tag "site.min"`; ensure Webpack outputs match these.
+
+## Commands
+
+- **Development**: `bundle exec middleman` (or `middleman server`). Webpack runs via the external pipeline.
+- **Build**: `bundle exec middleman build` – output in `build/`.
+
+## Style and conventions
+
+- Prefer **relative links** (config has `set :relative_links, true`).
+- Use **asset_hash** in production; avoid hardcoding hashed filenames.
+- Keep page-specific content in frontmatter or `data/`; keep layout and partials in `source/layouts/` and `source/partials/`.

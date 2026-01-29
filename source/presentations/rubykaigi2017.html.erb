@@ -2,39 +2,29 @@
 title: "[RubyKaigi 2017] Busting Performance Bottlenecks: Decreasing Ruby Boot time by 60%"
 ---
 
-<div class="w-screen bg-left-top text-gray-50 bg-blue-700 dark:bg-gray-800 py-12">
-  <%= partial "partials/nav" %>
-
-  <div class="text-center w-screen lg:w-2/3 mx-auto">
-    <h1 class="uppercase text-4xl font-bold">Busting Performance Bottlenecks</br><small>Decreasing Ruby Boot time by 60%</small></h1>
-    <h5 class="uppercase  text-xl font-light">Ruby Kaigi 2017, Hiroshima, Japan</h5>
-    <br>
-    <div class="block md:flex">
+<div class="page-header">
+  <div class="wrapper">
+    <%= partial "partials/nav" %>
+    <h1 class="page-title">Busting Performance Bottlenecks<small>Decreasing Ruby Boot time by 60%</small></h1>
+    <p class="page-subtitle">Ruby Kaigi 2017, Hiroshima, Japan</p>
+    <div class="embed-wrap">
       <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSedEf5lUDEWNVryXLEsnY9AqXKcUqmqt_Y0oqVDMduUnxDAYKyiM1jFc8GxS5T6CINmXirRJRTJxbc/pubembed?start=false&loop=false&delayms=10000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" width="100%" height="500" webkitallowfullscreen="true"></iframe>
       <iframe width="100%" height="500" src="https://www.youtube.com/embed/8BJKrx6rsM0?rel=0" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </div>
 
-<div class="container w-screen lg:w-2/3 mx-auto text-gray-700 dark:text-gray-100">
-  <div class="text-center w-100 py-6">
-    <a class="underline" href="https://github.com/jules2689/kaigi2017demo">Github Demo Repo</a> | 
-    <a class="underline" href="http://rubykaigi.org/2017/presentations/jules2689.html">Presentation Overview</a>
-  </div>
-
-  <%= partial 'kaigi/2017/timing_helper' %>
-  <br>
-  <%= partial 'kaigi/2017/aggregate' %>
-  <br>
-  <%= partial 'kaigi/2017/gantt' %>
-  <br>
-
-  <div>
+<section class="page-content">
+  <div class="wrapper">
+    <div class="link-row">
+      <a href="https://github.com/jules2689/kaigi2017demo">Github Demo Repo</a> |
+      <a href="http://rubykaigi.org/2017/presentations/jules2689.html">Presentation Overview</a>
+    </div>
+    <%= partial 'kaigi/2017/timing_helper' %>
+    <%= partial 'kaigi/2017/aggregate' %>
+    <%= partial 'kaigi/2017/gantt' %>
     <h3>Put it all together</h3>
-    
     <p>With all of these you can end up creating flow charts and gantt charts to determine slow paths in the code.</p>
-    <a href="/images/flowcharts.JPG">
-      <%= image_tag "/images/flowcharts_small.jpeg", width: "700px" %>
-    </a>
+    <p><a href="<%= image_path('flowcharts.JPG') %>"><%= image_tag 'flowcharts_small.jpeg', width: '700' %></a></p>
   </div>
-</div>
+</section>

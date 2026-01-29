@@ -4,30 +4,35 @@ title: Julian Nadeau
 
 <%= partial "partials/header" %>
 
-<div class="container px-4 lg:px-0 mx-auto my-12">
-  <div class="text-center">
-    <h2 class="text-4xl uppercase font-semibold mb-12 text-gray-800 dark:text-gray-100">Selected Highlights</h2>
+<section class="highlights">
+  <div class="wrapper">
+    <p class="section-label">Selected highlights</p>
+    <h2 class="section-title">Talks, teaching & projects</h2>
+    <div class="cards">
+      <% data.homepage.each do |entry| %>
+        <%=
+          partial "partials/card",
+            locals: {
+              link: entry.link,
+              image: entry.image,
+              image_attributes: entry.image_attributes,
+              year: entry.year,
+              type: entry.type,
+              title: entry.title,
+              description: entry.description
+            }
+        %>
+      <% end %>
+    </div>
   </div>
-  <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
-    <% data.homepage.each do |entry| %>
-      <%=
-        partial "partials/card",
-          locals: {
-            link: entry.link,
-            image: entry.image,
-            year: entry.year,
-            type: entry.type,
-            title: entry.title,
-            description: entry.description
-          }
-      %>
-    <% end %>
-  </div>
+</section>
 
-  <div class="text-center mt-24">
-    <h2 class="text-4xl uppercase font-semibold mb-12 text-gray-800 dark:text-gray-100">Blog Posts</h2>
+<section class="blog">
+  <div class="wrapper">
+    <p class="section-label">Writing</p>
+    <h2 class="section-title">Blog posts</h2>
+    <div class="cards">
+      <%= partial "partials/blog" %>
+    </div>
   </div>
-  <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
-    <%= partial "partials/blog" %>
-  </div>
-</div>
+</section>
