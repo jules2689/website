@@ -1,437 +1,354 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Julian Nadeau</title>
-    <link href="/style-51dbed7a.css" rel="stylesheet" />
-    <link href="/site-fa13a787.css" rel="stylesheet" />
-    <script src="/site.min-c47c0502.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="/style-e970c3e6.css" rel="stylesheet" />
+    <link href="/site-a4df8890.css" rel="stylesheet" />
+    <script src="/site.min-2a08cade.js"></script>
     <link rel="icon" href="/favicon.ico">
   </head>
-  <body class="h-full w-full bg-gray-50 dark:bg-gray-800">
-    <div class="z-50" style="position: absolute; top: 1em; right: 2em;">
-       <button title="Turn on light mode" id="toggle-light" class="hidden uppercase p-3 flex items-center border border-white bg-blue-400 text-white max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 ">
-        <svg width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);"><path d="M15 2h2v3h-2z" fill="currentColor"></path><path d="M27 15h3v2h-3z" fill="currentColor"></path><path d="M15 27h2v3h-2z" fill="currentColor"></path><path d="M2 15h3v2H2z" fill="currentColor"></path><path d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z" fill="currentColor"></path><path d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z" fill="currentColor"></path><path d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z" fill="currentColor"></path><path d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z" fill="currentColor"></path><path d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z" fill="currentColor"></path></svg>
-      </button>
+  <body>
+    <button type="button" class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+      <svg class="icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      <svg class="icon-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+    </button>
 
-      <button title="Turn on dark mode" id="toggle-dark" class="hidden uppercase p-3 flex items-center bg-gray-900 text-blue-50 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 ">
-        <svg width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);"><path d="M15 2h2v3h-2z" fill="currentColor"></path><path d="M27 15h3v2h-3z" fill="currentColor"></path><path d="M15 27h2v3h-2z" fill="currentColor"></path><path d="M2 15h3v2H2z" fill="currentColor"></path><path d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z" fill="currentColor"></path><path d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z" fill="currentColor"></path><path d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z" fill="currentColor"></path><path d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z" fill="currentColor"></path><path d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z" fill="currentColor"></path></svg>
-      </button>
-    </div>
-   
-    <div class="flex w-screen header-wrapper" > 
-  <div class="z-0 absolute w-screen h-full bg-left-top xl:bg-left-bottom bg-cover header" style="background-image: url('/images/header-86607d49.jpg')"></div>
-  <div class="z-50 w-screen lg:w-5/6 text-center sm:text-left sm:ml-12 md:ml-24 my-24 text-gray-900 dark:text-gray-200 antialiased">
-    <h1 class="text-5xl md:text-6xl font-bold uppercase">Julian Nadeau</h1>
-    <h2 class="text-2xl md:text-3xl font-light">Software Developer & University Instructor</h2>
-    <div class="flex mt-2 justify-center sm:justify-start">
-      <a class="pr-1" href="https://github.com/jules2689" title="GitHub"><i class="fab fa-github-square"></i> GitHub</a>
-      &bull;
-      <a class="pr-1 pl-1" href="http://www.linkedin.com/pub/julian-nadeau/49/1b0/721" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      &bull;
-      <a class="pr-1 pl-1" href="mailto:julian@jnadeau.ca" title="Email"><i class="fas fa-envelope-square"></i> Email</a>
-      &bull;
-      <a class="pl-1" href="/Resume.pdf" title="Resume"><i class="fas fa-file"></i> Resume</a>
-    </div>
+    <header class="hero" style="background-image: url('/images/header-86607d49.jpg');">
+  <div class="wrapper">
+    <p class="label">Software Developer & Educator</p>
+    <h1>Julian Nadeau</h1>
+    <p class="tagline">Staff-level developer. Educator and speaker. Building systems that scale and improving developer productivity.</p>
+    <nav class="hero-links">
+      <a href="https://github.com/jules2689" title="GitHub">GitHub</a>
+      <a href="http://www.linkedin.com/pub/julian-nadeau/49/1b0/721" title="LinkedIn">LinkedIn</a>
+      <a href="mailto:julian@jnadeau.ca" title="Email">Email</a>
+      <a href="Resume.pdf" title="Resume">Resume</a>
+    </nav>
   </div>
-</div>
+</header>
 
 
-<div class="container px-4 lg:px-0 mx-auto my-12">
-  <div class="text-center">
-    <h2 class="text-4xl uppercase font-semibold mb-12 text-gray-800 dark:text-gray-100">Selected Highlights</h2>
-  </div>
-  <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
-      <a href="#" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/dcs-875029c4.jpg" alt="DCS Industry Day">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/dcs-875029c4.jpg" alt="DCS Industry Day">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">Event &bull; <span class="font-light">2021</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">DCS Industry Day</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">Founded and organized the "Department of Computer Science Industry Day".
+<section class="highlights">
+  <div class="wrapper">
+    <p class="section-label">Selected highlights</p>
+    <h2 class="section-title">Talks, teaching & projects</h2>
+    <div class="cards">
+        <a href="#" class="card" >
+  <img class="card-image"
+    style=""
+    src="/images/dcs-236dabb9.png"
+      alt="DCS Industry Day"
+      title="DCS Industry Day"
+  />
+  <div class="card-body">
+    <p class="card-meta">Event <span>• 2021-2023</span></p>
+    <h3 class="card-title">DCS Industry Day</h3>
+    <p class="card-desc">Founded and organized the "Department of Computer Science Industry Day".
 We're bringing in developers, data scientists, product managers, recruiters and other leading professionals from the industry to help students find jobs, internships, and network.
 </p>
-    </div>
   </div>
 </a>
 
-      <a href="https://csc491.dcsil.ca" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="https://avatars.githubusercontent.com/u/53465050?s=200&v=4" alt="CSC491/2600 Instructor">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="https://avatars.githubusercontent.com/u/53465050?s=200&v=4" alt="CSC491/2600 Instructor">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">Teaching &bull; <span class="font-light">2019-2023</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">CSC491/2600 Instructor</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">University of Toronto’s Capstone Design Course through the Department of Computer Science Innovation Lab (DCSIL).
+        <a href="https://csc491.dcsil.ca" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    style=""
+    src="/images/dcsil-new-32ac5bed.png"
+      alt="CSC491/2600 Instructor"
+      title="CSC491/2600 Instructor"
+  />
+  <div class="card-body">
+    <p class="card-meta">Teaching <span>• 2019-2023</span></p>
+    <h3 class="card-title">CSC491/2600 Instructor</h3>
+    <p class="card-desc">University of Toronto’s Capstone Design Course through the Department of Computer Science Innovation Lab (DCSIL).
 This course exposes students to the core technologies, ideas, and processes in developing a startup.   
 </p>
-    </div>
   </div>
 </a>
 
-      <a href="/presentations/devopsto_dec2019/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/devopsto_header-3af76a59.png" alt="Avoiding Cognitive Overload">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/devopsto_header-3af76a59.png" alt="Avoiding Cognitive Overload">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">Public Speaking &bull; <span class="font-light">2019</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Avoiding Cognitive Overload</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">This is a shortened, re-written talk from my RubyKaigi 2018 talk.
+        <a href="/presentations/devopsto_dec2019/" class="card" >
+  <img class="card-image"
+    style=""
+    src="/images/devopsto_header-d79c2bf3.png"
+      alt="Avoiding Cognitive Overload"
+      title="Avoiding Cognitive Overload"
+  />
+  <div class="card-body">
+    <p class="card-meta">Public Speaking <span>• 2019</span></p>
+    <h3 class="card-title">Avoiding Cognitive Overload</h3>
+    <p class="card-desc">This is a shortened, re-written talk from my RubyKaigi 2018 talk.
 This presentation focused on testing, proper error messages, and JIT-based education.
 Delivered at DevOps TO 2019.
 </p>
-    </div>
   </div>
 </a>
 
-      <a href="/presentations/rubykaigi2018/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/kaigi_2018-4c384595.png" alt="Avoiding Cognitive Overload">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/kaigi_2018-4c384595.png" alt="Avoiding Cognitive Overload">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">Public Speaking &bull; <span class="font-light">2018</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Avoiding Cognitive Overload</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">A presentation on cognitive burdens of developers and strategies to mitigate these concerns, primarily in Ruby.
+        <a href="/presentations/rubykaigi2018/" class="card" >
+  <img class="card-image"
+    style=""
+    src="/images/kaigi_2018-12340c99.png"
+      alt="Avoiding Cognitive Overload"
+      title="Avoiding Cognitive Overload"
+  />
+  <div class="card-body">
+    <p class="card-meta">Public Speaking <span>• 2018</span></p>
+    <h3 class="card-title">Avoiding Cognitive Overload</h3>
+    <p class="card-desc">A presentation on cognitive burdens of developers and strategies to mitigate these concerns, primarily in Ruby.
 Delivered at RubyKaigi 2018 in Sendai, Japan
 </p>
-    </div>
   </div>
 </a>
 
-      <a href="/presentations/github_constellation_2018" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="images/github_constellation_2018-a878ad6a.png" alt="Git Issues at Scale">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="images/github_constellation_2018-a878ad6a.png" alt="Git Issues at Scale">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">Public Speaking &bull; <span class="font-light">2018</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Git Issues at Scale</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">A presentation on issues experienced in large git repoistories, particularly around cloning, pulling, and fetching.
+        <a href="/presentations/github_constellation_2018" class="card" >
+  <img class="card-image"
+    style=""
+    src="/images/github_constellation_2018-bf990667.png"
+      alt="Git Issues at Scale"
+      title="Git Issues at Scale"
+  />
+  <div class="card-body">
+    <p class="card-meta">Public Speaking <span>• 2018</span></p>
+    <h3 class="card-title">Git Issues at Scale</h3>
+    <p class="card-desc">A presentation on issues experienced in large git repoistories, particularly around cloning, pulling, and fetching.
 Delivered at GitHub Constellation 2018 in Toronto, Canada.
 </p>
-    </div>
   </div>
 </a>
 
-      <a href="/presentations/rubykaigi2017/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/kaigi_2017-0c09ee40.png" alt="Busting Performance Bottlenecks">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/kaigi_2017-0c09ee40.png" alt="Busting Performance Bottlenecks">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">Public Speaking &bull; <span class="font-light">2017</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Busting Performance Bottlenecks</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">A presentation on decreasing Ruby Boot time by 60% and work in the Bundler project.
+        <a href="/presentations/rubykaigi2017/" class="card" >
+  <img class="card-image"
+    style=""
+    src="/images/kaigi_2017-ef406123.png"
+      alt="Busting Performance Bottlenecks"
+      title="Busting Performance Bottlenecks"
+  />
+  <div class="card-body">
+    <p class="card-meta">Public Speaking <span>• 2017</span></p>
+    <h3 class="card-title">Busting Performance Bottlenecks</h3>
+    <p class="card-desc">A presentation on decreasing Ruby Boot time by 60% and work in the Bundler project.
 Delivered at RubyKaigi 2017 in Hiroshima, Japan
 </p>
-    </div>
   </div>
 </a>
 
-      <a href="/work/code_for_kids/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/cfk-e7b231de.png" alt="Code For Kids">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/cfk-e7b231de.png" alt="Code For Kids">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">Not-For-Profit &bull; <span class="font-light">2013-2015</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Code For Kids</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">Code For Kids was a Not For Profit (NFP) corporation that aimed to teach children aged 7-13 the basics of coding, technology and design.
+        <a href="/work/code_for_kids/" class="card" >
+  <img class="card-image"
+    style=""
+    src="/images/cfk-59132e08.png"
+      alt="Code For Kids"
+      title="Code For Kids"
+  />
+  <div class="card-body">
+    <p class="card-meta">Not-For-Profit <span>• 2013-2015</span></p>
+    <h3 class="card-title">Code For Kids</h3>
+    <p class="card-desc">Code For Kids was a Not For Profit (NFP) corporation that aimed to teach children aged 7-13 the basics of coding, technology and design.
 Founder 2013-2015.
 </p>
-    </div>
   </div>
 </a>
 
+    </div>
   </div>
+</section>
 
-  <div class="text-center mt-24">
-    <h2 class="text-4xl uppercase font-semibold mb-12 text-gray-800 dark:text-gray-100">Blog Posts</h2>
-  </div>
-  <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
-       <a href="https://github.blog/2021-01-25-improving-how-we-deploy-github/" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="https://github.blog/wp-content/uploads/2021/01/card.png?w=1200" alt="Improving how we deploy GitHub">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="https://github.blog/wp-content/uploads/2021/01/card.png?w=1200" alt="Improving how we deploy GitHub">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">github.blog &bull; <span class="font-light">January 25, 2021</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Improving how we deploy GitHub</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">As GitHub doubled it’s developer head count, tooling that worked for us no longer functioned in the same capacity. We aimed to improve the de...</p>
-    </div>
+<section class="blog">
+  <div class="wrapper">
+    <p class="section-label">Writing</p>
+    <h2 class="section-title">Blog posts</h2>
+    <div class="cards">
+         <a href="https://innorthernwoods.ca/" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="https://innorthernwoods.ca/images/bayside-watercolour-fa0b461c.png"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">innorthernwoods.ca <span>• January 1, 2026</span></p>
+    <h3 class="card-title">In Northern Woods</h3>
+    <p class="card-desc">A journey into sustainability, solar energy, and automation. Join me as I build a cabin in the Canadian Shield & harness the northern sun for...</p>
   </div>
 </a>
 
-   <a href="https://dev.to/jules2689/graphing-1000-repositories-to-identify-key-project-types-5di6" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg" alt="Graphing 1000 repositories to identify key project types">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg" alt="Graphing 1000 repositories to identify key project types">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">dev.to &bull; <span class="font-light">Apr 26, 2019</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Graphing 1000 repositories to identify key project types</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">What do you do when you need to identify a set of repos to test some big changes against, but you have a thousand to choose from? Answer: Bre...</p>
-    </div>
+   <a href="https://github.blog/2021-01-25-improving-how-we-deploy-github/" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="https://github.blog/wp-content/uploads/2021/01/card.png?w=1200"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">github.blog <span>• January 25, 2021</span></p>
+    <h3 class="card-title">Improving how we deploy GitHub</h3>
+    <p class="card-desc">As GitHub doubled it’s developer head count, tooling that worked for us no longer functioned in the same capacity. We aimed to improve the de...</p>
   </div>
 </a>
 
-   <a href="https://dev.to/jules2689/the-common-edge-case-all-dependency-managers-miss-in4" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg" alt="The common edge case all dependency managers miss">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg" alt="The common edge case all dependency managers miss">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">dev.to &bull; <span class="font-light">Apr 18, 2019</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">The common edge case all dependency managers miss</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">Most dependency managers miss a very common "edge case" that impacts all developers. Let's look at why this is the case and a solution to add...</p>
-    </div>
+   <a href="https://dev.to/jules2689/graphing-1000-repositories-to-identify-key-project-types-5di6" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">dev.to <span>• Apr 26, 2019</span></p>
+    <h3 class="card-title">Graphing 1000 repositories to identify key project types</h3>
+    <p class="card-desc">What do you do when you need to identify a set of repos to test some big changes against, but you have a thousand to choose from? Answer: Bre...</p>
   </div>
 </a>
 
-   <a href="https://devproductivity.github.io/devproductivity.io/the-future-of-developer-environments-at-shopify/index.html" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/generic-f0ef2efe.jpg" alt="The Future of Developer Environments at Shopify">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/generic-f0ef2efe.jpg" alt="The Future of Developer Environments at Shopify">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">devproductivity.github.io &bull; <span class="font-light">January 14, 2018</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">The Future of Developer Environments at Shopify</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">In the previous posts we talked about our past experiences with Artisinal Systems, Boxen, and Vagrant as well as our current system using Rai...</p>
-    </div>
+   <a href="https://dev.to/jules2689/the-common-edge-case-all-dependency-managers-miss-in4" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3otvb2z646ytpt1hl2rv.jpg"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">dev.to <span>• Apr 18, 2019</span></p>
+    <h3 class="card-title">The common edge case all dependency managers miss</h3>
+    <p class="card-desc">Most dependency managers miss a very common "edge case" that impacts all developers. Let's look at why this is the case and a solution to add...</p>
   </div>
 </a>
 
-   <a href="https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p2/index.html" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="https://devproductivity.github.io/devproductivity.io/content/images/2018/01/Screen-Shot-2018-01-24-at-3.40.17-PM.png" alt="Current Developer Environments at Shopify">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="https://devproductivity.github.io/devproductivity.io/content/images/2018/01/Screen-Shot-2018-01-24-at-3.40.17-PM.png" alt="Current Developer Environments at Shopify">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">devproductivity.github.io &bull; <span class="font-light">January 14, 2018</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Current Developer Environments at Shopify</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">In a previous post, we discussed the systems we have had throughout the history of Shopify. In this follow up post we'll talk about the syste...</p>
-    </div>
+   <a href="https://devproductivity.github.io/devproductivity.io/the-future-of-developer-environments-at-shopify/index.html" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="/images/monitor-e908aa46.jpg"
+      alt="Photo by Rob Wingate on Unsplash (https://unsplash.com/photos/code-is-displayed-on-a-computer-monitor-zUrEj_OwLQM)"
+      title="Photo by Rob Wingate on Unsplash (https://unsplash.com/photos/code-is-displayed-on-a-computer-monitor-zUrEj_OwLQM)"
+  />
+  <div class="card-body">
+    <p class="card-meta">devproductivity.github.io <span>• January 14, 2018</span></p>
+    <h3 class="card-title">The Future of Developer Environments at Shopify</h3>
+    <p class="card-desc">In the previous posts we talked about our past experiences with Artisinal Systems, Boxen, and Vagrant as well as our current system using Rai...</p>
   </div>
 </a>
 
-   <a href="https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p1.html" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/generic-f0ef2efe.jpg" alt="Historical Developer Environments at Shopify">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/generic-f0ef2efe.jpg" alt="Historical Developer Environments at Shopify">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">devproductivity.github.io &bull; <span class="font-light">January 14, 2018</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Historical Developer Environments at Shopify</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">Development operations at Shopify has a long history that winds its way through various systems, technologies, and iterations. Over the cours...</p>
-    </div>
+   <a href="https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p2/index.html" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="https://devproductivity.github.io/devproductivity.io/content/images/2018/01/Screen-Shot-2018-01-24-at-3.40.17-PM.png"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">devproductivity.github.io <span>• January 14, 2018</span></p>
+    <h3 class="card-title">Current Developer Environments at Shopify</h3>
+    <p class="card-desc">In a previous post, we discussed the systems we have had throughout the history of Shopify. In this follow up post we'll talk about the syste...</p>
   </div>
 </a>
 
-   <a href="https://medium.com/@jules2689/secrets-management-in-ios-applications-52795c254ec1" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/generic-f0ef2efe.jpg" alt="Secrets Management in iOS Applications">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/generic-f0ef2efe.jpg" alt="Secrets Management in iOS Applications">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">medium.com &bull; <span class="font-light">Dec 27, 2016</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Secrets Management in iOS Applications</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">Secrets in iOS applications can be a bit of an issue, especially when you intend to make a project public. The problem here is that there is ...</p>
-    </div>
+   <a href="https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p1.html" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="/images/monitor2-b2230141.jpg"
+      alt="Photo by David Schultz on Unsplash (https://unsplash.com/photos/black-flat-screen-computer-monitor-turned-on-near-blue-and-white-sky-SrewPUfo2c0)"
+      title="Photo by David Schultz on Unsplash (https://unsplash.com/photos/black-flat-screen-computer-monitor-turned-on-near-blue-and-white-sky-SrewPUfo2c0)"
+  />
+  <div class="card-body">
+    <p class="card-meta">devproductivity.github.io <span>• January 14, 2018</span></p>
+    <h3 class="card-title">Historical Developer Environments at Shopify</h3>
+    <p class="card-desc">Development operations at Shopify has a long history that winds its way through various systems, technologies, and iterations. Over the cours...</p>
   </div>
 </a>
 
-   <a href="https://shopify.engineering/how-to-set-up-your-own-mobile-ci-system" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="https://cdn.shopify.com/s/files/1/0779/4361/articles/Artboard_1-1.png?format=webp&v=1494617223&width=1024" alt="How to Set Up Your Own Mobile CI System">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="https://cdn.shopify.com/s/files/1/0779/4361/articles/Artboard_1-1.png?format=webp&v=1494617223&width=1024" alt="How to Set Up Your Own Mobile CI System">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">shopify.engineering &bull; <span class="font-light">June 15, 2016</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">How to Set Up Your Own Mobile CI System</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">Building a Dynamic Mobile CI System.&quot; Over the past few years the mobile development community has seen a dramatic shift towards the use...</p>
-    </div>
+   <a href="https://medium.com/@jules2689/secrets-management-in-ios-applications-52795c254ec1" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="/images/generic-f0ef2efe.jpg"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">medium.com <span>• Dec 27, 2016</span></p>
+    <h3 class="card-title">Secrets Management in iOS Applications</h3>
+    <p class="card-desc">Secrets in iOS applications can be a bit of an issue, especially when you intend to make a project public. The problem here is that there is ...</p>
   </div>
 </a>
 
-   <a href="https://medium.com/@jules2689/homebrew-ruby-and-gems-78d6c26b89e" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/generic-f0ef2efe.jpg" alt="Homebrew, Ruby, and Gems">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/generic-f0ef2efe.jpg" alt="Homebrew, Ruby, and Gems">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">medium.com &bull; <span class="font-light">Apr 11, 2016</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Homebrew, Ruby, and Gems</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">This article assumes you’ve read the main article already. As well as the provisioning a Mac article.By now, you have Mac OS X all setup and ...</p>
-    </div>
+   <a href="https://shopify.engineering/how-to-set-up-your-own-mobile-ci-system" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="https://cdn.shopify.com/s/files/1/0779/4361/articles/Artboard_1-1.png?format=webp&v=1494617223&width=1024"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">shopify.engineering <span>• June 15, 2016</span></p>
+    <h3 class="card-title">How to Set Up Your Own Mobile CI System</h3>
+    <p class="card-desc">Building a Dynamic Mobile CI System.&quot; Over the past few years the mobile development community has seen a dramatic shift towards the use...</p>
   </div>
 </a>
 
-   <a href="https://medium.com/@jules2689/xcode-ios-sdks-and-ios-simulators-for-ci-systems-2c0c33037796" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/generic-f0ef2efe.jpg" alt="Xcode, iOS SDKs, and iOS Simulators for CI Systems">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/generic-f0ef2efe.jpg" alt="Xcode, iOS SDKs, and iOS Simulators for CI Systems">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">medium.com &bull; <span class="font-light">Apr 10, 2016</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Xcode, iOS SDKs, and iOS Simulators for CI Systems</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">This article assumes you’ve read the main article already.Given that Xcode is required for iOS, both Xcode and iOS SDKs are important for an ...</p>
-    </div>
+   <a href="https://medium.com/@jules2689/homebrew-ruby-and-gems-78d6c26b89e" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="/images/generic-f0ef2efe.jpg"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">medium.com <span>• Apr 11, 2016</span></p>
+    <h3 class="card-title">Homebrew, Ruby, and Gems</h3>
+    <p class="card-desc">This article assumes you’ve read the main article already. As well as the provisioning a Mac article.By now, you have Mac OS X all setup and ...</p>
   </div>
 </a>
 
-   <a href="https://medium.com/@jules2689/provisioning-a-mac-os-x-system-for-ios-ci-2d4be04ed174" class="card w-full mx-auto bg-white dark:bg-gray-600 rounded-xl shadow-md overflow-hidden max-w-prose">
-  <div class="md:flex items-stretch h-full">
-    <div class="hidden md:block md:flex-shrink-0">
-      <img class="h-full w-full object-cover md:w-48" src="/images/generic-f0ef2efe.jpg" alt="Provisioning a Mac OS X system for iOS CI">
-    </div>
-    <div class="p-8">
-      <div class="flex flex-col">
-        <div class="mb-2 d-inline md:hidden">
-          <img class="object-cover rounded-full" style="width: 48px; height: 48px; max-width: 48px; max-height: 48px; min-width: 48px; min-height: 48px; " src="/images/generic-f0ef2efe.jpg" alt="Provisioning a Mac OS X system for iOS CI">
-        </div>
-        <div>
-          <div class="uppercase tracking-wide text-sm text-blue-700 dark:text-green-100 font-semibold">medium.com &bull; <span class="font-light">Apr 10, 2016</span></div>
-          <span class="block mt-1 text-lg leading-tight font-medium text-gray-800 dark:text-gray-100 hover:underline">Provisioning a Mac OS X system for iOS CI</span>
-        </div>
-      </div>
-      <p class="mt-2 text-gray-500 dark:text-gray-100">Make sure you take a look at the intro article first.Two ground rules — you must legally use Apple-branded hardware. This is a requirement in...</p>
-    </div>
+   <a href="https://medium.com/@jules2689/xcode-ios-sdks-and-ios-simulators-for-ci-systems-2c0c33037796" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="/images/generic-f0ef2efe.jpg"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">medium.com <span>• Apr 10, 2016</span></p>
+    <h3 class="card-title">Xcode, iOS SDKs, and iOS Simulators for CI Systems</h3>
+    <p class="card-desc">This article assumes you’ve read the main article already.Given that Xcode is required for iOS, both Xcode and iOS SDKs are important for an ...</p>
+  </div>
+</a>
+
+   <a href="https://medium.com/@jules2689/provisioning-a-mac-os-x-system-for-ios-ci-2d4be04ed174" class="card" target="_blank" rel="noopener">
+  <img class="card-image"
+    
+    src="/images/generic-f0ef2efe.jpg"
+      alt=""
+      title=""
+  />
+  <div class="card-body">
+    <p class="card-meta">medium.com <span>• Apr 10, 2016</span></p>
+    <h3 class="card-title">Provisioning a Mac OS X system for iOS CI</h3>
+    <p class="card-desc">Make sure you take a look at the intro article first.Two ground rules — you must legally use Apple-branded hardware. This is a requirement in...</p>
   </div>
 </a>
 
 
-  </div>
-</div>
-
-    <div style="margin: 20px 0;" class="w-full text-center dark:text-gray-100 text-gray-800">
-      &copy; <span id="cp-year">2026</span> Julian Nadeau
-      <script>document.getElementById('cp-year').innerText = new Date().getFullYear();</script>
     </div>
+  </div>
+</section>
+
+
+    <footer>
+      <div class="wrapper">© <span id="cp-year">2026</span> Julian Nadeau</div>
+    </footer>
+    <script>
+      document.getElementById('cp-year').textContent = new Date().getFullYear();
+      (function() {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+          document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -1,78 +1,82 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Code For Kids</title>
-    <link href="/style-51dbed7a.css" rel="stylesheet" />
-    <link href="/site-fa13a787.css" rel="stylesheet" />
-    <script src="/site.min-c47c0502.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="/style-e970c3e6.css" rel="stylesheet" />
+    <link href="/site-a4df8890.css" rel="stylesheet" />
+    <script src="/site.min-2a08cade.js"></script>
     <link rel="icon" href="/favicon.ico">
   </head>
-  <body class="h-full w-full bg-gray-50 dark:bg-gray-800">
-    <div class="z-50" style="position: absolute; top: 1em; right: 2em;">
-       <button title="Turn on light mode" id="toggle-light" class="hidden uppercase p-3 flex items-center border border-white bg-blue-400 text-white max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 ">
-        <svg width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);"><path d="M15 2h2v3h-2z" fill="currentColor"></path><path d="M27 15h3v2h-3z" fill="currentColor"></path><path d="M15 27h2v3h-2z" fill="currentColor"></path><path d="M2 15h3v2H2z" fill="currentColor"></path><path d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z" fill="currentColor"></path><path d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z" fill="currentColor"></path><path d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z" fill="currentColor"></path><path d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z" fill="currentColor"></path><path d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z" fill="currentColor"></path></svg>
-      </button>
+  <body>
+    <button type="button" class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+      <svg class="icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      <svg class="icon-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+    </button>
 
-      <button title="Turn on dark mode" id="toggle-dark" class="hidden uppercase p-3 flex items-center bg-gray-900 text-blue-50 max-w-max shadow-sm hover:shadow-lg rounded-full w-12 h-12 ">
-        <svg width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32" style="transform: rotate(360deg);"><path d="M15 2h2v3h-2z" fill="currentColor"></path><path d="M27 15h3v2h-3z" fill="currentColor"></path><path d="M15 27h2v3h-2z" fill="currentColor"></path><path d="M2 15h3v2H2z" fill="currentColor"></path><path d="M5.45 6.884l1.414-1.415l2.121 2.122l-1.414 1.414z" fill="currentColor"></path><path d="M23 7.58l2.121-2.12l1.414 1.414l-2.121 2.121z" fill="currentColor"></path><path d="M23.002 24.416l1.415-1.414l2.12 2.122l-1.413 1.414z" fill="currentColor"></path><path d="M5.47 25.13L7.59 23L9 24.42l-2.12 2.12l-1.41-1.41z" fill="currentColor"></path><path d="M16 8a8 8 0 1 0 8 8a8 8 0 0 0-8-8zm0 14a6 6 0 0 1 0-12z" fill="currentColor"></path></svg>
-      </button>
-    </div>
-   
-    <div class="w-screen bg-left-top text-gray-50 bg-blue-700 dark:bg-gray-800 py-12">
-  <div class="w-screen px-4 text-gray-50 block">
+    <div class="page-header">
+  <div class="wrapper">
+    <div class="page-back">
   <a href="/">← Back</a>
 </div>
 
-  <div class="text-center w-screen lg:w-2/3 mx-auto">
-    <h1 class="uppercase text-4xl font-bold">Code For Kids</h1>
-    <h5 class="uppercase  text-xl font-light">Founder | Not For Profit | 2013-2015</h5>
-    <br>
-    <div class="block md:flex">
+    <h1 class="page-title">Code For Kids</h1>
+    <p class="page-subtitle">Founder | Not For Profit | 2013-2015</p>
+    <div class="embed-wrap">
       <iframe width="100%" height="500" src="https://www.youtube.com/embed/NgTR6HPW2ec" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </div>
 
+<section class="page-content">
+  <div class="wrapper">
+    <h3>What is Code For Kids?</h3>
+    <p>Code For Kids was a Not For Profit (NFP) corporation that aimed to teach children aged 7-13 the basics of coding, technology and design.</p>
+    <p>Each event has a different focus so that children could learn about what they are most interested in. Want to learn how your favourite video game works? Maybe you want to learn how to build your own? We helped you accomplish that.</p>
+    <p>I believe in encouraging every child's natural curiosity and creativity by giving them the skills they need to explore this new digital world, which is why I founded Code For Kids in 2013.</p>
 
-<div class="py-12 mx-auto container w-screen lg:w-2/3 text-center text-gray-700 dark:text-gray-100">
-  <h3 class="font-2xl font-semibold">What is Code For Kids?</h3>
-  <p>Code For Kids was a Not For Profit (NFP) corporation that aimed to teach children aged 7-13 the basics of coding, technology and design.</p>
-  <p>Each event has a different focus so that children could learn about what they are most interested in. Want to learn how your favourite video game works? Maybe you want to learn how to build your own? We helped you accomplish that.</p>
-  <p>I believe in encouraging every child's natural curiosity and creativity by giving them the skills they need to explore this new digital world, which is why I founded Code For Kids in 2013.</p>
-
-  <div class="grid md:grid-cols-3 gap-4 py-12">
-    <div class="py-2 text-center flex flex-col border bg-white dark:bg-gray-600 rounded-xl shadow-md">
-      <div class="">
-        <img src="/images/cfk_icon-9bc4ea86.png" height="50" width="50" class="mx-auto" alt="" />
-        <a class="underline" href="http://codeforkids.myshopify.com/">Code For Kids Website</a>
+    <div class="card-grid">
+      <div class="card-tile">
+        <img src="/images/cfk_icon-9bc4ea86.png" height="50" width="50" style="display: block; margin: 0 auto 12px;" alt="" />
+        <a href="http://codeforkids.myshopify.com/">Code For Kids Website</a>
+      </div>
+      <div class="card-tile">
+        <h4 style="margin: 0 0 8px; font-size: 1.125rem;">600+ children</h4>
+        <p style="margin: 0;">were taught at dozens of our events</p>
+      </div>
+      <div class="card-tile">
+        <h4 style="margin: 0 0 8px; font-size: 1.125rem;">Montreal | Ottawa | Toronto<br>Waterloo | Kingston</h4>
+        <p style="margin: 0;">Cities that hosted our events</p>
       </div>
     </div>
 
-    <div class="py-2 text-center flex flex-col border bg-white dark:bg-gray-600 rounded-xl shadow-md">
-      <div class="">
-        <h2 class="text-lg font-semibold">600+ children</h2>
-        <p>were taught at dozens of our events</p>
-      </div>
-    </div>
-
-    <div class="py-2 text-center flex flex-col border bg-white dark:bg-gray-600 rounded-xl shadow-md">
-      <h4 class="text-lg font-semibold">Montreal | Ottawa | Toronto<br>Waterloo | Kingston</h4>
-      <p>Cities that hosted our events</p>
-    </div>
+    <h3>The Background</h3>
+    <p>The first Code For Kids (CFK) event was held in April 2013. It was a Scratch event aimed at 7-12 year olds. Scratch is a programming language created for kids and developed by MIT. It can be used to create basic video games. This is still one of our most popular events because the kids love being able to show off what they've made. In September of 2013, CFK was incorporated. This allowed us to expand and help more kids learn to code.</p>
+    <p>After 2 years, sponsorship from the Canadian Internet Registration Authority (CIRA), Google, Adobe, Shopify, CompTIA, and more - Code For Kids held its final event.</p>
+    <p>Remaining proceeds, laptops, and materials were donated to the Boys and Girls Club of Ottawa.</p>
   </div>
+</section>
 
-  <h3 class="font-2xl font-semibold">The Background</h3>
-  <p>The first Code For Kids (CFK) event was held in April 2013. It was a Scratch event aimed at 7-12 year olds. Scratch is a programming language created for kids and developed by MIT. It can be used to create basic video games. This is still one of our most popular events because the kids love being able to show off what they've made. In September of 2013, CFK was incorporated. This allowed us to expand and help more kids learn to code.</p>
-  <p>After 2 years, sponsorship from the Canadian Internet Registration Authority (CIRA), Google, Adobe, Shopify, CompTIA, and more - Code For Kids held its final event.</p>
-  <p>Remaining proceeds, laptops, and materials were donated to the Boys and Girls Club of Ottawa</p>
-</div>
 
-    <div style="margin: 20px 0;" class="w-full text-center dark:text-gray-100 text-gray-800">
-      &copy; <span id="cp-year">2026</span> Julian Nadeau
-      <script>document.getElementById('cp-year').innerText = new Date().getFullYear();</script>
-    </div>
+    <footer>
+      <div class="wrapper">© <span id="cp-year">2026</span> Julian Nadeau</div>
+    </footer>
+    <script>
+      document.getElementById('cp-year').textContent = new Date().getFullYear();
+      (function() {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) document.documentElement.classList.add('dark');
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+          document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+      })();
+    </script>
   </body>
 </html>
