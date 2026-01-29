@@ -4831,7 +4831,8 @@ video {
   --content-bg: #f2f1ee;
   --text: #1a1a18;
   --text-muted: #6b6b66;
-  --accent: #4f46e5;
+  --accent: #3730a3;
+  --accent-bg: #4f46e5;
   --accent-soft: #e0e7ff;
   --border: #e8e6e3;
   --radius: 12px;
@@ -4846,7 +4847,8 @@ html.dark{
   --content-bg: #1a1a18;
   --text: #f0f0ee;
   --text-muted: #a8a8a2;
-  --accent: #6470b8;
+  --accent: #a5b4fc;
+  --accent-bg: #6470b8;
   --accent-soft: rgba(99, 102, 241, 0.18);
   --border: #3a3a36;
   --shadow: 0 2px 12px rgba(0,0,0,.3);
@@ -5133,7 +5135,7 @@ html.dark .theme-toggle .icon-light{
 }
 
 .page-header{
-  background:var(--accent);
+  background:var(--accent-bg);
   color:#fff;
   padding:48px 0 56px
 }
