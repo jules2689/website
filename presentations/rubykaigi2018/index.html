@@ -338,7 +338,8 @@
 </div>
 
     <div style="margin: 20px 0;" class="w-full text-center dark:text-gray-100 text-gray-800">
-      &copy; 2024 Julian Nadeau
+      &copy; <span id="cp-year">2026</span> Julian Nadeau
+      <script>document.getElementById('cp-year').innerText = new Date().getFullYear();</script>
     </div>
   </body>
 </html>
