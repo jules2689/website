@@ -87,21 +87,21 @@ blog_articles << {
 }
 blog_articles << {
   "title" => "Homebrew, Ruby, and Gems",
-  "social_image" => "/images/generic.jpg",
+  "social_image" => "/images/brew.png",
   "description" => "This article assumes you’ve read the main article already. As well as the provisioning a Mac article.By now, you have Mac OS X all setup and ...",
   "readable_publish_date" => "Apr 11, 2016",
   "url" => "https://medium.com/@jules2689/homebrew-ruby-and-gems-78d6c26b89e"
 }
 blog_articles << {
   "title" => "Xcode, iOS SDKs, and iOS Simulators for CI Systems",
-  "social_image" => "/images/generic.jpg",
+  "social_image" => "/images/xcode.webp",
   "description" => "This article assumes you’ve read the main article already.Given that Xcode is required for iOS, both Xcode and iOS SDKs are important for an ...",
   "readable_publish_date" => "Apr 10, 2016",
   "url" => "https://medium.com/@jules2689/xcode-ios-sdks-and-ios-simulators-for-ci-systems-2c0c33037796"
 }
 blog_articles << {
   "title" => "Provisioning a Mac OS X system for iOS CI",
-  "social_image" => "/images/generic.jpg",
+  "social_image" => "/images/elcap.png",
   "description" => "Make sure you take a look at the intro article first.Two ground rules — you must legally use Apple-branded hardware. This is a requirement in...",
   "readable_publish_date" => "Apr 10, 2016",
   "url" => "https://medium.com/@jules2689/provisioning-a-mac-os-x-system-for-ios-ci-2d4be04ed174"
