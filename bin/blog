@@ -78,48 +78,34 @@ blog_articles << {
   "readable_publish_date" => "January 14, 2018",
   "url" => "https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p1.html",
 }
-
-# Add Medium
-puts "Pulling medium"
-MEDIUM_URL = "https://medium.com/feed/@jules2689"
-feed = RSS::Parser.parse(https_get(MEDIUM_URL).body)
-puts "Title: #{feed.channel.title}"
-feed.items.each do |item|
-  puts "Item: #{item.title}"
-  url = URI(item.link)
-  url.query = nil
-  puts url.to_s
-  open_graph = begin
-    OGP::OpenGraph.new(https_get(url).body)
-  rescue OGP::MissingAttributeError
-    OpenStruct.new(image: OpenStruct.new(url: "/images/generic.jpg"))
-  end
-
-  # Download image if it's not already local
-  extension = File.extname(open_graph.image.url)
-  if extension.empty?
-    open_graph = OpenStruct.new(image: OpenStruct.new(url: "/images/generic.jpg"))
-  end
-
-  if open_graph.image.url.start_with?('http')
-    image_filename = "/images/#{open_graph.image.url.split('/').last}"
-    if !File.exist?(image_filename)
-      path = File.expand_path("../../source/", __FILE__)
-      puts "Writing image to #{path}"
-      File.write(File.join(path, image_filename), https_get(open_graph.image.url).body)
-    end
-  else
-    image_filename = open_graph.image.url
-  end
-
-  blog_articles << {
-    "title" => item.title,
-    "social_image" => image_filename,
-    "description" => item.content_encoded.gsub(/<\/?[^>]*>/, "")[0..140] + "...",
-    "readable_publish_date" => item.pubDate.strftime('%b %d, %Y'), # TODO: Human Readable
-    "url" => url
-  }
-end
+blog_articles << {
+  "title" => "Secrets Management in iOS Applications",
+  "social_image" => "/images/generic.jpg",
+  "description" => "Secrets in iOS applications can be a bit of an issue, especially when you intend to make a project public. The problem here is that there is ...",
+  "readable_publish_date" => "Dec 27, 2016",
+  "url" => "https://medium.com/@jules2689/secrets-management-in-ios-applications-52795c254ec1"
+}
+blog_articles << {
+  "title" => "Homebrew, Ruby, and Gems",
+  "social_image" => "/images/generic.jpg",
+  "description" => "This article assumes you’ve read the main article already. As well as the provisioning a Mac article.By now, you have Mac OS X all setup and ...",
+  "readable_publish_date" => "Apr 11, 2016",
+  "url" => "https://medium.com/@jules2689/homebrew-ruby-and-gems-78d6c26b89e"
+}
+blog_articles << {
+  "title" => "Xcode, iOS SDKs, and iOS Simulators for CI Systems",
+  "social_image" => "/images/generic.jpg",
+  "description" => "This article assumes you’ve read the main article already.Given that Xcode is required for iOS, both Xcode and iOS SDKs are important for an ...",
+  "readable_publish_date" => "Apr 10, 2016",
+  "url" => "https://medium.com/@jules2689/xcode-ios-sdks-and-ios-simulators-for-ci-systems-2c0c33037796"
+}
+blog_articles << {
+  "title" => "Provisioning a Mac OS X system for iOS CI",
+  "social_image" => "/images/generic.jpg",
+  "description" => "Make sure you take a look at the intro article first.Two ground rules — you must legally use Apple-branded hardware. This is a requirement in...",
+  "readable_publish_date" => "Apr 10, 2016",
+  "url" => "https://medium.com/@jules2689/provisioning-a-mac-os-x-system-for-ios-ci-2d4be04ed174"
+}
 
 puts "Sorting posts by published date"
 blog_articles = blog_articles.sort_by { |a| -Time.parse(a["readable_publish_date"]).to_i }
