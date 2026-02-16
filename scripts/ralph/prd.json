@@ -68,7 +68,7 @@
       "description": "per the title",
       "acceptanceCriteria": [],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "notes": ""
     },
     {

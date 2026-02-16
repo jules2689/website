@@ -55,3 +55,11 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - Middleman ERB partials do not have Rails' local_assigns; use defined?(var_name) to check optional locals to avoid NameError during build.
   - To show context-dependent UI in a shared partial (e.g. icon on blog index but not homepage), pass an optional local from the calling template (e.g. show_external_icon: true) and guard with defined? in the partial.
 ---
+## 2026-02-16 - 006
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Made the blog index page three columns instead of two: `.blog .cards` now uses `grid-template-columns: repeat(3, 1fr)` with responsive breakpoints (2 cols at 900px, 1 col at 560px). Widened blog section wrapper to 1100px so three columns fit.
+- Files changed: assets/stylesheets/site.css.scss (blog .cards three-column grid + media queries, section.blog.page-content .wrapper max-width 1100px), source/AGENTS.md (blog index three-column note), scripts/ralph/prd.json, scripts/ralph/progress.txt.
+- **Learnings for future iterations:**
+  - Blog index card grid is scoped with `.blog .cards`; override `.page-content .wrapper` for blog only with `section.blog.page-content .wrapper` so the cards container is wide enough for three columns (1100px matches main .wrapper).
+  - Dev server failed (port 4567 in use); build output and CSS structure were used to verify. Playwright cannot access localhost per progress log.
+---

@@ -277,7 +277,22 @@ section {
   line-height: 1.5;
 }
 
-.blog .cards { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+/* Blog index: three columns; narrower min so three fit in wrapper */
+.blog .cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .blog .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .blog .cards {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* Footer */
 footer {
@@ -399,6 +414,11 @@ html.dark .theme-toggle .icon-light { display: none; }
 
 .page-content .wrapper {
   max-width: 900px;
+}
+
+/* Blog index uses full width for three-column card grid */
+section.blog.page-content .wrapper {
+  max-width: 1100px;
 }
 
 .page-content p,
