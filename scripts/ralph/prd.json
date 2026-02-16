@@ -113,6 +113,17 @@
       "priority": 1,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "011",
+      "title": "Use design skill to improve the blog index page",
+      "description": "Use the design skill to improve the entire layout of the blog index page, the tags and your filters as well as just the overall index is not super well laid out.",
+      "acceptanceCriteria": [
+        "Better layout"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
     }
   ]
 }

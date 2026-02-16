@@ -2,6 +2,7 @@
 Started: Sun Feb 15 21:03:05 EST 2026
 
 ## Codebase Patterns
+- Blog index layout: Use `.blog-index-layout` grid (sidebar + main); sidebar (`.blog-sidebar`) sticky, main (`.blog-main`) for card grid; responsive: sidebar becomes horizontal strip then single column.
 - Optional partial locals: In Middleman ERB partials use `defined?(variable_name)` to check for optional locals; `local_assigns` is not available (Rails-only).
 - Sticky footer: Body uses `min-height: 100vh; display: flex; flex-direction: column`. Main content (e.g. `.page-content`) gets `flex: 1 1 auto`; footer gets `flex-shrink: 0` and minimal padding so it stays at bottom and content fills the rest.
 - Hero-style header (non-solid): Use same background image as home (e.g. `image_path("header.jpg")`) and replicate `.hero::before`/`.hero::after` gradient overlays in a scoped class (e.g. `.page-header-hero`); keep `.wrapper` with `position: relative; z-index: 1` so text sits above overlay. Gradient bottom color must be `var(--content-bg)` (not `var(--bg)`) so it matches `.page-content` and avoids white vs off-white seam in light mode.
@@ -95,4 +96,12 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - External post tags in data.blog: support both array (tags: ["a","b"]) and comma string; entry_tags in config.rb checks tag_list first, then tags as array, then tags split by comma. Use array in JSON to avoid string-split edge cases.
   - Blog filter is client-side (no proxy pages); cards have data-year and data-tags (space-separated); inline script toggles pill active state and card visibility. Year filter uses entry date year from merged_blog_posts.
   - Browser verification: dev server on 4567, Playwright confirmed tag/year pills and filtering (e.g. "devops" narrows to 6 posts).
+---
+## 2026-02-16 - 011
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Improved blog index layout: sidebar + main grid. Filters (tag/year) moved into a sticky sidebar (`.blog-sidebar`) with card styling; main content (`.blog-main`) holds the three-column card grid. Responsive: sidebar becomes horizontal two-column strip on tablet, single column on small screens. "No results" message styled as a dashed-border card. Pills use clearer labels (All tags / All years) and improved hover/active states.
+- Files changed: source/blog/index.html.erb (blog-index-layout, blog-sidebar, blog-main structure; sidebar section titles), assets/stylesheets/site.css.scss (blog-index-layout grid, blog-sidebar sticky + card style, responsive breakpoints, blog-no-results styling), source/AGENTS.md (blog index layout pattern), scripts/ralph/prd.json, scripts/ralph/progress.txt.
+- **Learnings for future iterations:**
+  - Blog index layout: use a grid wrapper (e.g. `.blog-index-layout`) with sidebar column (fixed width) + main (1fr); sidebar can be sticky with top offset for scroll. On narrow viewports, switch to single column and optionally make sidebar a horizontal grid so tag/year sections sit side by side.
+  - Playwright verified at http://localhost:4567/blog/: sidebar visible with "Filter by tag" / "Filter by year", pills work (e.g. devops filter), cards display in grid.
 ---

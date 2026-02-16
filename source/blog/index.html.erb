@@ -11,28 +11,29 @@ title: Blog
 </div>
 
 <section class="blog page-content">
-  <div class="wrapper">
-    <div class="blog-filters" role="navigation" aria-label="Blog filters">
-      <div class="blog-filter-group">
-        <span class="blog-filter-label">Tag</span>
+  <div class="wrapper blog-index-layout">
+    <aside class="blog-sidebar" role="navigation" aria-label="Blog filters">
+      <div class="blog-sidebar-section">
+        <h3 class="blog-sidebar-title">Filter by tag</h3>
         <div class="blog-filter-tags">
-          <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="tag" data-value="">All</button>
+          <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="tag" data-value="">All tags</button>
           <% all_blog_tags.each do |tag| %>
             <button type="button" class="blog-filter-pill" data-filter="tag" data-value="<%= tag %>"><%= tag %></button>
           <% end %>
         </div>
       </div>
-      <div class="blog-filter-group">
-        <span class="blog-filter-label">Year</span>
+      <div class="blog-sidebar-section">
+        <h3 class="blog-sidebar-title">Filter by year</h3>
         <div class="blog-filter-tags">
-          <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="year" data-value="">All</button>
+          <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="year" data-value="">All years</button>
           <% all_blog_years.each do |year| %>
             <button type="button" class="blog-filter-pill" data-filter="year" data-value="<%= year %>"><%= year %></button>
           <% end %>
         </div>
       </div>
-    </div>
-    <div class="cards" id="blog-cards">
+    </aside>
+    <div class="blog-main">
+      <div class="cards" id="blog-cards">
       <% posts = merged_blog_posts %>
       <% if posts.any? %>
         <% posts.each do |entry| %>
@@ -42,7 +43,8 @@ title: Blog
         <p class="card-desc">No posts yet. Check back soon.</p>
       <% end %>
     </div>
-    <p class="blog-no-results hidden" id="blog-no-results" aria-live="polite">No posts match the selected filters.</p>
+      <p class="blog-no-results hidden" id="blog-no-results" aria-live="polite">No posts match the selected filters.</p>
+    </div>
   </div>
 </section>
 
