@@ -79,3 +79,10 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
 - **Learnings for future iterations:**
   - In light mode, --bg is #fafaf8 and --content-bg is #f2f1ee; .page-content uses --content-bg. Hero gradients that transition into the content area must end with var(--content-bg) so the transition is seamless; using var(--bg) causes a white/off-white seam.
 ---
+## 2026-02-15 - 009
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Removed redundant "Writing" and "Posts" section label/title from the blog index page; the header already shows "Blog" and "Writing & posts", so the duplicate section-label and section-title were removed.
+- Files changed: source/blog/index.html.erb (removed .section-label and .section-title block), source/AGENTS.md (note about no duplicate titles on blog index), scripts/ralph/prd.json, scripts/ralph/progress.txt.
+- **Learnings for future iterations:**
+  - Blog index intentionally has no section-label/section-title in the content area to avoid duplicate titles with the page header.
+---

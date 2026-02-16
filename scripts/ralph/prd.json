@@ -90,6 +90,15 @@
       "priority": 1,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "009",
+      "title": "too many titles on index page",
+      "description": "Writing\n\nPosts\n\nRemove these",
+      "acceptanceCriteria": [],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
     }
   ]
 }
