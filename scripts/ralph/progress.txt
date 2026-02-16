@@ -2,6 +2,7 @@
 Started: Sun Feb 15 21:03:05 EST 2026
 
 ## Codebase Patterns
+- Sticky footer: Body uses `min-height: 100vh; display: flex; flex-direction: column`. Main content (e.g. `.page-content`) gets `flex: 1 1 auto`; footer gets `flex-shrink: 0` and minimal padding so it stays at bottom and content fills the rest.
 - Blog: Use middleman-blog; articles live in `source/blog/` as `YYYY-MM-DD-slug.html.markdown` with YAML front matter (`title`, optional `date`, `description`, `social_image`). Access in templates via `blog.articles`; home page Writing section uses `partials/_blog.html.erb` which shows local posts then `data.blog` (external).
 - Blog index: With prefix "blog", the blog index template is `source/blog/index.html.erb` (served at `/blog/`). Use `page-header` + `partial "partials/nav"` and the same `.section-label`, `.section-title`, `.cards` + card partial as the home page for consistent layout.
 - Inner pages: Use `page-header` (accent background), `partial "partials/nav"` (Home + Blog), `page-title`, `page-subtitle`, then `section.page-content` with `.wrapper`. Nav partial supports multiple links; style with `.page-back` (flex gap).
@@ -27,4 +28,12 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - With blog.prefix = "blog" and directory_indexes, the blog index is source/blog/index.html.erb; middleman-blog does not auto-create it—add the file so /blog/ exists. Article layout is controlled by blog.layout in config; use current_article in the layout for article title/date.
   - Inner pages use page-header + partial "partials/nav"; nav partial can contain multiple links (e.g. ← Home, Blog); .page-back flex gap styles them in a row.
   - Browser verification: Playwright MCP cannot access localhost or file://; build output was inspected to confirm blog index and article pages render correctly.
+---
+## 2026-02-16 - 003
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Fixed blog page footer: footer is now fixed at bottom with minimal height; main content (page-content) fills the rest via flex layout.
+- Files changed: assets/stylesheets/site.css.scss (body flex column, min-height 100vh; .page-content flex: 1 1 auto; footer flex-shrink: 0, padding 16px), source/AGENTS.md (sticky footer pattern), scripts/ralph/prd.json, scripts/ralph/progress.txt.
+- **Learnings for future iterations:**
+  - Sticky footer: use body as flex column with min-height 100vh; give the main content wrapper (e.g. .page-content) flex: 1 1 auto and footer flex-shrink: 0 with small padding so content takes majority and footer stays at bottom.
+  - Same layout applies to both blog index and article pages since both use blog_layout and include a section with class page-content.
 ---

@@ -25,6 +25,17 @@
       "priority": 1,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "003",
+      "title": "blog page footer is like half the page",
+      "description": "Blog page footer is like half the page, make it a reasonable and fixed size at the bottom of the page and the content take up the majority.",
+      "acceptanceCriteria": [
+        "The butter is fixed and at the bottom it takes up as minimal space as needed and the blog page takes up the rest."
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
     }
   ]
 }
