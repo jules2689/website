@@ -2,6 +2,7 @@
 Started: Sun Feb 15 21:03:05 EST 2026
 
 ## Codebase Patterns
+- Optional partial locals: In Middleman ERB partials use `defined?(variable_name)` to check for optional locals; `local_assigns` is not available (Rails-only).
 - Sticky footer: Body uses `min-height: 100vh; display: flex; flex-direction: column`. Main content (e.g. `.page-content`) gets `flex: 1 1 auto`; footer gets `flex-shrink: 0` and minimal padding so it stays at bottom and content fills the rest.
 - Blog: Use middleman-blog; articles live in `source/blog/` as `YYYY-MM-DD-slug.html.markdown` with YAML front matter (`title`, optional `date`, `description`, `social_image`). For a single date-sorted list of local + external posts, use the `merged_blog_posts` helper (config.rb `helpers do`); render each entry with `partial "partials/blog_post_card"` and `locals: { entry: entry }`.
 - Blog index: With prefix "blog", the blog index template is `source/blog/index.html.erb` (served at `/blog/`). Use `page-header` + `partial "partials/nav"` and the same `.section-label`, `.section-title`, `.cards` + card partial as the home page for consistent layout.
@@ -45,4 +46,12 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - Use `helpers do ... end` in config.rb so methods are available in ERB; `merged_blog_posts` returns array of { date:, local: true/false, article: or post: }.
   - External post dates: prefer published_timestamp/published_at (ISO), fallback to readable_publish_date (parsed with Time.parse); use both symbol and string keys for data.blog entries.
   - Blog index and home Writing section both use the same helper and partial for consistent, date-sorted display; no separate "local then external" blocks.
+---
+## 2026-02-15 - 005
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Added external-link icon for external blog posts on the blog index only; homepage Writing section unchanged (no icons).
+- Files changed: source/partials/_card.html.erb (optional external_icon, inline SVG), source/partials/_blog_post_card.html.erb (show_external when show_external_icon passed), source/blog/index.html.erb (pass show_external_icon: true), assets/stylesheets/site.css.scss (.card-title-external, card-title flex), source/AGENTS.md (optional locals + external icon note), scripts/ralph/prd.json, scripts/ralph/progress.txt.
+- **Learnings for future iterations:**
+  - Middleman ERB partials do not have Rails' local_assigns; use defined?(var_name) to check optional locals to avoid NameError during build.
+  - To show context-dependent UI in a shared partial (e.g. icon on blog index but not homepage), pass an optional local from the calling template (e.g. show_external_icon: true) and guard with defined? in the partial.
 ---

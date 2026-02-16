@@ -49,6 +49,38 @@
       "priority": 1,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "005",
+      "title": "For external blog posts out of the website, add a little external icon.",
+      "description": "For the title,",
+      "acceptanceCriteria": [
+        "I have the external icon on all blog posts when looking at the blog index view.",
+        "Icons are not added on the homepage."
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "006",
+      "title": "Make the blog index page three columns not two",
+      "description": "per the title",
+      "acceptanceCriteria": [],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "007",
+      "title": "The header is just a solid color right now which is kind of ugly. Take my home page header and use that instead.",
+      "description": "Use a better image on the blog index page so it's not just a solid color. Use my home page as an inspiration. Use Playwright to validate.",
+      "acceptanceCriteria": [
+        "Blog index page is not a solid header."
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
     }
   ]
 }

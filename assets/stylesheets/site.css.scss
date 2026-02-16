@@ -259,6 +259,15 @@ section {
   margin: 0 0 8px;
   line-height: 1.3;
   color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-title-external {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  vertical-align: middle;
 }
 
 .card-desc {

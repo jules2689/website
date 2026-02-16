@@ -18,7 +18,7 @@ title: Blog
       <% posts = merged_blog_posts %>
       <% if posts.any? %>
         <% posts.each do |entry| %>
-          <%= partial "partials/blog_post_card", locals: { entry: entry } %>
+          <%= partial "partials/blog_post_card", locals: { entry: entry, show_external_icon: true } %>
         <% end %>
       <% else %>
         <p class="card-desc">No posts yet. Check back soon.</p>

@@ -1,4 +1,5 @@
-<%# Renders one post from merged_blog_posts: entry is { date:, local:, article: or post: } %>
+<%# Renders one post from merged_blog_posts: entry is { date:, local:, article: or post: }. Optional local show_external_icon: true (blog index only). %>
+<% show_external = defined?(show_external_icon) && show_external_icon %>
 <% if entry[:local] %>
   <% article = entry[:article] %>
   <% desc = article.data[:description].to_s.presence; desc = article.summary(140).to_s.gsub(/<[^>]+>/, "").tr("\n", " ").strip + "..." if desc.blank? %>
@@ -20,6 +21,7 @@
     year: post.readable_publish_date,
     type: URI(post.url).hostname,
     title: post.title,
-    description: post.description.to_s.length > 143 ? post.description[0..140] + "..." : post.description.to_s
+    description: post.description.to_s.length > 143 ? post.description[0..140] + "..." : post.description.to_s,
+    external_icon: show_external
   } %>
 <% end %>

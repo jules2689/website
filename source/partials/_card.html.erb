@@ -12,7 +12,14 @@
   />
   <div class="card-body">
     <p class="card-meta"><%= type %> <span>• <%= year %></span></p>
-    <h3 class="card-title"><%= title %></h3>
+    <h3 class="card-title">
+      <%= title %>
+      <% if defined?(external_icon) && external_icon %>
+        <span class="card-title-external" aria-hidden="true" title="External link">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </span>
+      <% end %>
+    </h3>
     <% if defined?(description) %><p class="card-desc"><%= description %></p><% end %>
   </div>
 </a>
