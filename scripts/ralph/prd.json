@@ -13,6 +13,18 @@
       "priority": 1,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "002",
+      "title": "Blog page looks terrible",
+      "description": "The blog page looks absolutely terrible. There's no nav bar, there's no editing, there's nothing useful here. You need to use the PlayWright MCP server in order to figure out the login style of the home page and then design a blog page around that using the web design skill.",
+      "acceptanceCriteria": [
+        "Blog page has a navigation and has a good layout.",
+        "The layout is consistent with a typical blog that takes into account the design of the overall web page. Specifically the home page."
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
     }
   ]
 }

@@ -316,6 +316,9 @@ html.dark .theme-toggle .icon-light { display: none; }
 .page-back {
   margin-bottom: 24px;
   text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
 }
 
 .page-back a {

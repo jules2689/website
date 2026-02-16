@@ -3,6 +3,8 @@ Started: Sun Feb 15 21:03:05 EST 2026
 
 ## Codebase Patterns
 - Blog: Use middleman-blog; articles live in `source/blog/` as `YYYY-MM-DD-slug.html.markdown` with YAML front matter (`title`, optional `date`, `description`, `social_image`). Access in templates via `blog.articles`; home page Writing section uses `partials/_blog.html.erb` which shows local posts then `data.blog` (external).
+- Blog index: With prefix "blog", the blog index template is `source/blog/index.html.erb` (served at `/blog/`). Use `page-header` + `partial "partials/nav"` and the same `.section-label`, `.section-title`, `.cards` + card partial as the home page for consistent layout.
+- Inner pages: Use `page-header` (accent background), `partial "partials/nav"` (Home + Blog), `page-title`, `page-subtitle`, then `section.page-content` with `.wrapper`. Nav partial supports multiple links; style with `.page-back` (flex gap).
 - Data: Use `data/homepage.yaml` for highlights cards, `data/blog.json` for external writing links. Load in templates as `data.homepage`, `data.blog`.
 - Partials: Live in `source/partials/` with leading `_`; render with `partial "partials/name"`. Card partial expects `link`, `image`, `year`, `type`, `title`, optional `description`, `image_title`, `image_attributes`.
 - Quality: No Rubocop in Gemfile; `bundle exec middleman build` is the main verification. npm test is a placeholder (exit 1).
@@ -16,4 +18,13 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - middleman-blog expects articles under `source/blog/` when prefix is "blog"; sources pattern is `{year}-{month}-{day}-{title}.html` (file extension is separate, e.g. .markdown).
   - Writing section shows local blog articles first, then data.blog; card partial needs description to be plain text (strip HTML from article.summary when no front matter description).
   - Build succeeds; dev server may fail if port 4567 is in use (environment-specific).
+---
+## 2026-02-16 - 002
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Implemented blog page redesign: blog index at `/blog/` with navigation, page-header, and card layout consistent with home page; blog articles use blog_layout with nav, title, date, and page-content; added Blog link to home hero and nav partial (Home + Blog).
+- Files changed: source/blog/index.html.erb (new), source/partials/_nav.html.erb (Home + Blog links), source/partials/_header.html.erb (Blog in hero-links), source/layouts/blog_layout.erb (new), config.rb (blog.layout = blog_layout), source/AGENTS.md, assets/stylesheets/site.css.scss (page-back flex), progress.txt, prd.json.
+- **Learnings for future iterations:**
+  - With blog.prefix = "blog" and directory_indexes, the blog index is source/blog/index.html.erb; middleman-blog does not auto-create it—add the file so /blog/ exists. Article layout is controlled by blog.layout in config; use current_article in the layout for article title/date.
+  - Inner pages use page-header + partial "partials/nav"; nav partial can contain multiple links (e.g. ← Home, Blog); .page-back flex gap styles them in a row.
+  - Browser verification: Playwright MCP cannot access localhost or file://; build output was inspected to confirm blog index and article pages render correctly.
 ---

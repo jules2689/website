@@ -1,0 +1,38 @@
+---
+title: Blog
+---
+
+<div class="page-header">
+  <div class="wrapper">
+    <%= partial "partials/nav" %>
+    <h1 class="page-title">Blog</h1>
+    <p class="page-subtitle">Writing &amp; posts</p>
+  </div>
+</div>
+
+<section class="blog page-content">
+  <div class="wrapper">
+    <p class="section-label">Writing</p>
+    <h2 class="section-title">Posts</h2>
+    <div class="cards">
+      <% if defined?(blog) && blog.articles.any? %>
+        <% blog.articles.each do |article| %>
+          <% desc = article.data[:description].to_s.presence; desc = article.summary(140).to_s.gsub(/<[^>]+>/, "").tr("\n", " ").strip + "..." if desc.blank? %>
+          <%=
+            partial "partials/card", locals: {
+              link: article.url,
+              image: article.data[:social_image].to_s.presence || "/images/generic.jpg",
+              image_title: article.data[:social_image_alt],
+              year: article.date.strftime('%b %d, %Y'),
+              type: "Blog",
+              title: article.title,
+              description: desc.to_s
+            }
+          %>
+        <% end %>
+      <% else %>
+        <p class="card-desc">No posts yet. Check back soon.</p>
+      <% end %>
+    </div>
+  </div>
+</section>
