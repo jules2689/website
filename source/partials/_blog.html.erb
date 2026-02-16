@@ -1,31 +1,4 @@
-<%# Local markdown posts (source/blog/*.html.markdown) - shown first %>
-<% if defined?(blog) && blog.articles.any? %>
-  <% blog.articles.each do |article| %>
-    <% desc = article.data[:description].to_s.presence; desc = article.summary(140).to_s.gsub(/<[^>]+>/, "").tr("\n", " ").strip + "..." if desc.blank? %>
-    <%=
-      partial "partials/card", locals: {
-        link: article.url,
-        image: article.data[:social_image].to_s.presence || "/images/generic.jpg",
-        image_title: article.data[:social_image_alt],
-        year: article.date.strftime('%b %d, %Y'),
-        type: "Blog",
-        title: article.title,
-        description: desc.to_s
-      }
-    %>
-  <% end %>
-<% end %>
-<%# External posts (data/blog.json) %>
-<% data.blog.each do |post| %>
-   <%=
-      partial "partials/card", locals: {
-        link: post.url,
-        image: post.social_image,
-        image_title: post.social_image_alt,
-        year: post.readable_publish_date,
-        type: URI(post.url).hostname,
-        title: post.title,
-        description: post.description.to_s.length > 143 ? post.description[0..140] + "..." : post.description.to_s
-      }
-    %>
+<%# Merged posts: local blog articles + data.blog, sorted by date (newest first) %>
+<% merged_blog_posts.each do |entry| %>
+  <%= partial "partials/blog_post_card", locals: { entry: entry } %>
 <% end %>

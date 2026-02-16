@@ -3,7 +3,7 @@ Started: Sun Feb 15 21:03:05 EST 2026
 
 ## Codebase Patterns
 - Sticky footer: Body uses `min-height: 100vh; display: flex; flex-direction: column`. Main content (e.g. `.page-content`) gets `flex: 1 1 auto`; footer gets `flex-shrink: 0` and minimal padding so it stays at bottom and content fills the rest.
-- Blog: Use middleman-blog; articles live in `source/blog/` as `YYYY-MM-DD-slug.html.markdown` with YAML front matter (`title`, optional `date`, `description`, `social_image`). Access in templates via `blog.articles`; home page Writing section uses `partials/_blog.html.erb` which shows local posts then `data.blog` (external).
+- Blog: Use middleman-blog; articles live in `source/blog/` as `YYYY-MM-DD-slug.html.markdown` with YAML front matter (`title`, optional `date`, `description`, `social_image`). For a single date-sorted list of local + external posts, use the `merged_blog_posts` helper (config.rb `helpers do`); render each entry with `partial "partials/blog_post_card"` and `locals: { entry: entry }`.
 - Blog index: With prefix "blog", the blog index template is `source/blog/index.html.erb` (served at `/blog/`). Use `page-header` + `partial "partials/nav"` and the same `.section-label`, `.section-title`, `.cards` + card partial as the home page for consistent layout.
 - Inner pages: Use `page-header` (accent background), `partial "partials/nav"` (Home + Blog), `page-title`, `page-subtitle`, then `section.page-content` with `.wrapper`. Nav partial supports multiple links; style with `.page-back` (flex gap).
 - Data: Use `data/homepage.yaml` for highlights cards, `data/blog.json` for external writing links. Load in templates as `data.homepage`, `data.blog`.
@@ -36,4 +36,13 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
 - **Learnings for future iterations:**
   - Sticky footer: use body as flex column with min-height 100vh; give the main content wrapper (e.g. .page-content) flex: 1 1 auto and footer flex-shrink: 0 with small padding so content takes majority and footer stays at bottom.
   - Same layout applies to both blog index and article pages since both use blog_layout and include a section with class page-content.
+---
+## 2026-02-16 - 004
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Mixed manually entered blog posts (data/blog.json) into the blog as pseudo posts: single merged list with local middleman-blog articles, sorted by date (newest first). External posts link out to their host (target="_blank"); local posts use relative URLs.
+- Files changed: config.rb (helpers: merged_blog_posts, parsed_external_post_date), source/partials/_blog.html.erb (use merged_blog_posts + blog_post_card), source/partials/_blog_post_card.html.erb (new), source/blog/index.html.erb (use merged_blog_posts + blog_post_card), source/AGENTS.md (merged-posts pattern), scripts/ralph/progress.txt (Codebase Patterns + log), scripts/ralph/prd.json (004 passes: true).
+- **Learnings for future iterations:**
+  - Use `helpers do ... end` in config.rb so methods are available in ERB; `merged_blog_posts` returns array of { date:, local: true/false, article: or post: }.
+  - External post dates: prefer published_timestamp/published_at (ISO), fallback to readable_publish_date (parsed with Time.parse); use both symbol and string keys for data.blog entries.
+  - Blog index and home Writing section both use the same helper and partial for consistent, date-sorted display; no separate "local then external" blocks.
 ---

@@ -15,20 +15,10 @@ title: Blog
     <p class="section-label">Writing</p>
     <h2 class="section-title">Posts</h2>
     <div class="cards">
-      <% if defined?(blog) && blog.articles.any? %>
-        <% blog.articles.each do |article| %>
-          <% desc = article.data[:description].to_s.presence; desc = article.summary(140).to_s.gsub(/<[^>]+>/, "").tr("\n", " ").strip + "..." if desc.blank? %>
-          <%=
-            partial "partials/card", locals: {
-              link: article.url,
-              image: article.data[:social_image].to_s.presence || "/images/generic.jpg",
-              image_title: article.data[:social_image_alt],
-              year: article.date.strftime('%b %d, %Y'),
-              type: "Blog",
-              title: article.title,
-              description: desc.to_s
-            }
-          %>
+      <% posts = merged_blog_posts %>
+      <% if posts.any? %>
+        <% posts.each do |entry| %>
+          <%= partial "partials/blog_post_card", locals: { entry: entry } %>
         <% end %>
       <% else %>
         <p class="card-desc">No posts yet. Check back soon.</p>

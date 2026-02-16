@@ -36,6 +36,19 @@
       "priority": 1,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "004",
+      "title": "Mix in the manually entered blog posts as pseudo blog posts inside of the actual blog itself.",
+      "description": "I have a number of blog posts imported from other sources like Medium and Dev.TO. I need these to be kind of mixed into my blog posts. We have dates and everything already. We just kind of need to make these pseudo blog posts with the inside the middleman software. But the linking goes out to the actual application that that thing is hosted on.",
+      "acceptanceCriteria": [
+        "All blog posts in the manually entered config are injected into the vlog.",
+        "Blog posts and manually entered Config based blog posts are interspersed and sorted correctly by date.",
+        "All blog functionality works with these manually entered config based blogs."
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
     }
   ]
 }

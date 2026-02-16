@@ -12,6 +12,30 @@ activate :blog do |blog|
   blog.summary_separator = /READMORE/
 end
 
+# Helpers: merged blog posts (local + data.blog) for use in blog index and home Writing section
+helpers do
+  def merged_blog_posts
+    local = (blog.articles rescue []).map { |a| { date: a.date.to_time, local: true, article: a } }
+    external = (data.blog || []).map do |post|
+      time = parsed_external_post_date(post)
+      { date: time, local: false, post: post }
+    end
+    (local + external).sort_by { |e| -e[:date].to_i }
+  end
+
+  def parsed_external_post_date(post)
+    str = post[:published_timestamp] || post["published_timestamp"] || post[:published_at] || post["published_at"]
+    return Time.parse(str) if str && !str.to_s.empty?
+    str = post[:readable_publish_date] || post["readable_publish_date"].to_s
+    return Time.now if str.to_s.empty?
+    begin
+      Time.parse(str)
+    rescue ArgumentError
+      Time.now
+    end
+  end
+end
+
 # Per-page layout changes
 page '/*.xml', layout: false
 page '/*.json', layout: false
