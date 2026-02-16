@@ -342,6 +342,97 @@ html.dark .theme-toggle .icon-light { display: none; }
   padding: 48px 0 56px;
 }
 
+/* Blog index: same hero image + overlay as home page (not solid color) */
+.page-header-hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg);
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+
+.page-header-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg,
+    rgba(0,0,0,.6) 0%,
+    rgba(0,0,0,.5) 25%,
+    rgba(0,0,0,.35) 45%,
+    rgba(0,0,0,.15) 65%,
+    transparent 78%,
+    var(--bg) 98%);
+  pointer-events: none;
+}
+
+.page-header-hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+html.dark .page-header-hero::after {
+  opacity: 1;
+  background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.4) 45%, transparent 72%);
+}
+
+html.dark .page-header-hero::before {
+  background: linear-gradient(180deg,
+    rgba(0,0,0,.7) 0%,
+    rgba(0,0,0,.5) 35%,
+    rgba(0,0,0,.25) 55%,
+    transparent 70%,
+    var(--bg) 92%);
+}
+
+.page-header-hero .wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.page-header-hero .page-title {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.9), 0 2px 12px rgba(0,0,0,.85), 0 4px 24px rgba(0,0,0,.7);
+}
+
+.page-header-hero .page-subtitle {
+  color: #fff;
+  opacity: 0.95;
+  text-shadow: 0 1px 2px rgba(0,0,0,.9), 0 2px 8px rgba(0,0,0,.85);
+}
+
+.page-header-hero .page-back a {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.9), 0 2px 6px rgba(0,0,0,.8);
+}
+
+.page-header-hero .page-back a:hover {
+  color: var(--accent-hero-hover);
+}
+
+html.dark .page-header-hero .page-title {
+  color: var(--text);
+  text-shadow: 0 1px 3px rgba(0,0,0,.8), 0 2px 12px rgba(0,0,0,.7);
+}
+
+html.dark .page-header-hero .page-subtitle {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.9), 0 2px 8px rgba(0,0,0,.8);
+}
+
+html.dark .page-header-hero .page-back a {
+  color: var(--text);
+  text-shadow: 0 1px 2px rgba(0,0,0,.85);
+}
+
+html.dark .page-header-hero .page-back a:hover {
+  color: var(--accent);
+}
+
 .page-header .wrapper {
   text-align: center;
 }

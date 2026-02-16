@@ -4,6 +4,7 @@ Started: Sun Feb 15 21:03:05 EST 2026
 ## Codebase Patterns
 - Optional partial locals: In Middleman ERB partials use `defined?(variable_name)` to check for optional locals; `local_assigns` is not available (Rails-only).
 - Sticky footer: Body uses `min-height: 100vh; display: flex; flex-direction: column`. Main content (e.g. `.page-content`) gets `flex: 1 1 auto`; footer gets `flex-shrink: 0` and minimal padding so it stays at bottom and content fills the rest.
+- Hero-style header (non-solid): Use same background image as home (e.g. `image_path("header.jpg")`) and replicate `.hero::before`/`.hero::after` gradient overlays in a scoped class (e.g. `.page-header-hero`); keep `.wrapper` with `position: relative; z-index: 1` so text sits above overlay.
 - Blog: Use middleman-blog; articles live in `source/blog/` as `YYYY-MM-DD-slug.html.markdown` with YAML front matter (`title`, optional `date`, `description`, `social_image`). For a single date-sorted list of local + external posts, use the `merged_blog_posts` helper (config.rb `helpers do`); render each entry with `partial "partials/blog_post_card"` and `locals: { entry: entry }`.
 - Blog index: With prefix "blog", the blog index template is `source/blog/index.html.erb` (served at `/blog/`). Use `page-header` + `partial "partials/nav"` and the same `.section-label`, `.section-title`, `.cards` + card partial as the home page for consistent layout.
 - Inner pages: Use `page-header` (accent background), `partial "partials/nav"` (Home + Blog), `page-title`, `page-subtitle`, then `section.page-content` with `.wrapper`. Nav partial supports multiple links; style with `.page-back` (flex gap).
@@ -62,4 +63,12 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
 - **Learnings for future iterations:**
   - Blog index card grid is scoped with `.blog .cards`; override `.page-content .wrapper` for blog only with `section.blog.page-content .wrapper` so the cards container is wide enough for three columns (1100px matches main .wrapper).
   - Dev server failed (port 4567 in use); build output and CSS structure were used to verify. Playwright cannot access localhost per progress log.
+---
+## 2026-02-15 - 007
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Replaced blog index solid-color header with home-page-style hero: same header.jpg background image and gradient overlays (light/dark), with compact padding. Blog index is no longer a solid header.
+- Files changed: source/blog/index.html.erb (page-header-hero class + inline background-image), assets/stylesheets/site.css.scss (.page-header-hero and ::before/::after gradients, wrapper z-index, title/subtitle/nav text shadows and colors for light/dark), source/AGENTS.md (blog header hero pattern), scripts/ralph/prd.json, scripts/ralph/progress.txt.
+- **Learnings for future iterations:**
+  - To match the home hero on another page: use the same image_path("header.jpg") and replicate .hero::before/.hero::after gradient rules in a scoped class (e.g. .page-header-hero) so the header is not a solid color; keep .wrapper position: relative; z-index: 1 so text sits above the overlay.
+  - Browser verification: navigated to http://localhost:4567/blog/ with Playwright; screenshot confirmed landscape hero image, "Blog" title, and "WRITING & POSTS" subtitle visible (acceptance: blog index page is not a solid header).
 ---
