@@ -79,7 +79,7 @@ body .blog.page-content {
     rgba(0,0,0,.35) 45%,
     rgba(0,0,0,.15) 65%,
     transparent 78%,
-    var(--bg) 98%);
+    var(--content-bg) 98%);
   pointer-events: none;
 }
 
@@ -362,7 +362,7 @@ html.dark .theme-toggle .icon-light { display: none; }
     rgba(0,0,0,.35) 45%,
     rgba(0,0,0,.15) 65%,
     transparent 78%,
-    var(--bg) 98%);
+    var(--content-bg) 98%);
   pointer-events: none;
 }
 

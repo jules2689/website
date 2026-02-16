@@ -81,6 +81,15 @@
       "priority": 1,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "008",
+      "title": "background of blog index on light mode is messed",
+      "description": "Gradient and light mode background are different. One is white and one is off white. The off white is better here - use that to fix up the gradient",
+      "acceptanceCriteria": [],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
     }
   ]
 }
