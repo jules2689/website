@@ -12,7 +12,27 @@ title: Blog
 
 <section class="blog page-content">
   <div class="wrapper">
-    <div class="cards">
+    <div class="blog-filters" role="navigation" aria-label="Blog filters">
+      <div class="blog-filter-group">
+        <span class="blog-filter-label">Tag</span>
+        <div class="blog-filter-tags">
+          <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="tag" data-value="">All</button>
+          <% all_blog_tags.each do |tag| %>
+            <button type="button" class="blog-filter-pill" data-filter="tag" data-value="<%= tag %>"><%= tag %></button>
+          <% end %>
+        </div>
+      </div>
+      <div class="blog-filter-group">
+        <span class="blog-filter-label">Year</span>
+        <div class="blog-filter-tags">
+          <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="year" data-value="">All</button>
+          <% all_blog_years.each do |year| %>
+            <button type="button" class="blog-filter-pill" data-filter="year" data-value="<%= year %>"><%= year %></button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="cards" id="blog-cards">
       <% posts = merged_blog_posts %>
       <% if posts.any? %>
         <% posts.each do |entry| %>
@@ -22,5 +42,52 @@ title: Blog
         <p class="card-desc">No posts yet. Check back soon.</p>
       <% end %>
     </div>
+    <p class="blog-no-results hidden" id="blog-no-results" aria-live="polite">No posts match the selected filters.</p>
   </div>
 </section>
+
+<script>
+(function() {
+  var cards = document.getElementById("blog-cards");
+  var noResults = document.getElementById("blog-no-results");
+  if (!cards || !noResults) return;
+  var cardEls = cards.querySelectorAll(".card[data-year][data-tags]");
+  var pills = document.querySelectorAll(".blog-filter-pill");
+  var activeTag = "";
+  var activeYear = "";
+
+  function updatePillStates() {
+    pills.forEach(function(p) {
+      var filter = p.getAttribute("data-filter");
+      var value = p.getAttribute("data-value") || "";
+      var isActive = (filter === "tag" && value === activeTag) || (filter === "year" && value === activeYear);
+      p.classList.toggle("blog-filter-pill--active", isActive);
+    });
+  }
+
+  function filterCards() {
+    var visible = 0;
+    cardEls.forEach(function(el) {
+      var elTags = (el.getAttribute("data-tags") || "").toLowerCase().split(/\s+/).filter(Boolean);
+      var elYear = el.getAttribute("data-year") || "";
+      var matchTag = !activeTag || elTags.indexOf(activeTag.toLowerCase()) !== -1;
+      var matchYear = !activeYear || elYear === String(activeYear);
+      var show = matchTag && matchYear;
+      el.style.display = show ? "" : "none";
+      if (show) visible++;
+    });
+    noResults.classList.toggle("hidden", visible > 0);
+    updatePillStates();
+  }
+
+  pills.forEach(function(pill) {
+    pill.addEventListener("click", function() {
+      var filter = pill.getAttribute("data-filter");
+      var value = pill.getAttribute("data-value") || "";
+      if (filter === "tag") activeTag = value;
+      if (filter === "year") activeYear = value;
+      filterCards();
+    });
+  });
+})();
+</script>

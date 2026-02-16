@@ -25,6 +25,7 @@ This is a **Middleman 4** static site. Follow these conventions when editing.
 - **New partial**: Add `source/partials/_name.html.erb`, render with `<%= partial "name" %>`.
 - **New data**: Add YAML/JSON under `data/`; access as `data.filename.key`.
 - **New image**: Put it in `source/images/` and link with `/images/filename.ext`.
+- **Blog posts**: In `source/blog/` use front matter: `title`, optional `date`, `description`, `social_image`, and **tags** (YAML list, e.g. `tags: [devops, ruby]`). Tags appear on the blog index and are used for filtering; add tags to new posts by default.
 
 ## Assets (JS/CSS)
 

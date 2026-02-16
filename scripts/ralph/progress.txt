@@ -9,7 +9,8 @@ Started: Sun Feb 15 21:03:05 EST 2026
 - Blog index: With prefix "blog", the blog index template is `source/blog/index.html.erb` (served at `/blog/`). Use `page-header` + `partial "partials/nav"` and the same `.section-label`, `.section-title`, `.cards` + card partial as the home page for consistent layout.
 - Inner pages: Use `page-header` (accent background), `partial "partials/nav"` (Home + Blog), `page-title`, `page-subtitle`, then `section.page-content` with `.wrapper`. Nav partial supports multiple links; style with `.page-back` (flex gap).
 - Data: Use `data/homepage.yaml` for highlights cards, `data/blog.json` for external writing links. Load in templates as `data.homepage`, `data.blog`.
-- Partials: Live in `source/partials/` with leading `_`; render with `partial "partials/name"`. Card partial expects `link`, `image`, `year`, `type`, `title`, optional `description`, `image_title`, `image_attributes`.
+- Partials: Live in `source/partials/` with leading `_`; render with `partial "partials/name"`. Card partial expects `link`, `image`, `year`, `type`, `title`, optional `description`, `image_title`, `image_attributes`, optional `tags` (array), optional `data_year`/`data_tags` for blog filter JS.
+- Blog tags: Local posts use front matter `tags: [a, b]`; external posts in data.blog use `tags` (array or comma string) or `tag_list`. Helpers `entry_tags(entry)`, `all_blog_tags`, `all_blog_years` in config.rb. Blog index filter is client-side: cards have `data-year` and `data-tags` (space-separated); pills set active tag/year and JS hides non-matching cards.
 - Quality: No Rubocop in Gemfile; `bundle exec middleman build` is the main verification. npm test is a placeholder (exit 1).
 
 ---
@@ -85,4 +86,13 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
 - Files changed: source/blog/index.html.erb (removed .section-label and .section-title block), source/AGENTS.md (note about no duplicate titles on blog index), scripts/ralph/prd.json, scripts/ralph/progress.txt.
 - **Learnings for future iterations:**
   - Blog index intentionally has no section-label/section-title in the content area to avoid duplicate titles with the page header.
+---
+## 2026-02-16 - 010
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Implemented tags on blog posts: added tags to all manually configured entries in data/blog.json (array or preserved tag_list); added front matter tags support and documented in .cursorrules; blog index shows tag pills and year pills with client-side filtering; cards display tags and have data-year/data-tags for filter JS.
+- Files changed: data/blog.json (tags for each entry), config.rb (entry_tags, all_blog_tags, all_blog_years), source/partials/_blog_post_card.html.erb (tags + data attrs), source/partials/_card.html.erb (tags display + data-year/data-tags), source/blog/index.html.erb (filter UI + script), assets/stylesheets/site.css.scss (blog-filters, card-tags), .cursorrules (blog tags in front matter), source/AGENTS.md (new), scripts/ralph/prd.json, scripts/ralph/progress.txt.
+- **Learnings for future iterations:**
+  - External post tags in data.blog: support both array (tags: ["a","b"]) and comma string; entry_tags in config.rb checks tag_list first, then tags as array, then tags split by comma. Use array in JSON to avoid string-split edge cases.
+  - Blog filter is client-side (no proxy pages); cards have data-year and data-tags (space-separated); inline script toggles pill active state and card visibility. Year filter uses entry date year from merged_blog_posts.
+  - Browser verification: dev server on 4567, Playwright confirmed tag/year pills and filtering (e.g. "devops" narrows to 6 posts).
 ---

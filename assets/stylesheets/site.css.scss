@@ -294,6 +294,78 @@ section {
   }
 }
 
+/* Blog filters (tag + year) */
+.blog-filters {
+  margin-bottom: 24px;
+}
+.blog-filter-group {
+  margin-bottom: 12px;
+}
+.blog-filter-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.blog-filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.blog-filter-pill {
+  padding: 6px 14px;
+  font-size: 0.875rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.blog-filter-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.blog-filter-pill--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.blog-filter-pill--active:hover {
+  background: var(--accent-hero-hover);
+  border-color: var(--accent-hero-hover);
+  color: #fff;
+}
+.blog-no-results.hidden {
+  display: none;
+}
+.blog-no-results {
+  margin-top: 24px;
+  color: var(--text-muted);
+}
+
+/* Card tags (pills on blog cards) */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 0;
+  font-size: 0.75rem;
+}
+.card-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+html.dark .card-tag {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
 /* Footer */
 footer {
   flex-shrink: 0;

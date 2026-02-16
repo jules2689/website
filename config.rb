@@ -34,6 +34,37 @@ helpers do
       Time.now
     end
   end
+
+  # Normalize tags for an entry from merged_blog_posts (article or external post). Returns array of strings.
+  def entry_tags(entry)
+    if entry[:local] && entry[:article]
+      a = entry[:article]
+      t = a.data[:tags]
+      return [] if t.nil?
+      return t if t.is_a?(Array)
+      return t.to_s.split(/\s*,\s*/).map(&:strip).reject(&:empty?) if t.respond_to?(:to_s)
+      []
+    end
+    post = entry[:post]
+    return [] unless post
+    list = post[:tag_list] || post["tag_list"]
+    return list if list.is_a?(Array) && list.any?
+    tags_arr = post[:tags] || post["tags"]
+    return tags_arr if tags_arr.is_a?(Array) && tags_arr.any?
+    raw = tags_arr.to_s
+    return [] if raw.empty?
+    raw.split(/\s*,\s*/).map(&:strip).reject(&:empty?)
+  end
+
+  # All unique tags across merged blog posts, sorted.
+  def all_blog_tags
+    merged_blog_posts.flat_map { |e| entry_tags(e) }.uniq.sort
+  end
+
+  # Unique years from merged blog posts, descending.
+  def all_blog_years
+    merged_blog_posts.map { |e| e[:date].respond_to?(:year) ? e[:date].year : e[:date].to_time.year }.uniq.sort.reverse
+  end
 end
 
 # Per-page layout changes

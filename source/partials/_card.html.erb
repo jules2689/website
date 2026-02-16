@@ -1,4 +1,4 @@
-<a href="<%= link %>" class="card" <%= 'target="_blank" rel="noopener"' if link.to_s.start_with?('http') %>>
+<a href="<%= link %>" class="card" <%= 'target="_blank" rel="noopener"' if link.to_s.start_with?('http') %><% if defined?(data_year) %> data-year="<%= data_year %>"<% end %><% if defined?(data_tags) && data_tags.to_s.present? %> data-tags="<%= data_tags %>"<% end %>>
   <img class="card-image"
     <% if defined?(image_attributes) %>style="<%= image_attributes %>"<% end %>
     src="<%= image.to_s.start_with?('http') ? image : image_path(image.to_s.split('/').last) %>"
@@ -21,5 +21,10 @@
       <% end %>
     </h3>
     <% if defined?(description) %><p class="card-desc"><%= description %></p><% end %>
+    <% if defined?(tags) && tags.is_a?(Array) && tags.any? %>
+      <p class="card-tags">
+        <% tags.each do |tag| %><span class="card-tag"><%= tag %></span><% end %>
+      </p>
+    <% end %>
   </div>
 </a>

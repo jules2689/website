@@ -99,6 +99,20 @@
       "priority": 1,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "010",
+      "title": "Tags on blog posts",
+      "description": "I want to be able to add tags to my blog posts. This includes the manually entered one from the config Please add tags to the existing manual configs and Allow me to add tags to the front matter in addition on the blog index page I want to be able to filter and Move around the blog using those tags as well as general other filters that could be useful in the blog.",
+      "acceptanceCriteria": [
+        "Add tags to manually configured blog posts.",
+        "At tags to front matter including adding to cursor rules and whatnot so that tags are automatically generated.",
+        "I take filtering and navigation within the blog.",
+        "Add any other navigation that could make sense within a blog such as date filtering and whatnot."
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
     }
   ]
 }

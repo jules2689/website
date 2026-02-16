@@ -1,5 +1,8 @@
 <%# Renders one post from merged_blog_posts: entry is { date:, local:, article: or post: }. Optional local show_external_icon: true (blog index only). %>
 <% show_external = defined?(show_external_icon) && show_external_icon %>
+<% tags = entry_tags(entry) %>
+<% entry_date = entry[:date] %>
+<% entry_year = entry_date.respond_to?(:year) ? entry_date.year : entry_date.to_time.year %>
 <% if entry[:local] %>
   <% article = entry[:article] %>
   <% desc = article.data[:description].to_s.presence; desc = article.summary(140).to_s.gsub(/<[^>]+>/, "").tr("\n", " ").strip + "..." if desc.blank? %>
@@ -10,7 +13,10 @@
     year: article.date.strftime('%b %d, %Y'),
     type: "Blog",
     title: article.title,
-    description: desc.to_s
+    description: desc.to_s,
+    tags: tags,
+    data_year: entry_year,
+    data_tags: tags.join(" ")
   } %>
 <% else %>
   <% post = entry[:post] %>
@@ -22,6 +28,9 @@
     type: URI(post.url).hostname,
     title: post.title,
     description: post.description.to_s.length > 143 ? post.description[0..140] + "..." : post.description.to_s,
-    external_icon: show_external
+    external_icon: show_external,
+    tags: tags,
+    data_year: entry_year,
+    data_tags: tags.join(" ")
   } %>
 <% end %>
