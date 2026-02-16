@@ -1,0 +1,8 @@
+<h1 id="source-directory--patterns-for-agents">Source directory – patterns for agents</h1>
+
+<ul>
+  <li><strong>Blog posts</strong>: Front matter in <code>source/blog/*.html.markdown</code> supports <code>title</code>, <code>date</code>, <code>description</code>, <code>social_image</code>, and <strong>tags</strong> (YAML list, e.g. <code>tags: [devops, ruby]</code>). Tags appear on cards and drive blog index filtering.</li>
+  <li><strong>Blog index</strong>: Filtering is client-side. Cards get <code>data-year</code> and <code>data-tags</code> (space-separated) from <code>blog_post_card</code>; tag/year pills and filter logic are in <code>source/blog/index.html.erb</code>. Helpers <code>entry_tags</code>, <code>all_blog_tags</code>, <code>all_blog_years</code> live in <code>config.rb</code>.</li>
+  <li><strong>Blog index layout</strong>: Uses <code>.blog-index-layout</code> (grid: sidebar + main). Sidebar (<code>.blog-sidebar</code>) is sticky, contains “Filter by tag” and “Filter by year” sections with pills; main (<code>.blog-main</code>) holds the card grid. On smaller viewports the sidebar becomes a horizontal two-column strip above the cards.</li>
+  <li><strong>External posts (data/blog.json)</strong>: Each entry can have <code>tags</code> as array or comma-separated string; <code>tag_list</code> (array) is also supported. Use array format for new entries so <code>entry_tags</code> returns correct list.</li>
+</ul>
