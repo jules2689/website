@@ -35,25 +35,38 @@ helpers do
     end
   end
 
+  # Tag allowlist from data/blog_tags.yaml (single source of truth). Case-insensitive match returns allowlist casing.
+  def blog_tag_allowlist
+    @blog_tag_allowlist ||= (data.blog_tags&.tags || []).freeze
+  end
+
+  def blog_tag_allowlist_lookup
+    @blog_tag_allowlist_lookup ||= blog_tag_allowlist.map { |t| [t.to_s.downcase, t] }.to_h.freeze
+  end
+
+  def filter_tags_to_allowlist(raw_tags)
+    return [] if raw_tags.nil?
+    list = raw_tags.is_a?(Array) ? raw_tags : raw_tags.to_s.split(/\s*,\s*/).map(&:strip).reject(&:empty?)
+    return list if blog_tag_allowlist.empty?
+    list.filter_map { |tag| blog_tag_allowlist_lookup[tag.to_s.downcase] }.uniq
+  end
+
   # Normalize tags for an entry from merged_blog_posts (article or external post). Returns array of strings.
+  # Tags are filtered to blog_tag_allowlist when present (case insensitive), using allowlist casing.
   def entry_tags(entry)
     if entry[:local] && entry[:article]
       a = entry[:article]
       t = a.data[:tags]
       return [] if t.nil?
-      return t if t.is_a?(Array)
-      return t.to_s.split(/\s*,\s*/).map(&:strip).reject(&:empty?) if t.respond_to?(:to_s)
-      []
+      arr = t.is_a?(Array) ? t : t.to_s.split(/\s*,\s*/).map(&:strip).reject(&:empty?)
+      return filter_tags_to_allowlist(arr)
     end
     post = entry[:post]
     return [] unless post
-    list = post[:tag_list] || post["tag_list"]
-    return list if list.is_a?(Array) && list.any?
-    tags_arr = post[:tags] || post["tags"]
-    return tags_arr if tags_arr.is_a?(Array) && tags_arr.any?
-    raw = tags_arr.to_s
-    return [] if raw.empty?
-    raw.split(/\s*,\s*/).map(&:strip).reject(&:empty?)
+    raw = post[:tags] || post["tags"]
+    raw = raw.to_s.split(/\s*,\s*/).map(&:strip).reject(&:empty?) unless raw.is_a?(Array)
+    return [] if raw.nil? || (raw.respond_to?(:empty?) && raw.empty?)
+    filter_tags_to_allowlist(raw)
   end
 
   # All unique tags across merged blog posts, sorted.

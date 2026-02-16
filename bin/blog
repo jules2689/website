@@ -7,6 +7,18 @@ require "openssl"
 require "uri"
 require "rss"
 require "json"
+require "yaml"
+
+# Load tag allowlist from data/blog_tags.yaml (single source of truth)
+BLOG_TAGS_PATH = File.join(__dir__, "..", "data", "blog_tags.yaml")
+BLOG_TAG_ALLOWLIST = YAML.load_file(BLOG_TAGS_PATH)["tags"].freeze
+BLOG_TAG_ALLOWLIST_LC = BLOG_TAG_ALLOWLIST.map { |t| [t.to_s.downcase, t] }.to_h.freeze
+
+def filter_tags_to_allowlist(raw_tags)
+  return [] if raw_tags.nil?
+  list = raw_tags.is_a?(Array) ? raw_tags : raw_tags.to_s.split(/\s*,\s*/).map(&:strip).reject(&:empty?)
+  list.filter_map { |tag| BLOG_TAG_ALLOWLIST_LC[tag.to_s.downcase] }.uniq
+end
 
 # SSL cert store without CRL checking (avoids "unable to get certificate CRL" on macOS/Ruby 3.4+)
 def ssl_cert_store
@@ -36,7 +48,12 @@ URL = "https://dev.to/api/articles?username=jules2689"
 resp = https_get(URL, "User-Agent" => "jules2689/website")
 
 blog_articles = JSON.parse(resp.body)
-blog_articles.each { |a| a["readable_publish_date"] = Time.parse(a["published_at"]).strftime('%b %d, %Y') }
+blog_articles.each do |a|
+  a["readable_publish_date"] = Time.parse(a["published_at"]).strftime('%b %d, %Y')
+  raw = a["tag_list"] || a["tags"]
+  a["tags"] = filter_tags_to_allowlist(raw)
+  a.delete("tag_list")
+end
 
 # Add in some hardcoded ones
 puts "Adding hardcoded"
@@ -46,6 +63,7 @@ blog_articles << {
   "description" => "As GitHub doubled it’s developer head count, tooling that worked for us no longer functioned in the same capacity. We aimed to improve the deployment process for all developers at GitHub and mitigate risk associated with deploying one of the largest developer platforms in the world.",
   "readable_publish_date" => "January 25, 2021",
   "url" => "https://github.blog/2021-01-25-improving-how-we-deploy-github/",
+  "tags" => ["Deploys"],
 }
 blog_articles << {
   "title" => "How to Set Up Your Own Mobile CI System",
@@ -53,8 +71,8 @@ blog_articles << {
   "description" => "Building a Dynamic Mobile CI System.&quot; Over the past few years the mobile development community has seen a dramatic shift towards the use of continuous integration (CI) systems similar to changes present in other...",
   "readable_publish_date" => "June 15, 2016",
   "url" => "https://shopify.engineering/how-to-set-up-your-own-mobile-ci-system",
+  "tags" => ["iOS", "CI"],
 }
-
 blog_articles << {
   "title" => "The Future of Developer Environments at Shopify",
   "social_image" => "/images/monitor.jpg",
@@ -62,6 +80,7 @@ blog_articles << {
   "description" => "In the previous posts we talked about our past experiences with Artisinal Systems, Boxen, and Vagrant as well as our current system using Railgun and Dev. In this post, we're going to talk about some future plans and give a few forward thoughts.",
   "readable_publish_date" => "January 14, 2018",
   "url" => "https://devproductivity.github.io/devproductivity.io/the-future-of-developer-environments-at-shopify/index.html",
+  "tags" => ["Developer Environments"],
 }
 blog_articles << {
   "title" => "Current Developer Environments at Shopify",
@@ -69,6 +88,7 @@ blog_articles << {
   "description" => "In a previous post, we discussed the systems we have had throughout the history of Shopify. In this follow up post we'll talk about the system we run today. Finally, we will have another post that includes a few forward thinking questions about developer operations at Shopify.",
   "readable_publish_date" => "January 14, 2018",
   "url" => "https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p2/index.html",
+  "tags" => ["Developer Environments"],
 }
 blog_articles << {
   "title" => "Historical Developer Environments at Shopify",
@@ -77,34 +97,39 @@ blog_articles << {
   "description" => "Development operations at Shopify has a long history that winds its way through various systems, technologies, and iterations. Over the course of these iterations we have learned a number of lessons, experienced ups and downs, and ultimately ended up with a system that performs well.",
   "readable_publish_date" => "January 14, 2018",
   "url" => "https://devproductivity.github.io/devproductivity.io/shopify-developer-environments-p1.html",
+  "tags" => ["Developer Environments"],
 }
 blog_articles << {
   "title" => "Secrets Management in iOS Applications",
   "social_image" => "/images/generic.jpg",
   "description" => "Secrets in iOS applications can be a bit of an issue, especially when you intend to make a project public. The problem here is that there is ...",
   "readable_publish_date" => "Dec 27, 2016",
-  "url" => "https://medium.com/@jules2689/secrets-management-in-ios-applications-52795c254ec1"
+  "url" => "https://medium.com/@jules2689/secrets-management-in-ios-applications-52795c254ec1",
+  "tags" => ["iOS", "Security"],
 }
 blog_articles << {
   "title" => "Homebrew, Ruby, and Gems",
   "social_image" => "/images/brew.png",
   "description" => "This article assumes you’ve read the main article already. As well as the provisioning a Mac article.By now, you have Mac OS X all setup and ...",
   "readable_publish_date" => "Apr 11, 2016",
-  "url" => "https://medium.com/@jules2689/homebrew-ruby-and-gems-78d6c26b89e"
+  "url" => "https://medium.com/@jules2689/homebrew-ruby-and-gems-78d6c26b89e",
+  "tags" => ["Ruby", "Dependencies"],
 }
 blog_articles << {
   "title" => "Xcode, iOS SDKs, and iOS Simulators for CI Systems",
   "social_image" => "/images/xcode.webp",
   "description" => "This article assumes you’ve read the main article already.Given that Xcode is required for iOS, both Xcode and iOS SDKs are important for an ...",
   "readable_publish_date" => "Apr 10, 2016",
-  "url" => "https://medium.com/@jules2689/xcode-ios-sdks-and-ios-simulators-for-ci-systems-2c0c33037796"
+  "url" => "https://medium.com/@jules2689/xcode-ios-sdks-and-ios-simulators-for-ci-systems-2c0c33037796",
+  "tags" => ["iOS", "CI"],
 }
 blog_articles << {
   "title" => "Provisioning a Mac OS X system for iOS CI",
   "social_image" => "/images/elcap.png",
   "description" => "Make sure you take a look at the intro article first.Two ground rules — you must legally use Apple-branded hardware. This is a requirement in...",
   "readable_publish_date" => "Apr 10, 2016",
-  "url" => "https://medium.com/@jules2689/provisioning-a-mac-os-x-system-for-ios-ci-2d4be04ed174"
+  "url" => "https://medium.com/@jules2689/provisioning-a-mac-os-x-system-for-ios-ci-2d4be04ed174",
+  "tags" => ["iOS", "CI"],
 }
 
 puts "Sorting posts by published date"

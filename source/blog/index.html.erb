@@ -12,26 +12,6 @@ title: Blog
 
 <section class="blog page-content">
   <div class="wrapper blog-index-layout">
-    <aside class="blog-sidebar" role="navigation" aria-label="Blog filters">
-      <div class="blog-sidebar-section">
-        <h3 class="blog-sidebar-title">Filter by tag</h3>
-        <div class="blog-filter-tags">
-          <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="tag" data-value="">All tags</button>
-          <% all_blog_tags.each do |tag| %>
-            <button type="button" class="blog-filter-pill" data-filter="tag" data-value="<%= tag %>"><%= tag %></button>
-          <% end %>
-        </div>
-      </div>
-      <div class="blog-sidebar-section">
-        <h3 class="blog-sidebar-title">Filter by year</h3>
-        <div class="blog-filter-tags">
-          <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="year" data-value="">All years</button>
-          <% all_blog_years.each do |year| %>
-            <button type="button" class="blog-filter-pill" data-filter="year" data-value="<%= year %>"><%= year %></button>
-          <% end %>
-        </div>
-      </div>
-    </aside>
     <div class="blog-main">
       <div class="cards" id="blog-cards">
       <% posts = merged_blog_posts %>
@@ -42,21 +22,71 @@ title: Blog
       <% else %>
         <p class="card-desc">No posts yet. Check back soon.</p>
       <% end %>
-    </div>
+      </div>
       <p class="blog-no-results hidden" id="blog-no-results" aria-live="polite">No posts match the selected filters.</p>
     </div>
+    <aside class="blog-sidebar" role="navigation" aria-label="Blog filters">
+      <details class="blog-sidebar-details" id="blog-filters-details" open>
+        <summary class="blog-sidebar-summary">Filters</summary>
+        <div class="blog-sidebar-inner">
+          <div class="blog-sidebar-section">
+            <h3 class="blog-sidebar-title">Filter by tag</h3>
+            <div class="blog-filter-tags">
+              <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="tag" data-value="">All tags</button>
+              <% all_blog_tags.each do |tag| %>
+                <button type="button" class="blog-filter-pill" data-filter="tag" data-value="<%= tag %>"><%= tag %></button>
+              <% end %>
+            </div>
+          </div>
+          <div class="blog-sidebar-section">
+            <h3 class="blog-sidebar-title">Filter by year</h3>
+            <div class="blog-filter-tags">
+              <button type="button" class="blog-filter-pill blog-filter-pill--active" data-filter="year" data-value="">All years</button>
+              <% all_blog_years.each do |year| %>
+                <button type="button" class="blog-filter-pill" data-filter="year" data-value="<%= year %>"><%= year %></button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </details>
+    </aside>
   </div>
 </section>
 
 <script>
 (function() {
+  var STORAGE_KEY = "blog-filters-open";
   var cards = document.getElementById("blog-cards");
   var noResults = document.getElementById("blog-no-results");
+  var detailsEl = document.getElementById("blog-filters-details");
   if (!cards || !noResults) return;
   var cardEls = cards.querySelectorAll(".card[data-year][data-tags]");
   var pills = document.querySelectorAll(".blog-filter-pill");
   var activeTag = "";
   var activeYear = "";
+
+  if (detailsEl) {
+    var mq = window.matchMedia("(max-width: 768px)");
+    function applyFiltersState() {
+      if (mq.matches) {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === "true") {
+          detailsEl.setAttribute("open", "");
+        } else {
+          detailsEl.removeAttribute("open");
+        }
+      } else {
+        detailsEl.setAttribute("open", "");
+      }
+    }
+    applyFiltersState();
+    mq.addEventListener("change", applyFiltersState);
+    detailsEl.addEventListener("toggle", function() {
+      if (mq.matches) {
+        localStorage.setItem(STORAGE_KEY, detailsEl.hasAttribute("open") ? "true" : "false");
+      }
+    });
+  }
 
   function updatePillStates() {
     pills.forEach(function(p) {

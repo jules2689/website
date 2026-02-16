@@ -1,0 +1,10 @@
+# Allowlist of blog tags (single source of truth). Used by bin/blog and config.rb.
+# Dev.to post tags are filtered to this list (case insensitive); display uses this casing.
+tags:
+  - CI
+  - Dependencies
+  - Deploys
+  - Developer Environments
+  - iOS
+  - Ruby
+  - Security
