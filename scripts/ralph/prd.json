@@ -1,0 +1,18 @@
+{
+  "branchName": "main",
+  "title": "PRD",
+  "stories": [
+    {
+      "id": "001",
+      "title": "Blog platform",
+      "description": "This is my personal website. Accept markdown posts with front matter to add new blog posts",
+      "acceptanceCriteria": [
+        "Markdown files with front matter rendered as posts",
+        "Posts auto added to writing section on home page"
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
+    }
+  ]
+}

@@ -2,6 +2,16 @@ activate :directory_indexes
 activate :asset_hash
 set :relative_links, true
 
+# Blog: markdown posts with front matter; articles in source/blog/
+activate :blog do |blog|
+  blog.prefix = "blog"
+  blog.sources = "{year}-{month}-{day}-{title}.html"
+  blog.permalink = "{year}/{month}/{day}/{title}.html"
+  blog.layout = "layout"
+  blog.summary_length = 140
+  blog.summary_separator = /READMORE/
+end
+
 # Per-page layout changes
 page '/*.xml', layout: false
 page '/*.json', layout: false
