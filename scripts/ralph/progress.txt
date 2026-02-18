@@ -2,6 +2,7 @@
 Started: Sun Feb 15 21:03:05 EST 2026
 
 ## Codebase Patterns
+- Cross-repo stories: Some PRD stories (e.g. 012 CPU usage) target the services app in the homelab repo (homelab/roles/apps/services/files/site), not the website repo. Implement in homelab, commit there with feat message; update PRD and progress.txt in website/scripts/ralph.
 - Blog index layout: Use `.blog-index-layout` grid (sidebar + main); sidebar (`.blog-sidebar`) sticky, main (`.blog-main`) for card grid; responsive: sidebar becomes horizontal strip then single column.
 - Optional partial locals: In Middleman ERB partials use `defined?(variable_name)` to check for optional locals; `local_assigns` is not available (Rails-only).
 - Sticky footer: Body uses `min-height: 100vh; display: flex; flex-direction: column`. Main content (e.g. `.page-content`) gets `flex: 1 1 auto`; footer gets `flex-shrink: 0` and minimal padding so it stays at bottom and content fills the rest.
@@ -104,4 +105,13 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
 - **Learnings for future iterations:**
   - Blog index layout: use a grid wrapper (e.g. `.blog-index-layout`) with sidebar column (fixed width) + main (1fr); sidebar can be sticky with top offset for scroll. On narrow viewports, switch to single column and optionally make sidebar a horizontal grid so tag/year sections sit side by side.
   - Playwright verified at http://localhost:4567/blog/: sidebar visible with "Filter by tag" / "Filter by year", pills work (e.g. devops filter), cards display in grid.
+---
+## 2026-02-18 - 012
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Fixed CPU usage showing null in the services app report: VictoriaMetrics/cAdvisor CPU was queried only via container_cpu_user_seconds_total; some setups expose container_cpu_usage_seconds_total (user+system total). Implemented prefer-total-then-user for both current CPU and 180d max CPU, plus range-query fallback when instant query returns no CPU data.
+- Files changed: homelab repo: roles/apps/services/files/site/lib/victoriametrics.ts (dual metric + range fallback), roles/apps/services/files/site/AGENTS.md (VictoriaMetrics CPU note). Website repo: scripts/ralph/prd.json (012 passes: true), scripts/ralph/progress.txt.
+- **Learnings for future iterations:**
+  - Story 012 targets the services application in the homelab repo (roles/apps/services/files/site), not the website repo. PRD and progress.txt live in website/scripts/ralph; code changes and commit are in homelab.
+  - CPU metrics: cAdvisor can expose container_cpu_usage_seconds_total (total) and/or container_cpu_user_seconds_total; use total first, fallback to user. Same for max_over_time(rate(...)[180d]). Range query fallback (query_range last 5m) helps when instant query returns empty.
+  - Services app quality: npm run type-check in homelab/roles/apps/services/files/site passes; next lint may prompt for ESLint config if not already set.
 ---

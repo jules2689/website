@@ -124,6 +124,31 @@
       "priority": 1,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "012",
+      "title": "CPU usage is null",
+      "description": "The CPU usage according to the report functionality of the services application is null or undefined for the entire application. Figure out why we're missing CPU usage and pull that in.",
+      "acceptanceCriteria": [
+        "CPU usage shows up for all Docker-based services, as well as any other services that we can find."
+      ],
+      "priority": 1,
+      "passes": true,
+      "notes": ""
+    },
+    {
+      "id": "013",
+      "title": "Add button to update resource limits config for a given service.",
+      "description": "We have access like we do via the update functionality to directly update the resource limits in both the Docker compose file as well as the server.yaml file in the repository. Similarly to the updates functionality figure out a way to update the Docker compose limits as well as update the server.yaml files with higher limits or lower limits based off of the observed limits in the report functionality go by 0.5 gigabyte increments of memory and 0.5 CPUs.",
+      "acceptanceCriteria": [
+        "update servers/*.yaml files with new limits",
+        "Update docker compose files when relevant. It does a docker compose up -d.",
+        "add button beside the exceeded badge on the report page that will automatically update all of this stuff.",
+        "provides user feedback potentially in a modal or something that shows the log of what happened."
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
     }
   ]
 }
