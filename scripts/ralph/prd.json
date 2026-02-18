@@ -147,7 +147,7 @@
         "provides user feedback potentially in a modal or something that shows the log of what happened."
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "notes": ""
     }
   ]

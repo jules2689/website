@@ -115,3 +115,12 @@ Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
   - CPU metrics: cAdvisor can expose container_cpu_usage_seconds_total (total) and/or container_cpu_user_seconds_total; use total first, fallback to user. Same for max_over_time(rate(...)[180d]). Range query fallback (query_range last 5m) helps when instant query returns empty.
   - Services app quality: npm run type-check in homelab/roles/apps/services/files/site passes; next lint may prompt for ESLint config if not already set.
 ---
+## 2026-02-18 - 013
+Thread: https://ampcode.com/threads/$AMP_CURRENT_THREAD_ID
+- Implemented "Bump limits" for the report page: button beside the Exceeded badge (memory or CPU) that updates servers/*.yaml in the homelab repo via GitHub API and runs docker compose up -d on the host. Suggested limits use 180d peak (0.5G memory steps, 0.5 CPU steps). Modal shows log of the operation.
+- Files changed: homelab repo: lib/update-resource-limits.ts (new), pages/api/limits/bump.ts (new), pages/report.tsx (LimitsRow onBumpLimits, bump modal, handleBumpLimits SSE), AGENTS.md (Bump resource limits section). Website repo: scripts/ralph/prd.json (013 passes: true), scripts/ralph/progress.txt.
+- **Learnings for future iterations:**
+  - Story 013 targets the services app in the homelab repo (same as 012). Update server YAML via GitHub API (getFile/putFile) using HOMELAB_GITHUB_REPO and HOMELAB_REPO_GITHUB_TOKEN. Server files are inventory/group_vars/all/servers/<serviceName>.yml with structure servers:\n  <name>:\n    resources:\n      limits:\n        memory: X\n        cpus: 'Y'. Parse by line and indent to replace only memory/cpus under that service's limits.
+  - Bump API streams SSE (log, server_yml_ok, server_yml_error, compose_up_ok, compose_up_error, complete). After YAML commit, run docker compose up -d on the host via SSH (same config as apply-updates); composePath comes from getServerProvider and host_data_dirs. Reject bump for service name "services".
+  - Report page: "Bump limits" only shown when row.hasService and (memoryEverExceeded === true || cpuEverExceeded === true). Modal shows log lines and a Close button when done.
+---
