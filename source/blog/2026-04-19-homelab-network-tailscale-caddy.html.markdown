@@ -97,6 +97,7 @@ Those nodes can reach production on port 443. On selected nodes, I also allow ex
 # Conclusion
 
 None of this replaces careful service configuration, but it stacks sensible defaults:
+
 - Tailscale ACLs say which role may open which port
 - guest Wi-Fi keeps untrusted AI agents off the production LAN
 - and [Docker](https://www.docker.com/) networking plus Caddy keeps the published port surface small while Caddy terminates TLS for internal hops.
