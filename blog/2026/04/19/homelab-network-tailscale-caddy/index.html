@@ -137,10 +137,13 @@
 
 <h1 id="conclusion">Conclusion</h1>
 
-<p>None of this replaces careful service configuration, but it stacks sensible defaults:
-- Tailscale ACLs say which role may open which port
-- guest Wi-Fi keeps untrusted AI agents off the production LAN
-- and <a href="https://www.docker.com/">Docker</a> networking plus Caddy keeps the published port surface small while Caddy terminates TLS for internal hops.</p>
+<p>None of this replaces careful service configuration, but it stacks sensible defaults:</p>
+
+<ul>
+  <li>Tailscale ACLs say which role may open which port</li>
+  <li>guest Wi-Fi keeps untrusted AI agents off the production LAN</li>
+  <li>and <a href="https://www.docker.com/">Docker</a> networking plus Caddy keeps the published port surface small while Caddy terminates TLS for internal hops.</li>
+</ul>
 
 <p>If you are in a similar spot and want to run local models and agents, the useful move is not “more VPN,” but <strong>narrower paths</strong>:</p>
 
