@@ -1,1 +1,0 @@
-This is a **markdown** post with YAML front matter. New posts are added by creating `.html.markdown` files in `source/blog/` with the naming pattern `YYYY-MM-DD-slug.html.markdown`. They appear automatically in the Writing section on the home page.
