@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-    <link href="/style-f434d49d.css" rel="stylesheet" />
+    <link href="/style-85985ee5.css" rel="stylesheet" />
     <link href="/site-a4df8890.css" rel="stylesheet" />
-    <script src="/site.min-25a37f80.js"></script>
+    <script src="/site.min-bd4c3f63.js"></script>
     <link rel="icon" href="/favicon.ico">
   </head>
   <body>
@@ -34,7 +34,7 @@
       <div class="wrapper article-body">
         <p>I host a number of services at home on a custom-built <a href="https://www.ansible.com/">Ansible</a>-backed homelab. It is set up with full TLS and restricted access using <a href="https://tailscale.com/">Tailscale</a>.</p>
 
-<p>Historically this was straightforward: I exposed port 443 over Tailscale, pointed the A record at that host, and that let me resolve and serve the requested content from my home server.</p>
+<p>Historically this was straightforward: I exposed port 443 on the host, pointed the A record at that host’s Tailscale IP, and that let me resolve and serve the requested content from my home server.</p>
 
 <p>As I have started to work more with local AI agents, such as <a href="https://opencode.ai/">OpenCode</a>, <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a>, <a href="https://github.com/openai/whisper">Whisper</a>, and other applications, I have grown more concerned about how much of the homelab they can reach.</p>
 
@@ -60,60 +60,145 @@
   <li><code>robin</code> [ai]
     <ul>
       <li>This is an M1 Mac mini with 16GB of RAM</li>
-      <li>This is an AI node. It runs <a href="https://opencode.ai/">OpenCode</a> and <a href="https://github.com/openai/whisper">Whisper</a>.</li>
+      <li>This is an AI node. It runs OpenCode and Whisper.</li>
     </ul>
   </li>
 </ol>
 
 <p>In the future I intend to add more secondary nodes for backup purposes, and a Mac Studio for local LLM inference.</p>
 
-<h1 id="the-subnets">The subnets</h1>
+<h1 id="tailscale">Tailscale</h1>
 
-<p>I split the homelab into <strong>clients</strong>, <strong>prod</strong>, and <strong>AI</strong> subnets in Tailscale. ACLs pin who can open which ports instead of relying on one flat LAN. For example:</p>
+<p>Tailscale is, at its core, a VPN based on <a href="https://www.wireguard.com/">WireGuard</a>. You can read more about how it works <a href="https://tailscale.com/blog/how-tailscale-works">in this post</a>, but the fundamental part of this style of VPN is that traffic is not routed through a central server. Instead, Tailscale coordinates a private-public keypair that allows one node to connect to another node.</p>
+
+<p><img src="/images/wireguard-75a7f53f.png" alt="Example of Wireguard" /></p>
+
+<p>Tailscale provides, on top of the core Wireguard, an access control list (ACL) that allows an admin to explicitly enable or disable ports that can be accessed.</p>
+
+<p><img src="/images/acl-0319b2be.png" alt="Tailscale ACL example: tag-based rules for which nodes may use which ports" /></p>
+
+<h1 id="caddy-server">Caddy Server</h1>
+
+<p><a href="https://caddyserver.com/">Caddy</a> is a reverse proxy that allows us to handle TLS termination and general HTTP traffic. In this instance, it allows us to resolve a wildcard domain and reverse proxy into different <a href="https://www.docker.com/">Docker</a> containers, hosts, and services.</p>
+
+<p>When Caddy receives a request, it resolves it according to a configuration. For example the following config allows us to route a.int.jnadeau.ca and b.int.jnadeau.ca, but 404 all other *.int.jnadeau.ca requests.</p>
+
+<pre><code class="language-caddyfile">*.int.jnadeau.ca {
+  # Routes a to the docker container "a" on port 5006
+  @a host a.int.jnadeau.ca
+	handle @a {
+		log_append forwarded_for {client_ip}
+		reverse_proxy a:5006 {
+			header_up X-Scheme {http.request.scheme}
+			header_up X-Real-IP {client_ip}
+			header_up X-Forwarded-For {client_ip}
+		}
+	}
+
+  # Routes b to the node bluejay's Caddy instance
+  @b host b.int.jnadeau.ca
+	handle @b {
+		reverse_proxy bluejay:443 {
+			header_up X-Caddy-Upstream-Host bluejay
+			header_up Host {host}
+			transport http {
+				tls_server_name internal.int.jnadeau.ca
+			}
+		}
+	}
+
+  handle {
+		header Content-Type text/html
+		respond "&lt;html&gt;&lt;head&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;meta name='viewport' content='width=device-width, initial-scale=1' /&gt;&lt;/head&gt;&lt;body style='background: rgb(30, 41, 59); color: white'&gt;&lt;center&gt;&lt;h1&gt;Page not found at this URL&lt;/h1&gt;&lt;br&gt;&lt;/center&gt;&lt;/body&gt;&lt;/html&gt;" 404
+	}
+}
+</code></pre>
+
+<h2 id="caddy-routing-to-other-nodes">Caddy routing to other nodes</h2>
+
+<p>My setup allows Caddy to route to other nodes in my Tailscale setup. In the example above you see the Caddy instance routing to <code>bluejay</code>, the secondary node in my network, which is also running Caddy. It uses the same wildcard TLS certificate.</p>
+
+<p>Similarly, Caddy can route to raw open ports. On my <code>robin</code> M1 Mac Mini there is no Caddy, instead it binds to the port directly. Primary’s Caddy can then route to <code>robin:&lt;port&gt;</code>.</p>
+
+<p><img src="/images/caddy.png" alt="Caddy routing Example" /></p>
+
+<p>Once Tailscale is able to route into the primary Caddy instance through port 443, we can reverse proxy internally to whichever node, docker container, or service is needed with full TLS.</p>
+
+<h1 id="subnets-in-tailscale">Subnets in Tailscale</h1>
+
+<p>While Tailscale is able to route between different nodes for Caddy to respond to, it is also possible to hit any open port. By the Principle of Least Privilege, we want to make sure that only the ports required are open and accessible. For that, I’ve created some subnets.</p>
+
+<p>I split the homelab into <strong>clients</strong>, <strong>prod</strong>, and <strong>AI</strong> subnets in Tailscale. ACLs pin who can open which ports instead of relying on one flat LAN that allows any port. For example:</p>
 
 <ul>
   <li><code>Clients</code> can access the <code>Prod</code> subnet on port 443
     <ul>
-      <li>On selected nodes, game ports are also allowed (for example, for <a href="https://projectzomboid.com/">Project Zomboid</a>)</li>
+      <li>On selected nodes, select game ports are also allowed (for example, for <a href="https://projectzomboid.com/">Project Zomboid</a>)</li>
     </ul>
   </li>
   <li><code>Prod</code> can also access <code>Prod</code> on port 443</li>
-  <li><code>AI</code> <strong>cannot</strong> access port 443 on <code>Prod</code>, but can access port 8443</li>
+  <li><code>AI</code> <strong>cannot</strong> access port 443 on <code>Prod</code>, but can access port 8443
+    <ul>
+      <li>This allows us to restrict what the AI nodes can access rather than giving it access to anything Caddy can resolve</li>
+    </ul>
+  </li>
 </ul>
 
-<p><img src="/images/homelab-ed311c12.png" alt="Homelab network diagram showing Clients, Production (primary network), and AI (guest network), with Caddy on ports 443 and 8443 and a Docker network example" /></p>
+<p><img src="/images/homelab-5f191906.png" alt="Homelab network diagram showing Clients, Production (primary network), and AI (guest network), with Caddy on ports 443 and 8443 and a Docker network example" /></p>
 
-<h2 id="prod-subnet">Prod subnet</h2>
+<h2 id="clients-subnet">Clients subnet</h2>
 
-<p>The production subnet holds most of my servers. Right now this includes two nodes, <code>roc</code> and <code>bluejay</code>. <code>roc</code> is my primary node and <code>bluejay</code> is a secondary node.</p>
+<p>The client subnet is simple: it is the Tailscale nodes that are not servers. For example, my iPhone, my <a href="https://www.kobo.com/">Kobo</a> e-reader, and my MacBook.</p>
 
-<p>Each server runs different services in <a href="https://www.docker.com/">Docker</a> <a href="https://docs.docker.com/compose/">Compose</a> projects. Each Compose project exposes the minimal set of ports. Notably, it does not use the <code>ports</code> stanza, which would bind services to the host network; it uses <code>expose</code> instead to document container ports without publishing them to the host.</p>
+<p>Those nodes can reach production on port 443. On selected nodes, I also allow extra ports for game servers.</p>
 
-<h3 id="docker-networks">Docker networks</h3>
+<h2 id="docker-networks">Docker networks</h2>
 
-<p>On each host I use roughly a dozen user-defined <a href="https://www.docker.com/">Docker</a> bridge networks.</p>
+<p>Before diving into the Prod Network, it’s important to understand the setup with Docker Networks.</p>
 
-<p>The local <a href="https://caddyserver.com/">Caddy</a> instance is attached to a set of those networks, and each project attaches one of them to its service container. That lets Caddy reach each service without being able to reach, for example, a database container on that project’s internal-only network.</p>
+<p>On each host I use roughly a dozen user-defined Docker bridge networks.</p>
 
-<p><img src="/images/docker-setup-d02ef652.png" alt="Docker Compose network setup" /></p>
+<p>The local Caddy instance is attached to a set of those networks, and each project attaches one of them to its service container. That lets Caddy reach each service without being able to reach, for example, a database container on that project’s internal-only network.</p>
 
-<p>I first tried one network per Compose project so each stack and Caddy had an isolated connection. That was easy to reason about, but Caddy paid for it at startup: more networks meant more attachments and more internal DNS to settle, and restarts took far too long.</p>
+<p><img src="/images/docker-setup-cdf29903.png" alt="Docker Compose network setup" /></p>
+
+<p>Here is an example via YAML:</p>
+
+<pre><code class="language-yaml">services:
+  app:
+    image: example/app:latest
+    # No `ports:` — that would publish 5006 on the host (e.g. 0.0.0.0:5006).
+    expose:
+      - "5006" # Port reachable by other containers on shared networks; not bound on the host.
+    networks:
+      - app_net
+      # Allows app to reach the db container, but the db container is inaccessible on app_net
+      - container_net
+
+  db:
+    image: example/db:latest
+    networks:
+      - container_net
+
+networks:
+  app_net:
+    driver: bridge
+  container_net: {}
+</code></pre>
+
+<h3 id="why-dont-we-use-one-network-per-app">Why don’t we use one network per app?</h3>
+
+<p>I first tried one network per <a href="https://docs.docker.com/compose/">Compose</a> project so each stack and Caddy had an isolated connection. That was easy to reason about, but Caddy paid for it at startup: more networks meant more attachments and more internal DNS to settle, and restarts took far too long.</p>
 
 <p>So I moved to a smaller set of shared bridges, e.g. <code>monitoring_net</code>, <code>games_net</code>, instead of one network per project. On that kind of bridge, containers can still reach peers by container IP on any port a process is listening on.</p>
 
 <p>Overall it is a workable middle ground: enough segmentation to matter in practice, without making every Caddy restart a long-running event (during which the homelab was inaccessible).</p>
 
-<h3 id="secondary-nodes">Secondary nodes</h3>
+<h2 id="prod-subnet">Prod subnet</h2>
 
-<p>This is more of an aside, but the question may already occur to readers: isn’t the primary node a single point of failure?</p>
+<p>The production subnet holds most of my servers. Right now this includes two nodes, <code>roc</code> and <code>bluejay</code>. <code>roc</code> is my primary node and <code>bluejay</code> is a secondary node.</p>
 
-<p>Today, the primary host <strong>is</strong> a single point of failure. The A record points to this node exclusively, and it must be up to resolve requests, even when it only reverse-proxies to a secondary node.</p>
-
-<p>In the future I would like the A record to cover secondary nodes as well. That would require Caddy changes so any node can route a request to the right host. Today, only the primary host knows how to reach services on secondaries.</p>
-
-<p>Although I experimented with that approach early on, open questions remained about routing when the same service runs on multiple hosts (for example, <a href="https://github.com/garethgeorge/backrest">Backrest</a> runs on all nodes for local backups).</p>
-
-<p>Future work should allow me to better distribute resolution to reduce dependency on a primary node.</p>
+<p>Each server runs different services in Docker Compose projects. Each Compose project exposes the minimal set of ports. Notably, it does not use the <code>ports</code> stanza, which would bind services to the host network; it uses <code>expose</code> instead to document container ports without publishing them to the host. You can see that in the YAML example above under <em>Docker Networks</em>.</p>
 
 <h2 id="ai-subnet">AI subnet</h2>
 
@@ -129,11 +214,50 @@
 
 <p>I run a “Proxy” Caddy instance on the prod host, listening on port 8443, which is set up for that restricted surface: it reverse-proxies to the main Caddy on port 443 for <code>mcp-*</code> hosts and the registry. Everything else returns 404.</p>
 
-<h2 id="clients-subnet">Clients subnet</h2>
+<p>Conceptually it looks like this: only hostnames I list here get forwarded to the full reverse proxy on port 443; agents never get a generic path onto the main listener.</p>
 
-<p>The client subnet is simple: it is the Tailscale nodes that are not servers. For example, my iPhone, my <a href="https://www.kobo.com/">Kobo</a> e-reader, and my MacBook.</p>
+<pre><code class="language-caddyfile">:8443 {
+  # MCP servers (mcp-&lt;anything&gt;.int.jnadeau.ca) — forwarded to main Caddy
+  @mcp host_regexp ^mcp-.+\.int\.jnadeau\.ca$
+  handle @mcp {
+    # reverse proxies to the same host, but to the primary caddy
+    reverse_proxy 127.0.0.1:443 {
+      header_up Host {host}
+      transport http {
+        tls_server_name internal.int.jnadeau.ca
+      }
+    }
+  }
 
-<p>Those nodes can reach production on port 443. On selected nodes, I also allow extra ports for game servers.</p>
+  @registry host registry.int.jnadeau.ca
+  handle @registry {
+    reverse_proxy 127.0.0.1:443 {
+      header_up Host {host}
+      transport http {
+        tls_server_name internal.int.jnadeau.ca
+      }
+    }
+  }
+
+  handle {
+    respond "Not found" 404
+  }
+}
+</code></pre>
+
+<p><img src="/images/acl2-fadd2f47.png" alt="Tailscale ACL excerpt: AI-tagged nodes may use 8443 on prod, not 443" /></p>
+
+<h2 id="secondary-nodes">Secondary nodes</h2>
+
+<p>This is more of an aside, but the question may already occur to readers: isn’t the primary node a single point of failure?</p>
+
+<p>Today, the primary host <strong>is</strong> a single point of failure. The A record points to this node exclusively, and it must be up to resolve requests, even when it only reverse-proxies to a secondary node.</p>
+
+<p>In the future I would like the A record to cover secondary nodes as well. That would require Caddy changes so any node can route a request to the right host. Today, only the primary host knows how to reach services on secondaries.</p>
+
+<p>Although I experimented with that approach early on, open questions remained about routing when the same service runs on multiple hosts (for example, <a href="https://github.com/garethgeorge/backrest">Backrest</a> runs on all nodes for local backups).</p>
+
+<p>Future work should allow me to better distribute resolution to reduce dependency on a primary node.</p>
 
 <h1 id="conclusion">Conclusion</h1>
 
@@ -142,7 +266,7 @@
 <ul>
   <li>Tailscale ACLs say which role may open which port</li>
   <li>guest Wi-Fi keeps untrusted AI agents off the production LAN</li>
-  <li>and <a href="https://www.docker.com/">Docker</a> networking plus Caddy keeps the published port surface small while Caddy terminates TLS for internal hops.</li>
+  <li>and Docker networking plus Caddy keeps the published port surface small while Caddy terminates TLS for internal hops.</li>
 </ul>
 
 <p>If you are in a similar spot and want to run local models and agents, the useful move is not “more VPN,” but <strong>narrower paths</strong>:</p>
