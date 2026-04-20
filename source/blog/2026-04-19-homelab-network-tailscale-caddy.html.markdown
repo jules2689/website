@@ -11,7 +11,7 @@ tags:
 
 I host a number of services at home on a custom-built [Ansible](https://www.ansible.com/)-backed homelab. It is set up with full TLS and restricted access using [Tailscale](https://tailscale.com/).
 
-Historically this was straightforward: I exposed port 443 over Tailscale, pointed the A record at that host, and that let me resolve and serve the requested content from my home server.
+Historically this was straightforward: I exposed port 443 on the host, pointed the A record at that host's Tailscale IP, and that let me resolve and serve the requested content from my home server.
 
 As I have started to work more with local AI agents, such as [OpenCode](https://opencode.ai/), [llama.cpp](https://github.com/ggerganov/llama.cpp), [Whisper](https://github.com/openai/whisper), and other applications, I have grown more concerned about how much of the homelab they can reach.
 
@@ -29,7 +29,7 @@ Today I have three nodes in my homelab:
    - This is my secondary node
 3. `robin` [ai]
    - This is an M1 Mac mini with 16GB of RAM
-   - This is an AI node. It runs [OpenCode](https://opencode.ai/) and [Whisper](https://github.com/openai/whisper).
+   - This is an AI node. It runs OpenCode and Whisper.
 
 In the future I intend to add more secondary nodes for backup purposes, and a Mac Studio for local LLM inference.
 
@@ -42,11 +42,11 @@ Tailscale is, at its core, a VPN based on [WireGuard](https://www.wireguard.com/
 
 Tailscale provides, on top of the core Wireguard, an access control list (ACL) that allows an admin to explicitly enable or disable ports that can be accessed.
 
-![Example of an ACL](/images/acl.png)
+![Tailscale ACL example: tag-based rules for which nodes may use which ports](/images/acl.png)
 
 # Caddy Server
 
-Caddy is a reverse proxy that allows us to handle TLS termination and general HTTP traffic. In this instance, Caddy allows us to resolve a wildcard domain and reverse proxy into different Docker containers, hosts, and services.
+[Caddy](https://caddyserver.com/) is a reverse proxy that allows us to handle TLS termination and general HTTP traffic. In this instance, it allows us to resolve a wildcard domain and reverse proxy into different [Docker](https://www.docker.com/) containers, hosts, and services.
 
 When Caddy receives a request, it resolves it according to a configuration. For example the following config allows us to route a.int.jnadeau.ca and b.int.jnadeau.ca, but 404 all other *.int.jnadeau.ca requests.
 
@@ -116,9 +116,9 @@ Those nodes can reach production on port 443. On selected nodes, I also allow ex
 
 Before diving into the Prod Network, it's important to understand the setup with Docker Networks.
 
-On each host I use roughly a dozen user-defined [Docker](https://www.docker.com/) bridge networks.
+On each host I use roughly a dozen user-defined Docker bridge networks.
 
-The local [Caddy](https://caddyserver.com/) instance is attached to a set of those networks, and each project attaches one of them to its service container. That lets Caddy reach each service without being able to reach, for example, a database container on that project's internal-only network.
+The local Caddy instance is attached to a set of those networks, and each project attaches one of them to its service container. That lets Caddy reach each service without being able to reach, for example, a database container on that project's internal-only network.
 
 ![Docker Compose network setup](/images/docker-setup.png)
 
@@ -149,7 +149,7 @@ networks:
 
 ### Why don't we use one network per app?
 
-I first tried one network per Compose project so each stack and Caddy had an isolated connection. That was easy to reason about, but Caddy paid for it at startup: more networks meant more attachments and more internal DNS to settle, and restarts took far too long.
+I first tried one network per [Compose](https://docs.docker.com/compose/) project so each stack and Caddy had an isolated connection. That was easy to reason about, but Caddy paid for it at startup: more networks meant more attachments and more internal DNS to settle, and restarts took far too long.
 
 So I moved to a smaller set of shared bridges, e.g. `monitoring_net`, `games_net`, instead of one network per project. On that kind of bridge, containers can still reach peers by container IP on any port a process is listening on.
 
@@ -159,7 +159,7 @@ Overall it is a workable middle ground: enough segmentation to matter in practic
 
 The production subnet holds most of my servers. Right now this includes two nodes, `roc` and `bluejay`. `roc` is my primary node and `bluejay` is a secondary node.
 
-Each server runs different services in [Docker](https://www.docker.com/) [Compose](https://docs.docker.com/compose/) projects. Each Compose project exposes the minimal set of ports. Notably, it does not use the `ports` stanza, which would bind services to the host network; it uses `expose` instead to document container ports without publishing them to the host. You can see that in the YAML example above under _Docker Networks_.
+Each server runs different services in Docker Compose projects. Each Compose project exposes the minimal set of ports. Notably, it does not use the `ports` stanza, which would bind services to the host network; it uses `expose` instead to document container ports without publishing them to the host. You can see that in the YAML example above under _Docker Networks_.
 
 ## AI subnet
 
@@ -173,7 +173,39 @@ More importantly, I run [MCP](https://modelcontextprotocol.io/) servers and othe
 
 I run a "Proxy" Caddy instance on the prod host, listening on port 8443, which is set up for that restricted surface: it reverse-proxies to the main Caddy on port 443 for `mcp-*` hosts and the registry. Everything else returns 404.
 
-![Example of an ACL](/images/acl2.png)
+Conceptually it looks like this: only hostnames I list here get forwarded to the full reverse proxy on port 443; agents never get a generic path onto the main listener.
+
+```caddyfile
+:8443 {
+  # MCP servers (mcp-<anything>.int.jnadeau.ca) — forwarded to main Caddy
+  @mcp host_regexp ^mcp-.+\.int\.jnadeau\.ca$
+  handle @mcp {
+    # reverse proxies to the same host, but to the primary caddy
+    reverse_proxy 127.0.0.1:443 {
+      header_up Host {host}
+      transport http {
+        tls_server_name internal.int.jnadeau.ca
+      }
+    }
+  }
+
+  @registry host registry.int.jnadeau.ca
+  handle @registry {
+    reverse_proxy 127.0.0.1:443 {
+      header_up Host {host}
+      transport http {
+        tls_server_name internal.int.jnadeau.ca
+      }
+    }
+  }
+
+  handle {
+    respond "Not found" 404
+  }
+}
+```
+
+![Tailscale ACL excerpt: AI-tagged nodes may use 8443 on prod, not 443](/images/acl2.png)
 
 ## Secondary nodes
 
@@ -193,7 +225,7 @@ None of this replaces careful service configuration, but it stacks sensible defa
 
 - Tailscale ACLs say which role may open which port
 - guest Wi-Fi keeps untrusted AI agents off the production LAN
-- and [Docker](https://www.docker.com/) networking plus Caddy keeps the published port surface small while Caddy terminates TLS for internal hops.
+- and Docker networking plus Caddy keeps the published port surface small while Caddy terminates TLS for internal hops.
 
 If you are in a similar spot and want to run local models and agents, the useful move is not “more VPN,” but **narrower paths**:
 
