@@ -22,12 +22,16 @@
   --radius-lg: 20px;
   --shadow: 0 2px 12px rgba(0,0,0,.06);
   --shadow-hover: 0 12px 40px rgba(0,0,0,.08);
+  /* Prose figure mat: matches common export / diagram border (not cards --bg-elevated) */
+  --img-mat: #ffffff;
 }
 
 html.dark {
   --bg: #1a1a18;
   --bg-elevated: #252522;
   --content-bg: #1a1a18;
+  /* Prose figure mat until JS samples edge (matches site.js default) */
+  --img-mat: rgb(18, 18, 18);
   --text: #f0f0ee;
   --text-muted: #a8a8a2;
   --accent: #a5b4fc;
@@ -892,9 +896,16 @@ section.blog.page-content .wrapper {
     border-top: 1px solid var(--border);
   }
 
+  /* Mat around figures: --img-mat tracks diagram edge / frame color, not UI card surfaces */
   img {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: clamp(0.75rem, 2.5vw, 1.25rem);
+    background: var(--img-mat);
     border-radius: var(--radius);
   }
 
@@ -1148,6 +1159,24 @@ section.blog.page-content .wrapper {
     border-radius: 0;
     box-shadow: none;
   }
+
+  /* Shiki + vscode-caddyfile grammar (inline colors on pre/code) */
+  code.shiki-caddy {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    overflow-x: auto;
+    /* Shiki pretty-prints newlines between <span class="line">; pre’s white-space:pre would show them as blank lines */
+    white-space: normal;
+
+    .line {
+      display: block;
+      min-height: 1em;
+      white-space: pre;
+    }
+  }
 }
 
 .page-content pre .copy-code-btn {
@@ -1176,7 +1205,8 @@ section.blog.page-content .wrapper {
 }
 
 html.dark .page-content pre {
-  background: #252522;
+  /* Match hljs Dracula panel so github.css token colors are not on a mismatched grey */
+  background: #282a36;
 
   code.hljs {
     background: none;
@@ -1211,7 +1241,11 @@ html.dark {
   .hljs-built_in,
   .hljs-selector-tag,
   .hljs-section,
-  .hljs-link {
+  .hljs-link,
+  /* github.css colors these navy — unreadable on dark (e.g. nginx / Caddyfile directives) */
+  .hljs-attribute,
+  .hljs-tag,
+  .hljs-selector-id {
     color: #8be9fd;
   }
 
@@ -1240,6 +1274,10 @@ html.dark {
   .hljs-template-tag,
   .hljs-template-variable {
     color: #f1fa8c;
+  }
+
+  .hljs-regexp {
+    color: #50fa7b;
   }
 
   .hljs-comment,

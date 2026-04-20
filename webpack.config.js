@@ -8,7 +8,9 @@ module.exports = {
     style: ['./assets/stylesheets/site.css.scss'],
   },
   output: {
-    publicPath: '',
+    /* Must be absolute from site root: Middleman serves bundles from /javascripts/.
+       Empty publicPath breaks code-split chunks on deep URLs (e.g. /blog/2026/.../). */
+    publicPath: '/javascripts/',
     path: path.resolve(__dirname, '.tmp/dist'),
     filename: '[name].min.js',
   },

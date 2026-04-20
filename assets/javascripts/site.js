@@ -4,11 +4,30 @@ import hljs from 'highlight.js/lib/core';
 import ruby from 'highlight.js/lib/languages/ruby';
 import yaml from 'highlight.js/lib/languages/yaml';
 import shell from 'highlight.js/lib/languages/shell';
+import bash from 'highlight.js/lib/languages/bash';
+import nginx from 'highlight.js/lib/languages/nginx';
+import javascript from 'highlight.js/lib/languages/javascript';
+import json from 'highlight.js/lib/languages/json';
+import dockerfile from 'highlight.js/lib/languages/dockerfile';
+import ini from 'highlight.js/lib/languages/ini';
+import { highlightCaddyCodeBlocks, isCaddyFence } from './caddyfile-highlight';
 import Panzoom from '@panzoom/panzoom';
 
 hljs.registerLanguage('ruby', ruby);
 hljs.registerLanguage('yaml', yaml);
 hljs.registerLanguage('shell', shell);
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('sh', bash);
+hljs.registerLanguage('zsh', bash);
+hljs.registerLanguage('nginx', nginx);
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('js', javascript);
+hljs.registerLanguage('json', json);
+hljs.registerLanguage('dockerfile', dockerfile);
+hljs.registerLanguage('ini', ini);
+
+/** Dark-mode prose image mat before / when edge sample matches (see applyProseImageMatFromEdges) */
+const IMG_MAT_DEFAULT_DARK = 'rgb(18, 18, 18)';
 
 let markdownImgZoomEscapeHandler = null;
 let markdownImgZoomLastFocus = null;
@@ -119,6 +138,158 @@ function openMarkdownImageLightbox(sourceImg) {
   if (closeBtn) closeBtn.focus();
 }
 
+const EDGE_QUANT_SHIFT = 3; /* bucket quantized RGB for mode; colour from mean inside winning bucket */
+
+function edgeQuantKey(r, g, b) {
+  return (r >> EDGE_QUANT_SHIFT) | ((g >> EDGE_QUANT_SHIFT) << 5) | ((b >> EDGE_QUANT_SHIFT) << 10);
+}
+
+/**
+ * Most common quantized colour on the outermost pixel ring only (not mean/median of whole edge).
+ * Mean is taken only among pixels in the winning bucket so the mat matches the frame, not bucket centre.
+ * imageSmoothingEnabled=false avoids resize blending charcoal into black.
+ */
+function sampleImageEdgeMode(img) {
+  const natW = img.naturalWidth;
+  const natH = img.naturalHeight;
+  if (!natW || !natH) return null;
+
+  const maxDim = 480;
+  const scale = Math.min(1, maxDim / Math.max(natW, natH));
+  const cw = Math.max(1, Math.round(natW * scale));
+  const ch = Math.max(1, Math.round(natH * scale));
+
+  const canvas = document.createElement('canvas');
+  canvas.width = cw;
+  canvas.height = ch;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return null;
+
+  ctx.imageSmoothingEnabled = false;
+
+  try {
+    ctx.drawImage(img, 0, 0, cw, ch);
+  } catch (_) {
+    return null;
+  }
+
+  let imageData;
+  try {
+    imageData = ctx.getImageData(0, 0, cw, ch);
+  } catch (_) {
+    /* SecurityError: cross-origin without CORS */
+    return null;
+  }
+
+  const d = imageData.data;
+  /** @type {Map<number, { n: number, r: number, g: number, b: number }>} */
+  const buckets = new Map();
+
+  function tallyPixel(x, y) {
+    const xi = Math.min(cw - 1, Math.max(0, x));
+    const yi = Math.min(ch - 1, Math.max(0, y));
+    const i = (yi * cw + xi) * 4;
+    if (d[i + 3] < 250) return;
+    const r = d[i];
+    const g = d[i + 1];
+    const b = d[i + 2];
+    const key = edgeQuantKey(r, g, b);
+    let o = buckets.get(key);
+    if (!o) {
+      o = { n: 0, r: 0, g: 0, b: 0 };
+      buckets.set(key, o);
+    }
+    o.n += 1;
+    o.r += r;
+    o.g += g;
+    o.b += b;
+  }
+
+  /* Single-pixel perimeter only — a thick band samples past the frame into diagram black */
+  let x;
+  let y;
+  for (x = 0; x < cw; x += 1) {
+    tallyPixel(x, 0);
+    tallyPixel(x, ch - 1);
+  }
+  for (y = 1; y < ch - 1; y += 1) {
+    tallyPixel(0, y);
+    tallyPixel(cw - 1, y);
+  }
+
+  if (buckets.size === 0) return null;
+
+  let bestKey = null;
+  let bestN = 0;
+  buckets.forEach((o, key) => {
+    if (o.n > bestN) {
+      bestN = o.n;
+      bestKey = key;
+    }
+  });
+
+  if (bestKey === null) return null;
+  const w = buckets.get(bestKey);
+  if (!w || w.n < 1) return null;
+  return `rgb(${Math.round(w.r / w.n)}, ${Math.round(w.g / w.n)}, ${Math.round(w.b / w.n)})`;
+}
+
+function applyProseImageMatFromEdges(img) {
+  const dark = document.documentElement.classList.contains('dark');
+  if (dark) {
+    img.style.backgroundColor = IMG_MAT_DEFAULT_DARK;
+  } else {
+    img.style.backgroundColor = '';
+  }
+
+  const rgb = sampleImageEdgeMode(img);
+  if (!rgb) return;
+  if (dark && rgb === IMG_MAT_DEFAULT_DARK) return;
+  img.style.backgroundColor = rgb;
+}
+
+function initProseImageMatFromEdges() {
+  const roots = document.querySelectorAll(
+    '.article-body, .page-content:not(.blog) .wrapper:not(.article-body)'
+  );
+  const dark = document.documentElement.classList.contains('dark');
+  roots.forEach((root) => {
+    root.querySelectorAll('img').forEach((img) => {
+      if (img.closest('pre')) return;
+      if (img.complete && img.naturalWidth) {
+        applyProseImageMatFromEdges(img);
+      } else {
+        if (dark) {
+          img.style.backgroundColor = IMG_MAT_DEFAULT_DARK;
+        } else {
+          img.style.backgroundColor = '';
+        }
+        img.addEventListener('load', () => applyProseImageMatFromEdges(img), { once: true });
+      }
+    });
+  });
+
+  const reapplyMatsOnThemeChange = () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    roots.forEach((root) => {
+      root.querySelectorAll('img').forEach((img) => {
+        if (img.closest('pre')) return;
+        if (img.complete && img.naturalWidth) {
+          applyProseImageMatFromEdges(img);
+        } else if (isDark) {
+          img.style.backgroundColor = IMG_MAT_DEFAULT_DARK;
+        } else {
+          img.style.backgroundColor = '';
+        }
+      });
+    });
+  };
+  new MutationObserver(reapplyMatsOnThemeChange).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+}
+
 function initMarkdownImageZoom() {
   const roots = document.querySelectorAll(
     '.article-body, .page-content:not(.blog) .wrapper:not(.article-body)'
@@ -147,7 +318,18 @@ function initMarkdownImageZoom() {
 
 document.addEventListener('DOMContentLoaded', (event) => {
   document.querySelectorAll('pre code').forEach((block) => {
-    hljs.highlightBlock(block);
+    if (isCaddyFence(block)) return;
+    try {
+      hljs.highlightBlock(block);
+    } catch (_) {
+      /* Unknown fence language class: fall back to auto-detection without invalid class */
+      block.className = block.className.replace(/\blanguage-\S+\b/g, '').trim();
+      hljs.highlightBlock(block);
+    }
+  });
+
+  highlightCaddyCodeBlocks().catch((err) => {
+    console.error('Caddyfile highlighting failed', err);
   });
 
   // Copy-to-clipboard buttons for code blocks
@@ -209,6 +391,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       toggleDark.forEach(el => el.classList.remove('hidden'))
       toggleLight.forEach(el => el.classList.add('hidden'))
       toggleLight.forEach(el => el.classList.remove('visible'))
+      highlightCaddyCodeBlocks().catch(() => {})
     })
   })
 
@@ -220,8 +403,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
       toggleLight.forEach(el => el.classList.remove('hidden'))
       toggleDark.forEach(el => el.classList.add('hidden'))
       toggleDark.forEach(el => el.classList.remove('visible'))
+      highlightCaddyCodeBlocks().catch(() => {})
     })
   })
 
+  initProseImageMatFromEdges();
   initMarkdownImageZoom();
 });

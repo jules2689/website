@@ -1,0 +1,6 @@
+caddyfile.tmLanguage.json is copied from the official VS Code extension:
+https://github.com/caddyserver/vscode-caddyfile (MIT License, Copyright Matthew Penner).
+
+Update occasionally to match editor highlighting:
+curl -sL -o assets/vendor/caddyfile.tmLanguage.json \
+  "https://raw.githubusercontent.com/caddyserver/vscode-caddyfile/master/syntaxes/caddyfile.tmLanguage.json"

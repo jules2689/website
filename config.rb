@@ -1,6 +1,14 @@
+require 'kramdown-parser-gfm'
+
 activate :directory_indexes
 activate :asset_hash
 set :relative_links, true
+
+# Fenced code blocks + tables, etc.; client-side highlighting via highlight.js (see assets/javascripts/site.js)
+set :markdown,
+  input: 'GFM',
+  syntax_highlighter: nil,
+  hard_wrap: false
 
 # Blog: markdown posts with front matter; articles in source/blog/
 activate :blog do |blog|

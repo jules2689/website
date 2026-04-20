@@ -11,6 +11,8 @@ gem 'webrick'  # dev server (removed from stdlib in Ruby 3.0)
 
 gem 'middleman', '~> 4.5'
 gem 'middleman-blog', '~> 4.0'
+# GFM fenced code blocks (```) for blog markdown; default kramdown parser does not treat them as code
+gem 'kramdown-parser-gfm'
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby, :x64_mingw]
 gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw, :x64_mingw]
 gem 'ogp'
