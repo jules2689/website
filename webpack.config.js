@@ -58,4 +58,7 @@ module.exports = {
     ],
   },
   plugins: [new MiniCssExtractPlugin()],
+  performance: {
+    hints: false,
+  },
 };

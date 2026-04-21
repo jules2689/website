@@ -318,7 +318,6 @@ function initMarkdownImageZoom() {
 
 document.addEventListener('DOMContentLoaded', (event) => {
   document.querySelectorAll('pre code').forEach((block) => {
-    if (isCaddyFence(block)) return;
     try {
       hljs.highlightBlock(block);
     } catch (_) {
