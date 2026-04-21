@@ -11,22 +11,32 @@ jobs:
     name: Update
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.4.1
           bundler-cache: true
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: 12.x
+          node-version: 22
+          cache: npm
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+      - name: Verify runtime versions
+        run: |
+          node --version
+          npm --version
       - name: Build blog
         run: bundle exec ruby bin/blog
       - name: Commit Blog Changes and deploy
         run: |
-          if [ ! -z "$(git status --porcelain)" ]; then 
+          if git diff --quiet -- data/blog.json; then
+            echo "No data/blog.json updates to deploy."
+            exit 0
+          fi
+
+          if [ ! -z "$(git status --porcelain)" ]; then
             echo "Setting Config for Git"
             git config --global user.email "action@github.com"
             git config --global user.name "GitHub Action"

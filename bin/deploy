@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set +eox
+set -euo pipefail
 
 # Set up build folder and build
 rm -rf build
