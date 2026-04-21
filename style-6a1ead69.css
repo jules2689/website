@@ -5574,6 +5574,20 @@ html.dark .page-header-hero .page-back a:hover{
   max-width:900px
 }
 
+.giscus-wrap{
+  margin-top:2rem
+}
+
+.giscus{
+  margin-top:1rem;
+  padding-top:2rem;
+  border-top:1px solid var(--border)
+}
+
+.page-content.giscus-below-main{
+  padding-top:0
+}
+
 section.blog.page-content .wrapper{
   max-width:1680px
 }
