@@ -21,6 +21,14 @@
 
     <%= yield %>
 
+    <% if presentation_page? && giscus_embed_ready? %>
+    <section class="page-content giscus-below-main">
+      <div class="wrapper giscus-wrap">
+        <%= partial "partials/giscus" %>
+      </div>
+    </section>
+    <% end %>
+
     <footer>
       <div class="wrapper">© <span id="cp-year">2026</span> Julian Nadeau</div>
     </footer>

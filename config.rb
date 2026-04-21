@@ -86,6 +86,38 @@ helpers do
   def all_blog_years
     merged_blog_posts.map { |e| e[:date].respond_to?(:year) ? e[:date].year : e[:date].to_time.year }.uniq.sort.reverse
   end
+
+  # Giscus: https://giscus.app — see data/giscus.yaml. Optional: GISCUS_REPO_ID,
+  # GISCUS_CATEGORY_ID env vars override YAML (e.g. CI) without committing ids.
+  def giscus_data
+    raw = (data.giscus rescue nil) || {}
+    raw = raw.each_with_object({}) { |(k, v), h| h[k.to_s] = v }
+    env = {}
+    env["repo_id"] = ENV["GISCUS_REPO_ID"] if ENV["GISCUS_REPO_ID"].to_s.strip != ""
+    env["category_id"] = ENV["GISCUS_CATEGORY_ID"] if ENV["GISCUS_CATEGORY_ID"].to_s.strip != ""
+    {
+      "mapping" => "pathname",
+      "strict" => "0",
+      "reactions_enabled" => "1",
+      "emit_metadata" => "0",
+      "input_position" => "bottom",
+      "loading" => "lazy",
+      "lang" => "en",
+      "theme" => "preferred_color_scheme",
+      "category" => "Comments"
+    }.merge(raw).merge(env)
+  end
+
+  def giscus_embed_ready?
+    g = giscus_data
+    %w[repo repo_id category category_id].all? { |k| g[k].to_s.strip != "" }
+  end
+
+  # Top-level presentation pages only (not kaigi partials under presentations/kaigi/).
+  def presentation_page?
+    path = current_page.path.to_s
+    path.start_with?("presentations/") && path.end_with?(".html") && path.split("/").length == 2
+  end
 end
 
 # Per-page layout changes
