@@ -2,10 +2,14 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const miniCss = MiniCssExtractPlugin.loader;
+const cssLoader = { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } };
+const postcssLoader = { loader: 'postcss-loader', options: { sourceMap: true } };
+
 module.exports = {
   entry: {
     site: ['./assets/javascripts/site.js'],
-    style: ['./assets/stylesheets/site.css.scss'],
+    style: ['./assets/stylesheets/style-entry.js'],
   },
   output: {
     /* Must be absolute from site root: Middleman serves bundles from /javascripts/.
@@ -17,28 +21,41 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(scss|sass|css)$/i,
+        test: /\.css$/i,
+        use: [miniCss, cssLoader, postcssLoader],
+      },
+      {
+        test: /\.(scss|sass)$/i,
         use: [
-          MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } },
-          { loader: 'postcss-loader', options: { sourceMap: true } },
+          miniCss,
+          { loader: 'css-loader', options: { sourceMap: true, importLoaders: 2 } },
+          postcssLoader,
           'resolve-url-loader',
-          { loader: 'sass-loader', options: { sourceMap: true } }
-        ]
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              api: 'modern',
+              sassOptions: {
+                quietDeps: true,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [{
-          loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+          loader: 'url-loader?limit=10000&mimetype=application/font-woff',
         }],
       },
       {
         test: /\.(ttf|eot|svg|gif|jpg|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [{
-          loader: 'file-loader'
-        }]
-      }
-    ]
+          loader: 'file-loader',
+        }],
+      },
+    ],
   },
   plugins: [new MiniCssExtractPlugin()],
 };

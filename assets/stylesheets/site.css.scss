@@ -1,10 +1,4 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-brands";
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid";
+/* Tailwind layers + Font Awesome are imported from style-entry.js (plain CSS) to avoid Sass @import deprecations. */
 
 /* --- Mockup design: variables & layout --- */
 :root {
