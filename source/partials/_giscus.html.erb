@@ -1,0 +1,21 @@
+<% if giscus_embed_ready? %>
+<% g = giscus_data %>
+<div class="giscus" data-component="giscus-comments">
+  <script src="https://giscus.app/client.js"
+    data-repo="<%= h g["repo"] %>"
+    data-repo-id="<%= h g["repo_id"] %>"
+    data-category="<%= h g["category"] %>"
+    data-category-id="<%= h g["category_id"] %>"
+    data-mapping="<%= h g["mapping"] %>"
+    data-strict="<%= h g["strict"] %>"
+    data-reactions-enabled="<%= h g["reactions_enabled"] %>"
+    data-emit-metadata="<%= h g["emit_metadata"] %>"
+    data-input-position="<%= h g["input_position"] %>"
+    data-theme="<%= h g["theme"] %>"
+    data-lang="<%= h g["lang"] %>"
+    data-loading="<%= h g["loading"] %>"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+<% end %>

@@ -1,0 +1,15 @@
+# Giscus (https://giscus.app): enable GitHub Discussions on this repo, create a
+# "Comments" category (or any name you prefer—must match giscus.app + YAML below),
+# install the giscus GitHub App, then paste repo_id and category_id from giscus.
+repo: jules2689/website
+repo_id: "MDEwOlJlcG9zaXRvcnkyMTMzOTMyOA"
+category: General
+category_id: "DIC_kwDOAUWcwM4C7UeD"
+mapping: pathname
+strict: "0"
+reactions_enabled: "1"
+emit_metadata: "0"
+input_position: bottom
+loading: lazy
+lang: en
+theme: preferred_color_scheme

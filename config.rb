@@ -1,4 +1,5 @@
 require 'kramdown-parser-gfm'
+require 'uri'
 
 activate :directory_indexes
 activate :asset_hash
@@ -142,4 +143,106 @@ end
 configure :production do
   set :css_dir, "build"
   set :js_dir, "build"
+end
+
+def skip_link_check?(value)
+  value.to_s.empty? || value.start_with?('#') || value.start_with?('mailto:', 'tel:', 'javascript:')
+end
+
+def external_link?(value)
+  uri = URI.parse(value)
+  uri.is_a?(URI::HTTP) || uri.is_a?(URI::HTTPS)
+rescue URI::InvalidURIError
+  false
+end
+
+def candidate_targets(build_dir, html_path, raw_target)
+  target = raw_target.split('#', 2).first.to_s.split('?', 2).first
+  return [] if target.empty?
+
+  source_dir = File.dirname(html_path)
+  absolute_path = if target.start_with?('/')
+    File.join(build_dir, target.sub(%r{^/+}, ''))
+  else
+    File.expand_path(target, source_dir)
+  end
+
+  candidates = [absolute_path]
+  return candidates unless File.extname(absolute_path).empty?
+
+  candidates << "#{absolute_path}.html"
+  candidates << File.join(absolute_path, "index.html")
+  candidates
+end
+
+def exact_case_path_exists?(path)
+  return false unless File.exist?(path)
+
+  clean_path = File.expand_path(path)
+  return true if clean_path == "/"
+
+  parts = clean_path.split("/").reject(&:empty?)
+  current = "/"
+
+  parts.each do |part|
+    return false unless Dir.exist?(current)
+
+    entries = Dir.children(current)
+    return false unless entries.include?(part)
+
+    current = File.join(current, part)
+  end
+
+  true
+end
+
+def collect_attr_values(html, attr_name)
+  html.scan(/\b#{attr_name}\s*=\s*(['"])(.*?)\1/i).map { |m| m[1].to_s.strip }.reject(&:empty?)
+end
+
+after_build do |builder|
+  # Builder is not coercible to a path; use app root + :build_dir (same as Middleman::Builder).
+  build_dir = File.expand_path(builder.app.config[:build_dir].to_s, builder.app.root)
+  html_files = Dir.glob(File.join(build_dir, "**/*.html"))
+  failures = []
+
+  html_files.each do |html_path|
+    content = File.read(html_path)
+    hrefs = collect_attr_values(content, "href")
+    srcs = collect_attr_values(content, "src")
+    srcsets = collect_attr_values(content, "srcset").flat_map do |set|
+      set.split(',').map { |entry| entry.strip.split(/\s+/, 2).first.to_s.strip }.reject(&:empty?)
+    end
+
+    (hrefs + srcs + srcsets).each do |target|
+      next if skip_link_check?(target) || external_link?(target)
+
+      valid = candidate_targets(build_dir, html_path, target).any? { |path| exact_case_path_exists?(path) }
+      next if valid
+
+      failures << {
+        page: html_path.sub(%r{\A#{Regexp.escape(build_dir)}/?}, ''),
+        target: target
+      }
+    end
+  end
+
+  next if failures.empty?
+
+  grouped = failures.group_by { |f| f[:page] }
+  detail_lines = grouped.flat_map do |page, items|
+    ["- #{page}"] + items.uniq { |i| i[:target] }.map { |i| "    • #{i[:target]}" }
+  end
+
+  message = [
+    "Build failed: broken internal links/assets found.",
+    "",
+    *detail_lines,
+    "",
+    "Fix the paths above and re-run `bundle exec middleman build`."
+  ].join("\n")
+
+  error = RuntimeError.new(message)
+  error.set_backtrace([])
+  raise error
 end
