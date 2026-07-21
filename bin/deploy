@@ -11,6 +11,12 @@ cp CNAME build
 # Push to Github
 pushd build
 git add --all .
+if git diff --cached --quiet; then
+  echo "No website changes to deploy."
+  popd
+  rm -rf build
+  exit 0
+fi
 git commit -m 'Update website'
 if [ $# -eq 0 ]
   then
